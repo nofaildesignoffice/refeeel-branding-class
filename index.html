@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RE:BRAND 브랜딩 클래스</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css');
+html,body{overscroll-behavior:none !important}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--bg-deep:#060606;--fg:#fff;--fg-2:rgba(255,255,255,.65);--fg-3:rgba(255,255,255,.35);--accent:#e75519;--accent-rgb:231,85,25;--warm:#faf9f7;--wfg:#111;--wfg-2:rgba(0,0,0,.55);--wfg-3:rgba(0,0,0,.22);--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--line-w:rgba(0,0,0,.10);--bubble:rgba(255,255,255,.04);--proof:rgba(231,85,25,.06);--content:1120px;--sec-y:clamp(96px,14vw,156px);--gap-xl:clamp(56px,8vw,96px);--gap-lg:clamp(40px,6vw,68px);--gap-md:clamp(20px,3vw,32px);--font:'SUIT',-apple-system,BlinkMacSystemFont,'Pretendard',sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px;line-height:1.7;letter-spacing:-.012em}
+.bc-root{font-family:var(--font)!important;background:var(--bg)!important;color:var(--fg)!important;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px;line-height:1.7;letter-spacing:-.012em;position:relative;padding-bottom:120px}
+.bc-root *{box-sizing:border-box}
+@media(min-width:768px){.bc-root{padding-bottom:84px}}
+::selection{background:rgba(var(--accent-rgb),.3);color:#fff}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--content);margin:0 auto;padding:0 clamp(24px,6vw,48px)}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}.rv.on{opacity:1;transform:translateY(0)}.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+.label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(20px,3vw,28px)}
+.h-sec{font-size:clamp(28px,6vw,44px);font-weight:800;line-height:1.18;letter-spacing:-.04em;word-break:keep-all}
+.h-big{font-size:clamp(34px,7.5vw,56px);font-weight:800;line-height:1.12;letter-spacing:-.05em;word-break:keep-all}
+.em{color:var(--accent)}
+.br-m{display:none}@media(max-width:767px){.br-m{display:inline}}
+.sec-head{margin-bottom:var(--gap-lg)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;font-family:var(--font);font-size:15px;font-weight:700;letter-spacing:-.01em;transition:all .2s;cursor:pointer;border:none;text-decoration:none}
+.btn-p{background:var(--accent);color:#fff}.btn-p:hover{background:#d04a10;transform:translateY(-2px)}
+.btn-g{background:transparent;color:var(--fg-2);border:1px solid var(--line-2)}.btn-g:hover{border-color:var(--fg-3);color:var(--fg)}
+.btn .arr{transition:transform .2s}.btn:hover .arr{transform:translateX(3px)}
+.body-text{font-size:clamp(16px,3.4vw,19px);line-height:1.85;color:var(--fg-2);word-break:keep-all;max-width:720px}
+.body-text p{margin-bottom:clamp(20px,3vw,28px)}.body-text p:last-child{margin-bottom:0}.body-text strong{color:var(--fg);font-weight:600}
+.sec{padding:var(--sec-y) 0}
+.sec-deep{background:var(--bg-deep)!important}
+.eyebrow{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-3);max-width:720px;word-break:keep-all;margin-bottom:var(--gap-lg)}
+
+/* HERO */
+.hero{padding:clamp(140px,22vw,240px) 0 clamp(56px,9vw,88px)}
+.hero-over{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(5px,1vw,7px);margin-bottom:75px}.hero-over .line{width:32px;height:1px;background:var(--accent)}.hero-over-desc{font-size:clamp(13px,2.8vw,15px);font-weight:700;line-height:1.6;color:var(--fg);word-break:keep-all}.hero-over-brand{display:flex;align-items:center;gap:12px}.hero-over span{font-size:clamp(12px,2.6vw,14px);font-weight:700;letter-spacing:.3px;color:var(--accent);line-height:1.7;word-break:keep-all}
+.hero h1{margin-bottom:75px}
+.hero-sub{font-size:clamp(16px,3.4vw,19px);line-height:1.85;color:var(--fg-2);max-width:640px;word-break:keep-all;margin-bottom:clamp(28px,4vw,40px)}
+.hero-onel{display:flex;gap:14px;align-items:flex-start;max-width:640px;margin-bottom:clamp(36px,5vw,52px);padding:clamp(18px,3vw,24px);background:var(--bubble);border:1px solid var(--line);border-left:3px solid var(--accent)}
+.hero-onel .o-txt{font-size:clamp(14px,2.9vw,16px);line-height:1.7;color:var(--fg-2);word-break:keep-all}.hero-onel .o-txt b{color:var(--fg);font-weight:700}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* PROOF BAR */
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,16px);margin-bottom:var(--gap-lg)}
+@media(min-width:768px){.proof-grid{grid-template-columns:repeat(4,1fr)}}
+.proof-card{padding:clamp(24px,4vw,36px) clamp(20px,3vw,28px);background:var(--proof);border:1px solid rgba(var(--accent-rgb),.18)}
+.proof-num{font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--accent);margin-bottom:10px}.proof-num .u{font-size:.45em;font-weight:700;margin-left:2px}
+.proof-desc{font-size:clamp(13px,2.6vw,14px);line-height:1.55;color:var(--fg-2);word-break:keep-all}
+.proof-note{font-size:clamp(14px,2.9vw,16px);color:var(--fg-3);word-break:keep-all}
+
+/* VOICE */
+.voice-cards{display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,28px)}.voice-card{background:var(--bubble);border:1px solid var(--line);padding:clamp(28px,4.5vw,40px)}.voice-stars{color:var(--accent);font-size:14px;letter-spacing:2px;margin-bottom:clamp(12px,2vw,16px)}.voice-txt{font-size:clamp(15px,3vw,17px);line-height:1.75;color:var(--fg-2);word-break:keep-all;margin-bottom:clamp(16px,2.5vw,22px)}.voice-txt strong{color:var(--fg);font-weight:600}.voice-who{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--fg-3)}.voice-who .v-av{width:32px;height:32px;border-radius:50%;background:rgba(var(--accent-rgb),.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}.voice-who b{color:var(--fg-2);font-weight:600}
+@media(min-width:768px){.voice-cards{grid-template-columns:1fr 1fr 1fr}}
+.voice-strip{margin-top:var(--gap-lg);display:flex;flex-wrap:wrap;gap:10px}
+.voice-tag{font-size:clamp(13px,2.6vw,14px);font-weight:600;padding:10px 18px;background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.15);color:var(--fg-2)}.voice-tag b{color:var(--accent);font-weight:700}
+
+/* PAIN */
+.pain-intro{font-size:clamp(20px,4.2vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1.35;word-break:keep-all}
+.pain-block{margin-bottom:clamp(56px,10vw,96px)}.pain-block:last-child{margin-bottom:0}
+@media(min-width:768px){.pain-block{display:flex;flex-direction:row;align-items:stretch;gap:0}.pain-block .pain-box{flex:1}}
+.pain-quote{font-size:clamp(17px,3.6vw,21px);line-height:1.75;color:var(--fg);word-break:keep-all;padding:clamp(24px,4vw,36px);background:rgba(255,255,255,.03);border-left:3px solid var(--accent);margin-bottom:clamp(16px,2.5vw,20px);font-style:italic;position:relative}
+.pain-quote::before{content:'\201C';position:absolute;top:clamp(12px,2vw,20px);left:clamp(12px,2vw,20px);font-size:clamp(32px,5vw,48px);color:rgba(var(--accent-rgb),.25);font-family:Georgia,serif;line-height:1}
+.pain-explain{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-2);word-break:keep-all;padding-left:clamp(16px,3vw,24px)}
+.pain-take{display:flex;gap:14px;align-items:flex-start;margin-top:clamp(18px,2.5vw,24px);padding-left:clamp(12px,3vw,24px)}
+.pain-take-av{width:36px;height:36px;border-radius:50%;background:rgba(var(--accent-rgb),.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;margin-top:2px}
+.pain-take-name{display:block;font-size:13px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.pain-take-txt{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-2);word-break:keep-all}.pain-take-txt strong{color:var(--fg);font-weight:600}
+.pain-box{padding:clamp(22px,3.8vw,32px);border:1px solid var(--line);word-break:keep-all}
+.pain-box-q{background:rgba(255,255,255,.03)}
+.pain-box-d{background:rgba(var(--accent-rgb),.06);border-color:rgba(var(--accent-rgb),.2)}
+.pain-box-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;margin-bottom:clamp(10px,1.6vw,14px)}
+.pain-box-q .pain-box-label{color:var(--fg-3)}
+.pain-box-d .pain-box-label{color:var(--accent)}
+.pain-box-q p{font-size:clamp(16px,3.4vw,20px);line-height:1.65;color:var(--fg);font-style:italic}
+.pain-box-d p{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-2)}.pain-box-d p strong{color:var(--fg);font-weight:600}
+.pain-arrow{display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.6vw,14px) 0;color:var(--accent);opacity:.5}.pain-arrow svg{width:28px;height:28px}
+@media(min-width:768px){.pain-arrow{padding:0 clamp(10px,1.5vw,16px)}.pain-arrow svg{transform:rotate(-90deg)}}
+.pain-quote-mark{display:block;width:clamp(30px,5vw,42px);height:auto;color:rgba(var(--accent-rgb),.45);margin-bottom:clamp(8px,1.5vw,12px)}
+.pain-turn{font-size:clamp(18px,3.8vw,24px);font-weight:700;line-height:1.55;color:var(--fg-2);word-break:keep-all}.pain-turn strong{color:var(--accent);font-weight:800}
+
+/* NUM / 매출 허상 */
+.num-before{background:var(--bubble);border:1px solid var(--line);padding:clamp(28px,4.5vw,40px);margin-bottom:var(--gap-md)}
+.num-big{font-size:clamp(24px,5vw,36px);font-weight:800;letter-spacing:-.04em;line-height:1.2;margin-bottom:8px}.num-big .dim{color:var(--fg-3)}
+.num-sub{font-size:clamp(13px,2.6vw,15px);color:var(--fg-3);margin-bottom:clamp(12px,2vw,16px)}
+.num-body{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-2);word-break:keep-all}
+.cmp-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,20px)}
+@media(min-width:640px){.cmp-grid{grid-template-columns:1fr 1fr}}
+.cmp-card{padding:clamp(28px,4.5vw,40px)}.cmp-card-b{background:rgba(255,255,255,.03);border:1px solid var(--line)}.cmp-card-a{background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.2)}
+.cmp-card-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:clamp(16px,2.5vw,24px)}.cmp-card-b .cmp-card-label{color:var(--fg-3)}.cmp-card-a .cmp-card-label{color:var(--accent)}
+.cmp-row2{display:flex;justify-content:space-between;padding:clamp(10px,1.5vw,14px) 0;border-top:1px solid var(--line);font-size:clamp(14px,2.8vw,16px)}.cmp-card-a .cmp-row2{border-color:rgba(var(--accent-rgb),.15)}
+.cmp-k{color:var(--fg-3);font-weight:600}.cmp-card-a .cmp-k{color:rgba(255,255,255,.5)}.cmp-vv{font-weight:600}.cmp-card-b .cmp-vv{color:var(--fg-3)}.cmp-card-a .cmp-vv{color:var(--accent)}
+.num-turn{padding:clamp(24px,4vw,36px) 0 0;font-size:clamp(16px,3.4vw,20px);font-weight:700;line-height:1.5;color:var(--fg);word-break:keep-all;text-align:center}
+
+/* DIAGNOSIS */
+.diag-item{padding:clamp(32px,5vw,56px);background:var(--bubble);border:1px solid var(--line);margin-bottom:clamp(16px,2.5vw,20px)}
+.diag-head{display:flex;align-items:baseline;gap:clamp(12px,2vw,20px);margin-bottom:clamp(16px,2.5vw,24px)}.diag-num{font-size:clamp(32px,6vw,48px);font-weight:800;color:rgba(var(--accent-rgb),.3);min-width:clamp(40px,7vw,56px);line-height:1}.diag-title{font-size:clamp(18px,3.8vw,22px);font-weight:700;letter-spacing:-.02em;line-height:1.35;word-break:keep-all}
+.diag-body{font-size:clamp(15px,3vw,17px);line-height:1.85;color:var(--fg-2);word-break:keep-all;max-width:660px}
+.diag-result{margin-top:clamp(16px,2.5vw,24px);font-size:clamp(15px,3vw,17px);font-weight:700;color:var(--accent)}
+
+/* TURN STATEMENT */
+.turn-state{font-size:clamp(22px,5vw,38px);font-weight:800;line-height:1.3;letter-spacing:-.04em;word-break:keep-all;text-align:center;max-width:820px;margin:0 auto}.turn-state strong{color:var(--accent)}
+.turn-sub{margin-top:clamp(20px,3vw,28px);font-size:clamp(15px,3vw,18px);line-height:1.8;color:var(--fg-2);word-break:keep-all;text-align:center;max-width:680px;margin-left:auto;margin-right:auto}
+
+/* SOLUTION */
+.how-doubt{font-size:clamp(16px,3.4vw,19px);line-height:1.85;color:var(--fg-3);word-break:keep-all;padding:clamp(20px,3vw,28px);border:1px solid var(--line);margin-bottom:var(--gap-lg);font-style:italic}
+.flow-diagram{display:flex;flex-direction:column;gap:0;margin:var(--gap-lg) 0;position:relative}
+@media(min-width:768px){.flow-diagram{flex-direction:row;align-items:stretch}}
+.flow-node{flex:1;padding:clamp(24px,4vw,36px);background:var(--bubble);border:1px solid var(--line);position:relative;display:flex;flex-direction:column}
+.flow-node:first-child{border-color:rgba(var(--accent-rgb),.15)}
+.flow-node:nth-child(3){border-color:rgba(var(--accent-rgb),.18)}
+.flow-node:nth-child(5){border-color:rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.04)}
+.flow-node-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(8px,1.5vw,12px)}
+.flow-node-title{font-size:clamp(16px,3.4vw,19px);font-weight:700;letter-spacing:-.02em;margin-bottom:6px;word-break:keep-all}
+.flow-node-desc{font-size:clamp(13px,2.6vw,15px);color:var(--fg-2);line-height:1.6;word-break:keep-all;margin-top:auto}
+.flow-arrow{display:flex;align-items:center;justify-content:center;padding:8px 0;color:var(--accent);opacity:.4}
+.flow-arrow svg{width:24px;height:24px}
+@media(min-width:768px){.flow-arrow{padding:0 4px}.flow-arrow svg{transform:rotate(-90deg)}}
+
+/* PROOF MOCKUP (TEMU vs INSTA) */
+.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,20px);max-width:680px;margin:var(--gap-lg) auto 0}
+.mock-card{background:var(--bubble);border:1px solid var(--line);padding:clamp(20px,3.5vw,28px);text-align:center}
+.mock-card.win{border-color:rgba(var(--accent-rgb),.3);background:rgba(var(--accent-rgb),.05)}
+.mock-plat{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--fg-3);margin-bottom:clamp(14px,2.5vw,18px)}.mock-card.win .mock-plat{color:var(--accent)}
+.ph-img{width:100%;aspect-ratio:1/1;background:repeating-linear-gradient(45deg,rgba(255,255,255,.025),rgba(255,255,255,.025) 10px,rgba(255,255,255,.05) 10px,rgba(255,255,255,.05) 20px);border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--fg-3);font-size:12px;letter-spacing:.5px;margin-bottom:clamp(14px,2.5vw,18px)}
+.mock-price{font-size:clamp(22px,5vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1}.mock-card.win .mock-price{color:var(--accent)}
+.mock-meta{font-size:clamp(12px,2.4vw,13px);color:var(--fg-3);margin-top:8px}
+.mock-cap{text-align:center;margin-top:clamp(20px,3vw,28px);font-size:clamp(15px,3vw,18px);font-weight:700;color:var(--fg);word-break:keep-all}.mock-cap .em{color:var(--accent)}
+
+/* CASE GRID (다업종) */
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,16px)}
+@media(min-width:768px){.case-grid{grid-template-columns:repeat(3,1fr)}}
+.case-chip{padding:clamp(18px,3vw,24px);background:var(--bubble);border:1px solid var(--line);text-align:center}
+.case-chip .c-ic{width:28px;height:28px;margin:0 auto clamp(10px,2vw,14px);color:var(--accent);opacity:.7}.case-chip .c-ic svg{width:100%;height:100%}
+.case-chip .c-name{font-size:clamp(14px,2.8vw,16px);font-weight:700;margin-bottom:4px}
+.case-chip .c-desc{font-size:clamp(12px,2.4vw,13px);color:var(--fg-3);line-height:1.5;word-break:keep-all}
+.case-hero{margin-top:var(--gap-md);padding:clamp(28px,4.5vw,40px);background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.15)}
+.case-hero .ch-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(12px,2vw,16px)}
+.case-hero .ch-body{font-size:clamp(16px,3.4vw,20px);font-weight:700;line-height:1.5;word-break:keep-all}.case-hero .ch-body .em{color:var(--accent)}
+.case-hero .ch-note{margin-top:10px;font-size:clamp(13px,2.6vw,15px);color:var(--fg-2)}
+
+/* CURRICULUM (warm) */
+.sec-cur{background:var(--warm)!important;color:var(--wfg)!important;padding:var(--sec-y) 0}.sec-cur .label{color:var(--accent)}.sec-cur .h-sec{color:var(--wfg)}
+.cur-intro{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--wfg-2);margin-bottom:var(--gap-lg);word-break:keep-all}
+.cur-item{display:flex;gap:clamp(16px,3vw,24px);padding:clamp(20px,3vw,28px) 0;border-top:1px solid var(--line-w);align-items:baseline}.cur-item:last-child{border-bottom:1px solid var(--line-w)}
+.cur-num{font-size:clamp(14px,2.8vw,16px);font-weight:700;color:var(--accent);min-width:28px;flex-shrink:0}
+.cur-body{min-width:0}.cur-title{font-size:clamp(16px,3.4vw,19px);font-weight:700;letter-spacing:-.02em;color:var(--wfg);margin-bottom:4px;word-break:keep-all}.cur-desc{font-size:clamp(13px,2.6vw,15px);color:var(--wfg-2);line-height:1.6;word-break:keep-all}.cur-eff{font-size:clamp(13px,2.6vw,15px);color:var(--accent);font-weight:600;margin-top:6px}
+
+/* DELIVERABLES (제공물) */
+.del-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,24px)}
+@media(min-width:640px){.del-grid{grid-template-columns:1fr 1fr}}
+.del-card{background:var(--bubble);border:1px solid var(--line);overflow:hidden}
+.del-thumb{width:100%;aspect-ratio:16/10;background:repeating-linear-gradient(45deg,rgba(255,255,255,.025),rgba(255,255,255,.025) 10px,rgba(255,255,255,.05) 10px,rgba(255,255,255,.05) 20px);border-bottom:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--fg-3);font-size:12px;letter-spacing:.5px}
+.del-info{padding:clamp(22px,3.5vw,30px)}
+.del-name{font-size:clamp(17px,3.6vw,20px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;word-break:keep-all}.del-name .d-tag{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1.5px;display:block;margin-bottom:6px}
+.del-desc{font-size:clamp(14px,2.8vw,16px);line-height:1.7;color:var(--fg-2);word-break:keep-all}
+
+/* SELF DIAGNOSIS WIDGET */
+.diag-w{max-width:680px;margin:0 auto;background:var(--bubble);border:1px solid var(--line);padding:clamp(28px,4.5vw,44px)}
+.dw-q{display:flex;align-items:flex-start;gap:14px;padding:clamp(16px,2.5vw,20px) 0;border-top:1px solid var(--line);cursor:pointer;user-select:none}.dw-q:first-of-type{border-top:none}
+.dw-box{width:24px;height:24px;border:2px solid var(--line-2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px}
+.dw-box svg{width:14px;height:14px;color:#fff;opacity:0;transform:scale(.5);transition:all .2s}
+.dw-q.checked .dw-box{background:var(--accent);border-color:var(--accent)}.dw-q.checked .dw-box svg{opacity:1;transform:scale(1)}
+.dw-txt{font-size:clamp(15px,3vw,17px);line-height:1.5;color:var(--fg-2);word-break:keep-all}.dw-q.checked .dw-txt{color:var(--fg)}
+.dw-result{margin-top:clamp(24px,4vw,32px);padding-top:clamp(24px,4vw,32px);border-top:1px solid var(--line);font-size:clamp(15px,3vw,18px);line-height:1.7;color:var(--fg-2);word-break:keep-all;text-align:center}.dw-result strong{color:var(--accent);font-weight:800}.dw-result .dw-count{color:var(--fg);font-weight:800}
+
+/* PRICE (warm) */
+.sec-price{background:var(--warm)!important;color:var(--wfg)!important;padding:var(--sec-y) 0}.sec-price .label{color:var(--accent)}.sec-price .h-sec{color:var(--wfg)}
+.price-story{font-size:clamp(16px,3.4vw,19px);line-height:1.85;color:var(--wfg-2);word-break:keep-all;max-width:640px;margin-bottom:var(--gap-lg)}.price-story p{margin-bottom:clamp(16px,2.5vw,24px)}.price-story p:last-child{margin-bottom:0}.price-story strong{color:var(--wfg);font-weight:600}
+.price-box{text-align:center;padding:clamp(40px,6vw,64px) 0;border-top:1px solid var(--line-w);border-bottom:1px solid var(--line-w);margin-bottom:var(--gap-md)}
+.price-amt{font-size:clamp(40px,8vw,56px);font-weight:800;letter-spacing:-.04em;color:var(--wfg)}.price-amt .u{font-size:.5em;font-weight:600;color:var(--wfg-2);margin-left:2px}
+.price-note{font-size:13px;color:var(--wfg-3);margin-top:8px}
+.price-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:clamp(20px,3vw,28px)}.price-tag{display:inline-block;font-size:12px;font-weight:600;padding:6px 14px;background:rgba(0,0,0,.05);color:var(--wfg-2)}
+.price-risk{text-align:center;font-size:clamp(14px,2.9vw,16px);color:var(--wfg-2);word-break:keep-all}.price-risk strong{color:var(--accent);font-weight:700}
+
+/* FAQ */
+.faq-item{padding:clamp(22px,3.5vw,32px) 0;border-top:1px solid var(--line)}.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-q{font-size:clamp(16px,3.4vw,19px);font-weight:700;letter-spacing:-.02em;line-height:1.4;margin-bottom:clamp(8px,1.5vw,12px);word-break:keep-all}.faq-q::before{content:'Q ';color:var(--accent);font-weight:800}
+.faq-a{font-size:clamp(15px,3vw,17px);line-height:1.75;color:var(--fg-2);word-break:keep-all}
+
+/* BEHIND / STORY */
+.story-photo{width:100%;aspect-ratio:21/9;background:repeating-linear-gradient(45deg,rgba(255,255,255,.025),rgba(255,255,255,.025) 10px,rgba(255,255,255,.05) 10px,rgba(255,255,255,.05) 20px);border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--fg-3);font-size:12px;letter-spacing:.5px;margin-bottom:var(--gap-lg)}
+.behind-promise{margin-top:var(--gap-xl);padding:clamp(28px,4vw,40px);background:var(--bubble);border:1px solid var(--line);font-size:clamp(18px,3.8vw,24px);font-weight:800;letter-spacing:-.02em;line-height:1.45;color:var(--fg);word-break:keep-all;text-align:center}
+.career-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:clamp(28px,4vw,40px)}
+.career-row{display:flex;gap:18px;align-items:baseline;padding:clamp(16px,2.5vw,22px) 0;border-top:1px solid var(--line)}.career-row:last-child{border-bottom:1px solid var(--line)}
+.career-n{font-size:clamp(22px,4.5vw,30px);font-weight:800;color:var(--accent);letter-spacing:-.03em;min-width:clamp(96px,16vw,140px);flex-shrink:0;line-height:1.1}
+.career-d{font-size:clamp(14px,2.9vw,16px);line-height:1.6;color:var(--fg-2);word-break:keep-all}.career-d b{color:var(--fg);font-weight:600}
+@media(max-width:767px){.career-row{flex-direction:column;align-items:flex-start;gap:8px}}
+
+/* CTA */
+.cta-final{padding:clamp(80px,12vw,140px) 0 clamp(120px,16vw,180px);text-align:center}
+.cta-sub{font-size:clamp(18px,3.8vw,24px);font-weight:600;color:var(--fg-2);margin-bottom:clamp(8px,1.5vw,12px);word-break:keep-all}
+.cta-price{font-size:clamp(36px,7vw,48px);font-weight:800;letter-spacing:-.04em;margin-bottom:clamp(24px,4vw,36px)}.cta-price .u{font-size:.5em;font-weight:600;color:var(--fg-2);margin-left:2px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(20px,3vw,28px)}
+.cta-risk{font-size:clamp(13px,2.6vw,15px);color:var(--fg-3);word-break:keep-all}
+
+/* STICKY + FOOT */
+.stk{position:fixed;left:0;right:0;bottom:0;z-index:100;background:rgba(10,10,10,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:14px 20px;display:flex;gap:14px;align-items:center}
+.stk-left{flex:1;min-width:0}.stk-price{font-size:15px;font-weight:700}.stk-note{font-size:12px;color:var(--fg-2);margin-top:3px}
+.stk-btn{background:var(--accent);color:#fff;padding:14px 36px;font-size:15px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;flex-shrink:0;text-align:center;transition:background .2s;text-decoration:none;display:inline-block}.stk-btn:hover{background:#d04a10}
+.foot{padding:40px 0 56px;text-align:center;font-size:11px;color:var(--fg-3);letter-spacing:1.5px}
+.ic{width:40px;height:40px;flex-shrink:0;color:var(--accent);margin-bottom:clamp(12px,2vw,16px)}.ic svg{width:100%;height:100%}
+</style>
+</head>
+<body>
+<div class="bc-root">
+
+<!-- ════ S1. HERO ════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-over rv"><p class="hero-over-desc">마케팅 다 해봤지만<br>매출이 제자리인 사업자를 위한</p><div class="hero-over-brand"><div class="line"></div><span>BRANDING CLASS</span></div></div>
+    <h1 class="h-big rv rv-d1">팔지 않아도<br><span class="em">팔리는 사람들</span>이<br>있습니다.</h1>
+    <p class="hero-sub rv rv-d2">광고를 끊으면 문의도 끊기고, 할인하면 남는 게 없죠.<br class="br-m"> 더 많은 강의·공식을 따라가도 제자리인 건, 실력이 아니라<br class="br-m"> <strong style="color:var(--fg);font-weight:600">방향</strong>이 없어서예요. 9개의 질문으로 그 방향을 잡습니다.</p>
+    <div class="hero-cta rv rv-d3">
+      <a href="/shop_view?idx=6" class="btn btn-p">구매하기 <span class="arr">→</span></a>
+      <a href="/brandingclass00" class="btn btn-g">Class 00 무료로 읽기 <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ What You Get — 히어로 아래로 이동 ════ -->
+<section class="sec" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">About</span><h2 class="h-sec">70만 인플루언서도,<br class="br-m">500억 브랜드가 찾는<br><span class="em">김낙타</span>가 만든 BRANDING CLASS</h2></div>
+    <div class="del-grid">
+      <div class="del-card rv">
+        <div class="del-thumb">클래스 화면 이미지</div>
+        <div class="del-info"><div class="del-name"><span class="d-tag">CLASS</span>텍스트 9세션</div><p class="del-desc">수많은 브랜딩·마케팅 개념 중 핵심만 추려낸 9개의 텍스트 클래스. 언제든 다시 읽는 평생 소장.</p></div>
+      </div>
+      <div class="del-card rv rv-d1">
+        <div class="del-thumb">워크북 이미지</div>
+        <div class="del-info"><div class="del-name"><span class="d-tag">WORKBOOK</span>워크북 8문항</div><p class="del-desc">실제 컨설팅에서 효과를 봤던 질문들을 그대로 담았어요. 답을 쓰면 그게 곧 당신의 사업 기획서가 됩니다.</p></div>
+      </div>
+      <div class="del-card rv">
+        <div class="del-thumb">가이드라인 이미지</div>
+        <div class="del-info"><div class="del-name"><span class="d-tag">GUIDELINE</span>브랜드 가이드라인</div><p class="del-desc">워크북 답변이 하나로 조립되는 브랜드 기준서. 7개 섹션으로 방향을 문서화합니다.</p></div>
+      </div>
+      <div class="del-card rv rv-d1">
+        <div class="del-thumb">채널 적용 이미지</div>
+        <div class="del-info"><div class="del-name"><span class="d-tag">APPLY</span>채널별 마케팅 적용</div><p class="del-desc">인스타 프로필·플레이스 소개글·상세페이지 등, 잡은 방향을 실제 채널에 옮기는 적용 가이드.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ S2. PROOF BAR ════ -->
+<section class="sec sec-deep" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Proof</span><h2 class="h-sec">광고비도, 영업도, 판매글도 없이.<br><span class="em">방향 하나</span>로 만든 결과.</h2></div>
+    <div class="proof-grid">
+      <div class="proof-card rv"><div class="proof-num" data-count="3800" data-suffix="만원">0</div><div class="proof-desc">광고 0원·판매글 0개로 만든<br>첫 달 순이익</div></div>
+      <div class="proof-card rv rv-d1"><div class="proof-num" data-count="1800" data-suffix="만원">0</div><div class="proof-desc">릴스 0·게시물 0·광고 0원,<br>리브랜딩 후 <b style="color:var(--accent)">10일</b> 순수익</div></div>
+      <div class="proof-card rv rv-d2"><div class="proof-num" data-count="3" data-suffix="만 명">0</div><div class="proof-desc">같은 기간<br>유입된 사용자</div></div>
+      <div class="proof-card rv rv-d3"><div class="proof-num" data-count="3" data-suffix="만 명">0</div><div class="proof-desc">혼자 AI·자동화로 구축한<br>첫 달 이용자</div></div>
+    </div>  </div>
+</section>
+
+<!-- ════ S3. VOICE ════ -->
+<section class="sec" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Voice</span><h2 class="h-sec">이 브랜딩 클래스를<br class="br-m">먼저 <span class="em">경험한 분</span>들의 이야기</h2></div>
+    <div class="voice-cards">
+      <div class="voice-card rv">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-txt">1,000만 원짜리 인스타 마케팅 강의를 결제하고 후회하던 중에 낙타님을 만났어요. <strong>이게 진짜 가치구나 싶을 정도로 머릿속이 꽉 찼습니다.</strong> 모든 콘텐츠를 정독했고, 클래스 결제까지 한 치의 고민도 없었어요.</p>
+        <div class="voice-who"><span class="v-av">김</span><span><b>김○○</b> · 뷰티 살롱 · 결제 2주차</span></div>
+      </div>
+      <div class="voice-card rv rv-d1">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-txt">조회수에만 집착하던 릴스 전략이 아니라 퍼널 3단계라는 기본을 배웠어요. <strong>이게 핵심이라는 걸 깨닫고 나니 그동안 왜 헤맸는지 알겠더라고요.</strong> 진단을 토대로 피드를 기획하니 체계가 눈에 보입니다.</p>
+        <div class="voice-who"><span class="v-av">이</span><span><b>이○○</b> · 온라인 클래스 · 워크북 완주</span></div>
+      </div>
+      <div class="voice-card rv rv-d2">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-txt">1,200만 원 컨설팅을 할부로 듣고도 성과가 없어 무너졌을 때 알게 됐어요. 간절한 마음을 이용하는 강의가 아니라 실존적 도움을 주는 클래스라 다행입니다. <strong>기획부터 실행까지 막혔던 게 다 뚫리는 기분이에요.</strong></p>
+        <div class="voice-who"><span class="v-av">박</span><span><b>박○○</b> · 오프라인 PT샵 · 수강 1개월</span></div>
+      </div>
+    </div>
+    <div class="voice-strip rv rv-d1">
+      <span class="voice-tag">피드 몇 개로 <b>수업료 2배↑</b></span>
+      <span class="voice-tag">캐러셀 3개로 <b>매출 1.5배</b></span>
+      <span class="voice-tag">쓰레드 하나로 <b>첫 예약</b></span>
+      <span class="voice-tag">평균 만족도 <b>4.9 / 5.0</b></span>
+    </div>
+    <p class="eyebrow rv rv-d2" style="margin-top:24px;margin-bottom:0;font-size:12px">* 일부 후기와 수치는 예시이며, 실제 수강생 사례로 교체 예정입니다.</p>
+  </div>
+</section>
+
+<!-- ════ BEHIND (라포) — Voice 아래로 이동 ════ -->
+<section class="sec sec-deep" style="border-top:1px solid var(--line);padding-bottom:0">
+  <div class="wrap">
+    <div class="rv"><span class="label">Behind</span></div>
+    <h2 class="h-sec rv" style="margin-bottom:var(--gap-lg)">팔려고 애쓰지 않아도<br><span class="em">팔리게</span> 하고 싶었어요.</h2>
+    <div class="story-photo rv">낙타 대표 사진 영역</div>
+    <div class="body-text rv">
+      <p>저는 원래 파는 걸 어려워하고, 권유하는 세일즈 자체가 누구보다 싫었던 사람입니다. 그래서 브랜딩을 더 미친 듯이 팠어요. 팔지 않아도 팔리게 만들고 싶었으니까요.</p>
+      <p>많은 사업자를 만나면서 알았습니다. 서비스나 상품에 문제가 있는 경우는 거의 없었어요. 대부분 정말 부지런하고 성실했죠. 다만 그 성실함이 어디를 향하는지가 없었을 뿐. 직접 질문을 던지다 보면, 그들 안에 이미 브랜드의 재료가 전부 있었습니다. 본인이 발견하지 못했을 뿐.</p>
+      <p><strong>그 질문을 차곡차곡 정리한 게 이 클래스예요.</strong></p>
+      <p>클래스에서 제시한 방향을 잡고 콘텐츠를 발행한 결과, 아무런 광고 없이. 피드에 판매글 하나 없이. 불편한 권유나 세일즈 없이 <strong>첫 달 순이익 3,800만원</strong>을 냈습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-deep" style="padding-top:0">
+  <div class="wrap">
+    <div class="career-grid rv rv-d1">
+      <div class="career-row"><span class="career-n">1,000억</span><span class="career-d">리브랜딩을 의뢰한 <b>브랜드 규모</b>까지. 창업 준비생부터 70만 인플루언서까지, 업종도 규모도 다양한 사업자를 만났어요.</span></div>
+      <div class="career-row"><span class="career-n">3만 명</span><span class="career-d">CS·퍼블리싱·개발·콘텐츠·강의·컨설팅까지 <b>혼자 AI와 자동화로 구축</b>한 서비스의 첫 달 이용자 수.</span></div>
+      <div class="career-row"><span class="career-n">10일 / 1,800만</span><span class="career-d">릴스 0·게시물 0·광고 0원으로 진행한 <b>리브랜딩 후 열흘 순수익</b>. 같은 기간 3만 명이 유입됐습니다.</span></div>
+    </div>
+    <div class="behind-promise rv rv-d1">이 클래스를 끝까지 따라오면,<br><span class="em">팔지 않아도 팔리게 되는 구조</span>를 알게 됩니다.</div>
+    <p class="eyebrow rv rv-d2" style="margin-top:24px;margin-bottom:0;font-size:12px">* 일부 수치는 예시이며, 실제 업력·성과로 교체 예정입니다.</p>
+  </div>
+</section>
+
+<!-- ════ S4~S6. PAIN ════ -->
+<section class="sec sec-deep">
+  <div class="wrap">
+    <h2 class="h-sec rv">열심히 다 해봤는데,<br>왜 늘 <span class="em">제자리</span>일까.</h2>
+    <div style="height:var(--gap-xl)"></div>
+    <div class="pain-block rv">
+      <div class="pain-box pain-box-q"><svg class="pain-quote-mark" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M13 8v7c0 4-2.5 7-7 8l-1-2c2.5-1 3.8-2.6 3.9-4.4H5a2 2 0 01-2-2V8a2 2 0 012-2h6a2 2 0 012 2zm14 0v7c0 4-2.5 7-7 8l-1-2c2.5-1 3.8-2.6 3.9-4.4H19a2 2 0 01-2-2V8a2 2 0 012-2h6a2 2 0 012 2z"/></svg><p>"강의 들으면서 이렇게 하면 터지는구나까지는 이해가 됐어요. 그런데 그게 매출로 이어지지는 않더라고요."</p></div>
+      <div class="pain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-4-4m4 4l4-4"/></svg></div>
+      <div class="pain-box pain-box-d"><span class="pain-box-label">왜?</span><p>해보라는 대로 다 해도 조회수는 안 나오고, 이미지만 소모되죠. 그래서 또 강의를 듣고, 또 공식을 따라 하고. <strong>강의 → 시도 → 실망 → 피로.</strong> 이 루프에 갇힌 분들이 정말 많아요.</p></div>
+    </div>
+    <div class="pain-block rv">
+      <div class="pain-box pain-box-q"><svg class="pain-quote-mark" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M13 8v7c0 4-2.5 7-7 8l-1-2c2.5-1 3.8-2.6 3.9-4.4H5a2 2 0 01-2-2V8a2 2 0 012-2h6a2 2 0 012 2zm14 0v7c0 4-2.5 7-7 8l-1-2c2.5-1 3.8-2.6 3.9-4.4H19a2 2 0 01-2-2V8a2 2 0 012-2h6a2 2 0 012 2z"/></svg><p>"판매 콘텐츠를 쫓기듯 올리고 있어요. 이게 내 브랜드를 깎는 걸 알면서도, 멈추면 매출이 떨어지니까 멈출 수가 없는 거예요."</p></div>
+      <div class="pain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-4-4m4 4l4-4"/></svg></div>
+      <div class="pain-box pain-box-d"><span class="pain-box-label">왜?</span><p>상품 특징을 나열해봐도 너무 뻔하고, 뭘 차별화해야 할지 막막하죠. 비주얼로는 보여주고 싶은데 <strong>고객이 진짜 원하는 포인트</strong>를 못 잡는 겁니다. 소구점이 없으니 자꾸 판매글로 메우게 되고요.</p></div>
+    </div>
+    <div class="pain-block rv">
+      <div class="pain-box pain-box-q"><svg class="pain-quote-mark" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M13 8v7c0 4-2.5 7-7 8l-1-2c2.5-1 3.8-2.6 3.9-4.4H5a2 2 0 01-2-2V8a2 2 0 012-2h6a2 2 0 012 2zm14 0v7c0 4-2.5 7-7 8l-1-2c2.5-1 3.8-2.6 3.9-4.4H19a2 2 0 01-2-2V8a2 2 0 012-2h6a2 2 0 012 2z"/></svg><p>"수수료 떼고 할인해주고 나면 정말 남는 게 없어요. 매출은 늘었는데 통장은 안 늘어요."</p></div>
+      <div class="pain-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-4-4m4 4l4-4"/></svg></div>
+      <div class="pain-box pain-box-d"><span class="pain-box-label">왜?</span><p>대행사에 맡기면 순위는 올라가도 문의는 그대로예요. 광고를 끊으면 유입도 끊기고, 다시 돌리면 효율은 더 떨어지죠. <strong>광고비는 계속 새는데, 정작 손에 쥐는 건 없습니다.</strong></p></div>
+    </div>
+    <div style="height:var(--gap-xl)"></div>
+    <div class="pain-turn rv" style="color:var(--fg);text-align:center">열심히 하지 않아서가 아니에요.<br>지금 <span class="em">필요한 건</span> 더 많은 노력이 아니라, <span class="em">방향</span>입니다.</div>
+  </div>
+</section>
+
+<!-- ════ S7. 매출은 허상 ════ -->
+<section class="sec" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Why It Fails · 01</span><h2 class="h-sec">먼저, <span class="em">매출만 높은 게 최고</span>라는<br>착각부터 깨야 합니다.</h2></div>
+    <div class="num-before rv">
+      <div class="num-big">80억 매출, <span class="dim">순이익 1,000만원.</span></div>
+      <div class="num-sub">수익률 0.12%. 한 유명 비즈니스 컨설팅 강사의 실제 수치예요.</div>
+      <div class="num-body">대부분의 사업자가 매출만 이야기합니다. 광고 대행사도, 비즈니스 컨설팅도요. 하지만 브랜드가 빠진 채 매출만 쌓으면, 바쁘기만 하고 정작 남는 게 없어요.</div>
+    </div>
+    <div class="cmp-grid rv rv-d1">
+      <div class="cmp-card cmp-card-b">
+        <div class="cmp-card-label">브랜딩 없이</div>
+        <div class="cmp-row2"><span class="cmp-k">매출</span><span class="cmp-vv">10억</span></div>
+        <div class="cmp-row2"><span class="cmp-k">객단가</span><span class="cmp-vv">낮음</span></div>
+        <div class="cmp-row2"><span class="cmp-k">광고</span><span class="cmp-vv">광고매체만 배불림</span></div>
+        <div class="cmp-row2"><span class="cmp-k">순이익률</span><span class="cmp-vv">4%</span></div>
+        <div class="cmp-row2"><span class="cmp-k">순이익</span><span class="cmp-vv">4,000만원</span></div>
+      </div>
+      <div class="cmp-card cmp-card-a">
+        <div class="cmp-card-label">브랜딩이 있으면</div>
+        <div class="cmp-row2"><span class="cmp-k">매출</span><span class="cmp-vv">10억</span></div>
+        <div class="cmp-row2"><span class="cmp-k">객단가</span><span class="cmp-vv">높음</span></div>
+        <div class="cmp-row2"><span class="cmp-k">광고</span><span class="cmp-vv">의존도 없음</span></div>
+        <div class="cmp-row2"><span class="cmp-k">순이익률</span><span class="cmp-vv">35%</span></div>
+        <div class="cmp-row2"><span class="cmp-k">순이익</span><span class="cmp-vv">3억 5천만원</span></div>
+      </div>
+    </div>
+    <p class="num-turn rv rv-d1"><span class="em">매출</span>이 중요한 게 아니죠.<br class="br-m">중요한 건 <span class="em">순수익</span>이 얼마가 남느냐입니다.<br class="br-m">같은 10억이지만 <span class="em">브랜딩</span>이 있다면<br class="br-m">순이익률과 객단가가 <span class="em">올라갑니다</span>.</p>
+  </div>
+</section>
+
+<!-- ════ S8. 진단 ════ -->
+<section class="sec sec-deep" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Why It Fails · 02</span><h2 class="h-sec">왜 하는데도 안 되는가.</h2></div>
+    <div class="diag-item rv"><div class="diag-head"><span class="diag-num">01</span><span class="diag-title">공식은 맞는데 결과가 안 나온다.</span></div><p class="diag-body">거대한 팔로워와 엄청난 마케팅을 가지고도 1년을 못 버티고 사라지는 사업이 있어요. 누구에게, 뭘 보여줄지가 없는 상태에서 '어떻게 보여줄까'만 배우기 때문입니다. 빈 파이프에 물만 흘려보내는 거예요.</p><p class="diag-result">→ 어떤 메시지를 전달할 것인가가 먼저예요. 터지는 릴스 공식은 그 다음이죠.</p></div>
+    <div class="diag-item rv rv-d1"><div class="diag-head"><span class="diag-num">02</span><span class="diag-title">콘텐츠를 뭘 올려야 할지 모르겠다.</span></div><p class="diag-body">트렌드가 그러니까, 공식이 그렇다 하니까, 경쟁사가 그러니까. 이런 이유로 콘텐츠를 만들다 보면 길을 잃어요. 작년엔 훅 공식으로 월 1억도 넘겼는데 올해 들어 유입·전환이 반의 반도 안 나오는 사람들이 있어요.</p><p class="diag-result">→ 훅 공식이 틀린 게 아니에요. 그 공식을 누구한테 쓸지가 없는 거죠.</p></div>
+    <div class="diag-item rv rv-d2"><div class="diag-head"><span class="diag-num">03</span><span class="diag-title">매출은 300% 상승, 영업이익은 마이너스.</span></div><p class="diag-body">협업·마케팅·검색광고로 매출은 300% 올랐는데 수익은 0원에 가까운 사람이 있어요. 누가, 얼마를 쓸지 파악하지 않고 시작하니까요. 가격은 경쟁사 보고 맞추고, 할인 안 하면 안 팔릴 것 같아 계속 깎고, 광고를 끊으면 끝날 것 같아 습관적으로 돌립니다.</p><p class="diag-result">→ 매출이 아니라, 남는 돈이 문제입니다.</p></div>
+  </div>
+</section>
+
+<!-- ════ S9. 재정의 (관점 전환) ════ -->
+<section class="sec" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <p class="turn-state rv">마케팅의 문제가 아닙니다.<br><span class="em">브랜딩의 부재</span>가 문제입니다.</p>
+    <p class="turn-sub rv rv-d1">릴스 잘 뽑는 법, 후킹 거는 법은 다 배웠어요.<br>정작 '무슨 말을 할지'가 없을 뿐이죠.<br>그래서 강의를 더 들어도 제자리인 거예요.</p>
+  </div>
+</section>
+
+<!-- ════ S10. 그래서 무엇을 (다리) ════ -->
+<section class="sec sec-deep" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">What To Solve</span><h2 class="h-sec">필요한 건<br>당신만의 <span class="em">기준</span> 하나.</h2></div>
+    <div class="body-text rv">
+      <p>방향이 없으면, 릴스 하나·광고 하나 올릴 때마다 도박이 돼요. 잘돼도 왜 잘됐는지 모르고, 안 돼도 뭘 고쳐야 할지 모르죠.</p>
+      <p><strong>기준 없는 실행은 삽질이고, 기준 있는 실행은 실험입니다.</strong> 기준이 생기는 순간, 같은 노력이 전혀 다른 결과를 만들기 시작해요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ S11~S12. 솔루션 ════ -->
+<section class="sec" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">The Solution</span><h2 class="h-sec">방향이 잡히면, 같은 실행이<br><span class="em">다른 결과</span>를 만든다.</h2></div>
+    <div class="how-doubt rv">"이것도 결국 강의 아닌가요? 강의 들어서 안 됐는데, 또 뭐가 다른 건데?"</div>
+    <div class="body-text rv"><p>이 클래스는 완성된 공식을 알려주지 않습니다. 공식은 누구에게나 같은데 사업은 각자 다르니까요. 대신 <strong>질문</strong>을 던집니다. 당신의 정체성은 뭔가, 왜 이 일을 하는가, 누구한테 팔 건가, 뭐가 다른가, 그걸 어떻게 말할 건가. 그 답은 누구도 대신 써줄 수 없는, 당신만의 답이에요.</p></div>
+    <div class="flow-diagram rv">
+      <div class="flow-node">
+        <div class="flow-node-label">뼈대</div>
+        <div class="flow-node-title">뭘 하는 사람인지, 왜, 누구한테</div>
+        <div class="flow-node-desc">Class 02~05 · 정체성, Why, 포지셔닝, 타겟</div>
+      </div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-4-4m4 4l4-4"/></svg></div>
+      <div class="flow-node">
+        <div class="flow-node-label">직감</div>
+        <div class="flow-node-title">피드 넘기던 엄지가, 당신 계정에서 멈추는 이유</div>
+        <div class="flow-node-desc">Class 06~07 · 경쟁 분석, 차별화(POP/POD)</div>
+      </div>
+      <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14m0 0l-4-4m4 4l4-4"/></svg></div>
+      <div class="flow-node">
+        <div class="flow-node-label">심장</div>
+        <div class="flow-node-title">"이 사람한테 사고 싶다"는 감정</div>
+        <div class="flow-node-desc">Class 08~09 · 메시지, 고객 여정, 완성</div>
+      </div>
+    </div>
+    <div class="body-text rv"><p>9개 클래스를 따라가며 워크북을 채우면, 그게 곧 당신의 사업 방향이 됩니다. 같은 AI, 같은 콘텐츠, 같은 채널이라도 <strong>기준이 있는 사람은 결과가 다릅니다.</strong></p></div>
+  </div>
+</section>
+
+<!-- ════ S13. 근거 ① 증거 ════ -->
+<section class="sec sec-deep" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Evidence · 01</span><h2 class="h-sec">같은 물건, 다른 가격.<br>차이는 <span class="em">브랜드</span> 하나.</h2></div>
+    <div class="body-text rv"><p>상품이 브랜드를 만드는 게 아니라, <strong>브랜드가 상품을 팔리게 만듭니다.</strong> 똑같은 물건도 어디에, 어떤 맥락으로 놓이느냐에 따라 가격이 10배 차이 납니다.</p></div>
+    <div class="mock-grid rv rv-d1">
+      <div class="mock-card">
+        <div class="mock-plat">TEMU</div>
+        <div class="ph-img">상품 이미지</div>
+        <div class="mock-price">₩3,000</div>
+        <div class="mock-meta">후기 2 · 브랜드 없음</div>
+      </div>
+      <div class="mock-card win">
+        <div class="mock-plat">Instagram</div>
+        <div class="ph-img">상품 이미지</div>
+        <div class="mock-price">₩35,000</div>
+        <div class="mock-meta">리뷰 847 · 콘텐츠 신뢰</div>
+      </div>
+    </div>
+    <p class="mock-cap rv rv-d2">같은 물건입니다. 차이는 <span class="em">브랜드와 콘텐츠</span>가 있느냐 없느냐.</p>
+  </div>
+</section>
+
+<!-- ════ S14. 근거 ② 다업종 ════ -->
+<section class="sec" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Evidence · 02</span><h2 class="h-sec">"내 업종에도 될까?"</h2></div>
+    <div class="body-text rv" style="margin-bottom:var(--gap-lg)"><p>정체성, 타겟, 포지셔닝, 메시지. 이건 업종과 상관없는 <strong>모든 사업의 뼈대</strong>예요. 그래서 어떤 업종이든 통합니다.</p></div>
+    <div class="case-grid rv rv-d1">
+      <div class="case-chip"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 12h12M9 9v6M15 9v6"/><rect x="3" y="6" width="18" height="12" rx="2"/></svg></div><div class="c-name">PT · 재활</div><div class="c-desc">수술 권유받은 디스크 재활 전문</div></div>
+      <div class="case-chip"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div class="c-name">피부 관리</div><div class="c-desc">레이저 후 손상 피부 회복 전문</div></div>
+      <div class="case-chip"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 18c4-8 12-8 16 0M12 3v4"/></svg></div><div class="c-name">헤어</div><div class="c-desc">손상모도 포기 않는 케어</div></div>
+      <div class="case-chip"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 13a4 4 0 118 0M9 21h6M12 17v4"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="6" r="2"/></svg></div><div class="c-name">동물병원</div><div class="c-desc">반려견 슬개골만 15년</div></div>
+      <div class="case-chip"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="6" r="3"/><path d="M6 21c0-4 3-7 6-7s6 3 6 7"/></svg></div><div class="c-name">무용 입시 PT</div><div class="c-desc">입시 한 달 전, 급한 학생</div></div>
+      <div class="case-chip"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/></svg></div><div class="c-name">온라인 클래스</div><div class="c-desc">공식이 아닌 기준을 파는 강의</div></div>
+    </div>
+    <div class="case-hero rv rv-d2">
+      <div class="ch-label">실제 사례</div>
+      <div class="ch-body">신규 문의가 월 1~2명이던 PT샵이, 타겟 하나를 바꾸고 <span class="em">한 달 만에 팔로워 3,000명 · 댓글 1만 · 문의 수십 건.</span></div>
+      <div class="ch-note">광고비는 0원이었습니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ S15. 근거 ③ 커리큘럼 ════ -->
+<section class="sec-cur">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Curriculum</span><h2 class="h-sec">9개의 클래스, 하나의 방향.</h2></div>
+    <p class="cur-intro rv">각 클래스를 따라가며 워크북 질문에 직접 답을 쓰면, 그 답이 곧 당신만의 사업 방향이 됩니다.</p>
+    <div class="cur-item rv"><div class="cur-num">00</div><div class="cur-body"><div class="cur-title">이 클래스를 시작하기 전에</div><div class="cur-desc">브랜딩은 꾸미기가 아니라 사업의 뼈대를 조립하는 겁니다.</div><div class="cur-eff">→ 브랜딩이 왜 돈을 남게 하는지 이해합니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">01</div><div class="cur-body"><div class="cur-title">브랜딩이 사업이 되는 순간</div><div class="cur-desc">8가지 질문이 왜 필요한지, 전체 그림을 먼저 그립니다.</div><div class="cur-eff">→ 전체 그림을 파악하고 워크북 작성을 시작합니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">02</div><div class="cur-body"><div class="cur-title">정체성: 당신의 브랜드는 누구인가</div><div class="cur-desc">"뭘 하는 곳이에요?"에 한 문장으로 답할 수 있나요.</div><div class="cur-eff">→ 모든 결정의 기준이 되는 한 줄이 정해집니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">03</div><div class="cur-body"><div class="cur-title">Why: 왜 굳이 이 사업을 하는가</div><div class="cur-desc">같은 업종이라도 세계관이 다르면 완전히 다른 브랜드가 됩니다.</div><div class="cur-eff">→ 가격 경쟁에 빠지지 않는 이유를 갖게 됩니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">04</div><div class="cur-body"><div class="cur-title">포지셔닝: 당신의 위치는 어디인가</div><div class="cur-desc">시장의 크기가 아니라 경계를 긋는 것이 핵심.</div><div class="cur-eff">→ 비교 대상이 바뀌면 가격 기준이 바뀝니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">05</div><div class="cur-body"><div class="cur-title">타겟: 돈이 되는 사람은 누구인가</div><div class="cur-desc">"30대 여성"은 타겟이 아닙니다.</div><div class="cur-eff">→ 100명이 보고 10명이 사게 만듭니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">06</div><div class="cur-body"><div class="cur-title">경쟁: 왜 꼭 당신이어야 할까</div><div class="cur-desc">고객의 피드에서 똑같이 보이는 모든 계정이 경쟁자예요.</div><div class="cur-eff">→ 경쟁자의 한계에서 당신의 기회를 찾습니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">07</div><div class="cur-body"><div class="cur-title">차별화: 당신만의 무기를 찾는 법</div><div class="cur-desc">"친절합니다"는 차별점이 아닙니다.</div><div class="cur-eff">→ POP/POD로 당신만의 무기를 찾습니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">08</div><div class="cur-body"><div class="cur-title">메시지: 어떻게 말하고 드러낼 것인가</div><div class="cur-desc">전략이 좋아도 고객에게 닿는 건 한 줄의 메시지.</div><div class="cur-eff">→ 고객 여정 위에 메시지를 놓습니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">09</div><div class="cur-body"><div class="cur-title">브랜드를 완성하다</div><div class="cur-desc">8가지 답을 하나의 방향으로 정렬합니다.</div><div class="cur-eff">→ 시작했을 때의 당신과, 지금은 다릅니다</div></div></div>
+  </div>
+</section>
+
+<!-- ════ S17. 근거 ⑤ 자가진단 ════ -->
+<section class="sec sec-deep" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:center"><span class="label">Self-Check</span><h2 class="h-sec">당신은 지금<br>몇 개에 답할 수 있나요?</h2></div>
+    <div class="diag-w rv rv-d1" id="diagWidget">
+      <div class="dw-q"><span class="dw-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><span class="dw-txt">"뭘 하는 곳이에요?"에 한 줄로 답할 수 있다</span></div>
+      <div class="dw-q"><span class="dw-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><span class="dw-txt">내 진짜 경쟁자가 누구인지 안다 (옆 가게 말고)</span></div>
+      <div class="dw-q"><span class="dw-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><span class="dw-txt">"30대 여성" 말고 고객의 '상황'을 말할 수 있다</span></div>
+      <div class="dw-q"><span class="dw-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span><span class="dw-txt">광고를 끊어도 문의가 들어온다</span></div>
+      <div class="dw-result" id="dwResult">체크해보세요. <span class="dw-count">0개</span> 선택됨.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ S18. 근거 ⑥ 가격 ════ -->
+<section class="sec-price">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Price</span><h2 class="h-sec">매출 말고,<br>통장에 남는 돈.</h2></div>
+    <div class="price-story rv">
+      <p>같은 10억 매출이라도, 순이익률이 4%면 손에 쥐는 건 4,000만원입니다. 순이익률이 35%면 같은 10억으로 3억 5천만원이 남고요.</p>
+      <p>차이는 객단가와 광고 의존도예요. 광고비로 매출을 쥐어짜면 광고매체만 배부르고, 통장은 그대로죠. 매출은 올랐는데 남는 게 없다면 숫자만 높은 허상이에요.</p>
+      <p><strong>브랜딩은 이 차이를 만듭니다. 객단가를 높여도 고객이 사고, 광고를 줄여도 문의가 들어오니까요.</strong></p>
+    </div>
+    <div class="price-box rv">
+      <div class="price-amt">99,000<span class="u">원</span></div>
+      <div class="price-note">VAT 포함 · 평생 소장</div>
+      <div class="price-tags">
+        <span class="price-tag">텍스트 9세션</span>
+        <span class="price-tag">워크북 8문항</span>
+        <span class="price-tag">가이드라인 7섹션</span>
+        <span class="price-tag">채널별 적용</span>
+      </div>
+    </div>
+    <p class="price-risk rv rv-d1">고민된다면, 결정하지 않아도 됩니다. <strong>Class 00을 무료로 공개합니다.</strong> 먼저 읽어보고 결정하세요.</p>
+  </div>
+</section>
+
+<!-- ════ S19. FAQ ════ -->
+<section class="sec" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">FAQ</span><h2 class="h-sec">자주하는 질문을 모았어요</h2></div>
+    <div class="faq-item rv"><div class="faq-q">사업을 아직 시작하지 않았는데 괜찮은가요?</div><div class="faq-a">오히려 시작 전에 듣는 게 더 좋습니다. 방향 없이 뛰다가 돌아오는 데 더 많은 시간이 들거든요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">온라인/오프라인 상관없나요?</div><div class="faq-a">상관없습니다. 정체성, 타겟, 포지셔닝, 메시지. 이건 채널과 상관없이 모든 사업의 뼈대예요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">다른 마케팅 강의와 뭐가 다른가요?</div><div class="faq-a">대부분의 강의는 "어떻게 보여줄까"를 가르칩니다. 이 클래스는 "뭘 보여줄 것인가"를 먼저 정합니다. 보여줄 것이 없는 상태에서 보여주는 기술부터 배우면, 공식은 맞는데 결과가 안 나오는 상황이 반복돼요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">노션을 몰라도 되나요?</div><div class="faq-a">됩니다. 워크북은 클래스 페이지에서 바로 작성할 수 있어요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">한 번 읽으면 끝인가요?</div><div class="faq-a">끝이 아닙니다. 사업이 성장하면 타겟이 바뀌고, 경쟁 환경이 바뀌고, 메시지도 바뀌어야 해요. 워크북은 그때마다 다시 꺼내 업데이트하는 겁니다.</div></div>
+    <div class="faq-item rv"><div class="faq-q">RE:WORKSPACE(노션 템플릿)와는 무슨 관계인가요?</div><div class="faq-a">브랜딩 클래스가 방향을 잡는 과정이라면, RE:WORKSPACE는 그 방향을 실행하고 관리하는 도구입니다.</div></div>
+    <div class="faq-item rv"><div class="faq-q">바로 매출이 오르나요?</div><div class="faq-a">솔직히, 읽는 것만으로 매출이 오르진 않습니다. 워크북을 채우고 실제 채널에 적용해야 해요. 다만 방향이 잡힌 실행은 속도가 다릅니다. 피드 몇 개로 수업료를 2배 올린 분도, 캐러셀 3개로 매출이 1.5배 뛴 분도 있어요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">환불은 어떻게 되나요?</div><div class="faq-a">디지털 콘텐츠 특성상 구매 후 열람 시 환불이 어렵습니다. 그래서 Class 00(프롤로그)을 무료로 공개하고 있어요. 먼저 읽어보고 결정하세요.</div></div>
+  </div>
+</section>
+
+<!-- ════ S22. FINAL CTA ════ -->
+<section class="cta-final">
+  <div class="wrap">
+    <p class="h-big rv">팔지 않아도,<br><span class="em">팔립니다.</span></p>
+    <p class="cta-sub rv rv-d1">8가지 주제와 질문이 당신의 사업을 바꿉니다.</p>
+    <div class="cta-price rv rv-d1">99,000<span class="u">원</span></div>
+    <div class="cta-btns rv rv-d2">
+      <a href="/shop_view?idx=6" class="btn btn-p">구매하기 <span class="arr">→</span></a>
+      <a href="/brandingclass00" class="btn btn-g">Class 00 무료로 읽기 <span class="arr">→</span></a>
+    </div>
+    <p class="cta-risk rv rv-d2">구매가 망설여진다면, Class 00을 무료로 먼저 읽어보세요.</p>
+  </div>
+</section>
+
+<div class="foot">© RE:FEEEL</div>
+</div>
+
+<div class="stk">
+  <div class="stk-left"><div class="stk-price">99,000원</div><div class="stk-note">VAT 포함 · 평생 소장</div></div>
+  <a href="/shop_view?idx=6" class="stk-btn">구매하기</a>
+</div>
+
+<script>
+/* 스크롤 리빌 */
+(function(){var e=document.querySelectorAll('.rv');if(!e.length)return;var o=new IntersectionObserver(function(n){n.forEach(function(i){if(i.isIntersecting){i.target.classList.add('on');o.unobserve(i.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});e.forEach(function(i){o.observe(i)})})();
+
+/* 숫자 카운트업 */
+(function(){
+  var nums=document.querySelectorAll('.proof-num[data-count]');if(!nums.length)return;
+  function fmt(n){return n.toLocaleString('en-US')}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting)return;var el=en.target;io.unobserve(el);
+      var target=parseInt(el.getAttribute('data-count'),10);var suffix=el.getAttribute('data-suffix')||'';
+      var dur=1100,start=null;
+      function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var ease=1-Math.pow(1-p,3);var cur=Math.round(target*ease);el.innerHTML=fmt(cur)+'<span class="u">'+suffix+'</span>';if(p<1)requestAnimationFrame(step)}
+      requestAnimationFrame(step);
+    });
+  },{threshold:.4});
+  nums.forEach(function(n){io.observe(n)});
+})();
+
+/* 자가진단 위젯 */
+(function(){
+  var w=document.getElementById('diagWidget');if(!w)return;
+  var qs=w.querySelectorAll('.dw-q');var res=document.getElementById('dwResult');
+  function update(){
+    var c=0;qs.forEach(function(q){if(q.classList.contains('checked'))c++});
+    var msg;
+    if(c===0)msg='체크해보세요. <span class="dw-count">0개</span> 선택됨.';
+    else if(c<=1)msg='<span class="dw-count">'+c+'개</span>. 막히는 게 많다면, 그게 바로 <strong>이 클래스가 채우는 자리</strong>예요.';
+    else if(c<=3)msg='<span class="dw-count">'+c+'개</span>. 방향은 잡혀가고 있어요. 나머지 빈칸이 <strong>전환을 가르는 차이</strong>예요.';
+    else msg='<span class="dw-count">4개</span> 전부 체크하셨네요. 이미 기준이 있는 분이에요. <strong>이 클래스로 더 날카롭게</strong> 다듬을 수 있어요.';
+    res.innerHTML=msg;
+  }
+  qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('checked');update()})});
+})();
+
+/* 부모 프레임 리사이즈 (임베드용) */
+(function(){function h(){var s=document.documentElement.scrollHeight;if(window.parent!==window){try{window.parent.postMessage({type:'resize',height:s,source:'branding-class'},'*')}catch(e){}}}window.addEventListener('load',h);window.addEventListener('resize',h);if(window.ResizeObserver){new ResizeObserver(h).observe(document.body)}setTimeout(h,1000);setTimeout(h,3000)})();
+</script>
+</body>
+</html>
