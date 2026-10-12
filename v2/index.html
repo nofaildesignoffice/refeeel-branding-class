@@ -5,11 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RE:BRAND 브랜딩 클래스</title>
 <!--
-  브랜딩 클래스 랜딩 v2 (재구성)
-  기획: 스피큘 부스터 상세페이지의 4막 설득 구조를 브랜딩 클래스에 이식
-  1막 결론 먼저(히어로·정체·핵심약속·증거) → 2막 공감·재정의(스토리·후기·고민·전환·원인·결론)
-  → 3막 해결 증명(8가지 질문·4단계·진단지도·비교·3층구조·제공물·커리큘럼·Before/After)
-  → 4막 장벽 제거(읽는 법·업종 근거·결과 후기·대상·자가진단·가격·FAQ·CTA)
+  브랜딩 클래스 랜딩 v2
+  스피큘 상세페이지에서 가져온 것은 '섹션'이 아니라 '설득 단계의 역할'이다.
+  각 단계의 내용은 브랜딩 클래스 원고(BC00~09)의 개념과 이 고객의 실제 의심으로 새로 설계했다.
+
+  1막 주목      결론 먼저: 약속(내 문제가 보인다) · 핵심 차별점(스스로 찾게 한다) · 증거
+  2막 동일시    대표 Why · 나 같은 사람의 후기
+      긴장      세 용의자(콘텐츠·상품·마케팅)별 증상과 '고쳐본 것들'
+      전환      "셋 다 고쳐봤는데 그대로라면, 범인은 그 셋이 아닙니다"
+      해소      표면 vs 이면 (BC00) — 성실함 탓이 아니라 이면을 본 적이 없었을 뿐
+  3막 정당화    이면을 채우는 8가지 질문 → 막히도록 설계된 워크북 → 진단 지도
+      약속 회수 1분 맛보기(POP 테스트, BC07) — 페이지 안에서 '아하'를 직접 겪게 함
+                Before/After · 커리큘럼별 깨달음 · 결과물
+  4막 안심·결정 "또 강의?" 강의 루프 vs 기준 루프(BC09) · 업종 · 결과 후기 · 대상
+                8문항 자가진단 · Class 00 무료(위험 반전) · FAQ · CTA
   디자인 시스템: v3와 동일 (SUIT · 다크 · #e75519)
 -->
 <style>
@@ -24,7 +33,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--fg);-webkit-font-s
 ::selection{background:rgba(var(--accent-rgb),.3);color:#fff}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--content);margin:0 auto;padding:0 clamp(24px,6vw,48px)}
-.rv{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}.rv.on{opacity:1;transform:translateY(0)}.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}.rv.on{opacity:1;transform:translateY(0)}.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
 .label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(20px,3vw,28px)}
 .h-sec{font-size:clamp(28px,6vw,44px);font-weight:800;line-height:1.18;letter-spacing:-.04em;word-break:keep-all}
 .h-big{font-size:clamp(34px,7.5vw,56px);font-weight:800;line-height:1.12;letter-spacing:-.05em;word-break:keep-all}
@@ -33,7 +42,7 @@ a{color:inherit;text-decoration:none}
 .br-d{display:inline}@media(max-width:767px){.br-d{display:none}}
 .sec-head{margin-bottom:var(--gap-lg)}
 .sec-head.c{text-align:center}
-.sec-lead{font-size:clamp(15px,3vw,18px);line-height:1.8;color:var(--fg-2);word-break:keep-all;margin-top:clamp(16px,2.5vw,22px);max-width:680px}
+.sec-lead{font-size:clamp(15px,3vw,18px);line-height:1.8;color:var(--fg-2);word-break:keep-all;margin-top:clamp(16px,2.5vw,22px);max-width:680px}.sec-lead strong{color:var(--fg);font-weight:600}
 .sec-head.c .sec-lead{margin-left:auto;margin-right:auto}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;font-family:var(--font);font-size:15px;font-weight:700;letter-spacing:-.01em;transition:all .2s;cursor:pointer;border:none;text-decoration:none}
 .btn-p{background:var(--accent);color:#fff}.btn-p:hover{background:#d04a10;transform:translateY(-2px)}
@@ -47,28 +56,19 @@ a{color:inherit;text-decoration:none}
 .note{font-size:12px;line-height:1.7;color:var(--fg-3);word-break:keep-all;margin-top:clamp(20px,3vw,28px)}
 .note.c{text-align:center}
 
-/* ── 1막 ───────────────────────── */
 /* HERO */
 .hero{padding:clamp(140px,22vw,240px) 0 clamp(64px,10vw,104px)}
 .hero-over{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(5px,1vw,7px);margin-bottom:clamp(48px,8vw,75px)}.hero-over .line{width:32px;height:1px;background:var(--accent)}.hero-over-desc{font-size:clamp(13px,2.8vw,15px);font-weight:700;line-height:1.6;color:var(--fg);word-break:keep-all}.hero-over-brand{display:flex;align-items:center;gap:12px}.hero-over span{font-size:clamp(12px,2.6vw,14px);font-weight:700;letter-spacing:.3px;color:var(--accent);line-height:1.7}
 .hero h1{margin-bottom:clamp(36px,6vw,56px)}
-.hero-sub{font-size:clamp(16px,3.4vw,19px);line-height:1.85;color:var(--fg-2);max-width:640px;word-break:keep-all;margin-bottom:clamp(28px,4vw,40px)}.hero-sub strong{color:var(--fg);font-weight:600}
-.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.5vw,12px);max-width:640px;margin-bottom:clamp(36px,5vw,52px)}
-.badge{border:1px solid var(--line-2);padding:clamp(12px,2vw,16px) 6px;text-align:center;font-size:clamp(11px,2.4vw,13px);font-weight:700;line-height:1.4;color:var(--fg-2);word-break:keep-all}.badge b{display:block;color:var(--accent);font-size:clamp(15px,3.2vw,19px);font-weight:800;letter-spacing:-.02em;margin-bottom:2px}
+.hero-sub{font-size:clamp(16px,3.4vw,19px);line-height:1.85;color:var(--fg-2);max-width:640px;word-break:keep-all;margin-bottom:clamp(36px,5vw,52px)}.hero-sub strong{color:var(--fg);font-weight:600}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
 
-/* 정체 밴드 */
-.ident{padding:clamp(80px,12vw,128px) 0;text-align:center;background:radial-gradient(ellipse at 50% 40%,rgba(var(--accent-rgb),.14),transparent 62%),var(--bg-deep)}
-.ident-pre{font-size:clamp(15px,3.2vw,18px);line-height:1.7;color:var(--fg-2);word-break:keep-all;margin-bottom:clamp(18px,3vw,26px)}.ident-pre b{color:var(--fg);font-weight:700}
-.ident-name{font-size:clamp(34px,8vw,68px);font-weight:900;letter-spacing:-.03em;line-height:1.05}
-.ident-sub{margin-top:clamp(14px,2.4vw,20px);font-size:clamp(12px,2.6vw,14px);font-weight:700;letter-spacing:3px;color:var(--accent)}
-
-/* 핵심 약속 (STEP1 + STEP2) */
-.syn{display:flex;align-items:stretch;gap:clamp(10px,2vw,16px);max-width:760px;margin:var(--gap-lg) auto 0}
-.syn-card{flex:1;padding:clamp(22px,4vw,34px) clamp(16px,3vw,26px);border:1px solid var(--line-2);background:var(--bubble);text-align:center}
-.syn-step{font-size:clamp(26px,5vw,36px);font-weight:800;line-height:1;color:var(--accent);margin-bottom:12px}
-.syn-t{font-size:clamp(15px,3.4vw,21px);font-weight:800;letter-spacing:-.02em;line-height:1.35;word-break:keep-all}
-.syn-res{max-width:760px;margin:clamp(16px,2.5vw,22px) auto 0;padding:clamp(18px,3vw,24px);text-align:center;background:var(--accent);color:#fff;font-size:clamp(16px,3.4vw,20px);font-weight:800;letter-spacing:-.02em;word-break:keep-all}
+/* 핵심 차별점 */
+.sus{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2vw,16px);max-width:760px;margin:var(--gap-lg) auto 0}
+.sus-card{padding:clamp(22px,4vw,34px) 8px;border:1px solid var(--line-2);background:var(--bubble);text-align:center}
+.sus-q{font-size:clamp(26px,5vw,36px);font-weight:800;line-height:1;color:var(--accent);margin-bottom:12px}
+.sus-t{font-size:clamp(15px,3.4vw,21px);font-weight:800;letter-spacing:-.02em;line-height:1.35;word-break:keep-all}
+.sus-res{max-width:760px;margin:clamp(12px,2vw,16px) auto 0;padding:clamp(18px,3vw,24px);text-align:center;background:var(--accent);color:#fff;font-size:clamp(16px,3.4vw,20px);font-weight:800;letter-spacing:-.02em;word-break:keep-all}
 
 /* PROOF */
 .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,16px)}
@@ -80,11 +80,10 @@ a{color:inherit;text-decoration:none}
 .proof-quote .pq-l{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--fg-3);margin-bottom:12px}
 .proof-quote .pq-t{font-size:clamp(19px,4.2vw,28px);font-weight:800;letter-spacing:-.03em;line-height:1.4;word-break:keep-all}
 
-/* ── 2막 ───────────────────────── */
 /* STORY */
 .story-photo{width:100%;aspect-ratio:21/9;background:repeating-linear-gradient(45deg,rgba(255,255,255,.025),rgba(255,255,255,.025) 10px,rgba(255,255,255,.05) 10px,rgba(255,255,255,.05) 20px);border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;color:var(--fg-3);font-size:12px;letter-spacing:.5px;margin-bottom:var(--gap-lg)}
 .story-sign{margin-top:clamp(24px,4vw,32px);font-size:14px;font-weight:700;color:var(--fg-3)}.story-sign b{color:var(--accent)}
-.career-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:var(--gap-lg)}
+.career-grid{display:grid;grid-template-columns:1fr;margin-top:var(--gap-lg)}
 .career-row{display:flex;gap:18px;align-items:baseline;padding:clamp(16px,2.5vw,22px) 0;border-top:1px solid var(--line)}.career-row:last-child{border-bottom:1px solid var(--line)}
 .career-n{font-size:clamp(22px,4.5vw,30px);font-weight:800;color:var(--accent);letter-spacing:-.03em;min-width:clamp(96px,16vw,160px);flex-shrink:0;line-height:1.1}
 .career-d{font-size:clamp(14px,2.9vw,16px);line-height:1.6;color:var(--fg-2);word-break:keep-all}.career-d b{color:var(--fg);font-weight:600}
@@ -98,56 +97,71 @@ a{color:inherit;text-decoration:none}
 .voice-txt{font-size:clamp(15px,3vw,17px);line-height:1.75;color:var(--fg-2);word-break:keep-all;margin-bottom:clamp(16px,2.5vw,22px)}.voice-txt strong{color:var(--fg);font-weight:600}
 .voice-who{margin-top:auto;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--fg-3)}.voice-who .v-av{width:32px;height:32px;border-radius:50%;background:rgba(var(--accent-rgb),.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}.voice-who b{color:var(--fg-2);font-weight:600}
 
-/* 고민 말풍선 */
-.chat{display:flex;flex-direction:column;gap:clamp(14px,2.4vw,20px);max-width:760px;margin:0 auto}
-.bub{position:relative;max-width:88%;padding:clamp(18px,3vw,24px) clamp(20px,3.4vw,28px);background:#1a1a1a;border:1px solid var(--line-2);border-radius:22px 22px 22px 6px;font-size:clamp(15px,3.1vw,17px);line-height:1.7;color:var(--fg);word-break:keep-all}
-.bub:nth-child(even){align-self:flex-end;border-radius:22px 22px 6px 22px;background:rgba(var(--accent-rgb),.09);border-color:rgba(var(--accent-rgb),.25)}
-.bub .tag{display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--fg-3);margin-bottom:6px}
-.bub:nth-child(even) .tag{color:var(--accent)}
+/* 세 용의자 */
+.sus3{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,20px)}
+@media(min-width:900px){.sus3{grid-template-columns:repeat(3,1fr)}}
+.s3{border:1px solid var(--line);background:var(--bubble);display:flex;flex-direction:column}
+.s3-h{padding:clamp(18px,3vw,24px) clamp(20px,3.4vw,28px);border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+.s3-h .q{font-size:clamp(20px,4vw,26px);font-weight:800;letter-spacing:-.03em}
+.s3-h .k{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:1px}
+.s3-b{padding:clamp(18px,3vw,24px) clamp(20px,3.4vw,28px);display:flex;flex-direction:column;gap:12px;flex:1}
+.s3-b p{font-size:clamp(14px,2.9vw,16px);line-height:1.65;color:var(--fg);word-break:keep-all;padding:14px 16px;background:#161616;border-radius:16px 16px 16px 4px}
+.s3-f{padding:clamp(14px,2.4vw,18px) clamp(20px,3.4vw,28px);border-top:1px dashed var(--line-2);font-size:clamp(13px,2.7vw,14px);line-height:1.6;color:var(--fg-3);word-break:keep-all}
+.s3-f b{display:block;font-size:11px;letter-spacing:1.5px;color:var(--fg-2);margin-bottom:4px}
 
 /* 전환 밴드 */
 .band-turn{background:var(--accent);padding:clamp(72px,11vw,120px) 0;text-align:center}
 .band-turn p{font-size:clamp(24px,5.4vw,42px);font-weight:800;letter-spacing:-.04em;line-height:1.32;color:#fff;word-break:keep-all}
 .band-turn p .dim{color:rgba(255,255,255,.72)}
 
-/* 원인 3가지 */
-.why-list{display:flex;flex-direction:column;gap:clamp(16px,2.5vw,20px)}
-.why-item{display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,3vw,28px);padding:clamp(28px,4.5vw,44px);background:var(--bubble);border:1px solid var(--line)}
-.why-n{width:clamp(40px,7vw,52px);height:clamp(40px,7vw,52px);border-radius:50%;background:rgba(var(--accent-rgb),.14);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:clamp(17px,3.4vw,21px);font-weight:800}
-.why-t{font-size:clamp(19px,4vw,25px);font-weight:800;letter-spacing:-.03em;line-height:1.35;margin-bottom:clamp(10px,1.8vw,14px);word-break:keep-all}
-.why-d{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-2);word-break:keep-all}.why-d strong{color:var(--fg);font-weight:600}
-.why-q{display:inline-block;margin-top:clamp(12px,2vw,16px);font-size:clamp(14px,2.8vw,15px);font-weight:700;color:var(--accent);word-break:keep-all}
+/* 표면 vs 이면 */
+.ice{max-width:860px;margin:0 auto}
+.ice-top,.ice-bot{padding:clamp(26px,4.5vw,40px) clamp(20px,4vw,40px);text-align:center}
+.ice-top{border:1px solid var(--line-2);border-bottom:none;background:var(--bubble)}
+.ice-bot{background:linear-gradient(180deg,rgba(var(--accent-rgb),.16),rgba(var(--accent-rgb),.04));border:1px solid rgba(var(--accent-rgb),.3);border-top:none;padding-bottom:clamp(36px,6vw,56px)}
+.ice-l{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--fg-3);margin-bottom:6px}
+.ice-bot .ice-l{color:var(--accent)}
+.ice-t{font-size:clamp(17px,3.6vw,22px);font-weight:800;letter-spacing:-.02em;margin-bottom:clamp(16px,2.6vw,22px);word-break:keep-all}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chip{font-size:clamp(13px,2.7vw,15px);font-weight:700;padding:9px 14px;border:1px solid var(--line-2);color:var(--fg-2)}
+.ice-bot .chip{border-color:rgba(var(--accent-rgb),.45);color:var(--fg);background:rgba(var(--accent-rgb),.08)}
+.ice-line{position:relative;height:0;border-top:2px dashed rgba(var(--accent-rgb),.7);max-width:860px;margin:0 auto}
+.ice-line span{position:absolute;right:clamp(12px,3vw,24px);top:-13px;background:var(--bg-deep);padding:2px 10px;font-size:12px;font-weight:700;color:var(--accent);white-space:nowrap}
+.ice-cap{margin-top:var(--gap-lg);display:grid;grid-template-columns:1fr;gap:clamp(12px,2vw,16px)}
+@media(min-width:768px){.ice-cap{grid-template-columns:1fr 1fr}}
+.cap-b{padding:clamp(22px,3.6vw,30px);border:1px solid var(--line)}
+.cap-b .ck{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--fg-3);margin-bottom:10px}
+.cap-b.on{border-color:rgba(var(--accent-rgb),.3);background:rgba(var(--accent-rgb),.06)}.cap-b.on .ck{color:var(--accent)}
+.cap-b ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.cap-b li{font-size:clamp(14px,2.9vw,16px);line-height:1.55;color:var(--fg-2);word-break:keep-all}
+.cap-b.on li{color:var(--fg)}
 
 /* 결론 (warm) */
 .concl{background:var(--warm);color:var(--wfg);padding:clamp(80px,12vw,128px) 0;text-align:center}
-.concl p{font-size:clamp(20px,4.4vw,32px);font-weight:700;letter-spacing:-.03em;line-height:1.5;word-break:keep-all;color:var(--wfg-2)}
-.concl p strong{color:var(--wfg);font-weight:800}.concl p .em{font-weight:800}
-.concl .gap{height:clamp(28px,5vw,44px)}
+.concl .q{font-size:clamp(26px,6vw,46px);font-weight:900;letter-spacing:-.04em;line-height:1.25;word-break:keep-all;color:var(--wfg)}
+.concl .a{margin-top:clamp(22px,3.6vw,32px);font-size:clamp(17px,3.6vw,22px);font-weight:600;line-height:1.65;color:var(--wfg-2);word-break:keep-all}.concl .a strong{color:var(--wfg);font-weight:800}
 
-/* ── 3막 ───────────────────────── */
 /* 8가지 질문 */
-.q8-grid{display:grid;grid-template-columns:1fr;gap:clamp(10px,1.8vw,14px);margin-bottom:var(--gap-lg)}
+.q8-grid{display:grid;grid-template-columns:1fr;gap:clamp(10px,1.8vw,14px)}
 @media(min-width:768px){.q8-grid{grid-template-columns:1fr 1fr}}
 .q8{display:flex;gap:16px;align-items:baseline;padding:clamp(18px,3vw,24px) clamp(20px,3.4vw,28px);background:var(--bubble);border:1px solid var(--line)}
 .q8 .n{font-size:13px;font-weight:800;color:var(--accent);flex-shrink:0;min-width:22px}
 .q8 .t{font-size:clamp(15px,3.1vw,18px);font-weight:700;letter-spacing:-.02em;line-height:1.45;word-break:keep-all}
 .q8 .c{display:block;font-size:12px;font-weight:600;color:var(--fg-3);margin-top:4px}
-.ben-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.8vw,14px)}
-@media(min-width:768px){.ben-grid{grid-template-columns:repeat(4,1fr)}}
-.ben{padding:clamp(22px,3.6vw,30px) clamp(16px,2.8vw,22px);border:1px solid rgba(var(--accent-rgb),.22);background:rgba(var(--accent-rgb),.05);text-align:center}
-.ben .bt1{font-size:clamp(17px,3.6vw,21px);font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.ben .bt2{font-size:clamp(12px,2.6vw,14px);color:var(--fg-2);line-height:1.5;word-break:keep-all}
+.q8-cap{margin-top:var(--gap-md);text-align:center;font-size:clamp(16px,3.4vw,20px);font-weight:700;line-height:1.55;color:var(--fg-2);word-break:keep-all}.q8-cap strong{color:var(--fg)}
 
-/* 작동 4단계 */
-.steps4{display:flex;flex-direction:column;gap:0;position:relative}
-.st4{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3.4vw,32px);padding-bottom:clamp(32px,5vw,48px);position:relative}
-.st4:last-child{padding-bottom:0}
-.st4::before{content:'';position:absolute;left:clamp(21px,3.6vw,27px);top:clamp(44px,7.4vw,56px);bottom:0;width:1px;background:linear-gradient(var(--accent),rgba(var(--accent-rgb),.1))}
-.st4:last-child::before{display:none}
-.st4-n{width:clamp(44px,7.4vw,56px);height:clamp(44px,7.4vw,56px);border:1.5px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(17px,3.4vw,21px);font-weight:800;color:var(--accent);background:var(--bg)}
-.st4-c{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--accent);margin-bottom:6px;padding-top:4px}
-.st4-t{font-size:clamp(19px,4vw,25px);font-weight:800;letter-spacing:-.03em;line-height:1.35;margin-bottom:10px;word-break:keep-all}
-.st4-d{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-2);word-break:keep-all;max-width:640px}.st4-d strong{color:var(--fg);font-weight:600}
+/* 워크북 체인 */
+.chain{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:900px){.chain{grid-template-columns:repeat(4,1fr)}}
+.ch{padding:clamp(24px,4vw,32px);border:1px solid var(--line);background:var(--bubble);position:relative}
+@media(min-width:900px){.ch+.ch{border-left:none}}
+@media(max-width:899px){.ch+.ch{border-top:none}}
+.ch-c{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--accent);margin-bottom:8px}
+.ch-t{font-size:clamp(17px,3.6vw,20px);font-weight:800;letter-spacing:-.02em;line-height:1.4;margin-bottom:10px;word-break:keep-all}
+.ch-d{font-size:clamp(14px,2.8vw,15px);line-height:1.7;color:var(--fg-2);word-break:keep-all}
+.ch-lock{margin-top:14px;font-size:12px;font-weight:700;color:var(--fg-3);display:flex;gap:6px;align-items:center}
+.ch-lock::before{content:'';width:10px;height:10px;border:1.5px solid var(--accent);border-radius:2px}
+.chain-cap{margin-top:var(--gap-md);padding:clamp(22px,3.6vw,30px);border-left:3px solid var(--accent);background:rgba(255,255,255,.03);font-size:clamp(15px,3.1vw,18px);line-height:1.75;color:var(--fg-2);word-break:keep-all}.chain-cap strong{color:var(--fg)}
 
 /* 진단 지도 */
 .map{border:1px solid var(--line-2)}
@@ -158,41 +172,44 @@ a{color:inherit;text-decoration:none}
 .map-a{font-size:clamp(14px,2.9vw,16px);color:var(--fg-2);word-break:keep-all;line-height:1.5}
 .map-x{color:var(--accent);opacity:.6;font-size:16px}
 .map-b{font-size:clamp(14px,2.9vw,16px);font-weight:700;color:var(--fg);word-break:keep-all;line-height:1.5}.map-b small{display:block;font-size:12px;font-weight:600;color:var(--accent);margin-top:2px}
-.map-key{margin-top:var(--gap-md);padding:clamp(24px,4vw,36px);background:rgba(var(--accent-rgb),.08);border:1px solid rgba(var(--accent-rgb),.25);text-align:center;font-size:clamp(17px,3.6vw,22px);font-weight:800;letter-spacing:-.02em;line-height:1.5;word-break:keep-all}
-.map-key b{font-weight:inherit}
-.map-key span{display:block;font-size:clamp(14px,2.8vw,16px);font-weight:500;color:var(--fg-2);margin-top:8px;letter-spacing:-.01em}
 
-/* 비교표 */
-.cmp{border:1px solid var(--line-2)}
-.cmp-r{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
-.cmp-r:first-child{border-top:none}
-.cmp-r > div{padding:clamp(16px,2.8vw,24px) clamp(14px,2.6vw,24px);font-size:clamp(14px,2.9vw,16px);line-height:1.55;word-break:keep-all;text-align:center}
-.cmp-r > div:first-child{color:var(--fg-3);border-right:1px solid var(--line)}
-.cmp-r > div:last-child{color:var(--fg);font-weight:700;background:rgba(var(--accent-rgb),.06)}
-.cmp-r.h > div{font-size:clamp(13px,2.7vw,15px);font-weight:800;letter-spacing:-.01em}
-.cmp-r.h > div:first-child{color:var(--fg-2);background:rgba(255,255,255,.03)}
-.cmp-r.h > div:last-child{color:#fff;background:var(--accent)}
+/* 1분 맛보기 */
+.try{max-width:760px;margin:0 auto;border:1px solid rgba(var(--accent-rgb),.35);background:rgba(var(--accent-rgb),.04);padding:clamp(26px,4.5vw,44px)}
+.try-q{font-size:clamp(17px,3.6vw,21px);font-weight:800;letter-spacing:-.02em;line-height:1.5;word-break:keep-all;margin-bottom:6px}
+.try-h{font-size:clamp(13px,2.7vw,15px);color:var(--fg-3);margin-bottom:clamp(18px,3vw,24px);word-break:keep-all}
+.try-opts{display:flex;flex-wrap:wrap;gap:10px}
+.try-opt{font-family:var(--font);font-size:clamp(14px,2.9vw,16px);font-weight:700;padding:12px 16px;border:1px solid var(--line-2);background:transparent;color:var(--fg-2);cursor:pointer;transition:all .15s}
+.try-opt.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.try-go{margin-top:clamp(20px,3.4vw,28px);width:100%;justify-content:center}
+.try-res{display:none;margin-top:clamp(20px,3.4vw,28px);padding-top:clamp(20px,3.4vw,28px);border-top:1px solid rgba(var(--accent-rgb),.25)}
+.try-res.show{display:block}
+.try-res .big{font-size:clamp(20px,4.4vw,28px);font-weight:900;letter-spacing:-.03em;line-height:1.35;word-break:keep-all;margin-bottom:12px}
+.try-res p{font-size:clamp(15px,3vw,17px);line-height:1.8;color:var(--fg-2);word-break:keep-all}.try-res p strong{color:var(--fg)}
+.try-res .from{margin-top:14px;font-size:13px;font-weight:700;color:var(--accent)}
 
-/* 3층 구조 (골든서클) */
-.layer-wrap{display:grid;grid-template-columns:1fr;gap:var(--gap-lg);align-items:center}
-@media(min-width:900px){.layer-wrap{grid-template-columns:minmax(300px,420px) 1fr}}
-.rings{position:relative;width:min(100%,380px);aspect-ratio:1;margin:0 auto}
-.ring{position:absolute;border-radius:50%;display:flex;justify-content:center}
-.ring.r1{inset:0;border:1px solid var(--line-2);background:rgba(255,255,255,.02)}
-.ring.r2{inset:17%;border:1px solid rgba(var(--accent-rgb),.35);background:rgba(var(--accent-rgb),.06)}
-.ring.r3{inset:35%;background:var(--accent);align-items:center}
-.ring .rl{position:absolute;top:5%;font-size:clamp(11px,2.4vw,13px);font-weight:800;letter-spacing:1px;color:var(--fg-2)}
-.ring.r2 .rl{top:7%;color:var(--accent)}
-.ring.r3 .rl{position:static;color:#fff;text-align:center;line-height:1.3;font-size:clamp(12px,2.6vw,15px)}
-.layers{display:flex;flex-direction:column;gap:clamp(12px,2vw,16px)}
-.lay{padding:clamp(20px,3.4vw,28px);border:1px solid var(--line);background:var(--bubble)}
-.lay.core{border-color:rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.07)}
-.lay-k{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:6px}
-.lay-t{font-size:clamp(17px,3.6vw,21px);font-weight:800;letter-spacing:-.02em;margin-bottom:6px;word-break:keep-all}
-.lay-d{font-size:clamp(14px,2.8vw,15px);line-height:1.7;color:var(--fg-2);word-break:keep-all}
+/* Before / After */
+.ba-list{display:flex;flex-direction:column;gap:clamp(14px,2.4vw,18px)}
+.ba{display:grid;grid-template-columns:1fr;border:1px solid var(--line)}
+@media(min-width:768px){.ba{grid-template-columns:160px 1fr 1fr}}
+.ba-ch{padding:clamp(14px,2.4vw,20px) clamp(18px,3vw,24px);font-size:13px;font-weight:800;letter-spacing:.5px;color:var(--fg-2);background:rgba(255,255,255,.03);display:flex;align-items:center}
+.ba-b,.ba-a{padding:clamp(16px,2.8vw,24px) clamp(18px,3vw,24px);font-size:clamp(14px,2.9vw,16px);line-height:1.6;word-break:keep-all}
+.ba-b{color:var(--fg-3)}
+.ba-a{color:var(--fg);font-weight:700;background:rgba(var(--accent-rgb),.07)}
+.ba-b::before,.ba-a::before{display:block;font-size:10px;font-weight:800;letter-spacing:2px;margin-bottom:6px}
+.ba-b::before{content:'BEFORE';color:var(--fg-3)}.ba-a::before{content:'AFTER';color:var(--accent)}
+@media(min-width:768px){.ba-b{border-left:1px solid var(--line)}.ba-a{border-left:1px solid rgba(var(--accent-rgb),.2)}}
 
-/* 제공물 */
-.bridge{text-align:center;font-size:clamp(17px,3.6vw,22px);font-weight:700;line-height:1.55;color:var(--fg-2);word-break:keep-all;margin-bottom:clamp(20px,3vw,28px)}
+/* 커리큘럼 (warm) */
+.sec-cur{background:var(--warm)!important;color:var(--wfg)!important;padding:var(--sec-y) 0}.sec-cur .label{color:var(--accent)}.sec-cur .h-sec{color:var(--wfg)}.sec-cur .sec-lead{color:var(--wfg-2)}
+.cur-grp{margin-top:clamp(36px,6vw,52px);font-size:12px;font-weight:800;letter-spacing:2px;color:var(--accent);padding-bottom:10px}
+.cur-grp span{color:var(--wfg-3);font-weight:700;letter-spacing:.5px;margin-left:8px}
+.cur-item{display:flex;gap:clamp(16px,3vw,24px);padding:clamp(20px,3.2vw,28px) 0;border-top:1px solid var(--line-w);align-items:baseline}
+.cur-num{font-size:clamp(14px,2.8vw,16px);font-weight:700;color:var(--accent);min-width:28px;flex-shrink:0}
+.cur-body{min-width:0}.cur-title{font-size:clamp(16px,3.4vw,19px);font-weight:800;letter-spacing:-.02em;color:var(--wfg);margin-bottom:8px;word-break:keep-all}
+.cur-wow{font-size:clamp(14px,2.9vw,16px);line-height:1.7;color:var(--wfg-2);word-break:keep-all;padding-left:14px;border-left:2px solid rgba(var(--accent-rgb),.5)}.cur-wow b{color:var(--wfg);font-weight:700}
+.cur-eff{font-size:clamp(13px,2.6vw,15px);color:var(--accent);font-weight:700;margin-top:10px;word-break:keep-all}
+
+/* 결과물 */
 .del-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,24px)}
 @media(min-width:640px){.del-grid{grid-template-columns:1fr 1fr}}
 .del-card{background:var(--bubble);border:1px solid var(--line);overflow:hidden}
@@ -201,48 +218,19 @@ a{color:inherit;text-decoration:none}
 .del-name{font-size:clamp(17px,3.6vw,20px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;word-break:keep-all}.del-name .d-tag{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1.5px;display:block;margin-bottom:6px}
 .del-desc{font-size:clamp(14px,2.8vw,16px);line-height:1.7;color:var(--fg-2);word-break:keep-all}
 
-/* 개념 띠배너 */
-.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(16px,2.6vw,22px) 0;background:var(--bg-deep)}
-.marq-in{display:flex;width:max-content;animation:marq 60s linear infinite}
-.marq-in span{font-size:clamp(13px,2.7vw,15px);font-weight:700;color:var(--fg-3);white-space:nowrap;padding:0 clamp(14px,2.4vw,20px)}
-.marq-in span:nth-child(3n+1){color:var(--accent)}
-@keyframes marq{to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.marq-in{animation:none}}
-
-/* 커리큘럼 (warm) */
-.sec-cur{background:var(--warm)!important;color:var(--wfg)!important;padding:var(--sec-y) 0}.sec-cur .label{color:var(--accent)}.sec-cur .h-sec{color:var(--wfg)}.sec-cur .sec-lead{color:var(--wfg-2)}
-.cur-item{display:flex;gap:clamp(16px,3vw,24px);padding:clamp(22px,3.4vw,30px) 0;border-top:1px solid var(--line-w);align-items:baseline}.cur-item:last-child{border-bottom:1px solid var(--line-w)}
-.cur-num{font-size:clamp(14px,2.8vw,16px);font-weight:700;color:var(--accent);min-width:28px;flex-shrink:0}
-.cur-body{min-width:0}.cur-title{font-size:clamp(16px,3.4vw,19px);font-weight:800;letter-spacing:-.02em;color:var(--wfg);margin-bottom:8px;word-break:keep-all}
-.cur-wow{font-size:clamp(14px,2.9vw,16px);line-height:1.7;color:var(--wfg-2);word-break:keep-all;padding-left:14px;border-left:2px solid rgba(var(--accent-rgb),.5)}.cur-wow b{color:var(--wfg);font-weight:700}
-.cur-eff{font-size:clamp(13px,2.6vw,15px);color:var(--accent);font-weight:700;margin-top:10px;word-break:keep-all}
-
-/* Before / After */
-.ba-list{display:flex;flex-direction:column;gap:clamp(14px,2.4vw,18px)}
-.ba{display:grid;grid-template-columns:1fr;border:1px solid var(--line)}
-@media(min-width:768px){.ba{grid-template-columns:160px 1fr 1fr}}
-.ba-ch{padding:clamp(14px,2.4vw,20px) clamp(18px,3vw,24px);font-size:13px;font-weight:800;letter-spacing:.5px;color:var(--fg-2);background:rgba(255,255,255,.03);display:flex;align-items:center}
-.ba-b,.ba-a{padding:clamp(16px,2.8vw,24px) clamp(18px,3vw,24px);font-size:clamp(14px,2.9vw,16px);line-height:1.6;word-break:keep-all}
-.ba-b{color:var(--fg-3);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.2)}
-.ba-a{color:var(--fg);font-weight:700;background:rgba(var(--accent-rgb),.07)}
-.ba-b::before,.ba-a::before{display:block;font-size:10px;font-weight:800;letter-spacing:2px;margin-bottom:6px;text-decoration:none}
-.ba-b::before{content:'BEFORE';color:var(--fg-3)}.ba-a::before{content:'AFTER';color:var(--accent)}
-@media(min-width:768px){.ba-b{border-left:1px solid var(--line)}.ba-a{border-left:1px solid rgba(var(--accent-rgb),.2)}}
-.ba-cap{margin-top:var(--gap-md);text-align:center;font-size:clamp(17px,3.6vw,22px);font-weight:800;letter-spacing:-.02em;line-height:1.5;word-break:keep-all}
-
-/* ── 4막 ───────────────────────── */
-/* 읽는 법 */
-.how-grid{display:grid;grid-template-columns:1fr;gap:clamp(12px,2vw,16px)}
-@media(min-width:768px){.how-grid{grid-template-columns:repeat(3,1fr)}}
-.how{padding:clamp(26px,4.4vw,36px);background:var(--bubble);border:1px solid var(--line)}
-.how-s{display:inline-block;font-size:11px;font-weight:800;letter-spacing:2px;color:#fff;background:var(--accent);padding:5px 10px;margin-bottom:clamp(14px,2.4vw,18px)}
-.how-t{font-size:clamp(17px,3.6vw,20px);font-weight:800;letter-spacing:-.02em;line-height:1.4;margin-bottom:8px;word-break:keep-all}
-.how-d{font-size:clamp(14px,2.8vw,15px);line-height:1.7;color:var(--fg-2);word-break:keep-all}
-.warn{margin-top:var(--gap-md);padding:clamp(24px,4vw,34px);border:1px solid rgba(var(--accent-rgb),.35);background:rgba(var(--accent-rgb),.05)}
-.warn-t{font-size:clamp(15px,3.2vw,18px);font-weight:800;color:var(--accent);margin-bottom:12px}
-.warn ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.warn li{font-size:clamp(14px,2.9vw,16px);line-height:1.65;color:var(--fg-2);word-break:keep-all;padding-left:18px;position:relative}.warn li::before{content:'—';position:absolute;left:0;color:var(--accent)}
-.warn li strong{color:var(--fg);font-weight:600}
+/* 강의 루프 vs 기준 루프 */
+.loops{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,20px)}
+@media(min-width:768px){.loops{grid-template-columns:1fr 1fr}}
+.loop{padding:clamp(26px,4.4vw,38px);border:1px solid var(--line)}
+.loop.good{border-color:rgba(var(--accent-rgb),.35);background:rgba(var(--accent-rgb),.06)}
+.loop-k{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--fg-3);margin-bottom:8px}.loop.good .loop-k{color:var(--accent)}
+.loop-t{font-size:clamp(18px,3.8vw,23px);font-weight:800;letter-spacing:-.02em;margin-bottom:clamp(18px,3vw,24px);word-break:keep-all}
+.loop-steps{display:flex;flex-direction:column;gap:0}
+.ls{display:flex;align-items:center;gap:12px;padding:10px 0;font-size:clamp(15px,3vw,17px);font-weight:700;color:var(--fg-2)}
+.ls i{font-style:normal;width:26px;height:26px;border-radius:50%;border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--fg-3);flex-shrink:0}
+.loop.good .ls{color:var(--fg)}.loop.good .ls i{border-color:var(--accent);color:var(--accent)}
+.ls-back{margin-top:6px;font-size:13px;font-weight:700;color:var(--fg-3)}.loop.good .ls-back{color:var(--accent)}
+.loop-d{margin-top:clamp(16px,2.6vw,20px);font-size:clamp(14px,2.8vw,15px);line-height:1.7;color:var(--fg-2);word-break:keep-all}
 
 /* 업종 */
 .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,16px)}
@@ -254,9 +242,6 @@ a{color:inherit;text-decoration:none}
 .case-hero .ch-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(12px,2vw,16px)}
 .case-hero .ch-body{font-size:clamp(16px,3.4vw,20px);font-weight:700;line-height:1.5;word-break:keep-all}
 .case-hero .ch-note{margin-top:10px;font-size:clamp(13px,2.6vw,15px);color:var(--fg-2)}
-.refs{margin-top:var(--gap-lg);display:grid;grid-template-columns:1fr;gap:10px}
-@media(min-width:768px){.refs{grid-template-columns:repeat(3,1fr)}}
-.ref{padding:clamp(18px,3vw,22px);border:1px solid var(--line);font-size:clamp(13px,2.7vw,14px);line-height:1.6;color:var(--fg-2);word-break:keep-all}.ref b{display:block;color:var(--fg);font-size:clamp(14px,2.9vw,16px);margin-bottom:4px}
 
 /* 대상 */
 .who-grid{display:grid;grid-template-columns:1fr;gap:clamp(12px,2vw,16px)}
@@ -275,7 +260,6 @@ a{color:inherit;text-decoration:none}
 .dw-box svg{width:14px;height:14px;color:#fff;opacity:0;transform:scale(.5);transition:all .2s}
 .dw-q.checked .dw-box{background:var(--accent);border-color:var(--accent)}.dw-q.checked .dw-box svg{opacity:1;transform:scale(1)}
 .dw-txt{font-size:clamp(15px,3vw,17px);line-height:1.5;color:var(--fg-2);word-break:keep-all}.dw-q.checked .dw-txt{color:var(--fg)}
-.dw-txt small{display:block;font-size:12px;color:var(--fg-3);margin-top:3px}
 .dw-result{margin-top:clamp(20px,3.4vw,28px);padding-top:clamp(20px,3.4vw,28px);border-top:1px solid var(--line);font-size:clamp(15px,3vw,17px);line-height:1.75;color:var(--fg-2);word-break:keep-all;text-align:center}
 .dw-result strong{color:var(--accent);font-weight:800}.dw-result .dw-count{color:var(--fg);font-weight:800}
 .dw-start{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
@@ -313,11 +297,9 @@ a{color:inherit;text-decoration:none}
 .foot{padding:40px 0 56px;text-align:center;font-size:11px;color:var(--fg-3);letter-spacing:1.5px}
 
 @media(max-width:767px){
-  .badges{grid-template-columns:repeat(2,1fr)}
-  .syn-card{padding-left:8px;padding-right:8px}
   .map-row{grid-template-columns:1fr;gap:6px}.map-x{display:none}.map-head{display:none}
   .map-a::before{content:'내가 생각한 문제';display:block;font-size:10px;font-weight:800;letter-spacing:1.5px;color:var(--fg-3);margin-bottom:2px}
-  .why-item{grid-template-columns:1fr}
+  .ice-line span{right:50%;transform:translateX(50%)}
   .stk-btn{padding:14px 24px}
 }
 </style>
@@ -325,20 +307,14 @@ a{color:inherit;text-decoration:none}
 <body>
 <div class="bc-root">
 
-<!-- ═══════════════ 1막 · 결론 먼저 ═══════════════ -->
+<!-- ═══════════════ 1막 · 주목: 결론부터 ═══════════════ -->
 
-<!-- [1] HERO — 정체성 · 사회적 증거 · 약속 · 신뢰 배지 -->
+<!-- [1] HERO — 약속: 내 문제가 보인다 -->
 <section class="hero">
   <div class="wrap">
-    <div class="hero-over rv"><p class="hero-over-desc">70만 인플루언서부터 1,000억 브랜드까지<br>김낙타가 직접 만난 질문들로 만든</p><div class="hero-over-brand"><div class="line"></div><span>RE:BRAND BRANDING CLASS</span></div></div>
+    <div class="hero-over rv"><p class="hero-over-desc">70만 인플루언서부터 1,000억 브랜드까지<br>김낙타가 컨설팅에서 던진 질문으로 만든</p><div class="hero-over-brand"><div class="line"></div><span>RE:BRAND BRANDING CLASS</span></div></div>
     <h1 class="h-big rv rv-d1">읽고 나면<br><span class="em">내 문제가 뭔지</span><br>보이기 시작합니다.</h1>
     <p class="hero-sub rv rv-d2">콘텐츠가 문제인지, 상품이 문제인지, 마케팅이 문제인지.<br class="br-d"> 9개의 클래스와 8개의 질문으로 <strong>스스로 진단하고, 무엇부터 할지</strong> 정합니다.</p>
-    <div class="badges rv rv-d2">
-      <div class="badge"><b>9</b>텍스트 클래스</div>
-      <div class="badge"><b>8</b>워크북 질문</div>
-      <div class="badge"><b>7</b>가이드라인 섹션</div>
-      <div class="badge"><b>∞</b>평생 소장</div>
-    </div>
     <div class="hero-cta rv rv-d3">
       <a href="/shop_view?idx=6" class="btn btn-p">구매하기 <span class="arr">→</span></a>
       <a href="/brandingclass00" class="btn btn-g">Class 00 무료로 읽기 <span class="arr">→</span></a>
@@ -346,32 +322,23 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [1b] 정체 밴드 -->
-<section class="ident">
-  <div class="wrap">
-    <p class="ident-pre rv">마케팅 공식 앞에 빠져 있던 단 하나,<br><b>사업의 기준을 세우는</b> 브랜딩 클래스</p>
-    <p class="ident-name rv rv-d1">9 CLASS<br><span class="em">8 QUESTIONS</span></p>
-    <p class="ident-sub rv rv-d2">BRANDING CLASS · WORKBOOK · GUIDELINE</p>
-  </div>
-</section>
-
-<!-- [1c] 핵심 차별점 — 답을 주지 않고, 내 문제를 스스로 찾게 한다 -->
-<section class="sec bt">
+<!-- [2] 핵심 차별점 — 답을 주지 않고 스스로 찾게 한다 -->
+<section class="sec sec-deep bt">
   <div class="wrap">
     <div class="sec-head c rv" style="margin-bottom:0"><span class="label">Core Difference</span><h2 class="h-sec">답을 알려주지 않습니다.<br><span class="em">내 문제를 스스로 찾게 합니다.</span></h2>
-      <p class="sec-lead">남이 대신 내려준 진단은 그때뿐이에요. 8가지 질문에 직접 답하다 보면 <strong style="color:var(--fg)">막히는 곳이 생기고, 거기가 내 문제</strong>예요. 문제를 스스로 찾은 사람은 다음에 무엇을 할지도 스스로 정합니다.</p>
+      <p class="sec-lead">남이 대신 내려준 진단은 그때뿐이에요. 질문에 직접 답하다 보면 <strong>막히는 곳이 생기고, 거기가 내 문제</strong>예요. 문제를 스스로 찾은 사람은 다음에 무엇을 할지도 스스로 정합니다.</p>
     </div>
-    <div class="syn rv rv-d1">
-      <div class="syn-card"><div class="syn-step">?</div><div class="syn-t">콘텐츠가<br>문제일까</div></div>
-      <div class="syn-card"><div class="syn-step">?</div><div class="syn-t">상품이<br>문제일까</div></div>
-      <div class="syn-card"><div class="syn-step">?</div><div class="syn-t">마케팅이<br>문제일까</div></div>
+    <div class="sus rv rv-d1">
+      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">콘텐츠가<br>문제일까</div></div>
+      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">상품이<br>문제일까</div></div>
+      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">마케팅이<br>문제일까</div></div>
     </div>
-    <div class="syn-res rv rv-d2">8가지 질문에 답하다 막히는 곳, 그게 내 문제입니다</div>
+    <div class="sus-res rv rv-d2">8가지 질문에 답하다 막히는 곳, 그게 내 문제입니다</div>
   </div>
 </section>
 
-<!-- [2] PROOF -->
-<section class="sec sec-deep bt">
+<!-- [3] PROOF -->
+<section class="sec bt">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">Proof</span><h2 class="h-sec">광고비도, 판매글도 없이.<br><span class="em">기준 하나</span>로 바뀐 결과.</h2></div>
     <div class="proof-grid">
@@ -389,18 +356,18 @@ a{color:inherit;text-decoration:none}
 </section>
 
 
-<!-- ═══════════════ 2막 · 공감과 재정의 ═══════════════ -->
+<!-- ═══════════════ 2막 · 동일시 → 긴장 → 전환 → 해소 ═══════════════ -->
 
-<!-- [3] FOUNDER STORY — Why -->
-<section class="sec bt">
+<!-- [4] FOUNDER — Why -->
+<section class="sec sec-deep bt">
   <div class="wrap">
     <div class="rv"><span class="label">Behind</span></div>
-    <h2 class="h-sec rv" style="margin-bottom:var(--gap-lg)">공식은 다 아는데<br>왜 안 되는지 모르는 사람들을<br><span class="em">너무 많이</span> 만났어요.</h2>
+    <h2 class="h-sec rv" style="margin-bottom:var(--gap-lg)">다들 성실했어요.<br>다만 <span class="em">어디가 막혔는지</span><br class="br-m"> 몰랐을 뿐.</h2>
     <div class="story-photo rv">김낙타 대표 사진 영역</div>
     <div class="body-text rv">
       <p>저는 원래 파는 걸 어려워하고, 권유하는 세일즈가 누구보다 싫었던 사람이에요. 그래서 브랜딩을 더 미친 듯이 팠습니다. 팔지 않아도 팔리게 만들고 싶었으니까요.</p>
-      <p>컨설팅으로 수많은 사업자를 만나며 알게 됐어요. 상품이 나쁜 경우는 거의 없었습니다. 다들 정말 부지런했죠. <strong>다만 그 성실함이 어디를 향해야 하는지 몰랐을 뿐</strong>이에요. 그리고 본인이 무엇 때문에 막혀 있는지도 몰랐습니다.</p>
-      <p>질문을 던지다 보면 그분들 안에 이미 브랜드의 재료가 다 있었어요. <strong>그 질문들을 순서대로 정리한 게 이 클래스예요.</strong> 전략의 빈자리를 채워 드리고 싶었습니다.</p>
+      <p>컨설팅으로 수많은 사업자를 만났어요. 상품이 나쁜 경우는 거의 없었습니다. 마케팅 공식도 다들 알고 있었고요. 그런데 콘텐츠를 바꾸고, 상품을 바꾸고, 대행사를 바꿔도 제자리였어요. <strong>본인이 무엇 때문에 막혀 있는지 모른 채, 엉뚱한 곳을 고치고 있었던 거예요.</strong></p>
+      <p>질문을 던지면 그분들 안에서 답이 나왔어요. 그리고 대답이 막히는 곳에서 "아, 이게 문제였구나" 하셨죠. <strong>그 질문들을 순서대로 정리한 게 이 클래스예요.</strong></p>
     </div>
     <p class="story-sign rv">RE:FEEEL 대표 <b>김낙타</b></p>
     <div class="career-grid rv rv-d1">
@@ -412,104 +379,92 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [4] VOICE — '나 같은 사람'의 상황 후기 -->
-<section class="sec sec-deep bt">
+<!-- [5] VOICE — 나 같은 사람 -->
+<section class="sec bt">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">Voice</span><h2 class="h-sec">나와 같은 자리에 있던<br><span class="em">사람들의 이야기</span></h2></div>
     <div class="voice-cards">
-      <div class="voice-card rv">
-        <div class="voice-stars">★★★★★</div>
-        <p class="voice-txt">1,000만 원짜리 인스타 마케팅 강의를 결제하고 후회하던 중에 만났어요. <strong>그동안 왜 안 됐는지가 그제야 보이더라고요.</strong> 공식이 아니라 그 앞 단계가 비어 있었어요.</p>
-        <div class="voice-who"><span class="v-av">김</span><span><b>김○○</b> · 뷰티 살롱</span></div>
-      </div>
-      <div class="voice-card rv rv-d1">
-        <div class="voice-stars">★★★★★</div>
-        <p class="voice-txt">조회수에만 매달리던 릴스가 문제가 아니라, <strong>누구에게 무슨 말을 할지가 없었던 거</strong>였어요. 그걸 알고 나니 피드 기획이 처음으로 체계적으로 보입니다.</p>
-        <div class="voice-who"><span class="v-av">이</span><span><b>이○○</b> · 온라인 클래스</span></div>
-      </div>
-      <div class="voice-card rv rv-d2">
-        <div class="voice-stars">★★★★★</div>
-        <p class="voice-txt">1,200만 원 컨설팅을 할부로 듣고도 성과가 없어 무너졌었어요. 워크북을 쓰다가 막히는 칸에서 <strong>"아, 내 문제는 이거였구나"</strong> 했습니다.</p>
-        <div class="voice-who"><span class="v-av">박</span><span><b>박○○</b> · 오프라인 PT샵</span></div>
-      </div>
+      <div class="voice-card rv"><div class="voice-stars">★★★★★</div><p class="voice-txt">1,000만 원짜리 인스타 마케팅 강의를 결제하고 후회하던 중에 만났어요. <strong>그동안 왜 안 됐는지가 그제야 보이더라고요.</strong> 공식이 아니라 그 앞 단계가 비어 있었어요.</p><div class="voice-who"><span class="v-av">김</span><span><b>김○○</b> · 뷰티 살롱</span></div></div>
+      <div class="voice-card rv rv-d1"><div class="voice-stars">★★★★★</div><p class="voice-txt">조회수에만 매달리던 릴스가 문제가 아니라, <strong>누구에게 무슨 말을 할지가 없었던 거</strong>였어요. 그걸 알고 나니 피드 기획이 처음으로 체계적으로 보입니다.</p><div class="voice-who"><span class="v-av">이</span><span><b>이○○</b> · 온라인 클래스</span></div></div>
+      <div class="voice-card rv rv-d2"><div class="voice-stars">★★★★★</div><p class="voice-txt">1,200만 원 컨설팅을 할부로 듣고도 성과가 없어 무너졌었어요. 워크북을 쓰다가 막히는 칸에서 <strong>"아, 내 문제는 이거였구나"</strong> 했습니다.</p><div class="voice-who"><span class="v-av">박</span><span><b>박○○</b> · 오프라인 PT샵</span></div></div>
     </div>
     <p class="note">* 일부 후기는 예시이며, 실제 수강생 후기로 교체 예정입니다.</p>
   </div>
 </section>
 
-<!-- [5] PROBLEM — 고객의 언어로 쓴 고민 -->
-<section class="sec bt">
+<!-- [6] 긴장 — 세 용의자별 증상과 고쳐본 것들 -->
+<section class="sec sec-deep bt">
   <div class="wrap">
-    <div class="sec-head c rv"><span class="label">Sound Familiar?</span><h2 class="h-sec">공식은 다 아는 사람들의<br><span class="em">똑같은 고민</span></h2></div>
-    <div class="chat">
-      <div class="bub rv"><span class="tag">콘텐츠</span>매일 릴스랑 피드를 올리는데 문의는 그대로예요. 오늘은 또 뭘 올려야 하나, 아침마다 그 고민부터 해요.</div>
-      <div class="bub rv"><span class="tag">마케팅</span>인스타, 블로그, 플레이스, 광고까지 다 해봤어요. 대행사도 바꿔봤는데 결과는 늘 비슷해요.</div>
-      <div class="bub rv"><span class="tag">설명</span>"무슨 일 하세요?" 하면 업종 이름밖에 말을 못 하겠어요. 머릿속엔 있는데 글로 꺼내면 막혀요.</div>
-      <div class="bub rv"><span class="tag">차별화</span>실력은 자신 있는데 손님이 왜 저 집으로 가는지 모르겠어요. 소개글엔 "친절하고 꼼꼼해요"밖에 없고요.</div>
-      <div class="bub rv"><span class="tag">가격</span>"다른 데는 얼마던데요" 소리를 들으면 흔들려요. 할인을 멈추면 손님이 끊길까 봐 못 멈추겠어요.</div>
-      <div class="bub rv"><span class="tag">방향</span>하루 종일 바쁜데 3개월 전이랑 달라진 게 없어요. 이게 맞는 방향인지도 모르겠어요.</div>
+    <div class="sec-head rv"><span class="label">Sound Familiar?</span><h2 class="h-sec">셋 중 하나가 문제인 것 같아서<br><span class="em">다 고쳐봤죠.</span></h2></div>
+    <div class="sus3">
+      <div class="s3 rv">
+        <div class="s3-h"><span class="q">콘텐츠?</span><span class="k">SUSPECT 01</span></div>
+        <div class="s3-b"><p>매일 릴스랑 피드를 올리는데 문의는 그대로예요.</p><p>오늘은 또 뭘 올려야 하나, 아침마다 그 고민부터 해요.</p><p>잘된다는 계정을 따라 해도 제 계정에선 반응이 없어요.</p></div>
+        <div class="s3-f"><b>그래서 고쳐본 것</b>릴스 강의, 후킹 공식, 디자인 리뉴얼, 업로드 횟수 늘리기</div>
+      </div>
+      <div class="s3 rv rv-d1">
+        <div class="s3-h"><span class="q">상품?</span><span class="k">SUSPECT 02</span></div>
+        <div class="s3-b"><p>실력은 자신 있는데 손님이 왜 저 집으로 가는지 모르겠어요.</p><p>"다른 데는 얼마던데요" 소리를 들으면 흔들려요.</p><p>처음 온 손님이 다시 오질 않아요.</p></div>
+        <div class="s3-f"><b>그래서 고쳐본 것</b>신메뉴·신상품 추가, 가격 인하, 할인 이벤트, 구성 늘리기</div>
+      </div>
+      <div class="s3 rv rv-d2">
+        <div class="s3-h"><span class="q">마케팅?</span><span class="k">SUSPECT 03</span></div>
+        <div class="s3-b"><p>인스타, 블로그, 플레이스, 광고까지 다 해봤어요.</p><p>광고를 끊으면 문의도 끊기고, 다시 돌리면 효율이 더 떨어져요.</p><p>강의를 몇 개나 들었는데 써보면 남들이랑 똑같아져요.</p></div>
+        <div class="s3-f"><b>그래서 고쳐본 것</b>대행사 교체, 광고비 증액, 새 채널 추가, 마케팅 강의 또 결제</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- [5b] 전환 밴드 — 호기심 공백 -->
+<!-- [7] 전환 -->
 <section class="band-turn">
   <div class="wrap">
-    <p class="rv">마케팅 공식을 다 알아도,<br class="br-m"> 강의를 몇 개나 들어도<br><span class="dim">결과가 그대로인</span> 이유!</p>
+    <p class="rv">셋 다 고쳐봤는데 그대로라면,<br><span class="dim">범인은 그 셋이 아닙니다.</span></p>
   </div>
 </section>
 
-<!-- [5c] 원인 3가지 — 외부 귀인 -->
+<!-- [8] 해소 — 표면 vs 이면 (BC00) -->
 <section class="sec sec-deep">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">Why It Fails</span><h2 class="h-sec">당신이 게을러서가 아닙니다.<br><span class="em">순서</span>가 빠져 있었을 뿐.</h2></div>
-    <div class="why-list">
-      <div class="why-item rv">
-        <div class="why-n">1</div>
-        <div>
-          <div class="why-t">표면만 바꿔왔어요</div>
-          <p class="why-d">디자인, 로고, 채널, 도구. 이건 트렌드를 따라 계속 바뀌는 <strong>변화 레이어</strong>예요. 시간이 지나도 남는 기획·기준·방향, 즉 <strong>이면</strong>이 없으면 아무리 바꿔도 달라지지 않습니다.</p>
-          <span class="why-q">"입금한 적 없는데 출금될 리 없다."</span>
-        </div>
+    <div class="sec-head c rv"><span class="label">Surface vs. Depth</span><h2 class="h-sec">콘텐츠·상품·마케팅은<br><span class="em">물 위에 보이는 부분</span>이에요.</h2>
+      <p class="sec-lead">대부분은 눈에 보이는 표면만 바꿔요. 그런데 표면은 그 아래 <strong>이면</strong>이 정해주는 대로 움직입니다. 이면이 비어 있으면 표면을 아무리 바꿔도 같은 자리로 돌아와요.</p>
+    </div>
+    <div class="ice rv rv-d1">
+      <div class="ice-top">
+        <div class="ice-l">표면 · 보이는 것</div>
+        <div class="ice-t">매일 고치고 있는 것들</div>
+        <div class="chips"><span class="chip">릴스·피드</span><span class="chip">로고·디자인</span><span class="chip">광고·대행사</span><span class="chip">할인 이벤트</span><span class="chip">신상품·신메뉴</span><span class="chip">새 채널</span></div>
       </div>
-      <div class="why-item rv">
-        <div class="why-n">2</div>
-        <div>
-          <div class="why-t">공식에 넣을 재료가 없었어요</div>
-          <p class="why-d">Hook-Story-Offer 공식을 알아도 <strong>왜 이 일을 하는지</strong>가 없으면 Story 자리에 넣을 게 없어요. 그래서 내용은 달라도 "결국 무슨 말인지 모르겠는" <strong>메시지 없는 콘텐츠</strong>가 100개 쌓입니다.</p>
-          <span class="why-q">콘텐츠가 부족한 게 아니라, 메시지가 없었던 것.</span>
-        </div>
-      </div>
-      <div class="why-item rv">
-        <div class="why-n">3</div>
-        <div>
-          <div class="why-t">결정이 그날 기분에 따라 바뀌었어요</div>
-          <p class="why-d">기준이 없으면 오늘은 이 방향, 내일은 저 방향이에요. 불안하면 콘텐츠를 올리고, 문의가 없으면 할인하고. <strong>급한 일만 하다가 아무것도 쌓이지 않습니다.</strong></p>
-          <span class="why-q">흩어지는 힘을 한 방향으로 모으는 것, 그게 기획이에요.</span>
-        </div>
+      <div class="ice-line"><span>대부분 여기까지만 봅니다</span></div>
+      <div class="ice-bot">
+        <div class="ice-l">이면 · 보이지 않는 것</div>
+        <div class="ice-t">표면을 결정하는 것들</div>
+        <div class="chips"><span class="chip">정체성</span><span class="chip">Why</span><span class="chip">타겟</span><span class="chip">포지셔닝</span><span class="chip">경쟁자</span><span class="chip">차별화</span><span class="chip">메시지</span><span class="chip">실행 방향</span></div>
       </div>
     </div>
-    <p class="note">※ 참고: 사이먼 사이넥 골든서클(Why–How–What), 안토니오 다마지오 의사결정 연구("결정은 감정으로 하고 논리로 합리화한다"), 트레이시·위어즈마 「마켓 리더의 법칙」. 클래스 본문에서 사례와 함께 다룹니다.</p>
+    <div class="ice-cap">
+      <div class="cap-b rv"><div class="ck">이면 없이</div><ul><li>더 많은 광고비</li><li>가격 경쟁</li><li>"어디서 봤는데 뭐 하는 곳이지?"</li></ul></div>
+      <div class="cap-b on rv rv-d1"><div class="ck">이면이 있으면</div><ul><li>같은 광고비로 더 높은 전환</li><li>가격을 설명할 수 있는 구조</li><li>"그 사람, 그곳" 하고 기억에 남음</li></ul></div>
+    </div>
   </div>
 </section>
 
-<!-- [5d] 결론 — 인지 재구성 -->
+<!-- [8b] 결론 — 외부 귀인 + 재구성 -->
 <section class="concl">
   <div class="wrap">
-    <p class="rv">이렇게 기준 없이 쌓은 실행은<br><strong>아무리 좋은 공식도<br class="br-m"> 결과까지 닿지 못하게</strong> 막아섭니다.</p>
-    <div class="gap"></div>
-    <p class="rv rv-d1">그래서 공식을 쓰기 전,<br><span class="em">무엇을 누구에게 말할지<br class="br-m"> 정하는 단계</span>가 필요합니다.</p>
+    <p class="q rv">"입금한 적 없는데<br>출금될 리 없다."</p>
+    <p class="a rv rv-d1">성실함이 부족했던 게 아니에요.<br><strong>이면을 채운 적이 없었을 뿐</strong>이에요.<br>그래서 마케팅보다 먼저, 기획이 들어가야 합니다.</p>
   </div>
 </section>
 
 
-<!-- ═══════════════ 3막 · 해결을 증명 ═══════════════ -->
+<!-- ═══════════════ 3막 · 정당화: 어떻게 문제를 찾게 되는가 ═══════════════ -->
 
-<!-- [6] 핵심 원료 — 8가지 질문 -->
+<!-- [9] 이면을 채우는 8가지 질문 -->
 <section class="sec bt">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">The Core</span><h2 class="h-sec">문제를 보이게 만드는 한 가지,<br><span class="em">8가지 질문</span></h2>
-      <p class="sec-lead">이 클래스는 완성된 공식을 주지 않아요. 공식은 누구에게나 같지만 사업은 각자 다르니까요. 대신 컨설팅에서 실제로 효과를 본 <strong style="color:var(--fg)">질문</strong>을 순서대로 던집니다.</p>
+    <div class="sec-head rv"><span class="label">8 Questions</span><h2 class="h-sec">이면을 채우는<br><span class="em">8가지 질문</span></h2>
+      <p class="sec-lead">공식은 누구에게나 같지만 사업은 각자 달라요. 그래서 이 클래스는 공식 대신 <strong>컨설팅에서 실제로 효과를 본 질문</strong>을 순서대로 던집니다.</p>
     </div>
     <div class="q8-grid">
       <div class="q8 rv"><span class="n">01</span><span class="t">우리는 왜 이 일을 하는가?<span class="c">Why · Class 03</span></span></div>
@@ -521,33 +476,31 @@ a{color:inherit;text-decoration:none}
       <div class="q8 rv"><span class="n">07</span><span class="t">그걸 어떻게 말할 것인가?<span class="c">메시지 · Class 08</span></span></div>
       <div class="q8 rv rv-d1"><span class="n">08</span><span class="t">무엇부터 어떻게 실행할 것인가?<span class="c">실행 · Class 09</span></span></div>
     </div>
-    <div class="ben-grid">
-      <div class="ben rv"><div class="bt1">진단</div><div class="bt2">막히는 질문이<br>내 문제의 위치</div></div>
-      <div class="ben rv rv-d1"><div class="bt1">기준</div><div class="bt2">모든 결정을<br>가르는 한 줄</div></div>
-      <div class="ben rv rv-d2"><div class="bt1">문서화</div><div class="bt2">답을 쓰면<br>사업 기획서</div></div>
-      <div class="ben rv rv-d3"><div class="bt1">적용</div><div class="bt2">프로필·플레이스·<br>상세페이지로</div></div>
-    </div>
+    <p class="q8-cap rv">8개에 모두 답하면, 그게 곧 <strong>당신의 사업 기획서</strong>가 됩니다.</p>
   </div>
 </section>
 
-<!-- [6b] 작동 4단계 -->
+<!-- [10] 막히도록 설계된 워크북 — 진단이 일어나는 원리 -->
 <section class="sec sec-deep bt">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">How It Works</span><h2 class="h-sec">브랜딩 클래스가<br><span class="em">작동하는 4단계</span></h2></div>
-    <div class="steps4">
-      <div class="st4 rv"><div class="st4-n">1</div><div><div class="st4-c">CLASS 02–04 · 기준 잡기</div><div class="st4-t">내가 누구고, 왜 하고,<br class="br-m"> 어디에 설지 정합니다</div><p class="st4-d">"PT샵이에요" 대신 "출산 후 체력이 무너진 분을 위한 PT"처럼, <strong>업종이 아니라 한 줄 정의</strong>를 만들어요. 좁히면 오히려 넓어진다는 걸 여기서 경험합니다.</p></div></div>
-      <div class="st4 rv"><div class="st4-n">2</div><div><div class="st4-c">CLASS 05–06 · 시장 보기</div><div class="st4-t">누구에게 팔지,<br class="br-m"> 누구와 싸우는지 봅니다</div><p class="st4-d">"20–40대 여성"을 <strong>상황과 감정</strong>까지 내려가 다시 정의하고, 옆 가게가 아닌 진짜 경쟁자를 찾아요. 가장 강력한 경쟁자는 <strong>'아무것도 안 하기'</strong>라는 것도요.</p></div></div>
-      <div class="st4 rv"><div class="st4-n">3</div><div><div class="st4-c">CLASS 07–08 · 표현 만들기</div><div class="st4-t">고객이 나를 고르는 이유를<br class="br-m"> 한 문장으로 만듭니다</div><p class="st4-d">"친절·청결·경력"이 왜 차별점이 아닌지 알게 되고, <strong>타겟 상황 + 감정 + 해결책</strong>으로 경쟁자가 따라 쓸 수 없는 메시지를 씁니다.</p></div></div>
-      <div class="st4 rv"><div class="st4-n">4</div><div><div class="st4-c">CLASS 09 · 실행 설계</div><div class="st4-t">8개의 답이<br class="br-m"> 하나의 방향으로 정렬됩니다</div><p class="st4-d">발견–탐색–결정 고객 여정 위에 콘텐츠를 놓고, 이번 달과 다음 달 할 일을 기준에 따라 정해요. <strong>급한 일도 방향 안에서 처리하게 됩니다.</strong></p></div></div>
+    <div class="sec-head rv"><span class="label">How It Works</span><h2 class="h-sec">채우지 않으면<br><span class="em">다음으로 못 넘어가게</span> 만들었어요.</h2>
+      <p class="sec-lead">각 클래스 끝에 워크북이 있고, 앞의 답이 다음 클래스의 재료가 돼요. 그래서 비어 있는 칸이 있으면 반드시 어딘가에서 막힙니다.</p>
     </div>
+    <div class="chain">
+      <div class="ch rv"><div class="ch-c">CLASS 02–04 · 기준 잡기</div><div class="ch-t">나는 누구고, 왜 하고, 어디에 서는가</div><p class="ch-d">업종 이름 대신 한 줄 정의를 써요. "PT샵"이 아니라 "출산 후 체력이 무너진 분을 위한 PT".</p><div class="ch-lock">여기가 비면 타겟을 못 정해요</div></div>
+      <div class="ch rv rv-d1"><div class="ch-c">CLASS 05–06 · 시장 보기</div><div class="ch-t">누구에게 팔고, 누구와 싸우는가</div><p class="ch-d">"20–40대 여성"을 상황과 감정까지 내려가 다시 쓰고, 옆 가게가 아닌 진짜 경쟁자를 찾아요.</p><div class="ch-lock">여기가 비면 차별점이 안 나와요</div></div>
+      <div class="ch rv rv-d2"><div class="ch-c">CLASS 07–08 · 표현 만들기</div><div class="ch-t">왜 나를 고르는지, 어떻게 말하는지</div><p class="ch-d">기본값이 아닌 선택 이유를 찾고, 경쟁자가 따라 쓸 수 없는 한 문장의 메시지를 만들어요.</p><div class="ch-lock">여기가 비면 콘텐츠가 흩어져요</div></div>
+      <div class="ch rv rv-d3"><div class="ch-c">CLASS 09 · 실행 설계</div><div class="ch-t">무엇부터, 어떤 순서로</div><p class="ch-d">8개의 답을 하나의 방향으로 정렬하고, 이번 달과 다음 달 할 일을 기준에 따라 정해요.</p><div class="ch-lock">여기가 비면 급한 일만 하게 돼요</div></div>
+    </div>
+    <div class="chain-cap rv">이 강의는 보는 게 아니라 <strong>쓰는 것</strong>이에요. 그래서 내용을 이해하는 것보다, 직접 쓰다가 <strong>막히는 경험</strong>이 내 문제를 알려줍니다.</div>
   </div>
 </section>
 
-<!-- [6c] 진단 지도 — '이게 문제였구나'가 일어나는 원리 -->
+<!-- [11] 진단 지도 -->
 <section class="sec bt">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">Self-Diagnosis</span><h2 class="h-sec">워크북이 막히는 칸,<br>그게 <span class="em">당신의 진짜 문제</span>입니다.</h2>
-      <p class="sec-lead">클래스마다 끝에 워크북이 있어요. 채우지 않으면 다음 클래스에서 막히도록 설계했습니다. 그래서 읽다 보면 내가 문제라고 믿었던 것과 진짜 원인이 갈라져 보여요.</p>
+    <div class="sec-head rv"><span class="label">Diagnosis Map</span><h2 class="h-sec">막히는 곳에서 드러나는<br><span class="em">진짜 원인</span></h2>
+      <p class="sec-lead">먼저 읽은 분들이 "이게 문제였구나" 하고 멈춘 지점을 모았어요. 내가 문제라고 믿었던 것과 진짜 원인은 대부분 달랐습니다.</p>
     </div>
     <div class="map rv rv-d1">
       <div class="map-row map-head"><span>내가 생각한 문제</span><span></span><span>진짜 원인</span></div>
@@ -561,84 +514,40 @@ a{color:inherit;text-decoration:none}
       <div class="map-row"><span class="map-a">로고·디자인을 바꿔야 한다</span><span class="map-x">→</span><span class="map-b">표면만 손보고 있다<small>Class 01 기준</small></span></div>
       <div class="map-row"><span class="map-a">바쁜데 남는 게 없다</span><span class="map-x">→</span><span class="map-b">방향 없이 급한 일만 한다<small>Class 09 실행</small></span></div>
     </div>
-    <div class="map-key rv rv-d1">문제를 알려주는 강의가 아니라,<br class="br-m"> <b class="em">스스로 찾게 만드는</b> 클래스예요.<span>그래서 남이 내린 진단보다 오래 남고, 다음에 무엇을 할지도 직접 정할 수 있습니다.</span></div>
   </div>
 </section>
 
-<!-- [6d] 비교표 -->
+<!-- [12] 1분 맛보기 — 약속을 페이지 안에서 직접 경험 (BC07 POP/POD) -->
 <section class="sec sec-deep bt">
   <div class="wrap">
-    <div class="sec-head c rv"><span class="label">Why This Class</span><h2 class="h-sec">왜 또 다른 마케팅 강의가 아닌<br><span class="em">브랜딩 클래스</span>여야 하나?</h2><p class="sec-lead">같은 '강의'가 아닙니다. 다루는 순서부터 다릅니다.</p></div>
-    <div class="cmp rv rv-d1">
-      <div class="cmp-r h"><div>일반 마케팅 강의</div><div>RE:BRAND 브랜딩 클래스</div></div>
-      <div class="cmp-r"><div>"어떻게 보여줄까"</div><div>"무엇을, 누구에게"</div></div>
-      <div class="cmp-r"><div>모두에게 같은 공식</div><div>나만의 답을 끌어내는 질문</div></div>
-      <div class="cmp-r"><div>듣고 나면 끝</div><div>쓰고 나면 사업 기획서</div></div>
-      <div class="cmp-r"><div>채널이 바뀌면 다시 배움</div><div>어떤 채널에도 쓰는 기준</div></div>
-      <div class="cmp-r"><div>문제를 알려줌</div><div>문제를 스스로 찾게 함</div></div>
-      <div class="cmp-r"><div>트렌드 중심 (변화 레이어)</div><div>시간이 지나도 남는 것 (고정 레이어)</div></div>
-    </div>
-    <p class="note c">※ 특정 강의를 지칭하지 않으며, 일반적인 차이를 비교한 것입니다.</p>
-  </div>
-</section>
-
-<!-- [6e] 3층 구조 -->
-<section class="sec bt">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="label">Structure</span><h2 class="h-sec">뼈대 · 직감 · 심장,<br><span class="em">3층으로 짓는 브랜드</span></h2></div>
-    <div class="layer-wrap">
-      <div class="rings rv" aria-hidden="true">
-        <div class="ring r1"><span class="rl">직감 · 표현</span></div>
-        <div class="ring r2"><span class="rl">뼈대 · 기준</span></div>
-        <div class="ring r3"><span class="rl">심장<br>WHY</span></div>
+    <div class="sec-head c rv"><span class="label">1-Minute Preview</span><h2 class="h-sec">말로 설명하는 대신,<br><span class="em">지금 한 번 겪어보세요</span></h2><p class="sec-lead">Class 07 워크북의 첫 질문이에요.</p></div>
+    <div class="try rv rv-d1" id="tryBox">
+      <div class="try-q">내 소개글이나 상세페이지에 들어 있는 장점을 모두 골라보세요.</div>
+      <div class="try-h">솔직하게 고를수록 정확해요.</div>
+      <div class="try-opts">
+        <button type="button" class="try-opt">친절해요</button>
+        <button type="button" class="try-opt">꼼꼼한 상담</button>
+        <button type="button" class="try-opt">경력 10년</button>
+        <button type="button" class="try-opt">청결·위생 철저</button>
+        <button type="button" class="try-opt">합리적인 가격</button>
+        <button type="button" class="try-opt">최고의 퀄리티</button>
+        <button type="button" class="try-opt">고객 만족 최우선</button>
+        <button type="button" class="try-opt">전문가가 직접</button>
       </div>
-      <div class="layers">
-        <div class="lay rv"><div class="lay-k">1ST · 뼈대</div><div class="lay-t">기준: 정체성 · 포지셔닝 · 타겟</div><p class="lay-d">모든 결정이 기댈 구조예요. 이게 없으면 콘텐츠도 가격도 그날 기분에 따라 흔들립니다.</p></div>
-        <div class="lay rv rv-d1"><div class="lay-k">2ND · 직감</div><div class="lay-t">표현: 차별화 · 메시지</div><p class="lay-d">피드를 넘기던 엄지가 내 계정에서 멈추는 이유예요. 70점짜리 세 개가 아니라 90점짜리 하나를 고릅니다.</p></div>
-        <div class="lay core rv rv-d2"><div class="lay-k">CORE · 심장</div><div class="lay-t">이유: Why</div><p class="lay-d">"이 사람한테 사고 싶다"는 감정의 출처예요. 사람은 감정으로 결정하고 논리로 합리화합니다. 할인으로 온 고객은 할인이 끝나면 떠나지만, Why로 연결된 고객은 남아요.</p></div>
+      <button type="button" class="btn btn-p try-go" id="tryGo">결과 보기 <span class="arr">→</span></button>
+      <div class="try-res" id="tryRes">
+        <div class="big" id="tryBig"></div>
+        <p>이건 <strong>POP(Points of Parity)</strong>, 없으면 탈락하지만 있다고 선택받지는 않는 <strong>기본값</strong>이에요. 다른 곳도 다 똑같이 써요. 손님이 나를 고르는 이유는 <strong>POD(Points of Difference)</strong>에 있고, 70점짜리 세 개보다 90점짜리 하나가 기억됩니다.</p>
+        <div class="from">→ 나만의 90점 하나를 찾는 과정이 Class 07에 있어요</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- [6f] 제공물 -->
-<section class="sec sec-deep bt">
-  <div class="wrap">
-    <p class="bridge rv">진단하는 것만큼,<br class="br-m"> 손에 무엇이 남는지도 중요합니다</p>
-    <div class="sec-head c rv"><span class="label">What You Get</span><h2 class="h-sec">읽고 끝나지 않는<br><span class="em">4가지 결과물</span></h2></div>
-    <div class="del-grid">
-      <div class="del-card rv"><div class="del-thumb">클래스 화면 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">CLASS</span>텍스트 클래스 9세션</div><p class="del-desc">수많은 브랜딩·마케팅 개념 중 소규모 사업에 필요한 핵심만 추린 9개의 클래스. 언제든 다시 꺼내 읽는 평생 소장.</p></div></div>
-      <div class="del-card rv rv-d1"><div class="del-thumb">워크북 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">WORKBOOK</span>워크북 8문항</div><p class="del-desc">실제 컨설팅에서 효과를 본 질문을 그대로 담았어요. 막히는 칸이 진단이 되고, 채운 답이 사업 기획서가 됩니다.</p></div></div>
-      <div class="del-card rv"><div class="del-thumb">가이드라인 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">GUIDELINE</span>브랜드 가이드라인 7섹션</div><p class="del-desc">워크북 답변이 하나로 조립되는 브랜드 기준서. 직원·외주·AI에게 그대로 건넬 수 있는 문서가 됩니다.</p></div></div>
-      <div class="del-card rv rv-d1"><div class="del-thumb">채널 적용 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">APPLY</span>채널별 마케팅 적용</div><p class="del-desc">인스타 프로필·플레이스 소개글·릴스 훅·상세페이지까지, 잡은 방향을 실제 채널 문장으로 옮기는 가이드.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- [6g] 개념 띠배너 -->
-<div class="marq" aria-hidden="true"><div class="marq-in" id="marq"><span>정체성</span><span>좁히면 넓어진다</span><span>자기부정 공식</span><span>골든서클</span><span>Why의 3요소</span><span>프로세스 이코노미</span><span>포지셔닝</span><span>심적회계</span><span>콜드 리딩 vs 핫 리딩</span><span>타겟의 3레이어</span><span>스니저 효과</span><span>전문가의 저주</span><span>부촌 오류</span><span>대체재</span><span>비소비 경쟁</span><span>POP vs POD</span><span>70점 셋 vs 90점 하나</span><span>차별화 3방향</span><span>진정성 = 정합성</span><span>메시지 공식</span><span>메시지 확인 3기준</span><span>고객 여정 3단계</span><span>자발적 특성 전이</span><span>브랜딩 사이클</span></div></div>
-
-<!-- [6h] 커리큘럼 — 클래스별 와우 포인트 -->
-<section class="sec-cur">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="label">Curriculum</span><h2 class="h-sec">9개의 클래스,<br>클래스마다 <span class="em">"아, 이거였구나"</span></h2><p class="sec-lead">각 클래스에서 많은 분들이 멈춰 선 문장을 함께 적었어요.</p></div>
-    <div class="cur-item rv"><div class="cur-num">00</div><div class="cur-body"><div class="cur-title">브랜딩을 시작하기 전에</div><p class="cur-wow">인스타·릴스·플레이스·광고를 다 해도 문의가 없던 PT샵. 핵심은 <b>"얼마나 많이"가 아니라 "누가 볼 것인가"</b>였어요.</p><div class="cur-eff">→ 마케팅이 어려웠던 진짜 이유를 압니다 · 무료 공개</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">01</div><div class="cur-body"><div class="cur-title">브랜딩의 기준</div><p class="cur-wow">명료함의 3단계. 많은 분들이 <b>"안에는 있는데 말이 안 되는" 2단계</b>에 머물러 있어요.</p><div class="cur-eff">→ 내 명료함이 어느 단계인지 진단합니다</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">02</div><div class="cur-body"><div class="cur-title">정체성: 당신은 누구인가</div><p class="cur-wow">"PT샵이에요"보다 "어머니를 위한 PT"가 훨씬 강하게 기억돼요. <b>좁히면 넓어집니다.</b></p><div class="cur-eff">→ 모든 결정의 기준이 되는 한 줄 정의가 생깁니다</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">03</div><div class="cur-body"><div class="cur-title">Why: 왜 굳이 이 일을 하는가</div><p class="cur-wow">공식을 알아도 <b>Story 자리에 넣을 게 없다면</b>, 문제는 공식이 아니라 Why예요.</p><div class="cur-eff">→ 가격 경쟁에 빠지지 않는 이유를 갖게 됩니다</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">04</div><div class="cur-body"><div class="cur-title">포지셔닝: 고객 머릿속 나의 자리</div><p class="cur-wow">"스몰 럭셔리" 네일샵의 비교 대상은 옆 네일샵이 아니라 <b>커피 한 잔의 사치</b>예요.</p><div class="cur-eff">→ 비교 대상이 바뀌면 가격 기준이 바뀝니다</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">05</div><div class="cur-body"><div class="cur-title">타겟: 사람이 아니라 상황</div><p class="cur-wow">"20–40대 여성"은 2,000만 명이에요. 그리고 <b>돈이 있는 것과 그 돈을 쓸 이유가 있는 것</b>은 다릅니다.</p><div class="cur-eff">→ 고객의 상황·감정·검색어까지 내려갑니다</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">06</div><div class="cur-body"><div class="cur-title">경쟁자: 진짜 상대는 누구인가</div><p class="cur-wow">가장 강력한 경쟁자는 옆 가게가 아니라 <b>"지금 당장 안 해도 되는 것 같은 느낌"</b>이에요.</p><div class="cur-eff">→ 경쟁자의 한계에서 나의 빈자리를 찾습니다</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">07</div><div class="cur-body"><div class="cur-title">차별화: 고객이 고르는 이유</div><p class="cur-wow"><b>"친절해요, 청결해요, 경력 10년"</b>은 차별점이 아니에요. 다른 곳도 다 있는 기본값입니다.</p><div class="cur-eff">→ 70점 세 개 대신 90점 하나를 정합니다</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">08</div><div class="cur-body"><div class="cur-title">메시지: 어떻게 말할 것인가</div><p class="cur-wow">콘텐츠가 없어서가 아니에요. <b>메시지가 없는 콘텐츠를 100개</b> 올린 거예요.</p><div class="cur-eff">→ "나 얘기야" · 차별화 · 전환, 3기준을 통과하는 문장</div></div></div>
-    <div class="cur-item rv"><div class="cur-num">09</div><div class="cur-body"><div class="cur-title">실행: 방향 위에서 움직이기</div><p class="cur-wow">불안하면 올리고, 문의가 없으면 할인하고, 그러다 번아웃. <b>방향이 없으면 급한 일만 합니다.</b></p><div class="cur-eff">→ 8가지 답이 하나의 사업 기획서가 됩니다</div></div></div>
-  </div>
-</section>
-
-<!-- [6i] Before / After — 1c 약속 회수 -->
+<!-- [13] Before / After — 이면이 생기면 표면의 말이 바뀐다 -->
 <section class="sec bt">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">Before / After</span><h2 class="h-sec">기준이 생기면,<br><span class="em">하는 말이 달라집니다</span></h2><p class="sec-lead">기준이 생기면 같은 인스타, 같은 플레이스에서 하는 말이 달라져요. 클래스에 실린 적용 예시예요.</p></div>
+    <div class="sec-head rv"><span class="label">Before / After</span><h2 class="h-sec">이면이 채워지면,<br><span class="em">표면의 말이 달라집니다</span></h2><p class="sec-lead">클래스에 실린 적용 예시예요. 더 많이 올린 게 아니라, 무슨 말을 할지가 생긴 거예요.</p></div>
     <div class="ba-list">
       <div class="ba rv"><div class="ba-ch">인스타 프로필</div><div class="ba-b">피부관리 전문</div><div class="ba-a">레이저 후 예민해진 분을 위한 피부 장벽 회복</div></div>
       <div class="ba rv"><div class="ba-ch">네이버 플레이스</div><div class="ba-b">고객 만족을 위해 최선을 다하겠습니다</div><div class="ba-a">레이저 받고 더 예민해지셨나요? 여기는 다릅니다</div></div>
@@ -646,62 +555,91 @@ a{color:inherit;text-decoration:none}
       <div class="ba rv"><div class="ba-ch">검색 키워드</div><div class="ba-b">에스테틱 추천</div><div class="ba-a">성인여드름 비수술 / 레이저 후 여드름</div></div>
       <div class="ba rv"><div class="ba-ch">광고 메시지</div><div class="ba-b">"360도 영상을 찍어보세요"</div><div class="ba-a">"5살 생일은 한 번뿐이에요"</div></div>
     </div>
-    <p class="ba-cap rv">더 많이 올린 게 아니라,<br class="br-m"> <span class="em">무슨 말을 할지</span>가 생긴 겁니다.</p>
   </div>
 </section>
 
-
-<!-- ═══════════════ 4막 · 결정을 막는 장벽 제거 ═══════════════ -->
-
-<!-- [7] 읽는 법 + 주의 -->
-<section class="sec sec-deep bt">
+<!-- [14] 커리큘럼 — 뼈대·직감·심장 구조로 묶고, 클래스별 깨달음 -->
+<section class="sec-cur">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">How To Read</span><h2 class="h-sec">보는 게 아니라 쓰는 것.<br><span class="em">이렇게 읽으세요</span></h2></div>
-    <div class="how-grid">
-      <div class="how rv"><span class="how-s">STEP 1</span><div class="how-t">Class 00부터<br>순서대로</div><p class="how-d">앞 클래스의 답이 다음 클래스의 재료예요. 하루에 한 클래스면 충분합니다.</p></div>
-      <div class="how rv rv-d1"><span class="how-s">STEP 2</span><div class="how-t">클래스 끝 워크북을<br>직접 채우기</div><p class="how-d">완벽하지 않아도 괜찮아요. 지금 떠오르는 답을 먼저 적으세요.</p></div>
-      <div class="how rv rv-d2"><span class="how-s">STEP 3</span><div class="how-t">막힌 칸에<br>표시해 두기</div><p class="how-d">그 칸이 지금 내 사업의 문제예요. 거기서부터 다시 읽으면 무엇을 할지 보입니다.</p></div>
-    </div>
-    <div class="warn rv rv-d1">
-      <div class="warn-t">⚠️ 이렇게 읽으면 효과가 없어요</div>
-      <ul>
-        <li><strong>워크북을 건너뛰고 읽기만</strong> 하면 좋은 이야기로 끝나요. 다음 클래스에서 막힙니다.</li>
-        <li><strong>정답을 찾으려고</strong> 하지 마세요. 이 클래스의 답은 당신 사업 안에만 있어요.</li>
-        <li><strong>읽는 것만으로 매출이 오르진 않아요.</strong> 채운 기준을 실제 채널에 옮겨야 결과가 납니다.</li>
-      </ul>
-    </div>
+    <div class="sec-head rv" style="margin-bottom:0"><span class="label">Curriculum</span><h2 class="h-sec">9개의 클래스,<br>클래스마다 <span class="em">"아, 이거였구나"</span></h2><p class="sec-lead">브랜드를 뼈대(기준)·직감(표현)·심장(이유) 순서로 짓습니다. 각 클래스에서 많은 분들이 멈춰 선 문장을 함께 적었어요.</p></div>
+    <div class="cur-grp rv">시작<span>왜 지금까지 안 됐는가</span></div>
+    <div class="cur-item rv"><div class="cur-num">00</div><div class="cur-body"><div class="cur-title">브랜딩을 시작하기 전에</div><p class="cur-wow">인스타·릴스·플레이스·광고를 다 해도 문의가 없던 PT샵. 핵심은 <b>"얼마나 많이"가 아니라 "누가 볼 것인가"</b>였어요.</p><div class="cur-eff">→ 마케팅이 어려웠던 진짜 이유를 압니다 · 무료 공개</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">01</div><div class="cur-body"><div class="cur-title">브랜딩의 기준</div><p class="cur-wow">명료함의 3단계. 많은 분들이 <b>"안에는 있는데 말이 안 되는" 2단계</b>에 머물러 있어요.</p><div class="cur-eff">→ 내 명료함이 어느 단계인지 진단합니다</div></div></div>
+    <div class="cur-grp rv">심장 · 뼈대<span>이유와 기준</span></div>
+    <div class="cur-item rv"><div class="cur-num">02</div><div class="cur-body"><div class="cur-title">정체성: 당신은 누구인가</div><p class="cur-wow">"PT샵이에요"보다 "어머니를 위한 PT"가 훨씬 강하게 기억돼요. <b>좁히면 넓어집니다.</b></p><div class="cur-eff">→ 모든 결정의 기준이 되는 한 줄 정의가 생깁니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">03</div><div class="cur-body"><div class="cur-title">Why: 왜 굳이 이 일을 하는가</div><p class="cur-wow">공식을 알아도 <b>Story 자리에 넣을 게 없다면</b>, 문제는 공식이 아니라 Why예요.</p><div class="cur-eff">→ 가격 경쟁에 빠지지 않는 이유를 갖게 됩니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">04</div><div class="cur-body"><div class="cur-title">포지셔닝: 고객 머릿속 나의 자리</div><p class="cur-wow">"스몰 럭셔리" 네일샵의 비교 대상은 옆 네일샵이 아니라 <b>커피 한 잔의 사치</b>예요.</p><div class="cur-eff">→ 비교 대상이 바뀌면 가격 기준이 바뀝니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">05</div><div class="cur-body"><div class="cur-title">타겟: 사람이 아니라 상황</div><p class="cur-wow">"20–40대 여성"은 2,000만 명이에요. 그리고 <b>돈이 있는 것과 그 돈을 쓸 이유가 있는 것</b>은 다릅니다.</p><div class="cur-eff">→ 고객의 상황·감정·검색어까지 내려갑니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">06</div><div class="cur-body"><div class="cur-title">경쟁자: 진짜 상대는 누구인가</div><p class="cur-wow">가장 강력한 경쟁자는 옆 가게가 아니라 <b>"지금 당장 안 해도 되는 것 같은 느낌"</b>이에요.</p><div class="cur-eff">→ 경쟁자의 한계에서 나의 빈자리를 찾습니다</div></div></div>
+    <div class="cur-grp rv">직감<span>표현과 실행</span></div>
+    <div class="cur-item rv"><div class="cur-num">07</div><div class="cur-body"><div class="cur-title">차별화: 고객이 고르는 이유</div><p class="cur-wow"><b>"친절해요, 청결해요, 경력 10년"</b>은 차별점이 아니에요. 다른 곳도 다 있는 기본값입니다.</p><div class="cur-eff">→ 70점 세 개 대신 90점 하나를 정합니다</div></div></div>
+    <div class="cur-item rv"><div class="cur-num">08</div><div class="cur-body"><div class="cur-title">메시지: 어떻게 말할 것인가</div><p class="cur-wow">콘텐츠가 없어서가 아니에요. <b>메시지가 없는 콘텐츠를 100개</b> 올린 거예요.</p><div class="cur-eff">→ "나 얘기야" · 차별화 · 전환, 3기준을 통과하는 문장</div></div></div>
+    <div class="cur-item rv" style="border-bottom:1px solid var(--line-w)"><div class="cur-num">09</div><div class="cur-body"><div class="cur-title">실행: 방향 위에서 움직이기</div><p class="cur-wow">불안하면 올리고, 문의가 없으면 할인하고, 그러다 번아웃. <b>방향이 없으면 급한 일만 합니다.</b></p><div class="cur-eff">→ 8가지 답이 하나의 사업 기획서가 됩니다</div></div></div>
   </div>
 </section>
 
-<!-- [7b] 업종 근거 + 참고 이론 -->
+<!-- [15] 결과물 -->
 <section class="sec bt">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">Evidence</span><h2 class="h-sec">"내 업종에도 될까?"</h2><p class="sec-lead">정체성, 타겟, 포지셔닝, 메시지는 업종과 상관없는 모든 사업의 뼈대예요. 클래스의 예시도 소규모 사업 현장에서 가져왔습니다.</p></div>
+    <div class="sec-head rv"><span class="label">What You Get</span><h2 class="h-sec">다 읽고 나면<br><span class="em">손에 남는 것</span></h2></div>
+    <div class="del-grid">
+      <div class="del-card rv"><div class="del-thumb">클래스 화면 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">CLASS</span>텍스트 클래스 9세션</div><p class="del-desc">수많은 브랜딩·마케팅 개념 중 소규모 사업에 필요한 핵심만 추린 9개의 클래스. 언제든 다시 꺼내 읽는 평생 소장.</p></div></div>
+      <div class="del-card rv rv-d1"><div class="del-thumb">워크북 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">WORKBOOK</span>워크북 8문항</div><p class="del-desc">막히는 칸이 진단이 되고, 채운 답이 사업 기획서가 됩니다.</p></div></div>
+      <div class="del-card rv"><div class="del-thumb">가이드라인 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">GUIDELINE</span>브랜드 가이드라인 7섹션</div><p class="del-desc">워크북 답변이 하나로 조립되는 브랜드 기준서. 직원·외주·AI에게 그대로 건넬 수 있어요. 기준이 있어야 AI에게도 일을 맡길 수 있습니다.</p></div></div>
+      <div class="del-card rv rv-d1"><div class="del-thumb">채널 적용 이미지</div><div class="del-info"><div class="del-name"><span class="d-tag">APPLY</span>채널별 마케팅 적용</div><p class="del-desc">인스타 프로필·플레이스 소개글·릴스 훅·상세페이지까지, 잡은 방향을 실제 채널 문장으로 옮기는 가이드.</p></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ 4막 · 안심과 결정 ═══════════════ -->
+
+<!-- [16] "또 강의?" — 강의 루프 vs 기준 루프 (BC09 브랜딩 사이클) -->
+<section class="sec sec-deep bt">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Not Another Course</span><h2 class="h-sec">"이것도 결국<br class="br-m"> 또 강의 아닌가요?"</h2><p class="sec-lead">강의를 더 듣는다고 달라지지 않았던 이유는, 그 강의들이 같은 루프 안에 있었기 때문이에요.</p></div>
+    <div class="loops">
+      <div class="loop rv">
+        <div class="loop-k">지금까지의 루프</div>
+        <div class="loop-t">강의 → 시도 → 실망 → 피로</div>
+        <div class="loop-steps"><div class="ls"><i>1</i>새 공식을 배운다</div><div class="ls"><i>2</i>그대로 따라 해본다</div><div class="ls"><i>3</i>결과가 안 나온다</div><div class="ls"><i>4</i>지쳐서 다른 강의를 찾는다</div></div>
+        <div class="ls-back">↺ 다시 1번으로. 왜 안 됐는지는 모른 채</div>
+      </div>
+      <div class="loop good rv rv-d1">
+        <div class="loop-k">이 클래스가 만드는 루프</div>
+        <div class="loop-t">기준 → 실행 → 피드백 → 업데이트</div>
+        <div class="loop-steps"><div class="ls"><i>1</i>8가지 질문으로 기준을 세운다</div><div class="ls"><i>2</i>기준대로 마케팅한다</div><div class="ls"><i>3</i>시장 반응을 본다</div><div class="ls"><i>4</i>워크북을 꺼내 기준을 고친다</div></div>
+        <div class="ls-back">↺ 다시 1번으로. 이번엔 무엇을 고칠지 알고</div>
+      </div>
+    </div>
+    <p class="note">기준 없는 실행은 도박이고, 기준 있는 실행은 실험이에요. 잘돼도 왜 잘됐는지, 안 돼도 뭘 고칠지 알게 됩니다.</p>
+  </div>
+</section>
+
+<!-- [17] 업종 -->
+<section class="sec bt">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">Any Business</span><h2 class="h-sec">"내 업종에도 될까?"</h2><p class="sec-lead">정체성, 타겟, 포지셔닝, 메시지는 업종과 상관없는 모든 사업의 이면이에요. 클래스의 한 줄 정의 예시도 소규모 사업 현장에서 가져왔습니다.</p></div>
     <div class="case-grid rv rv-d1">
-      <div class="case-chip"><div class="c-name">PT · 재활</div><div class="c-desc">수술을 권유받은 디스크 재활 전문</div></div>
-      <div class="case-chip"><div class="c-name">피부 관리</div><div class="c-desc">레이저 후 손상 피부 회복 전문</div></div>
-      <div class="case-chip"><div class="c-name">동물병원</div><div class="c-desc">반려견 슬개골만 15년</div></div>
+      <div class="case-chip"><div class="c-name">PT · 재활</div><div class="c-desc">무용 전공자의 부상 없는 몸 관리</div></div>
+      <div class="case-chip"><div class="c-name">피부 관리</div><div class="c-desc">레이저 후 예민해진 피부를 자극 없이 회복</div></div>
+      <div class="case-chip"><div class="c-name">동물병원</div><div class="c-desc">슬개골 문제가 있는 강아지 전문</div></div>
       <div class="case-chip"><div class="c-name">네일샵</div><div class="c-desc">얇은 손톱도 3–4주 유지되는 젤 네일</div></div>
       <div class="case-chip"><div class="c-name">카페</div><div class="c-desc">로스팅 날짜를 확인하고 마시는 커피</div></div>
-      <div class="case-chip"><div class="c-name">온라인 클래스</div><div class="c-desc">공식이 아닌 기준을 파는 강의</div></div>
+      <div class="case-chip"><div class="c-name">반찬가게</div><div class="c-desc">반찬이 아니라 시간을 돌려주는 곳</div></div>
     </div>
     <div class="case-hero rv rv-d2">
       <div class="ch-label">실제 사례</div>
       <div class="ch-body">신규 문의가 월 1–2명이던 PT샵이, 타겟 하나를 바꾸고 <span class="em">한 달 만에 팔로워 3,000명 · 댓글 1만 · 문의 수십 건.</span></div>
       <div class="ch-note">광고비는 0원이었습니다.</div>
     </div>
-    <div class="refs rv rv-d1">
-      <div class="ref"><b>골든서클</b>사이먼 사이넥. 사람들은 무엇을 하느냐가 아니라 왜 하느냐에 반응한다.</div>
-      <div class="ref"><b>감정과 의사결정</b>안토니오 다마지오. 감정 처리가 손상되면 논리적 분석은 해도 결정을 내리지 못한다.</div>
-      <div class="ref"><b>마켓 리더의 법칙</b>트레이시·위어즈마. 간편·상품·밀착 중 한 방향에서 1등이 되어야 한다.</div>
-    </div>
   </div>
 </section>
 
-<!-- [7c] 결과 후기 -->
+<!-- [18] 결과 후기 -->
 <section class="sec sec-deep bt">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">After</span><h2 class="h-sec">기준이 생긴 뒤,<br><span class="em">달라진 것들</span></h2></div>
+    <div class="sec-head rv"><span class="label">After</span><h2 class="h-sec">문제를 알고 나서,<br><span class="em">달라진 것들</span></h2></div>
     <div class="voice-cards">
       <div class="voice-card rv"><div class="voice-stars">★★★★★</div><p class="voice-txt">피드 몇 개를 기준대로 다시 썼을 뿐인데, <strong>수업료를 2배로 올려도</strong> 문의가 줄지 않았어요.</p><div class="voice-who"><span class="v-av">R</span><span><b>후기 자리</b> · 실제 후기로 교체</span></div></div>
       <div class="voice-card rv rv-d1"><div class="voice-stars">★★★★★</div><p class="voice-txt">캐러셀 3개를 메시지 공식대로 만들었더니 <strong>매출이 1.5배</strong>가 됐어요. 뭘 올릴지 고민하는 시간도 사라졌고요.</p><div class="voice-who"><span class="v-av">R</span><span><b>후기 자리</b> · 실제 후기로 교체</span></div></div>
@@ -711,7 +649,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [7d] 이런 분께 필요해요 -->
+<!-- [19] 이런 분께 -->
 <section class="sec bt">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">For You</span><h2 class="h-sec">이런 분께<br><span class="em">필요한 클래스</span>예요</h2></div>
@@ -727,7 +665,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [7e] 자가진단 — 8가지 질문 -->
+<!-- [20] 자가진단 — 8가지 질문 -->
 <section class="sec sec-deep bt">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">Self-Check</span><h2 class="h-sec">지금 바로<br><span class="em">몇 개에 답할 수 있나요?</span></h2><p class="sec-lead">자신 있게 답할 수 있는 것만 체크해 보세요. 체크하지 못한 칸이 먼저 읽을 클래스입니다.</p></div>
@@ -745,12 +683,12 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [8] PRICE + 무료 체험 (위험 반전) -->
+<!-- [21] PRICE + Class 00 무료 (위험 반전) -->
 <section class="sec-price">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">Price</span><h2 class="h-sec">강의 한 번 더 듣는 값으로,<br>다음 강의가 <span class="em">필요 없는 기준</span>을.</h2></div>
     <div class="price-story rv">
-      <p>1,000만 원짜리 강의도, 1,200만 원짜리 컨설팅도 기준이 없으면 같은 자리로 돌아와요. 공식은 채널과 트렌드를 따라 계속 바뀌니까요.</p>
+      <p>1,000만 원짜리 강의도, 1,200만 원짜리 컨설팅도 이면이 비어 있으면 같은 자리로 돌아와요. 공식은 채널과 트렌드를 따라 계속 바뀌니까요.</p>
       <p><strong>기준은 한 번 세우면 어떤 채널, 어떤 공식에도 쓸 수 있어요.</strong> 사업이 커지면 워크북을 다시 꺼내 업데이트하면 됩니다.</p>
     </div>
     <div class="price-box rv">
@@ -765,22 +703,21 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [8b] FAQ — 걱정을 먼저 꺼내기 -->
+<!-- [22] FAQ -->
 <section class="sec bt">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">FAQ</span><h2 class="h-sec">궁금한 점,<br>미리 풀어드려요</h2></div>
     <div class="faq-item rv"><div class="faq-q">읽기만 하면 매출이 오르나요?</div><div class="faq-a">솔직히, 읽는 것만으로는 오르지 않아요. 워크북을 채우고 실제 채널에 옮겨야 합니다. 다만 방향이 잡힌 실행은 속도가 달라요. 무엇을 해야 할지 고민하는 시간부터 줄어듭니다.</div></div>
-    <div class="faq-item rv"><div class="faq-q">마케팅 강의를 이미 많이 들었는데, 또 강의 아닌가요?</div><div class="faq-a">대부분의 강의는 "어떻게 보여줄까"를 가르쳐요. 이 클래스는 그 앞 단계인 "무엇을, 누구에게"를 정합니다. 그리고 정답을 알려주는 대신, 질문에 답하면서 내 문제를 스스로 찾게 해요.</div></div>
     <div class="faq-item rv"><div class="faq-q">제 문제가 뭔지 정말 알 수 있을까요?</div><div class="faq-a">클래스마다 워크북이 있고, 채우지 않으면 다음 클래스에서 막히도록 설계했어요. 막히는 칸이 지금 사업의 문제가 있는 자리예요. 위의 자가진단처럼 8개 질문 중 어디서 막히는지가 곧 진단입니다.</div></div>
+    <div class="faq-item rv"><div class="faq-q">어떻게 읽으면 되나요?</div><div class="faq-a">Class 00부터 순서대로, 하루에 한 클래스씩 읽고 클래스 끝 워크북을 바로 채우세요. 완벽하지 않아도 괜찮아요. 막힌 칸은 표시해 두고 넘어갔다가, 그 클래스부터 다시 읽으면 무엇을 할지 보입니다.</div></div>
     <div class="faq-item rv"><div class="faq-q">사업을 아직 시작하지 않았는데 괜찮은가요?</div><div class="faq-a">오히려 시작 전에 읽는 게 더 좋아요. 방향 없이 뛰다가 돌아오는 데 더 많은 시간과 돈이 듭니다.</div></div>
     <div class="faq-item rv"><div class="faq-q">온라인/오프라인, 업종 상관없나요?</div><div class="faq-a">상관없습니다. 정체성, 타겟, 포지셔닝, 메시지는 채널과 업종을 가리지 않는 모든 사업의 뼈대예요.</div></div>
-    <div class="faq-item rv"><div class="faq-q">한 번 읽으면 끝인가요?</div><div class="faq-a">아니요. 사업이 성장하면 타겟도, 경쟁 환경도, 메시지도 바뀌어요. 브랜딩 → 마케팅 → 피드백 → 리브랜딩. 워크북은 그때마다 다시 꺼내 업데이트하는 문서입니다.</div></div>
     <div class="faq-item rv"><div class="faq-q">RE:WORKSPACE(노션 템플릿)와는 무슨 관계인가요?</div><div class="faq-a">브랜딩 클래스가 방향을 잡는 과정이라면, RE:WORKSPACE는 그 방향을 실행하고 관리하는 도구예요.</div></div>
     <div class="faq-item rv"><div class="faq-q">환불은 어떻게 되나요?</div><div class="faq-a">디지털 콘텐츠 특성상 구매 후 열람 시 환불이 어려워요. 그래서 Class 00을 무료로 공개하고 있습니다. 먼저 읽어보고 결정하세요.</div></div>
   </div>
 </section>
 
-<!-- [9] FINAL CTA -->
+<!-- [23] FINAL CTA -->
 <section class="cta-final">
   <div class="wrap">
     <p class="h-big rv">더 많이 하기 전에,<br><span class="em">무엇이 문제인지</span>부터.</p>
@@ -821,8 +758,17 @@ a{color:inherit;text-decoration:none}
   nums.forEach(function(n){io.observe(n)});
 })();
 
-/* 띠배너 루프용 복제 */
-(function(){var m=document.getElementById('marq');if(m)m.innerHTML+=m.innerHTML})();
+/* 1분 맛보기 — POP 테스트 */
+(function(){
+  var box=document.getElementById('tryBox');if(!box)return;
+  var opts=box.querySelectorAll('.try-opt'),go=document.getElementById('tryGo'),res=document.getElementById('tryRes'),big=document.getElementById('tryBig');
+  opts.forEach(function(o){o.addEventListener('click',function(){o.classList.toggle('on')})});
+  go.addEventListener('click',function(){
+    var n=box.querySelectorAll('.try-opt.on').length;
+    big.innerHTML=n?'방금 고른 <span class="em">'+n+'개</span>, 전부 차별점이 아니에요.':'하나도 안 골랐다면, 이미 차별점을 고민해 본 분이에요. 그래도 확인해 보세요.';
+    res.classList.add('show');
+  });
+})();
 
 /* 자가진단 — 체크 못 한 질문 = 먼저 읽을 클래스 */
 (function(){
