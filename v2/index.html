@@ -337,6 +337,14 @@ a{color:inherit;text-decoration:none}
 @media(min-width:900px){.price-split{grid-template-columns:1fr 440px;gap:clamp(40px,6vw,80px)}}
 .price-split .price-story{margin-bottom:0}
 .price-split .price-box{margin:0;width:100%;max-width:520px;justify-self:center}
+
+/* 만든 사람 — 데스크톱: 왼쪽 사진 / 오른쪽 소개글·성과 */
+.story-split{display:grid;grid-template-columns:1fr;gap:var(--gap-lg)}
+@media(min-width:900px){
+  .story-split{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,5vw,64px);align-items:start}
+  .story-split .story-photo{aspect-ratio:4/5;margin-bottom:0;position:sticky;top:40px}
+  .story-split .career-grid{margin-top:clamp(28px,4vw,40px)}
+}
 </style>
 </head>
 <body>
@@ -441,19 +449,23 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <span class="label rv">만든 사람</span>
     <h2 class="h-sec rv" style="margin-bottom:var(--gap-lg)">다들 열심히 했어요.<br><span class="em">엉뚱한 곳을</span> 고쳤을 뿐.</h2>
-    <div class="story-photo rv">김낙타 대표 사진 영역</div>
-    <div class="body-text rv">
-      <p>컨설팅에서 수많은 사장님을 만났어요. 상품이 나쁜 경우는 거의 없었어요. 마케팅 공식도 다들 알고 있었고요.</p>
-      <p>그런데 콘텐츠를 바꾸고, 가격을 바꾸고, 대행사를 바꿔도 제자리였어요. <strong>뭐가 문제인지 모른 채 고치고 있었으니까요.</strong></p>
-      <p>질문을 하나씩 던지면 대답이 막히는 곳이 있었어요. 거기서 다들 "아, 이거였구나" 하셨죠. <strong>그 질문들을 순서대로 묶은 게 '브랜드가 만들어지는 과정'이에요.</strong></p>
+    <div class="story-split">
+      <div class="story-photo rv">김낙타 대표 사진 영역</div>
+      <div class="story-r">
+        <div class="body-text rv">
+          <p>컨설팅에서 수많은 사장님을 만났어요. 상품이 나쁜 경우는 거의 없었어요. 마케팅 공식도 다들 알고 있었고요.</p>
+          <p>그런데 콘텐츠를 바꾸고, 가격을 바꾸고, 대행사를 바꿔도 제자리였어요. <strong>뭐가 문제인지 모른 채 고치고 있었으니까요.</strong></p>
+          <p>질문을 하나씩 던지면 대답이 막히는 곳이 있었어요. 거기서 다들 "아, 이거였구나" 하셨죠. <strong>그 질문들을 순서대로 묶은 게 '브랜드가 만들어지는 과정'이에요.</strong></p>
+        </div>
+        <p class="story-sign rv">commel 대표 <b>김낙타</b></p>
+        <div class="career-grid rv rv-d1">
+          <div class="career-row"><span class="career-n">1,000억</span><span class="career-d">리브랜딩을 맡긴 <b>브랜드 규모</b>. 창업 준비생부터 70만 인플루언서까지 만났어요.</span></div>
+          <div class="career-row"><span class="career-n">3,800만</span><span class="career-d">광고·판매글 없이 만든 <b>첫 달 순이익</b>.</span></div>
+          <div class="career-row"><span class="career-n">3만 명</span><span class="career-d">혼자 AI로 만든 서비스의 <b>첫 달 이용자</b>.</span></div>
+        </div>
+        <p class="note">* 일부 수치는 예시이며, 실제 업력·성과로 교체 예정입니다.</p>
+      </div>
     </div>
-    <p class="story-sign rv">commel 대표 <b>김낙타</b></p>
-    <div class="career-grid rv rv-d1">
-      <div class="career-row"><span class="career-n">1,000억</span><span class="career-d">리브랜딩을 맡긴 <b>브랜드 규모</b>. 창업 준비생부터 70만 인플루언서까지 만났어요.</span></div>
-      <div class="career-row"><span class="career-n">3,800만</span><span class="career-d">광고·판매글 없이 만든 <b>첫 달 순이익</b>.</span></div>
-      <div class="career-row"><span class="career-n">3만 명</span><span class="career-d">혼자 AI로 만든 서비스의 <b>첫 달 이용자</b>.</span></div>
-    </div>
-    <p class="note">* 일부 수치는 예시이며, 실제 업력·성과로 교체 예정입니다.</p>
   </div>
 </section>
 
