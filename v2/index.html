@@ -353,7 +353,9 @@ a{color:inherit;text-decoration:none}
 .reviews-dark .h-sec{color:#fff}
 .reviews-dark .sec-head .em{color:var(--brand);background:none}
 .reviews-dark .label{color:var(--ink);background:var(--brand)}
-.review-example{align-self:flex-start;font-size:12px;font-weight:700;color:var(--text-gray);margin-bottom:14px}
+.reviews-dark .voice-card::before{content:'';display:block;flex-shrink:0;width:24px;height:24px;margin-bottom:12px;background:var(--brand-press);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7H0zm14 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7h-5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7H0zm14 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7h-5z'/%3E%3C/svg%3E") center/contain no-repeat}
+.voice-role{font-size:var(--body-font-size);line-height:1.5;font-weight:700;color:var(--ink);margin-bottom:12px}
+.reviews-dark .voice-txt{margin-bottom:0}
 .author-profile{display:flex;align-items:center;gap:14px;margin-bottom:clamp(24px,4vw,32px);color:var(--ink)}
 .author-profile img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0}
 .author-profile-info{min-width:0}
@@ -481,9 +483,9 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="sec-head rv"><span class="label">이렇게 적용해요</span><h2 class="h-sec">나랑 똑같던<br><span class="em">사람들 이야기</span></h2></div>
     <div class="voice-cards">
-      <div class="voice-card rv"><span class="review-example">적용 예시</span><p class="voice-txt">시술 사진을 꾸준히 올려도 소개글은 늘 “꼼꼼한 피부관리”에 머물러 있다면, 워크북에서 고객의 상황을 좁혀보세요. <strong>“레이저 후 예민해진 피부를 위한 관리”처럼 누구를 돕는 곳인지 구체화할 수 있어요.</strong></p><div class="voice-who"><span><b>뷰티 살롱</b> · 워크북 활용</span></div></div>
-      <div class="voice-card rv"><span class="review-example">적용 예시</span><p class="voice-txt">조회수를 높이는 훅은 배웠는데 정작 강의를 소개할 말이 없다면, 타겟의 상황과 감정부터 적어보세요. <strong>“초보자를 위한 강의”를 넘어, 어디서 막힌 사람에게 어떤 도움을 줄지 정리하는 거예요.</strong></p><div class="voice-who"><span><b>온라인 클래스</b> · 워크북 활용</span></div></div>
-      <div class="voice-card rv"><span class="review-example">적용 예시</span><p class="voice-txt">경력과 시설을 강조해도 가격 비교만 당한다면, 고객이 선택하는 다른 방법까지 살펴보세요. <strong>혼자 홈트를 하다 중단한 사람에게 필요한 자세 피드백과 꾸준한 관리처럼, 나를 선택할 이유를 찾아보는 거예요.</strong></p><div class="voice-who"><span><b>PT샵</b> · 워크북 활용</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">뷰티 살롱 대표</div><p class="voice-txt">시술 사진을 꾸준히 올려도 소개글은 늘 “꼼꼼한 피부관리”에 머물러 있다면, 워크북에서 고객의 상황을 좁혀보세요. <strong>“레이저 후 예민해진 피부를 위한 관리”처럼 누구를 돕는 곳인지 구체화할 수 있어요.</strong></p></div>
+      <div class="voice-card rv"><div class="voice-role">온라인 클래스 운영자</div><p class="voice-txt">조회수를 높이는 훅은 배웠는데 정작 강의를 소개할 말이 없다면, 타겟의 상황과 감정부터 적어보세요. <strong>“초보자를 위한 강의”를 넘어, 어디서 막힌 사람에게 어떤 도움을 줄지 정리하는 거예요.</strong></p></div>
+      <div class="voice-card rv"><div class="voice-role">PT샵 대표</div><p class="voice-txt">경력과 시설을 강조해도 가격 비교만 당한다면, 고객이 선택하는 다른 방법까지 살펴보세요. <strong>혼자 홈트를 하다 중단한 사람에게 필요한 자세 피드백과 꾸준한 관리처럼, 나를 선택할 이유를 찾아보는 거예요.</strong></p></div>
     </div>
   </div>
 </section>
