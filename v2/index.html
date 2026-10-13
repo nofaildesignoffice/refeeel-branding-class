@@ -119,7 +119,7 @@ a{color:inherit;text-decoration:none}
 
 
 /* 대표 이야기 */
-.story-photo{width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--placeholder-bg);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:13px;margin-bottom:var(--gap-lg)}
+.story-photo{width:100%;aspect-ratio:1283/950;overflow:hidden;background:var(--placeholder-bg);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:13px;margin-bottom:var(--gap-lg)}
 .story-sign{margin-top:clamp(20px,3.4vw,26px);font-size:14px;font-weight:600;color:var(--text-light)}.story-sign b{color:var(--ink);font-weight:800}
 .career-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.5vw,16px);margin-top:var(--gap-lg)}
 .career-row{display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-width:0;padding:clamp(18px,3vw,28px) clamp(8px,1.5vw,16px);border:1px solid var(--border-light);border-radius:var(--radius-lg);background:var(--bg-white)}
@@ -373,7 +373,7 @@ a{color:inherit;text-decoration:none}
 .story-split{display:grid;grid-template-columns:1fr;gap:var(--gap-lg)}
 @media(min-width:900px){
   .story-split{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,5vw,64px);align-items:start}
-  .story-split .story-photo{aspect-ratio:3/4;margin-bottom:0;position:sticky;top:40px}
+  .story-split .story-photo{aspect-ratio:827/1103;margin-bottom:0;position:sticky;top:40px}
   .story-split .career-grid{margin-top:clamp(28px,4vw,40px)}
 }
 
@@ -420,8 +420,9 @@ a{color:inherit;text-decoration:none}
 .free-cta{text-align:center}
 .free-cta .btn{padding:17px 32px;font-size:16px}
 
-/* 대표 사진 — 모바일 4:5, 데스크톱 3:4 */
-.story-photo img{width:100%;height:100%;object-fit:cover;object-position:100% 50%;display:block}
+/* 대표 사진 — 모바일·데스크톱 각각 원본 비율 그대로 */
+.story-photo picture{display:block;width:100%;height:100%}
+.story-photo img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
@@ -503,7 +504,7 @@ a{color:inherit;text-decoration:none}
     <div class="author-profile rv"><img src="https://nofaildesignoffice.github.io/refeeel-branding-class/v2/assets/nak-ta-profile.jpg" alt="김낙타 프로필" width="64" height="64" loading="lazy"><div class="author-profile-info"><div class="author-profile-name"><span>nak__ta__</span><svg class="author-profile-badge" viewBox="0 0 24 24" role="img" aria-label="인스타그램 인증 배지"><path fill="#0095F6" d="m12 0 2.7 2 3.3-.4 1.3 3.1 3.1 1.3-.4 3.3 2 2.7-2 2.7.4 3.3-3.1 1.3-1.3 3.1-3.3-.4-2.7 2-2.7-2-3.3.4-1.3-3.1-3.1-1.3.4-3.3L0 12l2-2.7-.4-3.3 3.1-1.3 1.3-3.1 3.3.4Z"/><path d="m7 12 3.2 3.2L17 8.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="author-profile-more" aria-hidden="true">···</span></div><p class="author-profile-bio">RE:FEEEL 김낙타 | 마케팅·브랜딩 기획자</p><div class="author-profile-stats"><span>게시물 <b>94</b></span><span>팔로워 <b>5.2만</b></span><span>팔로우 <b>135</b></span></div></div></div>
     <h2 class="h-sec rv" style="margin-bottom:var(--gap-lg)">다들 다른 질문을 들고 찾아주셨지만,<br>원인은 <span class="em">이 한가지였어요.</span></h2>
     <div class="story-split">
-      <div class="story-photo rv"><img src="story-photo.jpg" alt="강연 중인 commel 대표 김낙타" width="1283" height="1226" loading="lazy"></div>
+      <div class="story-photo rv"><picture><source media="(min-width:900px)" srcset="story-photo-pc.jpg" width="827" height="1103"><img src="story-photo-m.jpg" alt="강연 중인 commel 대표 김낙타" width="1283" height="950" loading="lazy"></picture></div>
       <div class="story-r">
         <div class="body-text rv">
           <p>컨설팅에서 수많은 사장님을 만났어요. 상품이 나쁜 경우는 거의 없었어요. 마케팅 공식도 다들 알고 있었고요.</p>
