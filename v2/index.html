@@ -85,7 +85,7 @@ a{color:inherit;text-decoration:none}
 .hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 44px);pointer-events:none;mask-image:linear-gradient(90deg,transparent,#000 55%)}
 .hero .wrap{position:relative;z-index:1}
 .hero-over{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:clamp(36px,7vw,60px)}
-.hero-over .logo-mark{height:16px;color:#fff}
+.hero-over .logo-mark{height:16px;color:#fff;position:relative;top:-24px}
 .hero-over-desc{font-size:clamp(14px,2.9vw,16px);font-weight:600;line-height:1.6;color:rgba(255,255,255,.75);word-break:keep-all}
 .hero-over-brand{display:flex;align-items:center;gap:10px}.hero-over .line{width:24px;height:2px;background:var(--brand)}.hero-over span{font-size:13px;font-weight:700;letter-spacing:.2px;color:var(--brand)}
 .hero h1{margin-bottom:clamp(24px,4.4vw,36px);color:#fff}
@@ -403,9 +403,9 @@ a{color:inherit;text-decoration:none}
 <!-- [1] HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="hero-over rv"><svg class="logo-mark" role="img" aria-label="commel"><use href="#logo-commel"/></svg><p class="hero-over-desc">뭘 더 해야 할지<br>막막한 분들께</p><div class="hero-over-brand"><div class="line"></div><span>브랜드가 만들어지는 과정 · 단독 시리즈</span></div></div>
+    <div class="hero-over rv"><svg class="logo-mark" role="img" aria-label="commel"><use href="#logo-commel"/></svg><div class="hero-over-brand"><span>브랜드가 만들어지는 과정 · 단독 시리즈</span></div><p class="hero-over-desc">뭘 더 해야 할지<br>막막한 분들께</p></div>
     <h1 class="h-big rv rv-d1"><span class="hero-topic" aria-label="나의 브랜딩, 컨텐츠, 마케팅, 상품"><span aria-hidden="true">나의 <span class="hero-topic-words"><span>브랜딩</span><span>컨텐츠</span><span>마케팅</span><span>상품</span></span></span></span>뭐가 문제인지,<br><span class="em">드디어 보여요.</span></h1>
-    <p class="hero-sub rv rv-d2">콘텐츠 문제일까, 상품 문제일까, 마케팅 문제일까.<br class="br-d"> <strong>질문 8개에 답하다 보면</strong> 내 문제가 보여요.</p>
+    <p class="hero-sub rv rv-d2">콘텐츠 문제일까, 상품 문제일까, 마케팅 문제일까.<br><strong>질문 8개에 답하다 보면</strong> 내 문제가 보여요.</p>
   </div>
 </section>
 
