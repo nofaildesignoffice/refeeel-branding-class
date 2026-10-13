@@ -346,6 +346,15 @@ a{color:inherit;text-decoration:none}
 .price-split{display:grid;grid-template-columns:1fr;gap:var(--gap-lg);align-items:center}
 @media(min-width:900px){.price-split{grid-template-columns:1fr 440px;gap:clamp(40px,6vw,80px)}}
 .price-split .price-story{margin-bottom:0}
+.price-audience{margin-top:clamp(48px,8vw,80px)}
+.bc-root>section.reviews-dark{background:var(--ink);color:#fff}
+.reviews-dark .h-sec{color:#fff}
+.reviews-dark .sec-head .em{color:var(--brand);background:none}
+.reviews-dark .label{color:var(--brand);background:rgba(223,240,0,.12)}
+.review-example{align-self:flex-start;font-size:12px;font-weight:700;color:var(--text-gray);margin-bottom:14px}
+.author-profile{display:inline-flex;align-items:center;gap:12px;margin-bottom:clamp(14px,2.4vw,18px);font-size:14px;font-weight:700;color:var(--ink)}
+.author-profile img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.author-profile:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
 .price-split .price-box{margin:0;width:100%;max-width:520px;justify-self:center}
 
 /* 만든 사람 — 데스크톱: 왼쪽 사진 / 오른쪽 소개글·성과 */
@@ -437,13 +446,8 @@ a{color:inherit;text-decoration:none}
         <div class="price-note">단독 시리즈 · VAT 포함</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- [18] 이런 분께 -->
-<section class="sec bt bg-w">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="label">이런 분께</span><h2 class="h-sec">누구에게<br><span class="em">필요한 내용일까요?</span></h2></div>
+    <div class="price-audience">
+    <div class="sec-head rv"><h2 class="h-sec">누구에게<br><span class="em">필요한 내용일까요?</span></h2></div>
     <div class="who-grid">
       <div class="who rv"><div class="who-h">콘텐츠</div><ul><li>매일 올리는데 문의가 안 느는 분</li><li>"여기 뭐 하는 곳이에요?" 소리를 듣는 분</li></ul></div>
       <div class="who rv rv-d1"><div class="who-h">마케팅</div><ul><li>인스타·블로그·광고 다 해봤는데 그대로인 분</li><li>공식은 아는데 나한테만 안 먹히는 분</li></ul></div>
@@ -453,19 +457,19 @@ a{color:inherit;text-decoration:none}
       <div class="who rv rv-d1"><div class="who-h">방향</div><ul><li>매일 바쁜데 3개월 전이랑 똑같은 분</li><li>AI한테 뭘 시켜야 할지 모르겠는 분</li></ul></div>
     </div>
     <div class="who-last rv"><span class="who-last-intro">그리고,</span><span class="em">내 문제가 뭔지조차 모르겠는 분</span></div>
+    </div>
   </div>
 </section>
 
 <!-- [5] 나 같은 사람 -->
-<section class="sec bt bg-t">
+<section class="sec bt reviews-dark">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">먼저 읽은 분들</span><h2 class="h-sec">나랑 똑같던<br><span class="em">사람들 이야기</span></h2></div>
+    <div class="sec-head rv"><span class="label">이렇게 적용해요</span><h2 class="h-sec">나랑 똑같던<br><span class="em">사람들 이야기</span></h2></div>
     <div class="voice-cards">
-      <div class="voice-card rv"><div class="voice-stars">★★★★★</div><p class="voice-txt">천만 원짜리 인스타 강의를 듣고 후회하던 중이었어요. <strong>왜 안 됐는지 그제야 보였어요.</strong></p><div class="voice-who"><span class="v-av">김</span><span><b>김○○</b> · 뷰티 살롱</span></div></div>
-      <div class="voice-card rv rv-d1"><div class="voice-stars">★★★★★</div><p class="voice-txt">릴스 조회수가 문제인 줄 알았어요. 알고 보니 <strong>무슨 말을 할지가 없었던 거</strong>예요.</p><div class="voice-who"><span class="v-av">이</span><span><b>이○○</b> · 온라인 클래스</span></div></div>
-      <div class="voice-card rv rv-d2"><div class="voice-stars">★★★★★</div><p class="voice-txt">천이백만 원 컨설팅을 듣고도 그대로였어요. 워크북 쓰다가 막힌 칸에서 <strong>"이거였구나"</strong> 했어요.</p><div class="voice-who"><span class="v-av">박</span><span><b>박○○</b> · PT샵</span></div></div>
+      <div class="voice-card rv"><span class="review-example">적용 예시</span><p class="voice-txt">시술 사진을 꾸준히 올려도 소개글은 늘 “꼼꼼한 피부관리”에 머물러 있다면, 워크북에서 고객의 상황을 좁혀보세요. <strong>“레이저 후 예민해진 피부를 위한 관리”처럼 누구를 돕는 곳인지 구체화할 수 있어요.</strong></p><div class="voice-who"><span><b>뷰티 살롱</b> · 워크북 활용</span></div></div>
+      <div class="voice-card rv"><span class="review-example">적용 예시</span><p class="voice-txt">조회수를 높이는 훅은 배웠는데 정작 강의를 소개할 말이 없다면, 타겟의 상황과 감정부터 적어보세요. <strong>“초보자를 위한 강의”를 넘어, 어디서 막힌 사람에게 어떤 도움을 줄지 정리하는 거예요.</strong></p><div class="voice-who"><span><b>온라인 클래스</b> · 워크북 활용</span></div></div>
+      <div class="voice-card rv"><span class="review-example">적용 예시</span><p class="voice-txt">경력과 시설을 강조해도 가격 비교만 당한다면, 고객이 선택하는 다른 방법까지 살펴보세요. <strong>혼자 홈트를 하다 중단한 사람에게 필요한 자세 피드백과 꾸준한 관리처럼, 나를 선택할 이유를 찾아보는 거예요.</strong></p><div class="voice-who"><span><b>PT샵</b> · 워크북 활용</span></div></div>
     </div>
-    <p class="note">* 일부 후기는 예시이며, 실제 독자 후기로 교체 예정입니다.</p>
   </div>
 </section>
 
@@ -475,7 +479,7 @@ a{color:inherit;text-decoration:none}
 <!-- [4] 대표 이야기 -->
 <section class="sec bt bg-w">
   <div class="wrap">
-    <span class="label rv">만든 사람</span>
+    <a class="author-profile rv" href="https://www.instagram.com/nak__ta__/" target="_blank" rel="noopener noreferrer"><img src="https://nofaildesignoffice.github.io/refeeel-branding-class/v2/assets/nak-ta-profile.jpg" alt="김낙타 인스타그램 프로필" width="48" height="48" loading="lazy"><span>@nak__ta__</span></a>
     <h2 class="h-sec rv" style="margin-bottom:var(--gap-lg)">다들 다른 질문을 들고 찾아주셨지만,<br>원인은 <span class="em">이 한가지였어요.</span></h2>
     <div class="story-split">
       <div class="story-photo rv">김낙타 대표 사진 영역</div>
