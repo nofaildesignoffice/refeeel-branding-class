@@ -143,8 +143,7 @@ a{color:inherit;text-decoration:none}
 .pb-k{display:inline-block;font-size:12.5px;font-weight:700;margin-bottom:10px;padding:4px 11px;border-radius:var(--radius-full)}
 .pb-q .pb-k{background:var(--bg-soft);color:var(--text-gray)}
 .pb-d .pb-k{background:var(--brand);color:var(--brand-ink)}
-.pb-q p{font-size:clamp(17px,3.5vw,20px);line-height:1.6;font-weight:600;color:var(--ink)}
-.pb-d p{font-size:clamp(16px,3.2vw,18px);line-height:1.7;color:var(--text-dark)}
+.pb-q p,.pb-d p{font-size:clamp(16px,3.3vw,18px);line-height:1.85;font-weight:400;color:var(--text-dark)}
 .pb-arrow{display:flex;align-items:center;justify-content:center;padding:8px 0;color:var(--text-muted)}.pb-arrow svg{width:26px;height:26px}
 @media(min-width:768px){.pb-arrow{padding:0 12px}.pb-arrow svg{transform:rotate(-90deg)}}
 
@@ -275,7 +274,9 @@ a{color:inherit;text-decoration:none}
 .who ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .who li{display:flex;gap:10px;font-size:clamp(15px,3.1vw,16.5px);line-height:1.55;color:var(--ink);word-break:keep-all}
 .who li::before{content:'';flex-shrink:0;width:18px;height:18px;margin-top:3px;border-radius:5px;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='3.5'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/11px no-repeat}
-.who-last{margin-top:clamp(56px,9vw,96px);text-align:center;color:var(--ink);font-size:clamp(20px,4.2vw,27px);font-weight:800;letter-spacing:-.03em;line-height:1.45;word-break:keep-all}
+.who-last{margin-top:clamp(56px,9vw,96px);padding:clamp(24px,4vw,40px) clamp(18px,3vw,32px);border:1px solid var(--border-light);border-left:4px solid var(--brand);border-radius:var(--radius-md);background:var(--bg-light);text-align:center;color:var(--ink);font-size:clamp(20px,4.2vw,27px);font-weight:800;letter-spacing:-.03em;line-height:1.6;word-break:keep-all}
+.who-last-intro{display:block;margin-bottom:8px;font-size:clamp(14px,2.8vw,16px);font-weight:600;color:var(--text-gray)}
+.who-last .em{box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
 /* 자가진단 */
 .diag-w{max-width:700px;margin:0 auto;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:clamp(20px,4.2vw,36px)}
@@ -427,8 +428,8 @@ a{color:inherit;text-decoration:none}
       <div class="ps-l">
     <div class="sec-head rv"><span class="label">가격</span><h2 class="h-sec">내 브랜드의 막힌 곳을 짚고<br>풀어갈 방향을 찾아주는<br><span class="em">김낙타의 '브랜드가 만들어지는 과정'</span></h2></div>
       <div class="price-story rv">
-        <p>이것저것 해봐도 제자리라면, 어디서 막혔는지부터 살펴보세요.</p>
-        <p>질문 8개에 내 사업의 답을 적으며,<br><strong>무엇을 바꾸고 어디서부터 시작할지 정리해요.</strong></p>
+        <p>질문 8개로 내 브랜드의 막힌 곳을 찾아보세요.</p>
+        <p><strong>답을 적다 보면, 무엇부터 바꿀지 정리돼요.</strong></p>
       </div>
       </div>
       <div class="price-box rv">
@@ -442,7 +443,7 @@ a{color:inherit;text-decoration:none}
 <!-- [18] 이런 분께 -->
 <section class="sec bt bg-w">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">이런 분께</span><h2 class="h-sec">이런 분께<br><span class="em">꼭 필요해요</span></h2></div>
+    <div class="sec-head rv"><span class="label">이런 분께</span><h2 class="h-sec">누구에게<br><span class="em">필요한 내용일까요?</span></h2></div>
     <div class="who-grid">
       <div class="who rv"><div class="who-h">콘텐츠</div><ul><li>매일 올리는데 문의가 안 느는 분</li><li>"여기 뭐 하는 곳이에요?" 소리를 듣는 분</li></ul></div>
       <div class="who rv rv-d1"><div class="who-h">마케팅</div><ul><li>인스타·블로그·광고 다 해봤는데 그대로인 분</li><li>공식은 아는데 나한테만 안 먹히는 분</li></ul></div>
@@ -451,7 +452,7 @@ a{color:inherit;text-decoration:none}
       <div class="who rv"><div class="who-h">가격</div><ul><li>"다른 데는 얼마던데요"에 흔들리는 분</li><li>할인을 멈추기 무서운 분</li></ul></div>
       <div class="who rv rv-d1"><div class="who-h">방향</div><ul><li>매일 바쁜데 3개월 전이랑 똑같은 분</li><li>AI한테 뭘 시켜야 할지 모르겠는 분</li></ul></div>
     </div>
-    <div class="who-last rv">그리고,<br>내 문제가 뭔지조차 모르겠는 분</div>
+    <div class="who-last rv"><span class="who-last-intro">그리고,</span><span class="em">내 문제가 뭔지조차 모르겠는 분</span></div>
   </div>
 </section>
 
