@@ -130,7 +130,7 @@ a{color:inherit;text-decoration:none}
 @media(min-width:768px){.pb{flex-direction:row;align-items:stretch}.pb-q,.pb-d{flex:1}}
 .pb-q,.pb-d{padding:clamp(22px,3.8vw,30px);border-radius:var(--radius-lg);word-break:keep-all}
 .pb-q{background:var(--bg-white);border:1px solid var(--border-light)}
-.pb-d{background:var(--bg-light);border:1px solid var(--border-light)}
+.pb-d{background:var(--bg-soft);border:1px solid var(--border-light)}
 .pb-mark{display:block;width:clamp(26px,4.4vw,34px);height:auto;color:var(--brand-press);margin-bottom:10px}
 .pb-k{display:inline-block;font-size:12.5px;font-weight:700;margin-bottom:10px;padding:4px 11px;border-radius:var(--radius-full)}
 .pb-q .pb-k{background:var(--bg-soft);color:var(--text-gray)}
@@ -267,7 +267,7 @@ a{color:inherit;text-decoration:none}
 .who ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .who li{display:flex;gap:10px;font-size:clamp(15px,3.1vw,16.5px);line-height:1.55;color:var(--ink);word-break:keep-all}
 .who li::before{content:'';flex-shrink:0;width:18px;height:18px;margin-top:3px;border-radius:5px;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='3.5'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/11px no-repeat}
-.who-last{margin-top:var(--gap-lg);text-align:center;color:var(--ink);font-size:clamp(20px,4.2vw,27px);font-weight:800;letter-spacing:-.03em;line-height:1.45;word-break:keep-all}
+.who-last{margin-top:clamp(56px,9vw,96px);text-align:center;color:var(--ink);font-size:clamp(20px,4.2vw,27px);font-weight:800;letter-spacing:-.03em;line-height:1.45;word-break:keep-all}
 
 /* 자가진단 */
 .diag-w{max-width:700px;margin:0 auto;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:clamp(20px,4.2vw,36px)}
@@ -344,6 +344,28 @@ a{color:inherit;text-decoration:none}
   .story-split{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,5vw,64px);align-items:start}
   .story-split .story-photo{aspect-ratio:4/5;margin-bottom:0;position:sticky;top:40px}
   .story-split .career-grid{margin-top:clamp(28px,4vw,40px)}
+}
+
+/* 비교표 — 한 박스 안에 양옆 두 칸, 오른쪽 칸 강조 */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:860px;margin-left:auto;margin-right:auto;padding:6px;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-xl);align-items:stretch}
+.cmp > .ord,.cmp > .vs-c{border:1px solid transparent;box-shadow:none;border-radius:22px;background:transparent;padding:clamp(22px,3.6vw,32px) clamp(14px,3vw,28px)}
+.cmp > .on{background:var(--bg-white);border-color:var(--ink);box-shadow:var(--shadow-md)}
+.cmp .ord-k,.cmp .vs-k{position:static;display:inline-block;font-size:12px;font-weight:700;padding:6px 13px;border-radius:var(--radius-full);background:var(--bg-soft);border:none;color:var(--text-gray);margin-bottom:14px;word-break:keep-all}
+.cmp .on .ord-k,.cmp .on .vs-k{background:var(--brand);color:var(--brand-ink)}
+.cmp .ord-t{font-size:clamp(16px,3.6vw,23px)}
+.cmp .ord li{font-size:clamp(14px,3vw,17.5px);align-items:flex-start;line-height:1.5}
+.cmp .ord li::before{margin-top:3px}
+.vs.cmp{grid-template-columns:1fr 1fr}
+.vs.cmp .vs-c:not(.on) li{color:var(--text-light)}
+
+/* 만든 사람 — 모바일: 사진 바로 아래 성과 지표 */
+@media(max-width:899px){
+  .story-split{display:flex;flex-direction:column;gap:0}
+  .story-r{display:contents}
+  .story-split .story-photo{order:1;margin-bottom:0}
+  .story-split .career-grid{order:2;margin-top:24px}
+  .story-split .body-text{order:3;margin-top:var(--gap-lg)}
+  .story-split .story-sign{order:4}
 }
 </style>
 </head>
@@ -449,7 +471,6 @@ a{color:inherit;text-decoration:none}
           <div class="career-row"><span class="career-n">3,800만</span><span class="career-d">광고·판매글 없이 만든 <b>첫 달 순이익</b>.</span></div>
           <div class="career-row"><span class="career-n">3만 명</span><span class="career-d">혼자 AI로 만든 서비스의 <b>첫 달 이용자</b>.</span></div>
         </div>
-        <p class="note">* 일부 수치는 예시이며, 실제 업력·성과로 교체 예정입니다.</p>
       </div>
     </div>
   </div>
@@ -493,17 +514,17 @@ a{color:inherit;text-decoration:none}
     <div class="sec-head c rv"><span class="label">진짜 이유</span><h2 class="h-sec">순서가<br><span class="em">거꾸로</span>였어요.</h2>
       <p class="sec-lead">릴스, 광고, 할인은 <strong>'어떻게 팔지'</strong>예요.<br>그 전에 먼저 정할 게 있어요.</p>
     </div>
-    <div class="order">
+    <div class="order cmp">
       <div class="ord rv"><span class="ord-k">다들 여기부터 해요</span><div class="ord-t">어떻게 팔지</div><ul><li>릴스·피드 올리기</li><li>광고 돌리기</li><li>할인하기</li><li>로고·디자인 바꾸기</li></ul></div>
-      <div class="ord first rv rv-d1"><span class="ord-k">사실 여기부터예요</span><div class="ord-t">누구한테, 뭘, 왜 나한테</div><ul><li>누구한테 팔 건지</li><li>왜 나한테 사야 하는지</li><li>뭐라고 말할 건지</li></ul></div>
+      <div class="ord first on rv rv-d1"><span class="ord-k">사실 여기부터예요</span><div class="ord-t">누구한테, 뭘, 왜 나한테</div><ul><li>누구한테 팔 건지</li><li>왜 나한테 사야 하는지</li><li>뭐라고 말할 건지</li></ul></div>
     </div>
     <div class="body-text rv" style="max-width:860px;margin:var(--gap-lg) auto 0;text-align:center">
       <p>누구한테 팔지 안 정하고 릴스를 올리면, <strong>모두에게 하는 말</strong>이 돼요.<br>모두에게 하는 말은 아무한테도 안 꽂혀요.<br>그래서 조회수는 나와도 문의는 안 와요.</p>
       <p>광고도, 할인도 똑같아요. 보는 사람은 늘어도 <strong>사는 사람은 안 늘어요.</strong><br>열심히 할수록 지치는 이유예요.</p>
     </div>
-    <div class="vs">
+    <div class="vs cmp">
       <div class="vs-c rv"><div class="vs-k">이게 없으면</div><ul><li>광고비만 늘어요</li><li>가격으로 싸워요</li><li>"거기 뭐 하는 데였지?"</li></ul></div>
-      <div class="vs-c rv rv-d1"><div class="vs-k">이게 있으면</div><ul><li>같은 광고비로 더 팔려요</li><li>비싸도 이유가 있어요</li><li>"아, 거기!" 하고 기억해요</li></ul></div>
+      <div class="vs-c on rv rv-d1"><div class="vs-k">이게 있으면</div><ul><li>같은 광고비로 더 팔려요</li><li>비싸도 이유가 있어요</li><li>"아, 거기!" 하고 기억해요</li></ul></div>
     </div>
   </div>
 </section>
