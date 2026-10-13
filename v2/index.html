@@ -326,6 +326,11 @@ a{color:inherit;text-decoration:none}
   .vs{grid-template-columns:1fr}
   .stk-btn{padding:13px 22px}
 }
+
+/* 섹션 배경 교차 — 순서를 바꿔도 흰/틴트가 번갈아 나오도록 섹션마다 직접 지정 */
+.bc-root > section.bg-w{background:var(--bg-white)!important}
+.bc-root > section.bg-t{background:var(--bg-light)!important}
+.bg-t .free{background:var(--bg-white)}
 </style>
 </head>
 <body>
@@ -347,22 +352,8 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [2] 다른 점 -->
-<section class="sec sec-deep bt">
-  <div class="wrap">
-    <div class="sec-head c rv" style="margin-bottom:0"><span class="label">다른 강의와 다른 점</span><h2 class="h-sec">정답을 알려주지 않아요.<br><span class="em">내 답을 쓰게 해요.</span></h2>
-      <p class="sec-lead">남이 짚어준 문제는 금방 잊혀요.<br>직접 쓰다가 <strong>막히는 곳, 거기가 내 문제</strong>예요.</p>
-    </div>
-    <div class="sus rv rv-d1">
-      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">콘텐츠가<br>문제일까</div></div>
-      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">상품이<br>문제일까</div></div>
-      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">마케팅이<br>문제일까</div></div>
-    </div>
-  </div>
-</section>
-
 <!-- [3] 결과 -->
-<section class="sec bt">
+<section class="sec bt bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">결과</span><h2 class="h-sec">광고 없이, 판매글 없이<br><span class="em">방향 하나</span>로 낸 결과</h2></div>
     <div class="proof-grid">
@@ -375,11 +366,61 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<!-- [2b] 가격 (복제) — 결과 바로 뒤에서 한 번 먼저 보여줌 -->
+<section class="sec-price bg-t">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">가격</span><h2 class="h-sec">강의 한 번 값으로,<br><span class="em">더 이상 안 헤매게.</span></h2></div>
+    <div class="price-story rv">
+      <p>천만 원짜리 강의도, 방향이 없으면 다시 제자리예요.</p>
+      <p><strong>한 번 정한 방향은 어떤 채널에서든 써요.</strong> 사업이 커지면 워크북만 다시 꺼내면 돼요.</p>
+    </div>
+    <div class="price-box rv">
+      <div class="price-amt">99,000<span class="u">원</span></div>
+      <div class="price-note">VAT 포함 · 평생 소장</div>
+      <div class="price-tags"><span class="price-tag">클래스 9개</span><span class="price-tag">워크북 8문항</span><span class="price-tag">브랜드 가이드라인</span><span class="price-tag">채널별 적용</span></div>
+    </div>
+    <div class="free rv rv-d1">
+      <div><div class="free-l">무료 공개</div><div class="free-t">Class 00 먼저 읽고 결정하세요</div><p class="free-d">"마케팅이 왜 어려운지"부터 무료로 읽어보세요. 내 얘기 같으면 그때 시작해도 늦지 않아요.</p></div>
+      <a href="/brandingclass00" class="btn btn-p">무료로 읽기 <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- [18] 이런 분께 -->
+<section class="sec bt bg-w">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">이런 분께</span><h2 class="h-sec">이런 분께<br><span class="em">꼭 필요해요</span></h2></div>
+    <div class="who-grid">
+      <div class="who rv"><div class="who-h">콘텐츠</div><ul><li>매일 올리는데 문의가 안 느는 분</li><li>"여기 뭐 하는 곳이에요?" 소리를 듣는 분</li></ul></div>
+      <div class="who rv rv-d1"><div class="who-h">마케팅</div><ul><li>인스타·블로그·광고 다 해봤는데 그대로인 분</li><li>공식은 아는데 나한테만 안 먹히는 분</li></ul></div>
+      <div class="who rv"><div class="who-h">설명</div><ul><li>"무슨 일 하세요?"에 업종 이름만 말하는 분</li><li>소개글 한 줄을 몇 번이나 고쳐 쓰는 분</li></ul></div>
+      <div class="who rv rv-d1"><div class="who-h">선택</div><ul><li>실력은 자신 있는데 손님이 저 집으로 가는 분</li><li>소개글이 "친절해요, 꼼꼼해요"인 분</li></ul></div>
+      <div class="who rv"><div class="who-h">가격</div><ul><li>"다른 데는 얼마던데요"에 흔들리는 분</li><li>할인을 멈추기 무서운 분</li></ul></div>
+      <div class="who rv rv-d1"><div class="who-h">방향</div><ul><li>매일 바쁜데 3개월 전이랑 똑같은 분</li><li>AI한테 뭘 시켜야 할지 모르겠는 분</li></ul></div>
+    </div>
+    <div class="who-last rv">그리고,<br>내 문제가 뭔지조차 모르겠는 분</div>
+  </div>
+</section>
+
+<!-- [2] 다른 점 -->
+<section class="sec bt bg-t">
+  <div class="wrap">
+    <div class="sec-head c rv" style="margin-bottom:0"><span class="label">다른 강의와 다른 점</span><h2 class="h-sec">정답을 알려주지 않아요.<br><span class="em">내 답을 쓰게 해요.</span></h2>
+      <p class="sec-lead">남이 짚어준 문제는 금방 잊혀요.<br>직접 쓰다가 <strong>막히는 곳, 거기가 내 문제</strong>예요.</p>
+    </div>
+    <div class="sus rv rv-d1">
+      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">콘텐츠가<br>문제일까</div></div>
+      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">상품이<br>문제일까</div></div>
+      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">마케팅이<br>문제일까</div></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ═════ 2막 · 공감 → 반전 ═════ -->
 
 <!-- [4] 대표 이야기 -->
-<section class="sec sec-deep bt">
+<section class="sec bt bg-w">
   <div class="wrap">
     <span class="label rv">만든 사람</span>
     <h2 class="h-sec rv" style="margin-bottom:var(--gap-lg)">다들 열심히 했어요.<br><span class="em">엉뚱한 곳을</span> 고쳤을 뿐.</h2>
@@ -400,7 +441,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [5] 나 같은 사람 -->
-<section class="sec bt">
+<section class="sec bt bg-t">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">먼저 읽은 분들</span><h2 class="h-sec">나랑 똑같던<br><span class="em">사람들 이야기</span></h2></div>
     <div class="voice-cards">
@@ -413,7 +454,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [6] 다 고쳐봤죠 -->
-<section class="sec sec-deep bt">
+<section class="sec bt bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">혹시 이런가요?</span><h2 class="h-sec">문제인 것 같은 건<br><span class="em">다 고쳐봤죠.</span></h2></div>
     <div class="pbs">
@@ -444,7 +485,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [8] 순서가 거꾸로 -->
-<section class="sec sec-deep">
+<section class="sec bg-t">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">진짜 이유</span><h2 class="h-sec">순서가<br><span class="em">거꾸로</span>였어요.</h2>
       <p class="sec-lead">릴스, 광고, 할인은 <strong>'어떻게 팔지'</strong>예요.<br>그 전에 먼저 정할 게 있어요.</p>
@@ -476,7 +517,7 @@ a{color:inherit;text-decoration:none}
 <!-- ═════ 3막 · 납득 ═════ -->
 
 <!-- [9] 질문 8개 -->
-<section class="sec bt">
+<section class="sec bt bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">이 클래스에서 하는 것</span><h2 class="h-sec">먼저 정할 것,<br><span class="em">질문 8개</span>로 정리했어요.</h2>
       <p class="sec-lead">컨설팅에서 실제로 효과 본 질문이에요.<br>다 답하면 그게 <strong>내 사업 기획서</strong>가 돼요.</p>
@@ -504,7 +545,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [10] 알고 보니 -->
-<section class="sec sec-deep bt">
+<section class="sec bt bg-t">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">먼저 읽은 분들이 찾은 것</span><h2 class="h-sec">이게 문제인 줄 알았는데,<br><span class="em">진짜는 이거였어요.</span></h2></div>
     <div class="map rv rv-d1">
@@ -522,7 +563,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [11] 1분 해보기 -->
-<section class="sec bt">
+<section class="sec bt bg-w">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">1분 해보기</span><h2 class="h-sec">설명보다,<br><span class="em">직접 해보는 게 빨라요.</span></h2></div>
     <div class="try rv rv-d1" id="tryBox">
@@ -549,7 +590,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [12] 바뀐 문장 -->
-<section class="sec sec-deep bt">
+<section class="sec bt bg-t">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">정하고 나면</span><h2 class="h-sec">같은 인스타,<br><span class="em">하는 말이 달라져요.</span></h2></div>
     <div class="ba-list">
@@ -562,7 +603,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [13] 커리큘럼 -->
-<section class="sec-cur">
+<section class="sec-cur bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">커리큘럼</span><h2 class="h-sec">클래스 9개,<br>클래스마다 <span class="em">"아, 이거였구나"</span></h2></div>
     <div class="cur-item rv"><div class="cur-num">00</div><div class="cur-body"><div class="cur-title">시작하기 전에 <span>· 무료</span></div><p class="cur-wow">광고까지 다 했는데 문의가 없던 PT샵. <b>문제는 '몇 명'이 아니라 '누가' 보느냐</b>였어요.</p></div></div>
@@ -579,7 +620,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [14] 받는 것 -->
-<section class="sec bt">
+<section class="sec bt bg-t">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">받는 것</span><h2 class="h-sec">다 읽고 나면<br><span class="em">손에 남는 것</span></h2></div>
     <div class="del-grid">
@@ -595,7 +636,7 @@ a{color:inherit;text-decoration:none}
 <!-- ═════ 4막 · 결정 ═════ -->
 
 <!-- [15] 또 강의? -->
-<section class="sec sec-deep bt">
+<section class="sec bt bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">이런 걱정 드시죠</span><h2 class="h-sec">"이것도 결국<br class="br-m"> 또 강의 아니에요?"</h2>
       <p class="sec-lead">보통 강의는 <strong>'어떻게 하는지'</strong>를 알려줘요. 그런데 누구한테 할지가 없으면 배운 걸 써도 결과가 안 나와요. 그러면 또 다른 강의를 찾게 되죠.</p></div>
@@ -615,7 +656,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [16] 업종 -->
-<section class="sec bt">
+<section class="sec bt bg-t">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">이런 걱정도요</span><h2 class="h-sec">"우리 업종도 될까요?"</h2><p class="sec-lead">누구한테, 뭘, 왜. 어떤 업종이든<br>먼저 정할 건 같아요.</p></div>
     <div class="case-grid rv rv-d1">
@@ -635,7 +676,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [17] 바뀐 후기 -->
-<section class="sec sec-deep bt">
+<section class="sec bt bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">읽고 나서</span><h2 class="h-sec">문제를 알고 나니<br><span class="em">달라진 것</span></h2></div>
     <div class="voice-cards">
@@ -647,24 +688,9 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [18] 이런 분께 -->
-<section class="sec bt">
-  <div class="wrap">
-    <div class="sec-head rv"><span class="label">이런 분께</span><h2 class="h-sec">이런 분께<br><span class="em">꼭 필요해요</span></h2></div>
-    <div class="who-grid">
-      <div class="who rv"><div class="who-h">콘텐츠</div><ul><li>매일 올리는데 문의가 안 느는 분</li><li>"여기 뭐 하는 곳이에요?" 소리를 듣는 분</li></ul></div>
-      <div class="who rv rv-d1"><div class="who-h">마케팅</div><ul><li>인스타·블로그·광고 다 해봤는데 그대로인 분</li><li>공식은 아는데 나한테만 안 먹히는 분</li></ul></div>
-      <div class="who rv"><div class="who-h">설명</div><ul><li>"무슨 일 하세요?"에 업종 이름만 말하는 분</li><li>소개글 한 줄을 몇 번이나 고쳐 쓰는 분</li></ul></div>
-      <div class="who rv rv-d1"><div class="who-h">선택</div><ul><li>실력은 자신 있는데 손님이 저 집으로 가는 분</li><li>소개글이 "친절해요, 꼼꼼해요"인 분</li></ul></div>
-      <div class="who rv"><div class="who-h">가격</div><ul><li>"다른 데는 얼마던데요"에 흔들리는 분</li><li>할인을 멈추기 무서운 분</li></ul></div>
-      <div class="who rv rv-d1"><div class="who-h">방향</div><ul><li>매일 바쁜데 3개월 전이랑 똑같은 분</li><li>AI한테 뭘 시켜야 할지 모르겠는 분</li></ul></div>
-    </div>
-    <div class="who-last rv">그리고,<br>내 문제가 뭔지조차 모르겠는 분</div>
-  </div>
-</section>
 
 <!-- [19] 자가진단 -->
-<section class="sec sec-deep bt">
+<section class="sec bt bg-t">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">30초 체크</span><h2 class="h-sec">지금 몇 개에<br><span class="em">바로 답할 수 있나요?</span></h2><p class="sec-lead">체크 못 한 질문이 지금 내 문제예요.</p></div>
     <div class="diag-w rv rv-d1" id="diagWidget">
@@ -682,7 +708,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [20] 가격 + Class 00 무료 -->
-<section class="sec-price">
+<section class="sec-price bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">가격</span><h2 class="h-sec">강의 한 번 값으로,<br><span class="em">더 이상 안 헤매게.</span></h2></div>
     <div class="price-story rv">
@@ -702,7 +728,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [21] FAQ -->
-<section class="sec bt">
+<section class="sec bt bg-t">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">자주 묻는 질문</span><h2 class="h-sec">궁금한 거,<br>미리 답해드려요</h2></div>
     <div class="faq-item rv"><div class="faq-q">읽기만 하면 매출이 오르나요?</div><div class="faq-a">아니요. 워크북을 쓰고 실제로 바꿔야 해요. 다만 뭘 할지 고민하는 시간은 확 줄어요.</div></div>
