@@ -496,6 +496,20 @@ a{color:inherit;text-decoration:none}
 .story-photo .author-profile-badge{width:16px;height:16px}
 .story-photo .author-profile-bio{font-size:clamp(12.5px,2vw,13.5px)}
 .story-photo .author-profile-stats{font-size:clamp(12.5px,2vw,13.5px)}
+
+/* 가격 ↔ 후기 섹션 배경 교체 — 가격은 어둡게, 후기는 연한 라임 */
+.bc-root > section.swap-dark{background:var(--ink)!important;color:#fff!important}
+.swap-dark .h-sec{color:#fff}
+.swap-dark .h-sec .em,.swap-dark .who-last .em{color:var(--brand);background:none;padding:0}
+.swap-dark .label{color:var(--ink);background:var(--brand)}
+.swap-dark .price-story{color:rgba(255,255,255,.72)}
+.swap-dark .price-story strong{color:#fff}
+.swap-dark .who-last{color:#fff}
+.swap-dark .who-last-intro{color:rgba(255,255,255,.72)}
+.bc-root > section.swap-light{background:var(--bg-light)!important;color:var(--ink)}
+.swap-light .h-sec{color:var(--ink)}
+.swap-light .sec-head .em{color:inherit;background:linear-gradient(transparent 60%,var(--brand) 60%);padding:0 2px}
+.swap-light .label{color:var(--brand);background:var(--ink)}
 </style>
 </head>
 <body>
@@ -527,7 +541,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [2b] 가격 (복제) — 결과 바로 뒤에서 한 번 먼저 보여줌 -->
-<section class="sec-price bg-t">
+<section class="sec-price swap-dark bg-t">
   <div class="wrap">
     <div class="price-split">
       <div class="ps-l">
@@ -557,7 +571,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [5] 나 같은 사람 -->
-<section class="sec bt reviews-dark">
+<section class="sec bt reviews-dark swap-light">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">먼저 경험한 사람들의 이야기</span><h2 class="h-sec">나랑 같은 고민을 가진<br><span class="em">사람들 이야기</span></h2></div>
     <div class="voice-cards">
