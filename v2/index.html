@@ -449,6 +449,29 @@ a{color:inherit;text-decoration:none}
 
 /* 박스 안 라벨 — 섹션 라벨(검정 pill)과 구분되도록 후기 카드 페르소나 타이틀과 같은 굵은 텍스트로 */
 .who-h,.pb-q .pb-k{display:block;padding:0;background:none;border-radius:0;font-size:var(--body-font-size);line-height:1.5;font-weight:700;color:var(--ink);margin-bottom:12px}
+
+/* 이런 분께 — 마지막 줄: '그리고,'는 본문 크기, 강조 줄은 섹션 타이틀 크기 */
+.who-last-intro{font-size:var(--body-font-size);font-weight:400;color:var(--text-dark);letter-spacing:-.01em}
+.who-last{font-size:clamp(26px,5.4vw,36px);line-height:1.4}
+
+/* 만든 사람 — 강조문 형광펜 밑줄, 서명에 로고 + 오른쪽 정렬 */
+.story-r .body-text strong{background:linear-gradient(transparent 60%,var(--brand) 60%);padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.story-sign{display:flex;justify-content:flex-end;align-items:center;gap:6px}
+.story-sign .logo-mark{height:12px;color:var(--ink)}
+
+/* 성과 — 한 박스 안에 세 칸, 얇은 구분선만 */
+.career-grid{gap:0;border:1px solid var(--border-light);border-radius:var(--radius-lg);background:var(--bg-white);overflow:hidden}
+.career-row{border:0;border-radius:0;background:none;padding:clamp(18px,2.6vw,24px) clamp(14px,2vw,20px)}
+.career-row+.career-row{border-left:1px solid var(--border-light)}
+@media(max-width:899px){
+  .story-split .career-grid{gap:0}
+  .story-split .career-row{padding:18px 20px}
+  .story-split .career-row+.career-row{border-left:0;border-top:1px solid var(--border-light)}
+  .story-split .career-n{font-size:22px;min-width:4.6em}
+  /* 사진: 라운딩 없이 화면 꽉 차게, 섹션 맨 위에 붙임 */
+  .sec-story{padding-top:0}
+  .story-split .story-photo{width:auto;margin-left:calc(-1*clamp(20px,5vw,40px));margin-right:calc(-1*clamp(20px,5vw,40px));border-radius:0}
+}
 </style>
 </head>
 <body>
@@ -525,7 +548,7 @@ a{color:inherit;text-decoration:none}
 <!-- ═════ 2막 · 공감 → 반전 ═════ -->
 
 <!-- [4] 대표 이야기 -->
-<section class="sec bt bg-w">
+<section class="sec bt sec-story bg-w">
   <div class="wrap">
     <div class="story-split">
       <div class="story-head"><span class="open-q rv" aria-hidden="true"></span>
@@ -537,7 +560,7 @@ a{color:inherit;text-decoration:none}
           <p>그런데 콘텐츠를 바꾸고, 가격을 바꾸고, 대행사를 바꿔도 제자리였어요. <strong>뭐가 문제인지 모른 채 고치고 있었으니까요.</strong></p>
           <p>질문을 하나씩 던지면 대답이 막히는 곳이 있었어요. 거기서 다들 "아, 이거였구나" 하셨죠. <strong>그 질문들을 순서대로 묶은 게 '브랜드가 만들어지는 과정'이에요.</strong></p>
         </div>
-        <p class="story-sign rv">commel 대표 <b>김낙타</b></p>
+        <p class="story-sign rv"><svg class="logo-mark" role="img" aria-label="commel"><use href="#logo-commel"/></svg><span>대표 <b>김낙타</b></span></p>
         <div class="career-grid rv rv-d1">
           <div class="career-row"><span class="career-n">1,000억</span><span class="career-d">리브랜딩을 맡긴 <b>브랜드 규모</b>. 창업 준비생부터 70만 인플루언서까지 만났어요.</span></div>
           <div class="career-row"><span class="career-n">3,800만</span><span class="career-d">광고·판매글 없이 만든 <b>첫 달 순이익</b>.</span></div>
@@ -552,7 +575,7 @@ a{color:inherit;text-decoration:none}
 <!-- [6] 다 고쳐봤죠 -->
 <section class="sec bt bg-t">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">혹시 이런가요?</span><h2 class="h-sec">문제인 것 같은 건<br><span class="em">다 고쳐봤죠.</span></h2></div>
+    <div class="sec-head c rv"><span class="label">혹시 이런가요?</span><h2 class="h-sec">문제인 것 같은 건<br><span class="em">다 고쳐봤죠.</span></h2></div>
     <div class="pbs">
       <div class="pb rv"><div class="pb-q"><span class="pb-k">콘텐츠가 문제라고 생각한 분</span><p>“매일 올려도 문의가 늘지 않아 <strong class="pb-underline">콘텐츠</strong>가 문제인 줄 알았어요. 그래서 <strong class="pb-underline">릴스 강의</strong>를 듣고, 업로드를 늘리고, 디자인도 바꿨어요.”</p></div></div>
       <div class="pb rv"><div class="pb-q"><span class="pb-k">상품이 문제라고 생각한 분</span><p>“실력은 자신 있는데 손님은 다른 곳으로 가고, 가격 비교까지 당하니 <strong class="pb-underline">상품</strong>이 문제인 줄 알았어요. 그래서 신메뉴를 추가하고, 가격을 내리고, <strong class="pb-underline">할인 이벤트</strong>도 해봤어요.”</p></div></div>
