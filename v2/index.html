@@ -349,7 +349,7 @@ a{color:inherit;text-decoration:none}
 .price-split{display:grid;grid-template-columns:1fr;gap:var(--gap-lg);align-items:center}
 @media(min-width:900px){.price-split{grid-template-columns:1fr 440px;gap:clamp(40px,6vw,80px)}}
 .price-split .price-story{margin-bottom:0}
-.price-audience{margin-top:clamp(48px,8vw,80px)}
+.price-audience{margin-top:clamp(72px,11vw,112px)}
 .bc-root>section.reviews-dark{background:var(--ink);color:#fff}
 .reviews-dark .h-sec{color:#fff}
 .reviews-dark .sec-head .em{color:var(--brand);background:none}
@@ -515,6 +515,11 @@ a{color:inherit;text-decoration:none}
 /* 인스타 프로필 — 내용에 딱 맞는 폭, 사방 같은 여백, 사진 가운데 */
 .story-photo .author-profile{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);padding:16px;justify-content:flex-start}
 .story-photo .author-profile img{width:clamp(64px,9vw,72px);height:clamp(64px,9vw,72px)}
+
+/* 위쪽 가격 — 로고 / 제목 / 바이블 레터링, 설명까지 가운데 정렬 */
+.price-logo{height:clamp(16px,2.6vw,20px);color:#fff;margin:0 auto clamp(16px,2.6vw,22px)}
+.price-lettering{display:block;width:100%;max-width:400px;height:auto;margin:clamp(14px,2.4vw,20px) auto 0}
+.swap-dark .price-story{text-align:center;margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
@@ -550,7 +555,7 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="price-split">
       <div class="ps-l">
-    <div class="sec-head c rv"><h2 class="h-sec">내 브랜드의 막힌 곳을 짚고<br>풀어갈 방향을 찾아주는</h2></div>
+    <div class="sec-head c rv"><svg class="logo-mark price-logo" role="img" aria-label="commel"><use href="#logo-commel"/></svg><h2 class="h-sec">내 브랜드의 막힌 곳을 짚고<br>풀어갈 방향을 찾아주는</h2><img class="price-lettering" src="assets/brand-strategy-bible.svg" alt="김낙타의 브랜드 전략 바이블" width="2172" height="724"></div>
       <div class="price-story rv">
         <p>질문 8개로 내 브랜드의 막힌 곳을 찾아보세요.<br><strong>답을 적다 보면, 무엇부터 바꿀지 정리돼요.</strong></p>
       </div>
@@ -561,7 +566,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
     <div class="price-audience">
-    <div class="sec-head rv"><h2 class="h-sec">누구에게<br><span class="em">필요한 내용일까요?</span></h2></div>
+    <div class="sec-head c rv"><h2 class="h-sec">누구에게<br><span class="em">필요한 내용일까요?</span></h2></div>
     <div class="who-grid">
       <div class="who rv"><div class="who-h">콘텐츠</div><ul><li>매일 올리는데 문의가 안 느는 분</li><li>"여기 뭐 하는 곳이에요?" 소리를 듣는 분</li></ul></div>
       <div class="who rv rv-d1"><div class="who-h">마케팅</div><ul><li>인스타·블로그·광고 다 해봤는데 그대로인 분</li><li>공식은 아는데 나한테만 안 먹히는 분</li></ul></div>
