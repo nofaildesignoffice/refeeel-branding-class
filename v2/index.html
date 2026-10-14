@@ -550,6 +550,14 @@ a{color:inherit;text-decoration:none}
 .vc-list.collapsed .voice-card:nth-child(n+7){display:none}
 .vc-more-wrap{text-align:center;margin-top:clamp(24px,4vw,36px)}
 .vc-more{padding:13px 26px;border-radius:var(--radius-full);border:1px solid var(--ink);background:var(--bg-white);color:var(--ink);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+
+/* 후기 — 성과 블럭이 쏟아져 산처럼 쌓이는 일러스트 */
+.pile{position:relative;height:clamp(300px,42vw,400px);max-width:820px;margin:clamp(8px,2vw,16px) auto clamp(32px,5vw,52px);overflow:hidden;border-bottom:1.5px solid var(--ink)}
+.pile-b{position:absolute;left:0;top:0;visibility:hidden;white-space:nowrap;padding:clamp(8px,1.6vw,11px) clamp(12px,2.4vw,18px);border:1.5px solid var(--ink);border-radius:10px;font-size:clamp(13px,2.3vw,16px);font-weight:800;letter-spacing:-.02em;line-height:1.2;will-change:transform;user-select:none}
+.pile-b.k{background:var(--ink);color:var(--brand)}
+.pile-b.l{background:var(--brand);color:var(--ink)}
+.pile-b.w{background:var(--bg-white);color:var(--ink)}
+.pile-b.s{font-size:clamp(11.5px,2vw,13.5px);padding:6px 11px}
 </style>
 </head>
 <body>
@@ -611,6 +619,7 @@ a{color:inherit;text-decoration:none}
 <section class="sec bt reviews-dark swap-light">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">REVIEW</span><h2 class="h-sec">먼저 경험한 분들의<br><span class="em">쏟아지는 극찬과 성과들</span></h2></div>
+    <div class="pile" aria-hidden="true"></div>
     <div class="voice-cards vc-list">
       <div class="voice-card rv"><div class="voice-role">1인 서비스업(예약제)</div><p class="vc-result">노션 워크북으로 방향 정리 후 브랜딩 수정 → 조회수 400 글 하나로 다음 날 3명 예약</p><p class="voice-txt vc-orig">낙타님 브랜딩클래스 너무 좋은 것 같아요 감사합니다. 고민이 많아서 노션 쓰는데 이틀 꼬박 걸렸는데 이게 최종일지는 모르는거지만, 그 전보다는 방향성이 많이 뾰족해지고 생각이 정리됐어요!!<br>네 그리고 전환율이 높아졌어요! 브랜딩 수정하고 난 후 새벽사이에 스레드 글 조회수400짜리 하나만 올렸는데 3분이 다음날 바로 예약하셨어요 좀 더 봐야겠지만...</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>t****</b><span>2026.03.18</span></div></div>
       <div class="voice-card rv"><div class="voice-role">1인 서비스업(예약제)</div><p class="vc-result">타겟·포지셔닝으로 프로필 수정 → 글을 안 써도 예약 유입, 예상한 &#x27;꿈의 고객&#x27; 실제 방문</p><p class="voice-txt vc-orig">아니 글을 안 쓰는데 자꾸 예약이 들어오네요...? 그리고 오늘 제가 이 프로필 설정하면서 예상한 꿈의고객 (방송인, 유튜버) 중 한명 오셨어요<br>타겟설정, 포지셔닝 차이가 생각보다 더 크네요 너무 신기해요... 제가 파는 상품 자체는 바뀌지않았는데<br>마케팅클래스, 진단클래스 열리면 또 사야겠어요.. 효능감 미쳤다...</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>t****</b><span>2026.03.21</span></div></div>
@@ -981,6 +990,7 @@ a{color:inherit;text-decoration:none}
   <a href="/shop_view?idx=6" class="stk-btn">구매하기</a>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <script>
 /* 스크롤 리빌 */
 (function(){var e=document.querySelectorAll('.rv');if(!e.length)return;if(!('IntersectionObserver' in window)){e.forEach(function(i){i.classList.add('on')});return}var o=new IntersectionObserver(function(n){n.forEach(function(i){if(i.isIntersecting){i.target.classList.add('on');o.unobserve(i.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});e.forEach(function(i){o.observe(i)})})();
@@ -1052,6 +1062,45 @@ a{color:inherit;text-decoration:none}
   if(list.children.length<=6) more.parentNode.remove();
   else more.addEventListener('click',function(){ list.classList.remove('collapsed'); list.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')}); more.parentNode.remove(); fit(); });
   window.addEventListener('load',fit); window.addEventListener('resize',fit); setTimeout(fit,300);
+})();
+
+/* 후기 — 성과 블럭 쌓기 (Matter.js, 화면에 보일 때 한 번) */
+(function(){
+  var box=document.querySelector('.pile'); if(!box||!window.Matter) return;
+  var M=Matter, W=[
+    ['글 하나로 3명 예약','k'],['일 매출 1.5배','l'],['팔로워 2만 증가','k'],['쌓이는 예약','w'],
+    ['꿈의 고객 방문','l'],['글 안 써도 예약','w'],['1년 반 고민 해결','k'],['조회수 낮아도 매출 UP','w'],
+    ['방향이 뾰족해짐','l'],['내 색깔이 생김','w'],['찐팬이 생김','k'],['전환율 상승','l'],
+    ['길이 잡혔어요','w'],['다음 날 바로 예약','k'],['확신이 생김','w'],['고민 해소','l'],
+    ['예약','s w'],['매출 UP','s l'],['문의','s k'],['예약','s l'],['재구매','s w'],['팔로워','s k'],['결제','s w'],['찐팬','s l']
+  ];
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, started=false;
+  function gauss(){return (Math.random()+Math.random()+Math.random()-1.5)/1.5}
+  function run(){
+    started=true;
+    var w=box.clientWidth, h=box.clientHeight, eng=M.Engine.create({gravity:{y:1}}), items=[];
+    var st={isStatic:true}; M.Composite.add(eng.world,[
+      M.Bodies.rectangle(w/2,h+30,w*2,60,st),M.Bodies.rectangle(-30,h/2-400,60,h*3,st),M.Bodies.rectangle(w+30,h/2-400,60,h*3,st)]);
+    W.forEach(function(d,i){
+      var el=document.createElement('span'); el.className='pile-b '+d[1]; el.textContent=d[0]; box.appendChild(el);
+      var bw=el.offsetWidth, bh=el.offsetHeight;
+      var x=Math.max(bw/2+4,Math.min(w-bw/2-4,w/2+gauss()*w*0.22));
+      var b=M.Bodies.rectangle(x,-bh-20,bw,bh,{chamfer:{radius:8},friction:.9,frictionStatic:1.2,restitution:.08,density:.002,angle:(Math.random()-.5)*0.9});
+      items.push({el:el,b:b,bw:bw,bh:bh,t:i*(w<600?150:120)});
+    });
+    function draw(){items.forEach(function(it){ if(!it.added) return; var p=it.b.position;
+      it.el.style.transform='translate('+(p.x-it.bw/2)+'px,'+(p.y-it.bh/2)+'px) rotate('+it.b.angle+'rad)'; it.el.style.visibility='visible';});}
+    if(reduce){ items.forEach(function(it,i){ M.Composite.add(eng.world,it.b); it.added=true; for(var k=0;k<40;k++) M.Engine.update(eng,1000/60);});
+      for(var k=0;k<300;k++) M.Engine.update(eng,1000/60); draw(); return; }
+    var t0=performance.now(), last=t0, end=items[items.length-1].t+5000;
+    (function tick(now){
+      var el=now-t0; items.forEach(function(it){ if(!it.added&&el>=it.t){ M.Composite.add(eng.world,it.b); it.added=true; }});
+      var dt=Math.min(now-last,32); last=now; M.Engine.update(eng,dt); draw();
+      if(el<end) requestAnimationFrame(tick);
+    })(t0);
+  }
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting&&!started){ io.disconnect(); (document.fonts?document.fonts.ready:Promise.resolve()).then(run); }},{threshold:.35});
+  io.observe(box);
 })();
 </script>
 </body>
