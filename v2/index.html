@@ -41,7 +41,7 @@ html,body{overscroll-behavior:none !important}
   --font:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;--serif:'Instrument Serif','Pretendard',serif;
 }
 body{font-family:var(--font);background:var(--bg-white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px;line-height:1.7;letter-spacing:-.01em}
-.bc-root{font-family:var(--font)!important;background:var(--bg-white)!important;color:var(--ink)!important;overflow-x:hidden;position:relative;padding-bottom:120px}
+.bc-root{font-family:var(--font)!important;background:var(--bg-white)!important;color:var(--ink)!important;overflow-x:hidden;overflow-x:clip;position:relative;padding-bottom:120px}
 .bc-root *{box-sizing:border-box}
 @media(min-width:768px){.bc-root{padding-bottom:88px}}
 ::selection{background:var(--brand);color:var(--brand-ink)}
@@ -640,6 +640,11 @@ a{color:inherit;text-decoration:none}
 @media(prefers-reduced-motion:reduce){.pb-ic *{animation:none!important;opacity:1!important}}
 .pb-turn .turn-story .pb-underline{line-height:1.9}
 .pb-turn .turn-story p:first-child .pb-underline{background:none;padding:0;font-weight:700}
+
+/* 히어로 고정 — 다음 섹션이 위로 올라오며 히어로를 덮음 (히어로가 화면보다 길면 끝까지 본 뒤 고정) */
+.bc-root > .hero{position:sticky;top:var(--hero-top,0px);z-index:0}
+.bc-root > .hero ~ section{position:relative;z-index:1}
+.bc-root > .hero + section{box-shadow:0 -24px 48px rgba(0,0,0,.28)}
 </style>
 </head>
 <body>
@@ -1187,6 +1192,13 @@ a{color:inherit;text-decoration:none}
   }
   var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting&&!started){ io.disconnect(); (document.fonts?document.fonts.ready:Promise.resolve()).then(run); }},{threshold:.35});
   io.observe(box);
+})();
+
+/* 히어로 고정 — 화면보다 긴 히어로는 아랫부분까지 보인 다음 고정 */
+(function(){
+  var h=document.querySelector('.bc-root > .hero'); if(!h) return;
+  function fit(){ h.style.setProperty('--hero-top',Math.min(0,window.innerHeight-h.offsetHeight)+'px'); }
+  fit(); window.addEventListener('resize',fit); window.addEventListener('load',fit);
 })();
 </script>
 </body>
