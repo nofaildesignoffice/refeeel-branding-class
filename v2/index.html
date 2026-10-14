@@ -593,20 +593,26 @@ a{color:inherit;text-decoration:none}
 .pb-turn .turn-story strong{color:var(--ink);font-weight:700}
 .pb-turn-q{font-size:clamp(26px,5.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.35;color:var(--ink);word-break:keep-all}
 
-/* 제자리 걷기 일러스트 */
-.walker{position:relative;width:260px;max-width:100%;margin:0 auto clamp(36px,6vw,56px);display:flex;flex-direction:column;align-items:center}
-.walker-fig{position:relative;width:clamp(110px,20vw,140px);aspect-ratio:237/658;animation:wkBob .55s ease-in-out infinite}
-.walker-fig img{position:absolute;inset:0;width:100%;height:100%;display:block}
-.wk-top{clip-path:inset(0 0 38% 0)}
-.wk-leg{clip-path:inset(62% 0 0 0);transform-origin:50% 62%;animation:wkLeg 1.1s ease-in-out infinite}
-.walker-ground{position:relative;width:100%;height:14px;margin-top:-6px}
-.walker-ground::before{content:'';position:absolute;left:0;right:0;top:6px;height:2px;background:repeating-linear-gradient(90deg,var(--ink) 0 14px,transparent 14px 26px);animation:wkGround .55s linear infinite;-webkit-mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent);mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent)}
-.walker-ground::after{content:'';position:absolute;left:30%;right:30%;top:2px;height:10px;border-radius:50%;background:radial-gradient(closest-side,rgba(26,26,26,.18),rgba(26,26,26,0));animation:wkShadow .55s ease-in-out infinite}
-@keyframes wkBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes wkLeg{0%,100%{transform:skewX(7deg)}50%{transform:skewX(-7deg)}}
-@keyframes wkGround{from{background-position:0 0}to{background-position:-26px 0}}
-@keyframes wkShadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.85);opacity:.7}}
-@media(prefers-reduced-motion:reduce){.walker-fig,.wk-leg,.walker-ground::before,.walker-ground::after{animation:none}}
+/* 제자리 걷기 일러스트 — 상체는 원본 그림, 다리는 좌우 따로 그려 허벅지·종아리·발이 각각 꺾이며 교차 */
+.walker{margin:0 auto clamp(28px,5vw,48px);display:flex;justify-content:center}
+.wk{display:block;width:clamp(296px,54vw,376px);max-width:100%;height:auto;overflow:visible}
+.wk-body{animation:wkBob .55s linear infinite}
+.wk-th,.wk-sh,.wk-ft{animation:1.1s linear infinite}
+.wk-th{animation-name:wkTh}.wk-sh{animation-name:wkSh}.wk-ft{animation-name:wkFt}
+.wk-l2 .wk-th,.wk-l2 .wk-sh,.wk-l2 .wk-ft{animation-delay:-.55s}
+.wk-pant{fill:var(--ink)}
+.wk-l2 .wk-pant{stroke:var(--bg-light);stroke-width:5;paint-order:stroke;stroke-linejoin:round}
+.wk-l2 .wk-knee{stroke:none}
+.wk-shoe{fill:#fff;stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
+.wk-gd{stroke:var(--ink);stroke-width:3;stroke-dasharray:24 20;animation:wkGd .55s linear infinite}
+.wk-sd{transform-box:fill-box;transform-origin:center;animation:wkSd .55s linear infinite}
+@keyframes wkBob{0%,100%{transform:translateY(14px)}20%{transform:translateY(5px)}50%{transform:translateY(0)}80%{transform:translateY(5px)}}
+@keyframes wkTh{0%,100%{transform:rotate(17deg)}10%{transform:rotate(12deg)}25%{transform:rotate(0)}40%{transform:rotate(-9.5deg)}50%{transform:rotate(-15deg)}62%{transform:rotate(-10deg)}80%{transform:rotate(15.5deg)}92%{transform:rotate(16.5deg)}}
+@keyframes wkSh{0%,100%{transform:rotate(0)}10%{transform:rotate(-6deg)}25%{transform:rotate(-3deg)}40%{transform:rotate(-2deg)}50%{transform:rotate(-18deg)}62%{transform:rotate(-55deg)}80%{transform:rotate(-20deg)}92%{transform:rotate(0)}}
+@keyframes wkFt{0%,100%{transform:rotate(-5deg)}10%{transform:rotate(-6deg)}25%{transform:rotate(3deg)}40%{transform:rotate(11.5deg)}50%{transform:rotate(8deg)}62%{transform:rotate(45deg)}80%{transform:rotate(4.5deg)}92%{transform:rotate(-4.5deg)}}
+@keyframes wkGd{from{stroke-dashoffset:176}to{stroke-dashoffset:0}}
+@keyframes wkSd{0%,100%{transform:scaleX(1.12)}50%{transform:scaleX(.9)}}
+@media(prefers-reduced-motion:reduce){.wk-body,.wk-th,.wk-sh,.wk-ft,.wk-gd,.wk-sd{animation:none}.wk-l1 .wk-th{transform:rotate(-12deg)}.wk-l2 .wk-th{transform:rotate(14deg)}}
 </style>
 </head>
 <body>
@@ -733,10 +739,7 @@ a{color:inherit;text-decoration:none}
       <p>바쁜 시간 쪼개서<br>강의도 듣고 업로드 횟수도 늘리고<br>메뉴 개발도 해보고 다양한 프로모션에<br>가격도 내려보고 광고비도 올리고</p>
       <p><strong>누구보다 열심히 했고 모든 방법을 다 써봤지만</strong><br>계속 제자리만 걷는 것 같은 느낌...</p>
     </div>
-    <div class="walker" aria-hidden="true">
-      <div class="walker-fig"><img class="wk-top" src="assets/walker.png" alt="" width="237" height="658"><img class="wk-leg" src="assets/walker.png" alt="" width="237" height="658"></div>
-      <div class="walker-ground"></div>
-    </div>
+    <div class="walker" aria-hidden="true"><svg class="wk" viewBox="-200 0 637 670" aria-hidden="true"><defs><clipPath id="wkUp"><polygon points="-200,0 437,0 437,402 150,402 140,396 102,378 100,306 75,304 50,286 20,263 -200,263"/></clipPath><clipPath id="wkLg"><polygon points="-200,258 20,258 50,281 75,299 104,303 104,372 140,392 437,396 437,720 -200,720"/></clipPath><linearGradient id="wkFade"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".3" stop-color="#fff"/><stop offset=".7" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="wkGm"><rect x="-200" y="630" width="637" height="40" fill="url(#wkFade)"/></mask><radialGradient id="wkSh"><stop offset="0" stop-color="#1A1A1A" stop-opacity=".18"/><stop offset="1" stop-color="#1A1A1A" stop-opacity="0"/></radialGradient></defs><ellipse class="wk-sd" cx="88" cy="650" rx="95" ry="9" fill="url(#wkSh)"/><line class="wk-gd" x1="-200" y1="652" x2="437" y2="652" mask="url(#wkGm)"/><g class="wk-body"><g clip-path="url(#wkLg)"><g class="wk-l1" transform="translate(88 318)"><g class="wk-th"><g transform="translate(0 165)"><g class="wk-sh"><g transform="translate(0 148)"><g class="wk-ft"><path class="wk-shoe" d="M30 -6C31 4 29 11 27 16L-62 16C-75 16 -79 5 -68 -1C-56 -7 -30 -9 -14 -9Z"/></g></g><path class="wk-pant" d="M-29 0L29 0L36 140L-36 140Z"/></g></g><path class="wk-pant" d="M-26 -50L26 -50L29 165L-29 165Z"/><circle class="wk-pant wk-knee" cx="0" cy="165" r="29"/></g></g><g class="wk-l2" transform="translate(88 318)"><g class="wk-th"><g transform="translate(0 165)"><g class="wk-sh"><g transform="translate(0 148)"><g class="wk-ft"><path class="wk-shoe" d="M30 -6C31 4 29 11 27 16L-62 16C-75 16 -79 5 -68 -1C-56 -7 -30 -9 -14 -9Z"/></g></g><path class="wk-pant" d="M-29 0L29 0L36 140L-36 140Z"/></g></g><path class="wk-pant" d="M-26 -50L26 -50L29 165L-29 165Z"/><circle class="wk-pant wk-knee" cx="0" cy="165" r="29"/></g></g></g><image href="assets/walker.png" width="237" height="658" clip-path="url(#wkUp)"/></g></svg></div>
     <p class="pb-turn-q rv">열심히 달리는 거 말고<br><span class="em">지금 이 방향이 맞는지</span><br>생각해 본 적 있나요?</p>
     </div>
   </div>
