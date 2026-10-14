@@ -725,6 +725,10 @@ a{color:inherit;text-decoration:none}
 .bc-root .career-grid{position:relative;overflow:visible}
 .career-grid::before{content:'김낙타의 HISTORY';position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:1;white-space:nowrap;background:var(--brand);color:var(--brand-ink);font-size:12px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:var(--radius-full)}
 .career-grid>.career-row:first-child{border-top-left-radius:inherit}
+
+/* 가격 제목 — 위 작게, 아래 크게 */
+.ps-h-s{display:block;font-size:clamp(17px,3.4vw,22px);font-weight:700;line-height:1.5;letter-spacing:-.03em;color:var(--text-dark);margin-bottom:clamp(8px,1.4vw,12px)}
+.ps-h-b{display:block;font-size:clamp(32px,6.6vw,48px);font-weight:800;line-height:1.3;letter-spacing:-.04em;word-break:keep-all}
 </style>
 </head>
 <body>
@@ -760,7 +764,7 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="price-split">
       <div class="ps-l">
-    <div class="sec-head c rv"><svg class="logo-mark price-logo" role="img" aria-label="commel"><use href="#logo-commel"/></svg><h2 class="h-sec">70만 인플루언서도,<br>500억 브랜드가 찾는 김낙타의<br><span class="em">브랜드가 돈이 되는 과정</span></h2></div>
+    <div class="sec-head c rv"><svg class="logo-mark price-logo" role="img" aria-label="commel"><use href="#logo-commel"/></svg><h2 class="h-sec ps-h"><span class="ps-h-s">70만 인플루언서와 500억 브랜드가 찾는<br>김낙타의 브랜딩 단독 시리즈</span><span class="ps-h-b"><span class="em">브랜드가 돈이 되는 과정</span></span></h2></div>
       </div>
       <div class="price-box rv">
         <div class="price-amt">99,000<span class="u">원</span></div>
