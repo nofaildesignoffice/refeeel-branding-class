@@ -537,6 +537,19 @@ a{color:inherit;text-decoration:none}
 .band-turn .turn-story p{font-size:var(--body-font-size);font-weight:400;letter-spacing:-.01em;line-height:1.8;color:inherit;margin-bottom:clamp(14px,2.4vw,20px)}
 .band-turn .turn-story p:last-child{margin-bottom:0}
 .band-turn .turn-story strong{color:#fff;font-weight:700}
+
+/* 후기 — 엑셀 원본(업종·성과 한 줄·원문·작성자·날짜) */
+.vc-list{align-items:start}
+.vc-result{font-size:var(--body-font-size);line-height:1.55;font-weight:700;color:var(--ink);word-break:keep-all;margin-bottom:12px}
+.vc-result::before{content:'성과';display:inline-block;vertical-align:2px;margin-right:8px;padding:2px 9px;border-radius:var(--radius-full);background:var(--brand);color:var(--brand-ink);font-size:12px;font-weight:800}
+.vc-orig{color:var(--text-gray);overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5}
+.voice-card.open .vc-orig{display:block;-webkit-line-clamp:unset}
+.vc-toggle{align-self:flex-start;margin-top:8px;padding:0;background:none;border:0;font:inherit;font-size:13.5px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.vc-meta{margin-top:18px;padding-top:14px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--text-light)}
+.vc-meta b{color:var(--text-dark);font-weight:700}
+.vc-list.collapsed .voice-card:nth-child(n+7){display:none}
+.vc-more-wrap{text-align:center;margin-top:clamp(24px,4vw,36px)}
+.vc-more{padding:13px 26px;border-radius:var(--radius-full);border:1px solid var(--ink);background:var(--bg-white);color:var(--ink);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 </style>
 </head>
 <body>
@@ -598,11 +611,24 @@ a{color:inherit;text-decoration:none}
 <section class="sec bt reviews-dark swap-light">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">REVIEW</span><h2 class="h-sec">먼저 경험한 분들의<br><span class="em">쏟아지는 극찬과 성과들</span></h2></div>
-    <div class="voice-cards">
-      <div class="voice-card rv"><div class="voice-role">뷰티 살롱 대표</div><p class="voice-txt">시술 사진을 꾸준히 올려도 소개글은 늘 “꼼꼼한 피부관리”에 머물러 있다면, 워크북에서 고객의 상황을 좁혀보세요. <strong>“레이저 후 예민해진 피부를 위한 관리”처럼 누구를 돕는 곳인지 구체화할 수 있어요.</strong></p></div>
-      <div class="voice-card rv"><div class="voice-role">온라인 클래스 운영자</div><p class="voice-txt">조회수를 높이는 훅은 배웠는데 정작 강의를 소개할 말이 없다면, 타겟의 상황과 감정부터 적어보세요. <strong>“초보자를 위한 강의”를 넘어, 어디서 막힌 사람에게 어떤 도움을 줄지 정리하는 거예요.</strong></p></div>
-      <div class="voice-card rv"><div class="voice-role">PT샵 대표</div><p class="voice-txt">경력과 시설을 강조해도 가격 비교만 당한다면, 고객이 선택하는 다른 방법까지 살펴보세요. <strong>혼자 홈트를 하다 중단한 사람에게 필요한 자세 피드백과 꾸준한 관리처럼, 나를 선택할 이유를 찾아보는 거예요.</strong></p></div>
+    <div class="voice-cards vc-list">
+      <div class="voice-card rv"><div class="voice-role">1인 서비스업(예약제)</div><p class="vc-result">노션 워크북으로 방향 정리 후 브랜딩 수정 → 조회수 400 글 하나로 다음 날 3명 예약</p><p class="voice-txt vc-orig">낙타님 브랜딩클래스 너무 좋은 것 같아요 감사합니다. 고민이 많아서 노션 쓰는데 이틀 꼬박 걸렸는데 이게 최종일지는 모르는거지만, 그 전보다는 방향성이 많이 뾰족해지고 생각이 정리됐어요!!<br>네 그리고 전환율이 높아졌어요! 브랜딩 수정하고 난 후 새벽사이에 스레드 글 조회수400짜리 하나만 올렸는데 3분이 다음날 바로 예약하셨어요 좀 더 봐야겠지만...</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>t****</b><span>2026.03.18</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">1인 서비스업(예약제)</div><p class="vc-result">타겟·포지셔닝으로 프로필 수정 → 글을 안 써도 예약 유입, 예상한 &#x27;꿈의 고객&#x27; 실제 방문</p><p class="voice-txt vc-orig">아니 글을 안 쓰는데 자꾸 예약이 들어오네요...? 그리고 오늘 제가 이 프로필 설정하면서 예상한 꿈의고객 (방송인, 유튜버) 중 한명 오셨어요<br>타겟설정, 포지셔닝 차이가 생각보다 더 크네요 너무 신기해요... 제가 파는 상품 자체는 바뀌지않았는데<br>마케팅클래스, 진단클래스 열리면 또 사야겠어요.. 효능감 미쳤다...</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>t****</b><span>2026.03.21</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">주얼리 브랜드</div><p class="vc-result">브랜딩 클래스 + 컨설팅 방향대로 포스팅 3개 → 조회수는 낮아졌는데 일 매출 1.5배</p><p class="voice-txt vc-orig">낙타님! 저 컨설팅 이후로 말씀해주신 방향대로 포스팅 3개했는데 분명 이전 컨텐츠보다 조회수가 훨씬 낮은데도 일매출이 1.5배예요!! 대박적..<br>ㅎㅎ너무 감사해요 노션 쓰면쓸수록 요물이에요 PAS구조 글 읽고 너무 좋아서 데이터분석까지 다 하고, 노션에있는 릴스 자동화 클로드 프로젝트 만드는 것처럼 하고싶어서 PAS지침 만들어봤는데 전 응용은 안되나봐요 클로드가 말을 안들어요 ...ㅋㅋㅋㅋ 확장팩 기다려요... 리킷 데이터분석 시리즈 글 너무 좋더라구요!! 도움 많이 됩니다 사주에 올초에 귀인이 나타난다더니 낙타님인것같아요!!!!ㅋㅋㅋㅋ</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>김**</b><span>2026.05.07</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">어머니 인스타 계정 운영</div><p class="vc-result">브랜딩 클래스(&#x27;좋은 책&#x27;) 읽고 포지셔닝 적용 → 어머니 계정 팔로워 일주일 2만 증가</p><p class="voice-txt vc-orig">…메타에 권한을 다시 복구시켰더니 정상 돌아갑니다 :) 메세지가 닿은 김에,, ㅎㅎ 좋은 책 써주셔서 감사합니다. 올해 본 책 중 가장 좋은 책이었어요. (참고로 웬만한 강의 전부 사보는 사람입니다.) 모든 콘텐츠 다 최고이구요. 덕분에 저희 엄마 인스타그램도 브랜딩과 포지셔닝을 고민하게 되었고, 낙타님의 인사이트 덕분에 지난주 팔로우가 2만명이 늘었습니다. 진심으로 낙타님 덕이라고 생각해요 🙏 늦은 밤에도 cs 해주셔서 감사합니다. 앞으로도 무운을 빕니다 :) p.s. 혹시 저희 엄마 인스타가 궁금하실까봐…</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>익명</b><span>2026.06.22</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">사업자</div><p class="vc-result">1년 반 고민하던 것이 99,000원(브랜딩 클래스 가격)으로 해결</p><p class="voice-txt vc-orig">저는 금액은 크게 중요치않습니다. <br>제가 1년반동안 고민하던게 99000원으로 해결됬거든요 수많은 교육과 자문을 받아왔는데 그어떤것보다도 좋았습니다 진심으로요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>연**</b><span>2026.06.30</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">사업자</div><p class="vc-result">다른 강의는 방법론뿐이었는데 &#x27;나를 찾고 고객에게 맞춰가는 단계&#x27;가 해결해줌</p><p class="voice-txt vc-orig">전부 좋은 인사이트를 주셨지만 방법론에 대한이야기지 본질적으로 제가 고민하는 나를 어떻게 보여줘야겠다가 없었습니다. 낙타님께서 써주신책에서는 나를찾고 고객에게 맞춰가는단계가 너무 좋았습니다. 감사합니다.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>연**</b><span>2026.07.01</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">카페(해운대)</div><p class="vc-result">목적 없이 채우기만 하던 운영 → 방향성과 &#x27;내 색깔&#x27;이 생김</p><p class="voice-txt vc-orig">안녕하세요 해운대쪽에서 카페를 운영하고 있는 자영업자입니다. 항상 운영하면서 부족해보이니까 여기 채워야지라는 마음으로 뭔가 아무런 목적과 이유없이 채우기만 했었습니다. 그걸 채우면서도 내가 왜 채워야하는지 이유도 없었던것이었습니다. 그렇게 아무 목적도 정확히 방향잡히지 않은채 무작정 달리기만 하고 있었든 상황에 브랜딩을 계속 시도해왔지만 부족함이 있었습니다. 그래서 인스타에서 항상 무료강의를 보다가 내가 깊이 빠져들고싶을 때 쯤 되어서, 강의를 결제하게 되었습니다. 저도 그 간절함이 있었기에 강의를 자세하게 깊이 이해하면서 볼 수 있었습니다. 대충하려고 하는 이들에겐 비추하지 않습니다. 정말 간절한사람에게 확실하게 길잡이가 되는 서비스인 것 같습니다. 강의를 직접 읽으며 여러가지 예시들과 경험을 직접 듣고 조금씩 조금씩 개선해가다보니 정말 내 것이 잡히고 있는 것 같습니다. 새로 가게를 리뉴얼하다보니 채워야하는 것도 계속 생기지만 정확히 방향성이 생겼기 때문에 내 색깔이 생겼고 계속 보완해야하가는 정확한 이유를 깨닫게되었습니다. 솔직히 하면서도 처음 제대로 브랜딩을 해보는 것이기에 이게 맞나 싶을때도 있지만 계속해서 강의를 처음부터 듣고있습니다.불안할때마다 다시 차근차근읽어보면 다시 확신이 생기는 것 같네요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>원****</b><span>2026.05.14</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">속눈썹 샵</div><p class="vc-result">조회수만 쫓던 생각이 바뀌고, 클래스+리킷대로 실행하니 길이 잡힘</p><p class="voice-txt vc-orig">낙타님 안녕하세요:) 릴스 보며 좋은 정보들 많이 얻고 있는 사람입니다 ㅎㅎㅎ 브랜딩 클래스 구매해서 쭉 읽어보았는데 질문에 답을 하며 많은 생각이 들더라구요.. 조회수만을 위해 변질되려 하는 저의 뇌구조를 싹 바꾸어주었습니다. 감사하다는 인사를 멀리서나마 꼭 전하고 싶었어요 다음에 꼭 기회가 된다면 45분 라이브도 신청해서 들어보고 싶어요!! (지금은 마감이더라구요 좋은 자료를 넘어 가치있는 정보들 주셔서 감사합니다<br>(스토리 답장) 저는 브랜딩 클래스 하고 리킷 쭉읽어보며 천천히 실행해보니 길이 잡혀서 그 내용으로 더욱 컨설팅 받아보고 싶더라구요!!! 컨설팅 여시면 바로 지원하러 달려갈거에요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>j****</b><span>2026.08.08</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">사업자</div><p class="vc-result">책 150권·강의로도 막막했던 &#x27;내 사업 적용&#x27;을 노션 워크북+낙타AI로 해결</p><p class="voice-txt vc-orig">낙타님의 인스타를 보고 마케팅에 대한 제고민을 해결해줄 수 있을거 같아서 이 브랜딩 클래스를 구입했습니다<br>결과적으론 진짜 대만족입니다.<br>사업을 제대로 하고싶고, 마케팅과 브랜딩에 경쟁력을 갖추기위해선 꼭 필요한 클래스에요. 저도 사업관련 책, 마케팅 책, 심리학 책 약 150권 읽어보고 여러강의도 들어봤지만 막상 제거에 적용하려면 항상 막막한 기분이 들었는데 이 클래스에서 들어준 예시는 실제 우리가 하고있는 사업에 어떻게 적용시켜야할지, 그리고 '현실적으로'고민하는 부분에 대해서 명쾌하게 방향을 알려줍니다.<br>이 내용이 책으로 나오면 사고싶을 만큼 너무너무 좋은 클래스였고<br>두고두고 보고싶습니다. 시중에 많은 브랜딩 마케팅 클래스들이 있지만 리필의 브랜딩클래스가 더 특별한건 바로 연동가능한 노션페이지로 제 생각을 작성할 수 있다는거에요. 기록하지않고 그냥 머리속으로만 '음 알겠다' 라고 넘어가는건, 누구나 다 하거든요. 그리고 그렇게 이론적인 지식만 남겨두면 늘 모호하고 뭔가 의문점이 드는데, 노션페이지와 '낙타AI'도움받아 차근차근 쓰다보면 정말로 구체적으로 내 사업체에 적용할 수 있는 솔루션들이 나오기땜에 정말 유익합니다 . 낙타AI같이 활용하시면 진짜진짜 최고에요,<br>이런 좋은 클래스 만들어주셔서 너무감사합니다!</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>김미****</b><span>2026.05.23</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">1인 기업</div><p class="vc-result">여러 번 읽으며 1인 기업으로서 판단이 안 서던 부분까지 정리</p><p class="voice-txt vc-orig">안녕하세요 :)<br>브랜딩 클래스 여러번 보게 되더라구요. 내용이 너무 좋았어요. 궁금한점과 1인기업으로써 판단이 잘 안서는 그런 부분까지 정리가 되어 있어서 너무 좋았습니다! ☺️</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>조**</b><span>2026.04.15</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">콘텐츠 크리에이터</div><p class="vc-result">&#x27;바이럴이 깡패&#x27;라던 생각 → 고객·찐팬을 만드는 브랜딩을 이해</p><p class="voice-txt vc-orig">브랜딩이 뭘까, 그건 어느 기업을 키워 매각했다는, 초히트 상품을 개발했다는 그런 사람들의 전유물이 아닐까? 아니, 그 전에 왜 콘텐츠 만드는데 브랜딩이 필요해? 라고도 생각했습니다. 저는 콘텐츠를 생산하는 것을 본업으로 두고있지만, 바이럴이 깡패라고만 생각했어요. 하지만 정말 고객을 만드는 것, 그라고 찐팬을 만드는 것, 그리고 사람들에게 인식되는 것 이 모든 일련의 과정은 브랜딩이 그 자체였습니다. 이제서야 제가 왜 부족한지 깨달았어요. 깊은 통찰을 주신 낙타님께 경의를 표합니다. 올해, 아니 작년에 읽은 모든 책과 강의 중 단연코 최고였어요.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>이**</b><span>2026.06.12</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">1인 서비스업(예약제)</div><p class="vc-result">노션 질문으로 흐릿하던 아이디어를 스스로 버리고 프로필 완성</p><p class="voice-txt vc-orig">와 너무 기뻐요 낙타님도 관심가질 프로필...!!!<br>저 일대일 신청하면 더 업그레이드 시켜주세용<br>노션 질문들이 날카로워서 기존에 흐릿하게 이런 거 하면 되지않을까...? 했던 것들을 자진해서 버릴 수 있었어요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>m****</b><span>2026.03.25</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">사업자</div><p class="vc-result">브랜딩 클래스 내용만으로 모든 고민이 해소</p><p class="voice-txt vc-orig">50대 아저씨가 쓴 책인 줄 알았다. 그 내용만으로도 모든 고민이 해소되었기에 컨설팅이 얼마든 상관없었다. 마주 앉아 이야기를 하고 싶었다. 그것만으로 충분하다. 그리고 감사하다.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>익명</b><span>2026.08.20</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">재활·바디 관련</div><p class="vc-result">마케팅은 속임수라는 생각 → 체계와 페르소나를 세우고 싶어짐</p><p class="voice-txt vc-orig">마케팅에 대해 부정적이였던 이유는 눈속여서 파는 느낌이라 부정적이였다가 낙타님 전자책보고 그 생각이 바뀌게 되었습니다. 체계적인 구조(시스템)을 세우고 정확한 페르소나를 가지고 목표를 잡고 싶습니다.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>허**</b><span>2026.07.01</span></div></div>
+      <div class="voice-card rv"><div class="voice-role">사업자</div><p class="vc-result">스스로 방향을 잡을 인사이트를 얻음</p><p class="voice-txt vc-orig">마케팅이 중요한건 누구나 알고 있지만<br>잘 하는 것은 정말 어렵다.<br>브랜딩 클래스를 통해 <br>내 스스로 방향을 잡을 수 있는<br>인사이트를 정말 많이 얻을 수 있었고<br>정말 좋은 컨텐츠라고 확신한다.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>윤종****</b><span>2026.05.07</span></div></div>
     </div>
+    <div class="vc-more-wrap"><button type="button" class="vc-more">후기 더 보기</button></div>
   </div>
 </section>
 
@@ -1009,6 +1035,25 @@ a{color:inherit;text-decoration:none}
 
 /* 부모 프레임 리사이즈 (임베드용) */
 (function(){function h(){var s=document.documentElement.scrollHeight;if(window.parent!==window){try{window.parent.postMessage({type:'resize',height:s,source:'branding-class'},'*')}catch(e){}}}window.addEventListener('load',h);window.addEventListener('resize',h);if(window.ResizeObserver){new ResizeObserver(h).observe(document.body)}setTimeout(h,1000);setTimeout(h,3000)})();
+
+/* 후기 — 원문 펼치기, 더 보기 */
+(function(){
+  var list=document.querySelector('.vc-list'); if(!list) return;
+  list.classList.add('collapsed');
+  function fit(){ list.querySelectorAll('.voice-card').forEach(function(c){
+    var t=c.querySelector('.vc-orig'), b=c.querySelector('.vc-toggle');
+    if(!c.classList.contains('open')) b.hidden = t.scrollHeight <= t.clientHeight+2;
+  });}
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('.vc-toggle'); if(!b) return;
+    var c=b.closest('.voice-card'); c.classList.toggle('open');
+    b.textContent=c.classList.contains('open')?'접기':'원문 전체 보기';
+  });
+  var more=document.querySelector('.vc-more');
+  if(list.children.length<=6) more.parentNode.remove();
+  else more.addEventListener('click',function(){ list.classList.remove('collapsed'); list.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')}); more.parentNode.remove(); fit(); });
+  window.addEventListener('load',fit); window.addEventListener('resize',fit); setTimeout(fit,300);
+})();
 </script>
 </body>
 </html>
