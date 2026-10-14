@@ -592,6 +592,21 @@ a{color:inherit;text-decoration:none}
 .pb-turn .turn-story p:last-child{margin-bottom:0}
 .pb-turn .turn-story strong{color:var(--ink);font-weight:700}
 .pb-turn-q{font-size:clamp(26px,5.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.35;color:var(--ink);word-break:keep-all}
+
+/* 제자리 걷기 일러스트 */
+.walker{position:relative;width:260px;max-width:100%;margin:0 auto clamp(36px,6vw,56px);display:flex;flex-direction:column;align-items:center}
+.walker-fig{position:relative;width:clamp(110px,20vw,140px);aspect-ratio:237/658;animation:wkBob .55s ease-in-out infinite}
+.walker-fig img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wk-top{clip-path:inset(0 0 38% 0)}
+.wk-leg{clip-path:inset(62% 0 0 0);transform-origin:50% 62%;animation:wkLeg 1.1s ease-in-out infinite}
+.walker-ground{position:relative;width:100%;height:14px;margin-top:-6px}
+.walker-ground::before{content:'';position:absolute;left:0;right:0;top:6px;height:2px;background:repeating-linear-gradient(90deg,var(--ink) 0 14px,transparent 14px 26px);animation:wkGround .55s linear infinite;-webkit-mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent);mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent)}
+.walker-ground::after{content:'';position:absolute;left:30%;right:30%;top:2px;height:10px;border-radius:50%;background:radial-gradient(closest-side,rgba(26,26,26,.18),rgba(26,26,26,0));animation:wkShadow .55s ease-in-out infinite}
+@keyframes wkBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes wkLeg{0%,100%{transform:skewX(7deg)}50%{transform:skewX(-7deg)}}
+@keyframes wkGround{from{background-position:0 0}to{background-position:-26px 0}}
+@keyframes wkShadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.85);opacity:.7}}
+@media(prefers-reduced-motion:reduce){.walker-fig,.wk-leg,.walker-ground::before,.walker-ground::after{animation:none}}
 </style>
 </head>
 <body>
@@ -715,10 +730,14 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="pb-turn">
     <div class="turn-story rv">
-      <p>터진다는 릴스 강의를 듣고, 업로드를 늘리고,<br>신메뉴를 내고, 가격을 내리고,<br>대행사를 바꾸고, 광고비를 올리고.</p>
-      <p><strong>누구보다 열심히 하셨잖아요.</strong><br>그런데 문의도, 매출도 그대로죠.</p>
+      <p>바쁜 시간 쪼개서<br>강의도 듣고 업로드 횟수도 늘리고<br>메뉴 개발도 해보고 다양한 프로모션에<br>가격도 내려보고 광고비도 올리고</p>
+      <p><strong>누구보다 열심히 했고 모든 방법을 다 써봤지만</strong><br>계속 제자리만 걷는 것 같은 느낌...</p>
     </div>
-    <p class="pb-turn-q rv">열심히 해도 안 되는 데는<br><span class="em">이유가 있어요.</span></p>
+    <div class="walker" aria-hidden="true">
+      <div class="walker-fig"><img class="wk-top" src="assets/walker.png" alt="" width="237" height="658"><img class="wk-leg" src="assets/walker.png" alt="" width="237" height="658"></div>
+      <div class="walker-ground"></div>
+    </div>
+    <p class="pb-turn-q rv">열심히 달리는 거 말고<br><span class="em">지금 이 방향이 맞는지</span><br>생각해 본 적 있나요?</p>
     </div>
   </div>
 </section>
