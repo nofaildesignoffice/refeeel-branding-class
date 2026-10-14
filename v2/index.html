@@ -701,7 +701,7 @@ a{color:inherit;text-decoration:none}
 .dir-fig.play .dr-spin{transform-origin:center;animation:drSpin .8s ease var(--d) both}
 .dir-fig.play .dr-left .dr-draw,.dir-fig.play .dr-right .dr-draw{animation:drDraw .7s cubic-bezier(.6,0,.3,1) var(--d) forwards}
 .dir-fig.play .dr-left .dr-head{animation:drHeadL .35s ease calc(var(--d) + .6s) both}
-.dir-fig.play .dr-right .dr-head{animation:drHeadR .35s ease calc(var(--d) + .6s) both,drNudge 1.6s ease-in-out calc(var(--d) + 1.2s) infinite}
+.dir-fig.play .dr-right .dr-head{animation:drHeadR .35s ease calc(var(--d) + .6s) both}
 .dir-fig.play .dr-dash{animation:drDash .8s ease var(--d) both}
 @keyframes drIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes drPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
@@ -712,6 +712,11 @@ a{color:inherit;text-decoration:none}
 @keyframes drNudge{0%,100%{transform:none}50%{transform:translateX(7px)}}
 @keyframes drDash{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.dr-in,.dr-pop,.dr-spin,.dr-dash,.dr-head{opacity:1}.dr-draw{stroke-dashoffset:0}.dir-fig.play *{animation:none!important}}
+
+/* 방향 일러스트 — 양쪽 흰 화살표 번갈아 연해졌다 진해졌다 */
+.dir-fig.play .dr-pa{animation:drPulse 2.4s ease-in-out 1.8s infinite}
+.dir-fig.play .dr-pb{animation:drPulse 2.4s ease-in-out 3s infinite}
+@keyframes drPulse{0%,100%{opacity:1}50%{opacity:.22}}
 </style>
 </head>
 <body>
@@ -856,22 +861,13 @@ a{color:inherit;text-decoration:none}
 <section class="sec bt sec-dir">
   <div class="wrap">
     <p class="pb-turn-q rv">열심히 달리는 거 말고<br><span class="em">지금 이 방향이 맞는지</span><br>생각해 본 적 있나요?</p>
-    <div class="dir-fig"><svg class="dr" viewBox="0 0 600 640" role="img" aria-label="열심히만 달리면 하던 대로 뒤로 가고, 누구한테 뭘 왜 팔지 물으면 내 방향으로 나아가요">
-<g class="dr-a">
-  <g class="dr-in" style="--d:0s"><rect class="dr-pill" x="150" y="12" width="300" height="44" rx="22"/><text class="dr-pt" x="300" y="41">열심히만 달릴 때</text></g>
-  <g class="dr-pop" style="--d:.25s"><g transform="translate(318 236) rotate(-4)"><circle class="dr-fig" cx="3" cy="-97" r="12"/><path class="dr-fig" d="M-7 -86C-17 -84 -20 -72 -20 -58L-20 -40C-20 -35 -14 -35 -14 -40L-13 -54L-12 -30L-11 -3C-11 1 -3 1 -3 -3L-1 -30H1L3 -3C3 1 11 1 11 -3L12 -30L13 -54L14 -40C14 -35 20 -35 20 -40L20 -58C20 -72 17 -84 7 -86Z"/></g></g>
-  <g class="dr-pop dr-bubg" style="--d:.5s"><path class="dr-bub" d="M373 128L348 148L373 150"/><ellipse class="dr-bub" cx="440" cy="140" rx="70" ry="52"/><path class="dr-bubfix" d="M376 131L376 147"/><text class="dr-bt" x="440" y="134">더 해야</text><text class="dr-bt" x="440" y="162">하나…?</text></g>
-  <g class="dr-left" style="--d:.85s"><path class="dr-line dr-draw" pathLength="1" d="M292 216C230 217 140 215 62 216"/><path class="dr-head" d="M80 200L60 216L80 232"/></g>
-  <text class="dr-in dr-lb" style="--d:1.5s" x="180" y="196">하던 대로, 더 많이</text>
-</g>
+    <div class="dir-fig"><svg class="dr" viewBox="20 425 560 180" role="img" aria-label="이 방향이 맞나 고민하며 갈림길에 선 사람">
 <g class="dr-b">
-  <g class="dr-in" style="--d:1.9s"><rect class="dr-pill dr-pill-l" x="160" y="352" width="280" height="44" rx="22"/><text class="dr-pt" x="300" y="381">방향을 물을 때</text></g>
-  <g class="dr-pop" style="--d:2.15s"><g transform="translate(300 590)"><circle class="dr-fig" cx="0" cy="-100" r="12"/><path class="dr-fig" d="M-7 -86C-17 -84 -21 -76 -24 -68L-30 -56C-32 -52 -27 -49 -24 -52L-14 -58L-12 -30L-11 -3C-11 1 -3 1 -3 -3L-1 -30H1L3 -3C3 1 11 1 11 -3L12 -30L13 -54L14 -40C14 -35 20 -35 20 -40L20 -58C20 -72 17 -84 7 -86Z"/></g></g>
-  <g class="dr-spin" style="--d:2.35s"><path class="dr-rot" d="M280 456C282 446 292 442 300 446M297 438L301 446L293 449M320 452C318 462 308 466 300 462M303 470L299 462L307 459"/></g>
-  <g class="dr-pop dr-bubg" style="--d:2.45s"><path class="dr-bub" d="M249 488L262 512L249 510"/><ellipse class="dr-bub" cx="170" cy="500" rx="82" ry="56"/><path class="dr-bubfix" d="M246 491L246 507"/><text class="dr-bt" x="170" y="493">누구한테,</text><text class="dr-bt" x="170" y="522">뭘, 왜?</text></g>
-  <g class="dr-dash" style="--d:2.8s"><path class="dr-line dr-dl" d="M266 578H50"/><path class="dr-head dr-dh" d="M66 564L48 578L66 592"/></g>
-  <g class="dr-right" style="--d:3.1s"><path class="dr-line dr-lime dr-draw" pathLength="1" d="M336 578C400 577 480 579 560 578"/><path class="dr-head dr-lime dr-nudge" d="M542 562L562 578L542 594"/></g>
-  <text class="dr-in dr-lb dr-lbl" style="--d:3.75s" x="450" y="556">내 방향</text>
+  <g class="dr-pop" style="--d:0s"><g transform="translate(300 590)"><circle class="dr-fig" cx="0" cy="-100" r="12"/><path class="dr-fig" d="M-7 -86C-17 -84 -21 -76 -24 -68L-30 -56C-32 -52 -27 -49 -24 -52L-14 -58L-12 -30L-11 -3C-11 1 -3 1 -3 -3L-1 -30H1L3 -3C3 1 11 1 11 -3L12 -30L13 -54L14 -40C14 -35 20 -35 20 -40L20 -58C20 -72 17 -84 7 -86Z"/></g></g>
+  <g class="dr-spin" style="--d:.2s"><path class="dr-rot" d="M280 456C282 446 292 442 300 446M297 438L301 446L293 449M320 452C318 462 308 466 300 462M303 470L299 462L307 459"/></g>
+  <g class="dr-pop dr-bubg" style="--d:.35s"><path class="dr-bub" d="M249 488L262 512L249 510"/><ellipse class="dr-bub" cx="170" cy="500" rx="82" ry="56"/><path class="dr-bubfix" d="M246 491L246 507"/><text class="dr-bt" x="170" y="493">이 방향이</text><text class="dr-bt" x="170" y="522">맞나…?</text></g>
+  <g class="dr-pa"><g class="dr-left" style="--d:.7s"><path class="dr-line dr-draw" pathLength="1" d="M266 578C200 577 120 579 42 578"/><path class="dr-head" d="M60 562L40 578L60 594"/></g></g>
+  <g class="dr-pb"><g class="dr-right" style="--d:.7s"><path class="dr-line dr-draw" pathLength="1" d="M334 578C400 577 480 579 558 578"/><path class="dr-head" d="M540 562L560 578L540 594"/></g></g>
 </g>
 </svg></div>
   </div>
