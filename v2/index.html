@@ -531,6 +531,12 @@ a{color:inherit;text-decoration:none}
 .proof-desc .m-br{display:none}
 @media(max-width:767px){.proof-desc .m-br{display:inline}.proof-desc .pc-br{display:none}}
 .price-h-lime{color:var(--brand)}
+
+/* 반전 밴드 — 공감 본문 + 질문 */
+.band-turn .turn-story{max-width:640px;margin:0 auto clamp(36px,6vw,56px);color:rgba(255,255,255,.72);word-break:keep-all}
+.band-turn .turn-story p{font-size:var(--body-font-size);font-weight:400;letter-spacing:-.01em;line-height:1.8;color:inherit;margin-bottom:clamp(14px,2.4vw,20px)}
+.band-turn .turn-story p:last-child{margin-bottom:0}
+.band-turn .turn-story strong{color:#fff;font-weight:700}
 </style>
 </head>
 <body>
@@ -634,9 +640,9 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">혹시 이런가요?</span><h2 class="h-sec">문제인 것 같은 건<br><span class="em">다 고쳐봤죠.</span></h2></div>
     <div class="pbs">
-      <div class="pb rv"><div class="pb-q"><span class="pb-k">콘텐츠가 문제라고 생각한 분</span><p>“매일 올려도 문의가 늘지 않아 <strong class="pb-underline">콘텐츠</strong>가 문제인 줄 알았어요. 그래서 <strong class="pb-underline">릴스 강의</strong>를 듣고, 업로드를 늘리고, 디자인도 바꿨어요.”</p></div></div>
-      <div class="pb rv"><div class="pb-q"><span class="pb-k">상품이 문제라고 생각한 분</span><p>“실력은 자신 있는데 손님은 다른 곳으로 가고, 가격 비교까지 당하니 <strong class="pb-underline">상품</strong>이 문제인 줄 알았어요. 그래서 신메뉴를 추가하고, 가격을 내리고, <strong class="pb-underline">할인 이벤트</strong>도 해봤어요.”</p></div></div>
-      <div class="pb rv"><div class="pb-q"><span class="pb-k">마케팅이 문제라고 생각한 분</span><p>“인스타, 블로그, 플레이스까지 해도 광고를 끄면 문의가 끊겨 <strong class="pb-underline">마케팅</strong>이 문제인 줄 알았어요. 그래서 대행사를 바꾸고, <strong class="pb-underline">광고비</strong>를 늘리고, 강의도 또 결제했어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-q"><span class="pb-k">내 콘텐츠가 문제인 것 같아요</span><p>“매일 올려도 문의가 늘지 않아 <strong class="pb-underline">콘텐츠</strong>가 문제인 줄 알았어요. 그래서 <strong class="pb-underline">릴스 강의</strong>를 듣고, 업로드를 늘리고, 디자인도 바꿨어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-q"><span class="pb-k">내 상품(서비스)이 문제인 것 같아요</span><p>“실력은 자신 있는데 손님은 다른 곳으로 가고, 가격 비교까지 당하니 <strong class="pb-underline">상품</strong>이 문제인 줄 알았어요. 그래서 신메뉴를 추가하고, 가격을 내리고, <strong class="pb-underline">할인 이벤트</strong>도 해봤어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-q"><span class="pb-k">마케팅이 문제인 것 같아요</span><p>“인스타, 블로그, 플레이스까지 해도 광고를 끄면 문의가 끊겨 <strong class="pb-underline">마케팅</strong>이 문제인 줄 알았어요. 그래서 대행사를 바꾸고, <strong class="pb-underline">광고비</strong>를 늘리고, 강의도 또 결제했어요.”</p></div></div>
     </div>
   </div>
 </section>
@@ -645,7 +651,11 @@ a{color:inherit;text-decoration:none}
 <!-- [7] 반전 -->
 <section class="band-turn">
   <div class="wrap">
-    <p class="rv">다 고쳐봤는데 그대로라면,<br><span class="dim">문제는 거기가 아니에요.</span></p>
+    <div class="turn-story rv">
+      <p><strong>콘텐츠</strong>가 문제인 것 같아서 터진다는 릴스 강의를 듣고,<br><strong>상품</strong>이 문제인 것 같아서 가격도 내리고 이벤트도 해봐요.<br><strong>마케팅</strong>이 문제인 것 같아서 광고비를 올려도<br>효율은 떨어지고, 대행사 좋은 일만 시키는 것 같고요.</p>
+      <p>어떻게든 풀어보려고 이것저것 해봐도<br>성과는 안 나오고 답답하기만 해요.<br>수많은 크리에이터와 사장님이 모두 같은 고민을 하고 있어요.</p>
+    </div>
+    <p class="rv">그럼 도대체,<br><span class="dim">뭐가 문제일까요?</span></p>
   </div>
 </section>
 
