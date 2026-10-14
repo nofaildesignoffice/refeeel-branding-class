@@ -672,7 +672,7 @@ a{color:inherit;text-decoration:none}
 <!-- [6] 다 고쳐봤죠 -->
 <section class="sec bt bg-t">
   <div class="wrap">
-    <div class="sec-head c rv"><span class="label">혹시 이런가요?</span><h2 class="h-sec">수백 명의 크리에이터와 사업가들이<br>겪는 고민들, <span class="em">혹시 당신도<br>이런 고민이 있지 않나요?</span></h2></div>
+    <div class="sec-head c rv"><span class="label">수많은 크리에이터, 사업가들이 겪는 고민</span><h2 class="h-sec">혹시 당신도<br><span class="em">이런 고민이 있지 않나요?</span></h2></div>
     <div class="pbs">
       <div class="pb rv"><div class="pb-q"><span class="pb-k">내 콘텐츠가 문제인 것 같아요</span><p>“매일 올려도 문의가 늘지 않아 <strong class="pb-underline">콘텐츠</strong>가 문제인 줄 알았어요. 그래서 <strong class="pb-underline">릴스 강의</strong>를 듣고, 업로드를 늘리고, 디자인도 바꿨어요.”</p></div></div>
       <div class="pb rv"><div class="pb-q"><span class="pb-k">내 상품(서비스)이 문제인 것 같아요</span><p>“실력은 자신 있는데 손님은 다른 곳으로 가고, 가격 비교까지 당하니 <strong class="pb-underline">상품</strong>이 문제인 줄 알았어요. 그래서 신메뉴를 추가하고, 가격을 내리고, <strong class="pb-underline">할인 이벤트</strong>도 해봤어요.”</p></div></div>
@@ -1086,18 +1086,20 @@ a{color:inherit;text-decoration:none}
       var bw=el.offsetWidth, bh=el.offsetHeight;
       var x=Math.max(bw/2+4,Math.min(w-bw/2-4,w/2+gauss()*w*0.22));
       var b=M.Bodies.rectangle(x,-bh-20,bw,bh,{chamfer:{radius:8},friction:.9,frictionStatic:1.2,restitution:.08,density:.002,angle:(Math.random()-.5)*0.9});
-      items.push({el:el,b:b,bw:bw,bh:bh,t:i*(w<600?150:120)});
+      items.push({el:el,b:b,bw:bw,bh:bh,t:i*(w<600?9:7)});
     });
     function draw(){items.forEach(function(it){ if(!it.added) return; var p=it.b.position;
       it.el.style.transform='translate('+(p.x-it.bw/2)+'px,'+(p.y-it.bh/2)+'px) rotate('+it.b.angle+'rad)'; it.el.style.visibility='visible';});}
     if(reduce){ items.forEach(function(it,i){ M.Composite.add(eng.world,it.b); it.added=true; for(var k=0;k<40;k++) M.Engine.update(eng,1000/60);});
       for(var k=0;k<300;k++) M.Engine.update(eng,1000/60); draw(); return; }
-    var t0=performance.now(), last=t0, end=items[items.length-1].t+5000;
-    (function tick(now){
-      var el=now-t0; items.forEach(function(it){ if(!it.added&&el>=it.t){ M.Composite.add(eng.world,it.b); it.added=true; }});
-      var dt=Math.min(now-last,32); last=now; M.Engine.update(eng,dt); draw();
-      if(el<end) requestAnimationFrame(tick);
-    })(t0);
+    var f=0, calm=0, lastT=items[items.length-1].t;
+    (function tick(){
+      items.forEach(function(it){ if(!it.added&&f>=it.t){ M.Composite.add(eng.world,it.b); it.added=true; }});
+      M.Engine.update(eng,1000/60); draw(); f++;
+      var moving=items.some(function(it){return it.b.speed>.08||Math.abs(it.b.angularSpeed)>.004});
+      calm=(f>lastT&&!moving)?calm+1:0;
+      if(calm<90&&f<3600) requestAnimationFrame(tick);
+    })();
   }
   var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting&&!started){ io.disconnect(); (document.fonts?document.fonts.ready:Promise.resolve()).then(run); }},{threshold:.35});
   io.observe(box);
