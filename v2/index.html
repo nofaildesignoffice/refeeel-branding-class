@@ -613,6 +613,29 @@ a{color:inherit;text-decoration:none}
 @keyframes wkGd{from{stroke-dashoffset:176}to{stroke-dashoffset:0}}
 @keyframes wkSd{0%,100%{transform:scaleX(1.12)}50%{transform:scaleX(.9)}}
 @media(prefers-reduced-motion:reduce){.wk-body,.wk-th,.wk-sh,.wk-ft,.wk-gd,.wk-sd{animation:none}.wk-l1 .wk-th{transform:rotate(-12deg)}.wk-l2 .wk-th{transform:rotate(14deg)}}
+
+/* 고민 카드 — 원형 안 아이콘 애니메이션 (콘텐츠·상품·가격·마케팅) */
+.pb-av{align-items:center}
+.pb-av svg.pb-ic{width:26px;height:26px;margin:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.pb-ic *{transform-box:fill-box}
+.ic-play{stroke:none;transform-origin:center;animation:icPlay 1.6s ease-in-out infinite}
+.ic-prog{stroke-dasharray:14;animation:icProg 3.2s linear infinite}
+.ic-lid{transform-origin:0 100%;animation:icLid 2.4s ease-in-out infinite}
+.ic-spark{opacity:0;animation:icSpark 2.4s ease-out infinite}
+.ic-tag{transform-box:view-box;transform-origin:16.5px 7.5px;animation:icTag 2.2s ease-in-out infinite}
+.ic-down{animation:icDown 1.1s ease-in-out infinite}
+.ic-mega{transform-origin:100% 50%;animation:icMega 1.8s ease-in-out infinite}
+.ic-w1,.ic-w2{opacity:0;animation:icWave 1.8s ease-out infinite}
+.ic-w2{animation-delay:.25s}
+@keyframes icPlay{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+@keyframes icProg{from{stroke-dashoffset:14}to{stroke-dashoffset:0}}
+@keyframes icLid{0%,30%,100%{transform:none}45%,70%{transform:translate(-1px,-3px) rotate(-18deg)}}
+@keyframes icSpark{0%,40%{opacity:0;transform:translateY(1.5px)}55%{opacity:1}75%,100%{opacity:0;transform:translateY(-1.5px)}}
+@keyframes icTag{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(12deg)}}
+@keyframes icDown{0%,100%{transform:translateY(-1px)}50%{transform:translateY(1.5px)}}
+@keyframes icMega{0%,60%,100%{transform:none}10%,30%{transform:rotate(-6deg) scale(1.05)}20%{transform:rotate(4deg) scale(1.05)}}
+@keyframes icWave{0%,8%{opacity:0;transform:translateX(-2px)}25%{opacity:1;transform:none}70%,100%{opacity:0;transform:translateX(1px)}}
+@media(prefers-reduced-motion:reduce){.pb-ic *{animation:none!important;opacity:1!important}}
 </style>
 </head>
 <body>
@@ -729,10 +752,10 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">수많은 크리에이터, 사업가들이 겪는 고민</span><h2 class="h-sec">혹시 당신도<br><span class="em">이런 고민이 있지 않나요?</span></h2></div>
     <div class="pbs">
-      <div class="pb rv"><div class="pb-who"><span class="pb-av a" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="9.2" r="4.4"/><path d="M1.5 24c.4-5.6 4.8-9.4 10.5-9.4S22.1 18.4 22.5 24z"/></svg></span><span class="pb-txt"><span class="pb-k">내 콘텐츠가 문제인 것 같아요</span><span class="pb-cnt"><b>524명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“<strong class="pb-underline">콘텐츠</strong>가 문제인 줄 알고 수십, 수백만 원짜리 터지는 릴스 공식 강의를 듣고, 업로드 횟수를 늘리고, 릴스 스타일도 바꿨어요. 그래도 <strong class="pb-underline">문의는 늘지 않았어요.</strong>”</p></div></div>
-      <div class="pb rv"><div class="pb-who"><span class="pb-av b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="9.2" r="4.4"/><path d="M1.5 24c.4-5.6 4.8-9.4 10.5-9.4S22.1 18.4 22.5 24z"/></svg></span><span class="pb-txt"><span class="pb-k">내 상품(서비스)이 문제인 것 같아요</span><span class="pb-cnt"><b>612명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“실력은 자신 있는데 손님이 오지 않아 <strong class="pb-underline">상품</strong>이 문제인 줄 알았어요. 그래서 신메뉴, 기획 상품, 이벤트 상품을 계속 내면서 <strong class="pb-underline">제품만 더 고도화</strong>했어요.”</p></div></div>
-      <div class="pb rv"><div class="pb-who"><span class="pb-av c" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="9.2" r="4.4"/><path d="M1.5 24c.4-5.6 4.8-9.4 10.5-9.4S22.1 18.4 22.5 24z"/></svg></span><span class="pb-txt"><span class="pb-k">가격이 문제인 것 같아요</span><span class="pb-cnt"><b>457명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“경쟁사가 가격을 내리니 <strong class="pb-underline">가격</strong>이 문제인 줄 알았어요. 그래서 저도 따라 내리고 또 내리다 보니, 끝없는 가격 경쟁에 <strong class="pb-underline">수익</strong>만 점점 줄었어요.”</p></div></div>
-      <div class="pb rv"><div class="pb-who"><span class="pb-av b" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="9.2" r="4.4"/><path d="M1.5 24c.4-5.6 4.8-9.4 10.5-9.4S22.1 18.4 22.5 24z"/></svg></span><span class="pb-txt"><span class="pb-k">마케팅이 문제인 것 같아요</span><span class="pb-cnt"><b>683명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“인스타, 블로그, 플레이스까지 해도 광고를 끄면 문의가 끊겨 <strong class="pb-underline">마케팅</strong>이 문제인 줄 알았어요. 그래서 <strong class="pb-underline">대행사</strong>를 계속 바꾸고, <strong class="pb-underline">광고비</strong>를 계속 올렸어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-who"><span class="pb-av a" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2.5"/><path class="ic-play" d="M10.3 8v5l4.2-2.5z" fill="currentColor"/><path d="M5 20.5h14" opacity=".3"/><path class="ic-prog" d="M5 20.5h14"/></svg></span><span class="pb-txt"><span class="pb-k">내 콘텐츠가 문제인 것 같아요</span><span class="pb-cnt"><b>524명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“<strong class="pb-underline">콘텐츠</strong>가 문제인 줄 알고 수십, 수백만 원짜리 터지는 릴스 공식 강의를 듣고, 업로드 횟수를 늘리고, 릴스 스타일도 바꿨어요. 그래도 <strong class="pb-underline">문의는 늘지 않았어요.</strong>”</p></div></div>
+      <div class="pb rv"><div class="pb-who"><span class="pb-av b" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><rect x="4" y="10.5" width="16" height="9.5" rx="1.2"/><path d="M12 10.5V20"/><g class="ic-lid"><rect x="3" y="6.5" width="18" height="4" rx="1.2"/><path d="M12 6.5v4"/></g><path class="ic-spark" d="M8 3.2v1.6M12 2v2M16 3.2v1.6"/></svg></span><span class="pb-txt"><span class="pb-k">내 상품(서비스)이 문제인 것 같아요</span><span class="pb-cnt"><b>612명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“실력은 자신 있는데 손님이 오지 않아 <strong class="pb-underline">상품</strong>이 문제인 줄 알았어요. 그래서 신메뉴, 기획 상품, 이벤트 상품을 계속 내면서 <strong class="pb-underline">제품만 더 고도화</strong>했어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-who"><span class="pb-av c" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><g class="ic-tag"><path d="M11.5 3H19a2 2 0 0 1 2 2v7.5l-9.3 9.3a1.6 1.6 0 0 1-2.3 0l-6.2-6.2a1.6 1.6 0 0 1 0-2.3z"/><circle cx="16.5" cy="7.5" r="1.4"/><path class="ic-down" d="M11.5 10.5v5.5m-2.3-2.3 2.3 2.3 2.3-2.3"/></g></svg></span><span class="pb-txt"><span class="pb-k">가격이 문제인 것 같아요</span><span class="pb-cnt"><b>457명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“경쟁사가 가격을 내리니 <strong class="pb-underline">가격</strong>이 문제인 줄 알았어요. 그래서 저도 따라 내리고 또 내리다 보니, 끝없는 가격 경쟁에 <strong class="pb-underline">수익</strong>만 점점 줄었어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-who"><span class="pb-av b" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><g class="ic-mega"><path d="M3 10v4a1 1 0 0 0 1 1h2.2l6.3 4.2V4.8L6.2 9H4a1 1 0 0 0-1 1z"/></g><path class="ic-w1" d="M15.6 9.4a3.6 3.6 0 0 1 0 5.2"/><path class="ic-w2" d="M18.2 6.8a7.3 7.3 0 0 1 0 10.4"/></svg></span><span class="pb-txt"><span class="pb-k">마케팅이 문제인 것 같아요</span><span class="pb-cnt"><b>683명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“인스타, 블로그, 플레이스까지 해도 광고를 끄면 문의가 끊겨 <strong class="pb-underline">마케팅</strong>이 문제인 줄 알았어요. 그래서 <strong class="pb-underline">대행사</strong>를 계속 바꾸고, <strong class="pb-underline">광고비</strong>를 계속 올렸어요.”</p></div></div>
     </div>
     <div class="pb-turn">
     <div class="turn-story rv">
