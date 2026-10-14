@@ -84,8 +84,7 @@ a{color:inherit;text-decoration:none}
 .hero{position:relative;overflow:hidden;background:var(--bg-black);color:#fff;padding:clamp(120px,18vw,200px) 0 clamp(72px,11vw,112px)}
 /* 히어로 배경 — 유화 이미지 + 잉크색 반투명 오버레이 */
 .hero{background:var(--bg-black) url(assets/hero-bg.jpg) center/cover no-repeat}
-.hero::before{content:'';position:absolute;inset:0;background:rgba(26,26,26,.72);pointer-events:none}
-.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 44px);pointer-events:none;mask-image:linear-gradient(90deg,transparent,#000 55%)}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.6) 0%,rgba(26,26,26,.72) 45%,rgba(26,26,26,.94) 100%);pointer-events:none}
 .hero .wrap{position:relative;z-index:1}
 .hero-over{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:clamp(36px,7vw,60px)}
 .hero-over .logo-mark{height:16px;color:#fff;position:relative;top:-24px}
