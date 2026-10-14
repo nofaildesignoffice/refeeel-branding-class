@@ -1081,21 +1081,25 @@ a{color:inherit;text-decoration:none}
     var w=box.clientWidth, h=box.clientHeight, eng=M.Engine.create({gravity:{y:1}}), items=[];
     var st={isStatic:true}; M.Composite.add(eng.world,[
       M.Bodies.rectangle(w/2,h+30,w*2,60,st),M.Bodies.rectangle(-30,h/2-400,60,h*3,st),M.Bodies.rectangle(w+30,h/2-400,60,h*3,st)]);
-    W.forEach(function(d,i){
+    var mob=w<600, list=mob?W.filter(function(d){return d[1].indexOf('s ')<0||Math.random()<.5}):W;
+    list.forEach(function(d,i){
       var el=document.createElement('span'); el.className='pile-b '+d[1]; el.textContent=d[0]; box.appendChild(el);
       var bw=el.offsetWidth, bh=el.offsetHeight;
-      var x=Math.max(bw/2+4,Math.min(w-bw/2-4,w/2+gauss()*w*0.22));
-      var b=M.Bodies.rectangle(x,-bh-20,bw,bh,{chamfer:{radius:8},friction:.9,frictionStatic:1.2,restitution:.08,density:.002,angle:(Math.random()-.5)*0.9});
+      var x=Math.max(bw/2+4,Math.min(w-bw/2-4,w/2+gauss()*w*(mob?0.2:0.13)));
+      var b=M.Bodies.rectangle(x,-bh-20,bw,bh,{chamfer:{radius:8},friction:.9,frictionStatic:1.2,restitution:.08,density:.002,angle:(Math.random()-.5)*0.6});
       items.push({el:el,b:b,bw:bw,bh:bh,t:i*(w<600?9:7)});
     });
+    var LIM=.42;
+    function clamp(){items.forEach(function(it){ if(!it.added) return; var a=it.b.angle;
+      if(a>LIM||a<-LIM){ M.Body.setAngle(it.b,a>0?LIM:-LIM); M.Body.setAngularVelocity(it.b,0); }});}
     function draw(){items.forEach(function(it){ if(!it.added) return; var p=it.b.position;
       it.el.style.transform='translate('+(p.x-it.bw/2)+'px,'+(p.y-it.bh/2)+'px) rotate('+it.b.angle+'rad)'; it.el.style.visibility='visible';});}
-    if(reduce){ items.forEach(function(it,i){ M.Composite.add(eng.world,it.b); it.added=true; for(var k=0;k<40;k++) M.Engine.update(eng,1000/60);});
-      for(var k=0;k<300;k++) M.Engine.update(eng,1000/60); draw(); return; }
+    if(reduce){ items.forEach(function(it,i){ M.Composite.add(eng.world,it.b); it.added=true; for(var k=0;k<40;k++){ M.Engine.update(eng,1000/60); clamp(); }});
+      for(var k=0;k<300;k++){ M.Engine.update(eng,1000/60); clamp(); } draw(); return; }
     var f=0, calm=0, lastT=items[items.length-1].t;
     (function tick(){
       items.forEach(function(it){ if(!it.added&&f>=it.t){ M.Composite.add(eng.world,it.b); it.added=true; }});
-      M.Engine.update(eng,1000/60); draw(); f++;
+      M.Engine.update(eng,1000/60); clamp(); draw(); f++;
       var moving=items.some(function(it){return it.b.speed>.08||Math.abs(it.b.angularSpeed)>.004});
       calm=(f>lastT&&!moving)?calm+1:0;
       if(calm<90&&f<3600) requestAnimationFrame(tick);
