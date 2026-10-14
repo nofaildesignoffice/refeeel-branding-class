@@ -720,6 +720,11 @@ a{color:inherit;text-decoration:none}
 
 /* 순서 비교 — 모바일에서 항목 한 줄 */
 @media(max-width:767px){.order.cmp{grid-template-columns:1fr 1fr}.cmp .ord li{font-size:14.5px;white-space:nowrap;gap:7px;letter-spacing:-.03em}.cmp .ord li::before{width:14px;height:14px;margin-top:3px}.order.cmp>.ord:not(.first){padding-left:12px;padding-right:8px}}
+
+/* 경력 박스 — 가격 박스 '평생 소장'과 같은 위치의 라벨 */
+.bc-root .career-grid{position:relative;overflow:visible}
+.career-grid::before{content:'김낙타의 HISTORY';position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:1;white-space:nowrap;background:var(--brand);color:var(--brand-ink);font-size:12px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:var(--radius-full)}
+.career-grid>.career-row:first-child{border-top-left-radius:inherit}
 </style>
 </head>
 <body>
