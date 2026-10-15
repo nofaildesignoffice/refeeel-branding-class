@@ -900,6 +900,19 @@ a{color:inherit;text-decoration:none}
 @keyframes wvBand{0%{opacity:0}10%,90%{opacity:1}98%,100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.wo-viz .ln,.wo-viz .en,.wo-viz .bd{animation:none!important;stroke-dashoffset:0;opacity:1}.wo-viz .ar{animation:none!important;opacity:.5}}
 @media (prefers-reduced-motion:reduce){.wo-viz .a{animation:none!important}}
+
+/* [8] 뼈대 → 액체 원 → 세포 분열 */
+.bone{position:relative;height:330vh;margin-top:clamp(24px,4vw,40px)}
+.bone-defs{position:absolute;width:0;height:0}
+.bone-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center}
+.bone .order.cmp{margin:0 auto!important;width:100%}
+.bone-goo{position:absolute;inset:0;filter:url(#bone-goo);pointer-events:none}
+.bone-goo i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);opacity:0;will-change:transform,width,height}
+.bone-txt{position:absolute;inset:0;pointer-events:none}
+.bone-txt b,.bone-txt span{position:absolute;left:0;top:0;opacity:0;color:var(--ink);text-align:center;white-space:nowrap;letter-spacing:-.03em;will-change:transform,opacity}
+.bone-txt b{font-weight:900;line-height:1.2}
+.bone-txt span{font-weight:800;font-size:clamp(14px,1.7vw,17px)}
+.bone.off{height:auto}.bone.off .bone-pin{position:static;height:auto}.bone.off .bone-goo,.bone.off .bone-txt{display:none}
 </style>
 </head>
 <body>
@@ -1043,24 +1056,22 @@ a{color:inherit;text-decoration:none}
     <div class="sec-head c rv"><span class="label">벽에 막힌 진짜 이유</span><h2 class="h-sec">노력이 부족했던 게 아니라,<br><span class="em">건너뛴 순서가 있었어요.</span></h2>
       <p class="sec-lead">릴스, 광고, 할인보다 먼저 세웠어야 할 것.<br>바로 <strong>브랜드의 뼈대(=브랜드 기획)</strong>예요.</p>
     </div>
-    <div class="order cmp">
-      <div class="ord rv"><span class="ord-k">다들 여기부터 해요</span><div class="ord-t">어떻게 팔지</div><ul><li>릴스·피드 올리기</li><li>광고 돌리기</li><li>강의 듣기</li><li>신메뉴 내기</li><li>가격 내리기</li><li>대행사 바꾸기</li></ul></div>
-      <div class="ord first hl rv rv-d1"><span class="ord-k">사실 여기부터예요</span><div class="ord-t">누구한테, 뭘, 왜 나한테</div><ul><li>뭐 하는 곳인지 한 줄로</li><li>왜 이 일을 하는지</li><li>손님이 나를 뭐랑 비교하는지</li><li>누구한테 팔지</li><li>진짜 상대는 누구인지</li><li>손님이 나를 고르는 이유</li><li>뭐라고 말할지</li><li>뭐부터 할지</li></ul></div>
+    <div class="bone" id="bone">
+      <svg class="bone-defs" aria-hidden="true"><filter id="bone-goo"><feGaussianBlur in="SourceGraphic" stdDeviation="11" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter></svg>
+      <div class="bone-pin">
+        <div class="order cmp">
+          <div class="ord rv"><span class="ord-k">다들 여기부터 해요</span><div class="ord-t">어떻게 팔지</div><ul><li>릴스·피드 올리기</li><li>광고 돌리기</li><li>강의 듣기</li><li>신메뉴 내기</li><li>가격 내리기</li><li>대행사 바꾸기</li></ul></div>
+          <div class="ord first hl rv rv-d1"><span class="ord-k">사실 여기부터예요</span><div class="ord-t">누구한테, 뭘, 왜 나한테</div><ul><li>뭐 하는 곳인지 한 줄로</li><li>왜 이 일을 하는지</li><li>손님이 나를 뭐랑 비교하는지</li><li>누구한테 팔지</li><li>진짜 상대는 누구인지</li><li>손님이 나를 고르는 이유</li><li>뭐라고 말할지</li><li>뭐부터 할지</li></ul></div>
+        </div>
+        <div class="bone-goo" aria-hidden="true"><i class="bone-m"></i><i class="bone-c"></i><i class="bone-c"></i><i class="bone-c"></i><i class="bone-c"></i><i class="bone-c"></i><i class="bone-c"></i></div>
+        <div class="bone-txt" aria-hidden="true"><b>브랜드<br>뼈대</b><span>정체성</span><span>포지셔닝</span><span>스토리</span><span>타겟</span><span>경쟁력</span><span>차별성</span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- [8a] 뼈대 없이 하면 -->
-<section class="sec bt bg-t sec-wo">
-  <div class="wrap">
-    <div class="sec-head c rv"><span class="label">뼈대 없이 하면</span><h2 class="h-sec">열심히 한 일들이,<br><span class="em">이렇게 돼요.</span></h2></div>
-    <div class="wo-grid"><div class="wo-c rv"><span class="wo-t">릴스·피드 올리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 70 C60 67,110 44,186 18" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="18.0" r="3"/><text x="193" y="21.5">조회</text></g><path d="M12 72 L186 72" pathLength="1" class="ln bad" style="animation-delay:0.5s"/><g class="en bad" style="animation-delay:0.5s"><circle cx="186" cy="72.0" r="3"/><text x="193" y="75.5">문의 0</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✕</i>조회수는 나와도 문의는 0건</div><p class="wo-d">누구한테 하는 말인지 없어서, 다들 보고 그냥 지나가요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">광고 돌리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><rect x="50" y="10" width="70" height="64"/><text x="85.0" y="21">광고 ON</text></g><path d="M12 72 L50 72 C60 72,62 34,80 32 L108 30 C116 30,120 72,130 72 L186 72" pathLength="1" class="ln bad"/><g class="en bad"><circle cx="186" cy="72.0" r="3"/><text x="193" y="75.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✕</i>광고를 끄면 문의도 끊겨요</div><p class="wo-d">광고비만큼만 팔려요. 올릴수록 남는 게 줄어요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">강의 듣기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><line x1="70" y1="14" x2="70" y2="74" class="mk"/><text x="70" y="11">강의 수강</text></g><path d="M12 60 L70 58 C88 54,100 64,120 60 S152 54,186 59" pathLength="1" class="ln bad"/><g class="en bad"><circle cx="186" cy="59.0" r="3"/><text x="193" y="62.5">매출</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✕</i>배운 대로 해도 안 돼요</div><p class="wo-d">남의 가게 공식이라 내 가게엔 안 맞아요.</p></div><div class="wo-c rv"><span class="wo-t">신메뉴 내기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 66 H50 V56 H90 V46 H130 V36 H170 V26 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="26.0" r="3"/><text x="193" y="29.5">메뉴</text></g><path d="M12 64 C70 63,130 66,186 64" pathLength="1" class="ln bad" style="animation-delay:0.5s"/><g class="en bad" style="animation-delay:0.5s"><circle cx="186" cy="64.0" r="3"/><text x="193" y="67.5">손님</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✕</i>메뉴만 늘고 손님은 그대로</div><p class="wo-d">손님이 진짜 원하는 걸 모르고 만들었으니까요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">가격 내리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 22 H62 V34 H112 V44 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="44.0" r="3"/><text x="193" y="47.5">가격</text></g><path d="M12 46 H62 V58 H112 V69 H186" pathLength="1" class="ln bad" style="animation-delay:0.5s"/><g class="en bad" style="animation-delay:0.5s"><circle cx="186" cy="69.0" r="3"/><text x="193" y="72.5">남는 돈</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✕</i>팔수록 남는 게 없어요</div><p class="wo-d">옆 가게랑 똑같아 보이니 가격으로만 비교돼요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">대행사 바꾸기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><line x1="68" y1="14" x2="68" y2="74" class="mk"/><line x1="126" y1="14" x2="126" y2="74" class="mk"/><text x="40.0" y="11">A사</text><text x="97.0" y="11">B사</text><text x="156.0" y="11">C사</text></g><path d="M12 66 L66 54 L70 66 L124 55 L128 66 L186 55" pathLength="1" class="ln bad"/><g class="en bad"><circle cx="186" cy="55.0" r="3"/><text x="193" y="58.5">매출</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✕</i>바꿔도 결과는 비슷해요</div><p class="wo-d">맡길 때 건넬 정답지가 없으니까요.</p></div></div>
-    <div class="wo-turn rv"><span>같은 일, 뼈대를 세우고 하면?</span></div>
-  </div>
-</section>
-
 <!-- [8a2] 뼈대를 세우고 하면 -->
-<section class="sec bt bg-w sec-wo good">
+<section class="sec bt bg-t sec-wo good">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">뼈대를 세우고 하면</span><h2 class="h-sec">똑같은 일인데,<br><span class="em">결과가 달라져요.</span></h2></div>
     <div class="wo-grid"><div class="wo-c rv"><span class="wo-t">릴스·피드 올리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 70 C80 67,130 60,186 54" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="54.0" r="3"/><text x="193" y="57.5">조회</text></g><path d="M12 72 C70 66,120 42,186 22 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 72 C70 66,120 42,186 22" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>조회수가 적어도 문의가 와요</div><p class="wo-d">딱 그 사람한테 하는 말이라 "내 얘기네" 하고 연락해요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">광고 돌리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><rect x="50" y="10" width="70" height="64"/><text x="85.0" y="21">광고 ON</text></g><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22 L186 74 L12 74Z" class="ar"/><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 광고비로 더 팔려요</div><p class="wo-d">보여줄 사람과 할 말이 정해져 있어서 클릭이 구매로 이어져요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">강의 듣기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><line x1="70" y1="14" x2="70" y2="74" class="mk"/><text x="70" y="11">강의 수강</text></g><path d="M12 60 L70 58 C102 54,132 34,186 20 L186 74 L12 74Z" class="ar"/><path d="M12 60 L70 58 C102 54,132 34,186 20" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="20.0" r="3"/><text x="193" y="23.5">매출</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>배운 걸 내 가게에 바로 써요</div><p class="wo-d">내 기준이 있으니 뭘 가져다 쓸지 골라져요.</p></div><div class="wo-c rv"><span class="wo-t">신메뉴 내기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 62 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="62.0" r="3"/><text x="193" y="65.5">메뉴</text></g><path d="M12 68 C70 62,120 40,186 22 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 68 C70 62,120 40,186 22" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">손님</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>하나를 내도 반응이 와요</div><p class="wo-d">손님의 진짜 고민을 풀어주는 메뉴라서요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">가격 내리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 22 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">가격</text></g><path d="M12 66 C70 62,120 50,186 40 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 66 C70 62,120 50,186 40" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="40.0" r="3"/><text x="193" y="43.5">남는 돈</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>비싸도 사는 이유가 생겨요</div><p class="wo-d">비교 기준이 '가격'에서 '나만의 이유'로 바뀌어요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">대행사 바꾸기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><line x1="68" y1="14" x2="68" y2="74" class="mk"/><line x1="126" y1="14" x2="126" y2="74" class="mk"/><text x="40.0" y="11">A사</text><text x="97.0" y="11">B사</text><text x="156.0" y="11">C사</text></g><path d="M12 66 C40 62,60 56,68 54 C90 50,110 44,126 41 C150 36,170 28,186 22 L186 74 L12 74Z" class="ar"/><path d="M12 66 C40 62,60 56,68 54 C90 50,110 44,126 41 C150 36,170 28,186 22" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">매출</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>누구에게 맡겨도 같은 방향</div><p class="wo-d">정리된 한 장이면 직원·외주·AI가 같은 말을 해요.</p></div></div>
@@ -1458,6 +1469,66 @@ a{color:inherit;text-decoration:none}
   io.observe(f);
 })();
 
+
+/* [8] 뼈대 스크롤 — 카드가 연두 원이 되고, 6개로 분열했다가 사라짐 */
+(function(){
+  var bone=document.getElementById('bone'); if(!bone) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ bone.classList.add('off'); return; }
+  var pin=bone.querySelector('.bone-pin'), cards=bone.querySelectorAll('.order.cmp > .ord'), L=cards[0], R=cards[1];
+  var m=bone.querySelector('.bone-m'), cs=bone.querySelectorAll('.bone-c'), mt=bone.querySelector('.bone-txt b'), ls=bone.querySelectorAll('.bone-txt span');
+  var W,H,cr,D,d,RR, ticking=false;
+  function cl(v){ return v<0?0:v>1?1:v; }
+  function seg(p,a,b){ return cl((p-a)/(b-a)); }
+  function ez(t){ return t*t*(3-2*t); }
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function measure(){
+    var pr=pin.getBoundingClientRect(), r=R.getBoundingClientRect();
+    W=pr.width; H=pr.height; cr={x:r.left-pr.left, y:r.top-pr.top, w:r.width, h:r.height};
+    D=Math.min(W*.56,H*.42,300); d=Math.max(76,D*.4);
+    RR=Math.min(W/2-d/2-10,H/2-d/2-70,D*1.02);
+  }
+  function put(el,x,y,w,h,rad,op){
+    el.style.width=w+'px'; el.style.height=h+'px'; el.style.borderRadius=rad+'px';
+    el.style.transform='translate('+(x-w/2)+'px,'+(y-h/2)+'px)'; el.style.opacity=op;
+  }
+  function frame(){
+    ticking=false;
+    var br=bone.getBoundingClientRect(), span=bone.offsetHeight-H;
+    var p=cl(-br.top/span);
+    var cx=W/2, cy=H/2;
+    /* 1. 카드 → 원 */
+    var fl=seg(p,.04,.18), fr=seg(p,.14,.26), t1=ez(seg(p,.06,.3));
+    L.style.opacity=fl?1-fl:''; L.style.transform=fl?'translateX('+(-40*fl)+'px)':'';
+    R.style.opacity=fr?1-fr:'';
+    L.style.pointerEvents=R.style.pointerEvents=p>.2?'none':'';
+    /* 2. 분열 */
+    var t2=ez(seg(p,.36,.68));
+    /* 3. 사라짐 */
+    var t3=ez(seg(p,.8,.95));
+    var Dm=D*(1-.36*t2)*(1-t3);
+    var bx=lerp(cr.x+cr.w/2,cx,t1), by=lerp(cr.y+cr.h/2,cy,t1);
+    var bw=t2>0?Dm:lerp(cr.w,D,t1), bh=t2>0?Dm:lerp(cr.h,D,t1);
+    if(t2===0 && t3>0){ bw=bh=D*(1-t3); }
+    put(m,bx,by,bw,bh,lerp(26,Math.max(bw,bh)/2,t1),seg(p,.06,.16)*(1-t3));
+    var mo=seg(p,.24,.32)*(1-seg(p,.8,.9));
+    mt.style.fontSize=Math.max(20,D*.12)*(1-.2*t2)+'px';
+    mt.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; mt.style.opacity=mo;
+    for(var i=0;i<cs.length;i++){
+      var ti=ez(seg(p,.36+i*.02,.6+i*.02)), ang=(-90+i*60)*Math.PI/180;
+      var dist=RR*ti*(1+.3*t3), sz=d*(.3+.7*ti)*(1-t3);
+      var x=cx+Math.cos(ang)*dist, y=cy+Math.sin(ang)*dist;
+      put(cs[i],x,y,sz,sz,sz/2,p>.34?(1-t3):0);
+      ls[i].style.transform='translate('+x+'px,'+y+'px) translate(-50%,-50%) scale('+(.85+.15*ti)+')';
+      ls[i].style.opacity=seg(p,.6+i*.015,.7+i*.015)*(1-seg(p,.8,.88));
+    }
+  }
+  function req(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+  function init(){ L.style.transform=''; measure(); frame(); }
+  window.addEventListener('scroll',req,{passive:true});
+  window.addEventListener('resize',function(){ init(); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(init);
+  init();
+})();
 </script>
 </body>
 </html>
