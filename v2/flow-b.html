@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드가 만들어지는 과정 · B안</title>
+<!--
+  브랜드가 만들어지는 과정 랜딩 v2 (구 브랜딩 클래스)
+  스피큘 상세페이지의 설득 단계(역할)만 가져오고, 내용은 브랜딩 클래스에 맞춰 새로 씀.
+  카피 원칙: 고객이 쓰는 말 · 한 번에 이해되는 단어 · 짧은 문장 · 개념어(이면/포지셔닝/POP 등) 금지
+
+  1막 결론 먼저   약속 · 다른 점(내 답을 쓰게 한다) · 결과
+  2막 공감→반전  대표 이야기 · 나 같은 사람 후기 · "다 고쳐봤죠" · "문제는 거기가 아니에요"
+                 · 순서가 거꾸로였다(먼저 할 일 vs 나중 할 일) · "입금한 적 없는데 출금될 리 없잖아요"
+  3막 납득       질문 8개 + 막히는 칸 = 내 문제 · 알고 보니 이거였다 · 1분 해보기 · 바뀐 문장 · 커리큘럼 · 받는 것
+  4막 결정       "읽고 끝나는 책?" · 업종 · 바뀐 후기 · 이런 분께 · 자가진단 · Chapter 00 무료 · FAQ · CTA
+  디자인 시스템: commel (web3 프로토타입) — 흰 바탕 · 잉크 #1A1A1A · 라임 #DFF000 · Pretendard
+-->
+<style>
+/* ══════════ commel 디자인 시스템 적용 (web3 프로토타입 토큰 기준) ══════════
+   흰 바탕 + 잉크 #1A1A1A + 라임 #DFF000.
+   라임 위엔 항상 잉크 글자. 라임은 주행동·'골랐다' 표시·강조 밑줄에만 쓰고, 넓은 면은 칠하지 않는다.
+   섹션 교차는 흰색 ↔ 옅은 라임 틴트(#FBFDEF). 큰 전환 지점만 어두운 면(#1A1A1A). */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+html,body{overscroll-behavior:none !important}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --body-font-size:clamp(16px,3.3vw,18px);
+  --ink:#1A1A1A;--text-dark:#333;--text-gray:#666;--text-light:#999;--text-muted:#BCBCBC;
+  --bg-white:#fff;--bg-light:#FBFDEF;--bg-dark:#2D2D2D;--bg-black:#1A1A1A;--bg-soft:#F5F5F5;
+  --border-light:#E0E0E0;--border-default:#D0D0D0;--placeholder-bg:#EDEDED;
+  --brand:#DFF000;--brand-ink:#1A1A1A;--brand-press:#C7D600;--brand-soft:rgba(223,240,0,.20);--brand-ring:rgba(223,240,0,.55);
+  --radius-xs:4px;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:28px;--radius-full:9999px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 12px rgba(0,0,0,.1);
+  --dur-short:150ms;--dur-medium:250ms;--dur-long:400ms;--dur-x-long:600ms;
+  --ease:cubic-bezier(.2,0,0,1);--ease-enter:cubic-bezier(.05,.7,.1,1);
+  --glass-bg:rgba(255,255,255,.70);--glass-blur:blur(22px) saturate(180%);
+  --glass-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -1px 0 rgba(0,0,0,.05),0 8px 24px -8px rgba(0,0,0,.22),0 2px 6px -2px rgba(0,0,0,.10);
+  --content:1120px;--sec-y:clamp(80px,12vw,136px);--gap-lg:clamp(32px,5.4vw,56px);--gap-md:clamp(18px,3vw,28px);
+  --font:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;--serif:'Instrument Serif','Pretendard',serif;
+}
+body{font-family:var(--font);background:var(--bg-white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px;line-height:1.7;letter-spacing:-.01em}
+.bc-root{font-family:var(--font)!important;background:var(--bg-white)!important;color:var(--ink)!important;overflow-x:hidden;overflow-x:clip;position:relative;padding-bottom:120px}
+.bc-root *{box-sizing:border-box}
+@media(min-width:768px){.bc-root{padding-bottom:88px}}
+::selection{background:var(--brand);color:var(--brand-ink)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--content);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity var(--dur-x-long) var(--ease-enter),transform var(--dur-x-long) var(--ease-enter)}.rv.on{opacity:1;transform:none}.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+.svg-defs{position:absolute;width:0;height:0;overflow:hidden}
+.logo-mark{display:block;width:auto;aspect-ratio:573.51/125.93;color:currentColor}
+
+/* 타이포 */
+.label{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:-.2px;color:var(--brand);background:var(--ink);padding:6px 13px;border-radius:var(--radius-full);margin-bottom:clamp(14px,2.4vw,18px)}
+.h-sec{font-size:clamp(26px,5.4vw,36px);font-weight:800;line-height:1.3;letter-spacing:-.03em;word-break:keep-all;color:var(--ink)}
+.h-big{font-size:clamp(34px,7.4vw,58px);font-weight:800;line-height:1.2;letter-spacing:-.04em;word-break:keep-all}
+/* 흰 바탕에서 라임 글자는 안 읽힌다(1.3:1) → 형광펜 밑줄로 강조 */
+.em{color:inherit;background:linear-gradient(transparent 60%,var(--brand) 60%);padding:0 2px}
+.hero .em,.band-turn .em,.cta-final .em{color:var(--brand);background:none;padding:0}
+.br-m{display:none}@media(max-width:767px){.br-m{display:inline}}
+.br-d{display:inline}@media(max-width:767px){.br-d{display:none}}
+.sec-head{margin-bottom:var(--gap-lg)}
+.sec-head.c{text-align:center}
+.sec-lead{font-size:var(--body-font-size);line-height:1.75;color:var(--text-gray);word-break:keep-all;margin-top:clamp(12px,2.2vw,16px);max-width:640px}.sec-lead strong{color:var(--ink);font-weight:700}
+.sec-head.c .sec-lead{margin-left:auto;margin-right:auto}
+.body-text{font-size:var(--body-font-size);line-height:1.85;color:var(--text-dark);word-break:keep-all;max-width:680px}
+.body-text p{margin-bottom:clamp(14px,2.4vw,20px)}.body-text p:last-child{margin-bottom:0}.body-text strong{color:var(--ink);font-weight:700}
+.note{font-size:12px;line-height:1.7;color:var(--text-light);word-break:keep-all;margin-top:clamp(18px,3vw,24px)}
+
+/* 버튼 — commel .btn: 8px 모서리, 주행동 라임 + 잉크 글자 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:15px 28px;font-family:var(--font);font-size:15px;font-weight:700;border-radius:var(--radius-sm);cursor:pointer;border:none;transition:background var(--dur-short) var(--ease),transform var(--dur-short) var(--ease),border-color var(--dur-short) var(--ease)}
+.btn-p{background:var(--brand);color:var(--brand-ink)}.btn-p:hover{background:var(--brand-press)}
+.btn-g{background:var(--bg-white);color:var(--ink);border:1px solid var(--ink)}.btn-g:hover{background:var(--bg-soft)}
+.hero .btn-g,.cta-final .btn-g{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}.hero .btn-g:hover,.cta-final .btn-g:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.btn .arr{transition:transform var(--dur-short) var(--ease)}.btn:hover .arr{transform:translateX(3px)}
+
+/* 섹션 */
+.sec{padding:var(--sec-y) 0;background:var(--bg-white)}
+.sec-deep{background:var(--bg-light)!important}
+.bt{border-top:0}
+
+/* HERO — 로그인 화면처럼 어두운 면 + 라임 빛 */
+.hero{position:relative;overflow:hidden;background:var(--bg-black);color:#fff;padding:clamp(120px,18vw,200px) 0 clamp(72px,11vw,112px)}
+/* 히어로 배경 — 유화 이미지 + 잉크색 반투명 오버레이 */
+.hero{background:var(--bg-black) url(assets/hero-bg.jpg) center/cover no-repeat}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.6) 0%,rgba(26,26,26,.72) 45%,rgba(26,26,26,.94) 100%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.hero-over{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:clamp(36px,7vw,60px)}
+.hero-over .logo-mark{height:16px;color:#fff;position:relative;top:-24px}
+.hero-over-desc{font-size:var(--body-font-size);font-weight:600;line-height:1.6;color:rgba(255,255,255,.75);word-break:keep-all}
+.hero-over-desc .hero-book-title{font:inherit;letter-spacing:inherit;color:var(--ink);background:var(--brand);padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero-over-desc .hero-audience{font:inherit;letter-spacing:inherit;color:#fff}
+.hero-over-desc .hero-intro-light{font:inherit;font-weight:300;letter-spacing:inherit;color:inherit}
+.hero-over-brand{display:flex;align-items:center;gap:10px;margin-bottom:10px}.hero-over .line{width:24px;height:2px;background:var(--brand)}.hero-over span{font-size:13px;font-weight:700;letter-spacing:.2px;color:var(--brand)}
+.hero h1{margin-bottom:clamp(24px,4.4vw,36px);color:#fff}
+.hero-topic{display:block;margin-bottom:.16em;white-space:nowrap}
+.hero-topic-words{display:inline-grid;vertical-align:bottom;color:var(--brand);overflow:hidden}
+.hero-topic-words>span{grid-area:1/1;opacity:0;animation:hero-word-cycle 6s cubic-bezier(.65,0,.35,1) infinite}
+.hero-topic-words>span:nth-child(2){animation-delay:-4.5s}
+.hero-topic-words>span:nth-child(3){animation-delay:-3s}
+.hero-topic-words>span:nth-child(4){animation-delay:-1.5s}
+@keyframes hero-word-cycle{0%,20%,100%{opacity:1;transform:translateY(0)}25%{opacity:1;transform:translateY(-100%)}25.01%,94.99%{opacity:0;transform:translateY(100%)}95%{opacity:1;transform:translateY(100%)}}
+@media(prefers-reduced-motion:reduce){.hero-topic-words>span{animation:none;opacity:0;transform:none}.hero-topic-words>span:first-child{opacity:1}}
+.hero-sub{font-size:var(--body-font-size);line-height:1.75;color:rgba(255,255,255,.72);max-width:600px;word-break:keep-all;margin-bottom:clamp(30px,5vw,44px)}.hero-sub strong{color:#fff;font-weight:700}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+
+/* 다른 점 */
+.sus{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.8vw,14px);max-width:720px;margin:var(--gap-lg) auto 0}
+.sus-card{padding:clamp(22px,4vw,30px) 8px;border:1px solid var(--border-light);background:var(--bg-white);border-radius:var(--radius-lg);text-align:center}
+.sus-q{width:clamp(34px,6vw,42px);height:clamp(34px,6vw,42px);margin:0 auto 12px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:flex;align-items:center;justify-content:center;font-size:clamp(17px,3.4vw,21px);font-weight:800}
+.sus-t{font-size:clamp(15px,3.3vw,19px);font-weight:800;letter-spacing:-.02em;line-height:1.35;word-break:keep-all}
+
+/* 결과 */
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.8vw,14px)}
+@media(min-width:768px){.proof-grid{grid-template-columns:repeat(4,1fr)}}
+.proof-card{padding:clamp(22px,3.8vw,32px) clamp(18px,3vw,24px);background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);position:relative;overflow:hidden}
+.proof-num{font-size:clamp(28px,5.6vw,42px);font-weight:800;letter-spacing:-1.2px;line-height:1;color:var(--ink);margin-bottom:10px}.proof-num .u{font-size:.42em;font-weight:700;margin-left:2px;color:var(--text-gray)}
+.proof-desc{font-size:var(--body-font-size);line-height:1.55;color:var(--text-gray);word-break:keep-all}.proof-desc b{color:var(--ink)!important;background:var(--brand-soft)}
+
+
+/* 대표 이야기 */
+.story-photo{position:relative;width:100%;aspect-ratio:827/1103;overflow:hidden;background:var(--placeholder-bg);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:13px;margin-bottom:var(--gap-lg)}
+.story-sign{margin-top:clamp(20px,3.4vw,26px);font-size:14px;font-weight:600;color:var(--text-light)}.story-sign b{color:var(--ink);font-weight:800}
+.career-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.5vw,16px);margin-top:var(--gap-lg)}
+.career-row{display:flex;flex-direction:column;gap:8px;align-items:flex-start;min-width:0;padding:clamp(16px,2.6vw,24px) clamp(12px,2vw,20px);border:1px solid var(--border-light);border-radius:var(--radius-lg);background:var(--bg-white)}
+.career-n{font-size:clamp(17px,3vw,24px);font-weight:800;color:var(--ink);letter-spacing:-1px;white-space:nowrap;flex-shrink:0;line-height:1.1}
+.career-d{font-size:clamp(12.5px,2.3vw,14.5px);line-height:1.55;color:var(--text-gray);word-break:keep-all;overflow-wrap:anywhere}.career-d b{color:var(--ink);font-weight:700}
+
+/* 후기 — commel '밑줄 친 문장' 카드 */
+.voice-cards{display:grid;grid-template-columns:1fr;gap:clamp(12px,2vw,18px)}
+@media(min-width:768px){.voice-cards{grid-template-columns:1fr 1fr 1fr}}
+.voice-card{background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:clamp(24px,4vw,32px);display:flex;flex-direction:column;position:relative}
+.voice-card::before{content:'\201C';font-family:var(--serif);font-size:56px;line-height:.6;color:var(--brand-press);height:22px;margin-bottom:10px}
+.voice-stars{display:none}
+.voice-txt{font-size:var(--body-font-size);line-height:1.7;color:var(--text-dark);word-break:keep-all;margin-bottom:18px}.voice-txt strong{color:var(--ink);font-weight:700;background:linear-gradient(transparent 62%,var(--brand-soft) 62%)}
+.voice-who{margin-top:auto;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-light)}.voice-who .v-av{width:30px;height:30px;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12.5px;flex-shrink:0}.voice-who b{color:var(--text-dark);font-weight:700}
+
+/* 다 고쳐봤죠 — v3 pain-block 구조, commel 색 */
+.pbs{display:flex;flex-direction:column;gap:clamp(48px,9vw,72px)}
+.pb{display:flex;flex-direction:column}
+@media(min-width:768px){.pb{flex-direction:row;align-items:stretch}.pb-q,.pb-d{flex:1}}
+.pb-q,.pb-d{padding:clamp(22px,3.8vw,30px);border-radius:var(--radius-lg);word-break:keep-all}
+.pb-q{background:var(--bg-white);border:1px solid var(--border-light)}
+.pb-d{background:var(--bg-soft);border:1px solid var(--border-light)}
+.pb-mark{display:block;width:clamp(26px,4.4vw,34px);height:auto;color:var(--brand-press);margin-bottom:10px}
+.pb-k{display:inline-block;font-size:12.5px;font-weight:700;margin-bottom:10px;padding:4px 11px;border-radius:var(--radius-full)}
+.pb-q .pb-k{background:var(--ink);color:var(--brand)}
+.pb-d .pb-k{background:var(--brand);color:var(--brand-ink)}
+.pb-q p,.pb-d p{font-size:var(--body-font-size);line-height:1.85;font-weight:400;color:var(--text-dark)}
+.pb-underline{font-weight:600;color:var(--ink);background:var(--brand);padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.pb-arrow{display:flex;align-items:center;justify-content:center;padding:8px 0;color:var(--text-muted)}.pb-arrow svg{width:26px;height:26px}
+@media(min-width:768px){.pb-arrow{padding:0 12px}.pb-arrow svg{transform:rotate(-90deg)}}
+
+/* 반전 — 어두운 면 */
+.band-turn{background:var(--bg-black);padding:clamp(68px,10vw,108px) 0;text-align:center}
+.band-turn p{font-size:clamp(26px,5.6vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1.32;color:#fff;word-break:keep-all}
+.band-turn p .dim{color:var(--brand)}
+
+/* 순서가 거꾸로 — commel price-card.on 문법(검은 테두리 + 라임 배지) */
+.order{display:grid;grid-template-columns:1fr;gap:clamp(14px,2.4vw,20px);max-width:860px;margin:0 auto}
+@media(min-width:768px){.order{grid-template-columns:1fr 1fr}}
+.ord{position:relative;padding:clamp(30px,4.6vw,38px) clamp(22px,3.8vw,30px) clamp(24px,4vw,32px);border:1px solid var(--border-light);border-radius:var(--radius-xl);background:var(--bg-white)}
+.ord.first{border-color:var(--ink);box-shadow:var(--shadow-md)}
+.ord-k{position:absolute;top:-12px;left:24px;font-size:12px;font-weight:700;padding:6px 13px;border-radius:var(--radius-full);background:var(--bg-white);border:1px solid var(--border-default);color:var(--text-gray)}
+.ord.first .ord-k{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.ord-t{font-size:clamp(19px,3.9vw,23px);font-weight:800;letter-spacing:-.03em;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border-light);word-break:keep-all}
+.ord ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ord li{font-size:var(--body-font-size);font-weight:600;color:var(--text-light);word-break:keep-all;display:flex;gap:10px;align-items:center}
+.ord.first li{color:var(--ink);font-weight:700}
+.ord li::before{content:'';width:16px;height:16px;border-radius:50%;border:1.5px solid var(--border-default);flex-shrink:0}
+.ord.first li::before{border:none;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='3.5'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/10px no-repeat}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.8vw,14px);max-width:860px;margin:var(--gap-lg) auto 0}
+.vs-c{padding:clamp(20px,3.4vw,26px);border-radius:var(--radius-lg);border:1px solid var(--border-light);background:var(--bg-white)}
+.vs-c:last-child{border-color:var(--ink)}
+.vs-k{font-size:13px;font-weight:800;color:var(--text-light);margin-bottom:12px}.vs-c:last-child .vs-k{color:var(--ink)}
+.vs-c ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.vs-c li{font-size:var(--body-font-size);line-height:1.5;color:var(--text-gray);word-break:keep-all}.vs-c:last-child li{color:var(--ink);font-weight:700}
+
+/* 정리 — 인용은 Instrument Serif 이탤릭 */
+.concl{background:var(--bg-black);color:#fff;padding:clamp(76px,11vw,120px) 0;text-align:center}
+.concl .q{font-size:clamp(26px,6vw,46px);font-weight:800;letter-spacing:-.04em;line-height:1.3;word-break:keep-all}
+.concl .q::before{content:'\201C';display:block;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(64px,12vw,96px);line-height:.6;color:var(--brand);margin-bottom:8px}
+.concl .a{margin-top:clamp(20px,3.4vw,26px);font-size:var(--body-font-size);font-weight:500;line-height:1.65;color:rgba(255,255,255,.7);word-break:keep-all}.concl .a strong{color:var(--brand);font-weight:800}
+
+/* 질문 8개 */
+.q8-grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:768px){.q8-grid{grid-template-columns:1fr 1fr}}
+.q8{display:flex;gap:14px;align-items:center;padding:clamp(15px,2.6vw,20px) clamp(16px,3vw,22px);background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-md)}
+.q8 .n{width:30px;height:30px;border-radius:50%;background:var(--brand-soft);font-size:12.5px;font-weight:800;color:var(--ink);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.q8 .t{font-size:var(--body-font-size);font-weight:700;letter-spacing:-.02em;line-height:1.45;word-break:keep-all}
+.flow3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:var(--gap-lg)}
+.f3{padding:clamp(18px,3.4vw,26px) 8px;text-align:center;border:1px solid var(--border-light);border-radius:var(--radius-lg);background:var(--bg-white)}
+.f3:last-child{background:var(--brand);border-color:var(--brand)}
+.f3 .n{font-size:12px;font-weight:800;color:var(--text-light);margin-bottom:6px}.f3:last-child .n{color:var(--brand-ink)}
+.f3 .t{font-size:clamp(15px,3.2vw,19px);font-weight:800;letter-spacing:-.02em;line-height:1.35;word-break:keep-all}
+
+/* 알고 보니 */
+.map{border:1px solid var(--border-light);border-radius:var(--radius-lg);background:var(--bg-white);overflow:hidden}
+.map-row{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(10px,2vw,20px);align-items:center;padding:clamp(15px,2.6vw,19px) clamp(18px,3vw,26px);border-top:1px solid var(--border-light)}
+.map-row:first-child{border-top:none}
+.map-head{background:var(--bg-soft);font-size:13px;font-weight:700;color:var(--text-light)}
+.map-head span:last-child{color:var(--ink)}
+.map-a{font-size:var(--body-font-size);color:var(--text-gray);word-break:keep-all;line-height:1.5}
+.map-x{color:var(--text-muted);font-size:16px}
+.map-b{font-size:var(--body-font-size);font-weight:700;color:var(--ink);word-break:keep-all;line-height:1.5}
+.map-b small{display:inline-block;font-size:11.5px;font-weight:700;color:var(--text-gray);background:var(--bg-soft);padding:2px 8px;border-radius:var(--radius-full);margin-top:6px}
+
+/* 1분 해보기 */
+.try{max-width:720px;margin:0 auto;border:1px solid var(--ink);border-radius:var(--radius-xl);background:var(--bg-white);box-shadow:var(--shadow-md);padding:clamp(24px,4.4vw,40px)}
+.try-q{font-size:clamp(18px,3.7vw,21px);font-weight:800;letter-spacing:-.02em;line-height:1.45;word-break:keep-all;margin-bottom:clamp(16px,2.8vw,20px)}
+.try-opts{display:flex;flex-wrap:wrap;gap:8px}
+.try-opt{font-family:var(--font);font-size:clamp(14.5px,3vw,15.5px);font-weight:600;padding:11px 16px;border:1px solid var(--border-default);border-radius:var(--radius-full);background:var(--bg-white);color:var(--text-dark);cursor:pointer;transition:all var(--dur-short) var(--ease)}
+.try-opt:hover{background:var(--bg-light)}
+.try-opt.on{background:var(--brand);border-color:var(--brand);color:var(--brand-ink);font-weight:700}
+.try-go{margin-top:clamp(18px,3vw,22px);width:100%;background:var(--ink);color:#fff}.try-go:hover{background:#000}
+.try-res{display:none;margin-top:clamp(18px,3vw,24px);padding:clamp(18px,3vw,24px);background:var(--bg-light);border-radius:var(--radius-lg)}
+.try-res.show{display:block}
+.try-res .big{font-size:clamp(20px,4.3vw,26px);font-weight:800;letter-spacing:-.03em;line-height:1.4;word-break:keep-all;margin-bottom:10px}
+.try-res p{font-size:var(--body-font-size);line-height:1.7;color:var(--text-dark);word-break:keep-all}.try-res p strong{color:var(--ink)}
+.try-res .from{margin-top:12px;font-size:14px;font-weight:800;color:var(--ink)}
+
+/* 바뀐 문장 */
+.ba-list{display:flex;flex-direction:column;gap:10px}
+.ba{display:grid;grid-template-columns:1fr;border:1px solid var(--border-light);border-radius:var(--radius-lg);background:var(--bg-white);overflow:hidden}
+@media(min-width:768px){.ba{grid-template-columns:150px 1fr 1fr}}
+.ba-ch{padding:clamp(12px,2.2vw,18px) clamp(18px,3vw,22px);font-size:13px;font-weight:800;color:var(--text-gray);background:var(--bg-soft);display:flex;align-items:center}
+.ba-b,.ba-a{padding:clamp(14px,2.6vw,20px) clamp(18px,3vw,22px);font-size:var(--body-font-size);line-height:1.55;word-break:keep-all}
+.ba-b{color:var(--text-light)}
+.ba-a{color:var(--ink);font-weight:700}
+.ba-b::before,.ba-a::before{display:inline-block;font-size:11px;font-weight:800;margin-bottom:6px;padding:2px 8px;border-radius:var(--radius-full)}
+.ba-b::before{content:'전';background:var(--bg-soft);color:var(--text-light)}.ba-a::before{content:'후';background:var(--brand);color:var(--brand-ink)}
+.ba-b::after,.ba-a::after{content:'';display:block}
+@media(min-width:768px){.ba-b{border-left:1px solid var(--border-light)}.ba-a{border-left:1px solid var(--border-light)}}
+
+/* 커리큘럼 */
+.sec-cur{background:var(--bg-light)!important;color:var(--ink)!important;padding:var(--sec-y) 0}
+.cur-item{display:flex;gap:clamp(14px,2.8vw,20px);padding:clamp(18px,3vw,22px) clamp(16px,3vw,24px);margin-bottom:8px;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);align-items:baseline}
+.cur-num{font-size:13px;font-weight:800;color:var(--ink);background:var(--brand);border-radius:var(--radius-full);padding:2px 9px;flex-shrink:0}
+.cur-body{min-width:0}.cur-title{font-size:clamp(17px,3.4vw,19px);font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:6px;word-break:keep-all}.cur-title span{font-weight:600;color:var(--text-light)}
+.cur-wow{font-size:var(--body-font-size);line-height:1.6;color:var(--text-gray);word-break:keep-all}.cur-wow b{color:var(--ink);font-weight:700}
+
+/* 받는 것 */
+.del-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.8vw,16px)}
+@media(min-width:900px){.del-grid{grid-template-columns:repeat(4,1fr)}}
+.del-card{background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden}
+.del-thumb{width:100%;aspect-ratio:4/3;background:var(--placeholder-bg);display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:13px}
+.del-info{padding:clamp(14px,2.6vw,20px)}
+.del-name{font-size:clamp(16px,3.4vw,18px);font-weight:800;letter-spacing:-.02em;margin-bottom:6px;word-break:keep-all}
+.del-desc{font-size:var(--body-font-size);line-height:1.55;color:var(--text-gray);word-break:keep-all}
+
+/* 읽고 끝나는 책? */
+.loops{display:grid;grid-template-columns:1fr;gap:clamp(12px,2vw,18px)}
+@media(min-width:768px){.loops{grid-template-columns:1fr 1fr}}
+.loop{padding:clamp(24px,4vw,32px);border:1px solid var(--border-light);border-radius:var(--radius-xl);background:var(--bg-white)}
+.loop.good{border-color:var(--ink);box-shadow:var(--shadow-md)}
+.loop-k{font-size:14px;font-weight:800;color:var(--text-light);margin-bottom:12px}.loop.good .loop-k{color:var(--ink)}
+.ls{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:var(--body-font-size);font-weight:600;color:var(--text-gray);word-break:keep-all}
+.ls i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--text-light);flex-shrink:0}
+.loop.good .ls{color:var(--ink);font-weight:700}.loop.good .ls i{background:var(--brand);color:var(--brand-ink)}
+.ls-back{margin-top:10px;padding-top:12px;border-top:1px solid var(--border-light);font-size:var(--body-font-size);font-weight:700;color:var(--text-light);word-break:keep-all}.loop.good .ls-back{color:var(--ink)}
+
+/* 업종 */
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(min-width:768px){.case-grid{grid-template-columns:repeat(3,1fr)}}
+.case-chip{padding:clamp(16px,2.8vw,20px);background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-md)}
+.case-chip .c-name{display:inline-block;font-size:12px;font-weight:700;color:var(--text-gray);background:var(--bg-soft);padding:2px 9px;border-radius:var(--radius-full);margin-bottom:8px}
+.case-chip .c-desc{font-size:var(--body-font-size);font-weight:700;color:var(--ink);line-height:1.45;word-break:keep-all}
+.case-hero{margin-top:var(--gap-md);padding:clamp(24px,4.2vw,34px);background:var(--bg-white);border:1px solid var(--ink);border-radius:var(--radius-xl)}
+.case-hero .ch-label{display:inline-block;font-size:12px;font-weight:700;background:var(--brand);color:var(--brand-ink);padding:5px 12px;border-radius:var(--radius-full);margin-bottom:12px}
+.case-hero .ch-body{font-size:var(--body-font-size);font-weight:700;line-height:1.55;word-break:keep-all}
+.case-hero .ch-note{margin-top:8px;font-size:var(--body-font-size);color:var(--text-gray)}
+
+/* 이런 분께 */
+.who-grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:768px){.who-grid{grid-template-columns:1fr 1fr}}
+.who{padding:clamp(20px,3.4vw,26px);background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg)}
+.who-h{display:inline-block;font-size:12px;font-weight:700;color:var(--brand);background:var(--ink);padding:4px 11px;border-radius:var(--radius-full);margin-bottom:12px}
+.who ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.who li{display:flex;gap:10px;font-size:var(--body-font-size);line-height:1.55;color:var(--ink);word-break:keep-all}
+.who li::before{content:'';flex-shrink:0;width:18px;height:18px;margin-top:3px;border-radius:5px;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='3.5'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/11px no-repeat}
+.who-last{margin-top:clamp(56px,9vw,96px);text-align:center;color:var(--ink);font-size:clamp(20px,4.2vw,27px);font-weight:800;letter-spacing:-.03em;line-height:1.6;word-break:keep-all}
+.who-last-intro{display:block;margin-bottom:8px;font-size:clamp(14px,2.8vw,16px);font-weight:600;color:var(--text-gray)}
+.who-last .em{box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* 자가진단 */
+.diag-w{max-width:700px;margin:0 auto;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-xl);padding:clamp(20px,4.2vw,36px)}
+.dw-q{display:flex;align-items:flex-start;gap:14px;padding:clamp(13px,2.3vw,16px) 0;border-top:1px solid var(--border-light);cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}.dw-q:first-child{border-top:none}
+.dw-box{width:24px;height:24px;border:1.5px solid var(--border-default);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all var(--dur-short) var(--ease);margin-top:1px}
+.dw-box svg{width:14px;height:14px;color:var(--brand-ink);opacity:0;transform:scale(.5);transition:all var(--dur-short) var(--ease)}
+.dw-q.checked .dw-box{background:var(--brand);border-color:var(--brand)}.dw-q.checked .dw-box svg{opacity:1;transform:scale(1)}
+.dw-txt{font-size:var(--body-font-size);line-height:1.5;color:var(--text-gray);word-break:keep-all}.dw-q.checked .dw-txt{color:var(--ink);font-weight:600}
+.dw-result{margin-top:clamp(16px,3vw,22px);padding:clamp(18px,3.2vw,24px);background:var(--bg-light);border-radius:var(--radius-lg);font-size:var(--body-font-size);line-height:1.7;color:var(--text-dark);word-break:keep-all;text-align:center}
+.dw-result strong{color:var(--ink);font-weight:800;background:linear-gradient(transparent 60%,var(--brand) 60%)}.dw-result .dw-count{color:var(--ink);font-weight:800}
+.dw-start{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:12px}
+.dw-start span{font-size:13.5px;font-weight:700;padding:6px 12px;border-radius:var(--radius-full);background:var(--bg-white);border:1px solid var(--ink);color:var(--ink)}
+
+/* 가격 — commel price-card.on */
+.sec-price{background:var(--bg-white)!important;color:var(--ink)!important;padding:var(--sec-y) 0}
+.price-story{font-size:var(--body-font-size);line-height:1.8;color:var(--text-gray);word-break:keep-all;max-width:600px;margin-bottom:var(--gap-lg)}.price-story p{margin-bottom:10px}.price-story p:last-child{margin-bottom:0}.price-story strong{color:var(--ink);font-weight:700}
+.price-box{position:relative;max-width:520px;margin:0 auto var(--gap-md);text-align:center;padding:clamp(40px,6vw,52px) clamp(22px,4vw,30px) clamp(30px,5vw,40px);background:var(--bg-white);border:1px solid var(--ink);border-radius:var(--radius-xl);box-shadow:var(--shadow-md)}
+.price-box::before{content:'평생 소장';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--brand);color:var(--brand-ink);font-size:12px;font-weight:700;padding:6px 14px;border-radius:var(--radius-full)}
+.price-amt{font-size:clamp(40px,8vw,54px);font-weight:800;letter-spacing:-1.6px;color:var(--ink)}.price-amt .u{font-size:.4em;font-weight:600;color:var(--text-light);margin-left:4px}
+.price-note{font-size:13px;color:var(--text-light);margin-top:6px}
+.price-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:clamp(18px,3vw,22px);padding-top:clamp(18px,3vw,22px);border-top:1px solid var(--border-light)}.price-tag{display:inline-block;font-size:13px;font-weight:600;padding:6px 12px;border-radius:var(--radius-full);background:var(--bg-soft);color:var(--text-dark)}
+.free{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:clamp(14px,2.6vw,20px);align-items:center;padding:clamp(22px,4vw,30px);border-radius:var(--radius-lg);background:var(--bg-light);border:1px solid var(--border-light)}
+@media(min-width:768px){.free{grid-template-columns:1fr auto}}
+.free-l{display:inline-block;font-size:12px;font-weight:700;color:var(--brand-ink);background:var(--brand);padding:4px 11px;border-radius:var(--radius-full);margin-bottom:10px}
+.free-t{font-size:clamp(18px,3.8vw,22px);font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:6px;word-break:keep-all}
+.free-d{font-size:var(--body-font-size);line-height:1.6;color:var(--text-gray);word-break:keep-all}
+
+/* FAQ */
+.faq-item{padding:clamp(18px,3.2vw,24px) 0;border-top:1px solid var(--border-light)}.faq-item:last-child{border-bottom:1px solid var(--border-light)}
+.faq-q{font-size:var(--body-font-size);font-weight:700;letter-spacing:-.02em;line-height:1.4;margin-bottom:8px;word-break:keep-all}.faq-q::before{content:'Q';display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;margin-right:10px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-size:12.5px;font-weight:800;vertical-align:2px}
+.faq-a{font-size:var(--body-font-size);line-height:1.7;color:var(--text-gray);word-break:keep-all;padding-left:34px}
+
+/* CTA — 어두운 면 */
+.cta-final{position:relative;overflow:hidden;background:var(--bg-black);color:#fff;padding:clamp(88px,13vw,140px) 0 clamp(120px,16vw,170px);text-align:center}
+.cta-final::before{content:'';position:absolute;left:50%;bottom:-40%;transform:translateX(-50%);width:min(90vw,900px);aspect-ratio:1;background:radial-gradient(circle,rgba(223,240,0,.30),transparent 60%);filter:blur(20px);pointer-events:none}
+.cta-final .wrap{position:relative}
+.cta-final .h-big{color:#fff}
+.cta-sub{font-size:var(--body-font-size);font-weight:500;color:rgba(255,255,255,.7);margin:clamp(16px,3vw,22px) 0 8px;word-break:keep-all}
+.cta-price{font-size:clamp(36px,7vw,48px);font-weight:800;letter-spacing:-1.5px;margin-bottom:clamp(22px,4vw,30px)}.cta-price .u{font-size:.45em;font-weight:600;color:rgba(255,255,255,.6);margin-left:3px}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:clamp(16px,3vw,22px)}
+.cta-risk{font-size:var(--body-font-size);color:rgba(255,255,255,.5);word-break:keep-all}
+
+/* 하단 고정 — 리퀴드 글래스 */
+.stk{position:fixed;left:12px;right:12px;bottom:12px;z-index:100;background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid rgba(255,255,255,.55);box-shadow:var(--glass-shadow);border-radius:var(--radius-lg);padding:10px 10px 10px 18px;display:flex;gap:14px;align-items:center;max-width:720px;margin:0 auto}
+.stk-left{flex:1;min-width:0}.stk-price{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.5px}.stk-note{font-size:12px;color:var(--text-gray);margin-top:1px}
+.stk-btn{background:var(--brand);color:var(--brand-ink);padding:14px 30px;font-size:15px;font-weight:700;border-radius:var(--radius-sm);white-space:nowrap;flex-shrink:0;text-align:center;transition:background var(--dur-short) var(--ease);display:inline-block}.stk-btn:hover{background:var(--brand-press)}
+
+/* 푸터 */
+.foot{padding:48px 0 40px;text-align:center;border-top:1px solid var(--border-light);display:flex;flex-direction:column;align-items:center;gap:10px}
+.foot .logo-mark{height:15px;color:var(--ink)}
+.foot span{font-size:12px;color:var(--text-light)}
+
+@media(max-width:767px){
+  .map-row{grid-template-columns:1fr;gap:4px}.map-x{display:none}.map-head{display:none}
+  .map-a::before{content:'이게 문제인 줄 알았는데';display:block;font-size:11px;font-weight:700;color:var(--text-light);margin-bottom:2px}
+  .vs{grid-template-columns:1fr}
+  .stk-btn{padding:13px 22px}
+}
+
+/* 섹션 배경 교차 — 순서를 바꿔도 흰/틴트가 번갈아 나오도록 섹션마다 직접 지정 */
+.bc-root > section.bg-w{background:var(--bg-white)!important}
+.bc-root > section.bg-t{background:var(--bg-light)!important}
+.bg-t .free{background:var(--bg-white)}
+
+/* 가격 (위쪽) — 왼쪽 타이틀·본문, 오른쪽 가격 카드 */
+.price-split{display:grid;grid-template-columns:1fr;gap:var(--gap-lg);align-items:center}
+@media(min-width:900px){.price-split{grid-template-columns:1fr 440px;gap:clamp(40px,6vw,80px)}}
+.price-split .price-story{margin-bottom:0}
+.price-audience{margin-top:clamp(72px,11vw,112px)}
+.bc-root>section.reviews-dark{background:var(--ink);color:#fff}
+.reviews-dark .h-sec{color:#fff}
+.reviews-dark .sec-head .em{color:var(--brand);background:none}
+.reviews-dark .label{color:var(--ink);background:var(--brand)}
+.reviews-dark .voice-card::before{content:'';display:block;flex-shrink:0;width:24px;height:24px;margin-bottom:12px;background:var(--brand-press);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7H0zm14 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7h-5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M0 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7H0zm14 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7h-5z'/%3E%3C/svg%3E") center/contain no-repeat}
+.voice-role{font-size:var(--body-font-size);line-height:1.5;font-weight:700;color:var(--ink);margin-bottom:12px}
+.reviews-dark .voice-txt{margin-bottom:0}
+.author-profile{display:flex;align-items:center;gap:14px;margin-bottom:clamp(24px,4vw,32px);color:var(--ink)}
+.author-profile img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.author-profile-info{min-width:0}
+.author-profile-name{display:flex;align-items:center;gap:7px;font-size:20px;font-weight:800;line-height:1.2;letter-spacing:-.02em}
+.author-profile-badge{width:15px;height:15px;flex-shrink:0}
+.author-profile-more{margin-left:3px;font-size:15px;letter-spacing:1px;line-height:1}
+.author-profile-bio{margin-top:5px;font-size:11px;font-weight:400;line-height:1.5;word-break:keep-all}
+.author-profile-stats{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:7px;font-size:11px;line-height:1.5}
+.author-profile-stats b{font-weight:700}
+@media(max-width:380px){.author-profile{gap:10px}.author-profile img{width:48px;height:48px}.author-profile-stats{column-gap:9px}}
+.price-split .price-box{margin:0;width:100%;max-width:520px;justify-self:center}
+
+/* 만든 사람 — 데스크톱: 왼쪽 사진 / 오른쪽 소개글·성과 */
+.story-split{display:grid;grid-template-columns:1fr;gap:var(--gap-lg)}
+@media(min-width:900px){
+  .story-split{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,5vw,64px);align-items:start}
+  .story-split .story-photo{aspect-ratio:827/1103;margin-bottom:0;position:sticky;top:40px}
+  .story-split .career-grid{margin-top:clamp(28px,4vw,40px)}
+}
+
+/* 비교표 — 한 박스 안에 양옆 두 칸, 오른쪽 칸 강조 */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:860px;margin-left:auto;margin-right:auto;padding:6px;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-xl);align-items:stretch}
+.cmp > .ord,.cmp > .vs-c{border:1px solid transparent;box-shadow:none;border-radius:22px;background:transparent;padding:clamp(22px,3.6vw,32px) clamp(14px,3vw,28px)}
+.cmp > .hl{background:var(--bg-white);border-color:var(--ink);box-shadow:var(--shadow-md)}
+.cmp .ord-k,.cmp .vs-k{position:static;display:inline-block;font-size:12px;font-weight:700;padding:6px 13px;border-radius:var(--radius-full);background:var(--bg-soft);border:none;color:var(--text-gray);margin-bottom:14px;word-break:keep-all}
+.cmp .hl .ord-k,.cmp .hl .vs-k{background:var(--brand);color:var(--brand-ink)}
+.cmp .ord-t{font-size:clamp(16px,3.6vw,23px)}
+.cmp .ord li{font-size:var(--body-font-size);align-items:flex-start;line-height:1.5}
+.cmp .ord li::before{margin-top:3px}
+.vs.cmp{grid-template-columns:1fr 1fr}
+.vs.cmp .vs-c:not(.hl) li{color:var(--text-light)}
+
+/* 순서 비교: 오른쪽 카드를 바탕 패널 위에 크게 겹쳐 배치 */
+.order.cmp{position:relative;isolation:isolate;overflow:visible;grid-template-columns:.9fr 1.1fr;margin-top:24px;margin-bottom:28px}
+.order.cmp>.ord{position:relative;z-index:0;min-width:0}
+.order.cmp>.ord.first{z-index:2;margin:-24px -12px -24px -4px;padding:clamp(32px,5vw,46px) clamp(18px,3.4vw,32px);background:var(--bg-white);border:1px solid var(--ink);box-shadow:0 16px 36px -10px rgba(0,0,0,.24),0 4px 10px rgba(0,0,0,.08)}
+@media(max-width:380px){.order.cmp>.ord.first{margin-right:-8px;padding-left:14px;padding-right:14px}}
+
+/* 만든 사람 — 모바일: 사진 바로 아래 성과 지표 */
+@media(max-width:899px){
+  .story-split{display:flex;flex-direction:column;gap:0}
+  .story-r{display:contents}
+  .story-split .story-photo{order:1;margin-bottom:0}
+  .story-split .career-grid{order:2;margin-top:24px}
+  .story-split .body-text{order:3;margin-top:var(--gap-lg)}
+  .story-split .story-sign{order:4}
+}
+
+/* 루프 비교표 */
+.loops.cmp{grid-template-columns:1fr 1fr;gap:0}
+.cmp > .loop{border:1px solid transparent;box-shadow:none;border-radius:22px;background:transparent;padding:clamp(22px,3.6vw,32px) clamp(14px,3vw,28px)}
+.cmp .loop-k{display:inline-block;font-size:12px;font-weight:700;padding:6px 13px;border-radius:var(--radius-full);background:var(--bg-soft);color:var(--text-gray);margin-bottom:14px;word-break:keep-all}
+.cmp .hl .loop-k{background:var(--brand);color:var(--brand-ink)}
+.cmp .ls{font-size:var(--body-font-size);gap:10px;align-items:flex-start;line-height:1.5}
+.cmp .ls i{width:24px;height:24px}
+.cmp .ls-back{font-size:var(--body-font-size)}
+.cmp > .loop:not(.hl) .ls{color:var(--text-light)}
+.cmp > .loop.hl{background:var(--bg-white);border-color:var(--ink);box-shadow:var(--shadow-md)}
+
+/* Chapter 00 무료 — 별도 섹션 */
+.free-cta{text-align:center}
+.free-cta .btn{padding:17px 32px;font-size:16px}
+
+/* 대표 사진 — 모바일·데스크톱 같은 사진, 원본 비율 */
+.story-photo picture{display:block;width:100%;height:100%}
+.story-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* 인스타 프로필 — 대표 사진 안 왼쪽 아래 */
+.story-photo .author-profile{position:absolute;left:clamp(10px,2vw,16px);bottom:clamp(10px,2vw,16px);max-width:calc(100% - 20px);margin:0;padding:clamp(10px,1.8vw,14px) clamp(12px,2vw,18px);background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-md);box-shadow:var(--shadow-md);text-align:left}
+.story-photo .author-profile{gap:12px}
+.story-photo .author-profile img{width:clamp(40px,6vw,52px);height:clamp(40px,6vw,52px);border-radius:50%;object-fit:cover;flex-shrink:0}
+.story-photo .author-profile-name{font-size:clamp(14px,2.4vw,16px)}
+
+/* 만든 사람 제목 위 — 후기 카드와 같은 따옴표를 뒤집은 여는 따옴표 */
+.open-q{display:block;width:24px;height:24px;margin-bottom:14px;background:var(--brand-press);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath transform='rotate(180 12 12)' d='M0 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7H0zm14 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7h-5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath transform='rotate(180 12 12)' d='M0 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7H0zm14 0h10v12c0 7-4 11-10 12v-5c3-1 5-3 5-7h-5z'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* 만든 사람 — 제목은 데스크톱에선 두 칸 위, 모바일에선 사진 바로 아래 */
+.story-head .h-sec{margin-bottom:0}
+@media(min-width:900px){.story-head{grid-column:1/-1}}
+@media(max-width:899px){
+  .story-split .story-head{order:2;margin-top:var(--gap-lg)}
+  .story-split .career-grid{order:3;grid-template-columns:1fr;gap:10px}
+  .story-split .body-text{order:4}
+  .story-split .story-sign{order:5}
+  .story-split .career-row{flex-direction:row;align-items:center;gap:16px;padding:16px 20px}
+  .story-split .career-n{min-width:5.2em}
+  .story-split .career-d{font-size:14px}
+}
+
+/* 박스 안 라벨 — 섹션 라벨(검정 pill)과 구분되도록 후기 카드 페르소나 타이틀과 같은 굵은 텍스트로 */
+.who-h,.pb-q .pb-k{display:block;padding:0;background:none;border-radius:0;font-size:var(--body-font-size);line-height:1.5;font-weight:700;color:var(--ink);margin-bottom:12px}
+
+/* 이런 분께 — 마지막 줄: '그리고,'는 본문 크기, 강조 줄은 섹션 타이틀 크기 */
+.who-last-intro{font-size:var(--body-font-size);font-weight:400;color:var(--text-dark);letter-spacing:-.01em}
+.who-last{font-size:clamp(26px,5.4vw,36px);line-height:1.4}
+
+/* 만든 사람 — 강조문 형광펜 밑줄, 서명에 로고 + 오른쪽 정렬 */
+.story-r .body-text strong{background:linear-gradient(transparent 60%,var(--brand) 60%);padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.story-sign{display:flex;justify-content:flex-end;align-items:center;gap:6px}
+.story-sign .logo-mark{height:12px;color:var(--ink)}
+
+/* 성과 — 한 박스 안에 세 칸, 얇은 구분선만 */
+.career-grid{gap:0;grid-auto-rows:1fr;border:1px solid var(--border-light);border-radius:var(--radius-lg);background:var(--bg-white);overflow:hidden}
+.career-row{border:0;border-radius:0;background:none;padding:clamp(18px,2.6vw,24px) clamp(14px,2vw,20px)}
+.career-row+.career-row{border-left:1px solid var(--border-light)}
+@media(max-width:899px){
+  .story-split .career-grid{gap:0}
+  .story-split .career-row{padding:18px 20px}
+  .story-split .career-row+.career-row{border-left:0;border-top:1px solid var(--border-light)}
+  .story-split .career-n{font-size:22px;min-width:4.6em}
+  /* 사진: 라운딩 없이 화면 꽉 차게, 섹션 맨 위에 붙임 */
+  .sec-story{padding-top:0}
+  .story-split .story-photo{width:auto;margin-left:calc(-1*clamp(20px,5vw,40px));margin-right:calc(-1*clamp(20px,5vw,40px));border-radius:0}
+}
+
+/* 만든 사람 — 후기 섹션과 같은 어두운 배경 */
+.bc-root > section.sec-story{background:var(--ink)!important;color:#fff}
+.sec-story .h-sec{color:#fff}
+.sec-story .h-sec .em{color:var(--brand);background:none;padding:0}
+.sec-story .open-q{background:var(--brand)}
+.sec-story .body-text{color:rgba(255,255,255,.72)}
+.sec-story .story-r .body-text strong{color:#fff;background:none;padding:0}
+.sec-story .story-sign{color:rgba(255,255,255,.55)}
+.sec-story .story-sign b{color:#fff}
+.sec-story .story-sign .logo-mark{color:#fff}
+.sec-story .career-grid{border-color:var(--ink)}
+
+/* 대표 사진 — 아래쪽을 섹션 배경색으로 자연스럽게 이어줌 */
+.story-photo::after{content:'';position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(to bottom,rgba(26,26,26,0),var(--ink));pointer-events:none}
+/* 인스타 프로필 — 사진 안쪽 여백은 그대로, 가로는 꽉 차게 */
+.story-photo .author-profile{right:clamp(10px,2vw,16px);max-width:none;z-index:1}
+
+/* 인스타 프로필 — 글자·사진 키우고, 박스는 좌우를 조금 더 들여 가운데로, 하단 구매 바와 같은 유리 배경 */
+.story-photo .author-profile{left:clamp(20px,5vw,32px);right:clamp(20px,5vw,32px);bottom:clamp(16px,3vw,24px);justify-content:center;gap:14px;padding:14px 18px;background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid rgba(255,255,255,.55);box-shadow:var(--glass-shadow);border-radius:var(--radius-lg)}
+.story-photo .author-profile img{width:clamp(54px,8vw,64px);height:clamp(54px,8vw,64px)}
+.story-photo .author-profile-name{font-size:clamp(17px,2.8vw,19px)}
+.story-photo .author-profile-badge{width:16px;height:16px}
+.story-photo .author-profile-bio{font-size:clamp(12.5px,2vw,13.5px)}
+.story-photo .author-profile-stats{font-size:clamp(12.5px,2vw,13.5px)}
+
+/* 가격 ↔ 후기 섹션 배경 교체 — 가격은 어둡게, 후기는 연한 라임 */
+.bc-root > section.swap-dark{background:var(--ink)!important;color:#fff!important}
+.swap-dark .h-sec{color:#fff}
+.swap-dark .h-sec .em,.swap-dark .who-last .em{color:var(--brand);background:none;padding:0}
+.swap-dark .label{color:var(--ink);background:var(--brand)}
+.swap-dark .price-story{color:rgba(255,255,255,.72)}
+.swap-dark .price-story strong{color:#fff}
+.swap-dark .who-last{color:#fff}
+.swap-dark .who-last-intro{color:rgba(255,255,255,.72)}
+.bc-root > section.swap-light{background:var(--bg-light)!important;color:var(--ink)}
+.swap-light .h-sec{color:var(--ink)}
+.swap-light .sec-head .em{color:inherit;background:linear-gradient(transparent 60%,var(--brand) 60%);padding:0 2px}
+.swap-light .label{color:var(--brand);background:var(--ink)}
+.swap-dark .price-box{box-shadow:0 0 0 1px rgba(223,240,0,.35),0 10px 40px rgba(223,240,0,.38)}
+
+/* 인스타 프로필 — 내용에 딱 맞는 폭, 사방 같은 여백, 사진 가운데 */
+.story-photo .author-profile{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);padding:16px;justify-content:flex-start}
+.story-photo .author-profile img{width:clamp(64px,9vw,72px);height:clamp(64px,9vw,72px)}
+
+/* 위쪽 가격 — 로고 / 제목 / 바이블 레터링, 설명까지 가운데 정렬 */
+.price-logo{height:clamp(16px,2.6vw,20px);color:var(--ink);margin:0 auto clamp(16px,2.6vw,22px)}
+.price-lettering{display:block;width:100%;max-width:400px;height:auto;margin:clamp(14px,2.4vw,20px) auto 0}
+.swap-dark .price-story{text-align:center;margin-left:auto;margin-right:auto}
+
+/* 히어로 — 모바일에서 화면을 꽉 채우는 느낌의 고정 높이(px, 스크롤 시 높이 흔들림 없음) */
+@media(max-width:767px){
+  .hero{min-height:760px;display:flex;flex-direction:column;justify-content:center;padding-top:96px;padding-bottom:72px}
+  .hero .wrap{width:100%}
+}
+
+/* 성과 카드 줄바꿈 — PC/모바일 따로 */
+.proof-desc .m-br{display:none}
+@media(max-width:767px){.proof-desc .m-br{display:inline}.proof-desc .pc-br{display:none}}
+.price-h-lime{color:var(--brand)}
+
+/* 반전 밴드 — 공감 본문 + 질문 */
+.band-turn .turn-story{max-width:640px;margin:0 auto clamp(36px,6vw,56px);color:rgba(255,255,255,.72);word-break:keep-all}
+.band-turn .turn-story p{font-size:var(--body-font-size);font-weight:400;letter-spacing:-.01em;line-height:1.8;color:inherit;margin-bottom:clamp(14px,2.4vw,20px)}
+.band-turn .turn-story p:last-child{margin-bottom:0}
+.band-turn .turn-story strong{color:#fff;font-weight:700}
+
+/* 후기 — 엑셀 원본(업종·성과 한 줄·원문·작성자·날짜) */
+.vc-list{align-items:start}
+.vc-result{font-size:var(--body-font-size);line-height:1.55;font-weight:700;color:var(--ink);word-break:keep-all;margin-bottom:12px}
+.vc-result::before{content:'성과';display:inline-block;vertical-align:2px;margin-right:8px;padding:2px 9px;border-radius:var(--radius-full);background:var(--brand);color:var(--brand-ink);font-size:12px;font-weight:800}
+.vc-orig{color:var(--text-gray);overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5}
+.voice-card.open .vc-orig{display:block;-webkit-line-clamp:unset}
+.vc-toggle{align-self:flex-start;margin-top:8px;padding:0;background:none;border:0;font:inherit;font-size:13.5px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.vc-meta{margin-top:18px;padding-top:14px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--text-light)}
+.vc-meta b{color:var(--text-dark);font-weight:700}
+.vc-list.collapsed .voice-card:nth-child(n+7){display:none}
+.vc-more-wrap{text-align:center;margin-top:clamp(24px,4vw,36px)}
+.vc-more{padding:13px 26px;border-radius:var(--radius-full);border:1px solid var(--ink);background:var(--bg-white);color:var(--ink);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+
+/* 후기 — 성과 블럭이 쏟아져 산처럼 쌓이는 일러스트 */
+.pile{position:relative;height:clamp(240px,30vw,300px);max-width:820px;margin:clamp(-72px,-7vw,-48px) auto clamp(32px,5vw,52px);overflow:hidden}
+.pile::before{content:'';position:absolute;left:0;right:0;top:0;height:45%;background:linear-gradient(var(--bg-light),rgba(251,253,239,0));z-index:1;pointer-events:none}
+.reviews-dark .sec-head{position:relative;z-index:2}
+.pile::after{content:'';position:absolute;left:8%;right:8%;bottom:-14px;height:34px;border-radius:50%;background:radial-gradient(closest-side,rgba(26,26,26,.16),rgba(26,26,26,0));pointer-events:none}
+@media(max-width:767px){.pile{width:100vw;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}}
+.pile-b{position:absolute;left:0;top:0;visibility:hidden;white-space:nowrap;padding:clamp(8px,1.6vw,11px) clamp(12px,2.4vw,18px);border:1.5px solid var(--ink);border-radius:10px;font-size:clamp(13px,2.3vw,16px);font-weight:800;letter-spacing:-.02em;line-height:1.2;will-change:transform;user-select:none}
+.pile-b.k{background:var(--ink);color:var(--brand)}
+.pile-b.l{background:var(--brand);color:var(--ink)}
+.pile-b.w{background:var(--bg-white);color:var(--ink)}
+.pile-b.s{font-size:clamp(11.5px,2vw,13.5px);padding:6px 11px}
+
+/* 고민 카드 — 프로필 + 말풍선 */
+.pb,.bc-root .pb{flex-direction:column;align-items:stretch}
+.pb-who{display:flex;align-items:center;gap:10px;margin:0 0 14px 4px}
+.pb-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;flex-shrink:0;border:1.5px solid var(--ink)}
+.pb-av svg{width:38px;height:38px;margin-bottom:-6px}
+.pb-av.a{background:var(--brand);color:var(--ink)}
+.pb-av.b{background:var(--ink);color:var(--brand)}
+.pb-av.c{background:var(--bg-white);color:var(--ink)}
+.pb-cnt{font-size:14.5px;font-weight:600;color:var(--text-gray);letter-spacing:-.01em}
+.pb-cnt b{color:var(--ink);font-weight:800}
+.pb-q{position:relative}
+.pb-q::before{content:'';position:absolute;top:-8px;left:19px;width:14px;height:14px;background:inherit;border-left:1px solid var(--border-light);border-top:1px solid var(--border-light);transform:rotate(45deg);border-top-left-radius:3px}
+
+.pb-txt{display:flex;flex-direction:column;gap:1px;min-width:0}
+.pb-who .pb-k{display:block;margin:0;padding:0;background:none;border-radius:0;color:var(--ink);font-weight:700;font-size:var(--body-font-size);line-height:1.4}
+.pb-who .pb-cnt{font-size:13.5px;line-height:1.4}
+
+/* 고민 카드 인원 — 깜빡임 */
+@keyframes pbBlink{0%,100%{opacity:1}50%{opacity:.2}}
+.pb-cnt b{animation:pbBlink 2.4s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.pb-cnt b{animation:none}}
+
+/* 고민 섹션 하단 — 정리 문구 */
+.pb-turn{margin-top:clamp(64px,10vw,104px);text-align:center}
+.pb-turn .turn-story{max-width:640px;margin:0 auto clamp(28px,5vw,44px);color:var(--text-gray);word-break:keep-all}
+.pb-turn .turn-story p{font-size:var(--body-font-size);line-height:1.8;margin-bottom:clamp(14px,2.4vw,20px)}
+.pb-turn .turn-story p:last-child{margin-bottom:0}
+.pb-turn .turn-story strong{color:var(--ink);font-weight:700}
+.pb-turn-q{font-size:clamp(26px,5.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.35;color:var(--ink);word-break:keep-all}
+
+/* 거대한 벽 — 원본 그림을 벽돌 단위로 잘라 아래부터 쌓음, 맨 위 라임 별 벽돌이 마지막에 빛남 */
+.wall-fig{max-width:620px;margin:0 auto clamp(32px,5vw,52px)}
+@media(max-width:767px){.wall-fig{width:100vw;max-width:none;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}}
+.wall-fig{position:relative}
+.wl-msg{position:absolute;left:50%;top:44%;z-index:3;transform:translate(-50%,-50%);margin:0;white-space:nowrap;font-size:clamp(24px,5.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.35;color:var(--ink);text-align:center}
+.wl-msg .pb-underline{font-weight:800;padding:2px 10px;box-shadow:0 10px 28px rgba(26,26,26,.18)}
+.wl{display:block;width:100%;height:auto;overflow:visible;mix-blend-mode:multiply}
+.wl-br,.wl-rays{opacity:0}
+.wl-br{transform-box:view-box}
+.wall-fig.play .wl-br{animation:wlDrop .75s linear var(--d) both}
+.wall-fig.play .wl-star{animation:wlDrop .75s linear var(--d) both,wlGlow 2.4s ease-in-out calc(var(--d) + .5s) infinite}
+.wall-fig.play .wl-rays{animation:wlRays 2.4s ease-in-out 3s infinite}
+@keyframes wlDrop{0%{opacity:0;transform:translateY(var(--f)) rotate(var(--r));animation-timing-function:cubic-bezier(.55,0,1,.45)}8%{opacity:1}72%{transform:translateY(0) rotate(0);animation-timing-function:ease-out}84%{transform:translateY(-7px) rotate(calc(var(--r) * -.15));animation-timing-function:ease-in}100%{opacity:1;transform:none}}
+@keyframes wlGlow{0%,100%{filter:none}50%{filter:drop-shadow(0 0 14px rgba(223,240,0,.95))}}
+@keyframes wlRays{0%{opacity:0;transform:translateY(8px)}20%,70%{opacity:1;transform:none}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.wl-br,.wl-rays{opacity:1}.wall-fig.play .wl-br,.wall-fig.play .wl-star,.wall-fig.play .wl-rays{animation:none}}
+
+/* 고민 카드 — 원형 안 아이콘 애니메이션 (콘텐츠·상품·가격·마케팅) */
+.pb-av{align-items:center}
+.pb-av svg.pb-ic{width:26px;height:26px;margin:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.pb-ic *{transform-box:fill-box}
+.ic-play{stroke:none;transform-origin:center;animation:icPlay 1.6s ease-in-out infinite}
+.ic-prog{stroke-dasharray:14;animation:icProg 3.2s linear infinite}
+.ic-lid{transform-origin:0 100%;animation:icLid 2.4s ease-in-out infinite}
+.ic-spark{opacity:0;animation:icSpark 2.4s ease-out infinite}
+.ic-tag{transform-box:view-box;transform-origin:16.5px 7.5px;animation:icTag 2.2s ease-in-out infinite}
+.ic-down{animation:icDown 1.1s ease-in-out infinite}
+.ic-mega{transform-origin:100% 50%;animation:icMega 1.8s ease-in-out infinite}
+.ic-w1,.ic-w2{opacity:0;animation:icWave 1.8s ease-out infinite}
+.ic-w2{animation-delay:.25s}
+@keyframes icPlay{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+@keyframes icProg{from{stroke-dashoffset:14}to{stroke-dashoffset:0}}
+@keyframes icLid{0%,30%,100%{transform:none}45%,70%{transform:translate(-1px,-3px) rotate(-18deg)}}
+@keyframes icSpark{0%,40%{opacity:0;transform:translateY(1.5px)}55%{opacity:1}75%,100%{opacity:0;transform:translateY(-1.5px)}}
+@keyframes icTag{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(12deg)}}
+@keyframes icDown{0%,100%{transform:translateY(-1px)}50%{transform:translateY(1.5px)}}
+@keyframes icMega{0%,60%,100%{transform:none}10%,30%{transform:rotate(-6deg) scale(1.05)}20%{transform:rotate(4deg) scale(1.05)}}
+@keyframes icWave{0%,8%{opacity:0;transform:translateX(-2px)}25%{opacity:1;transform:none}70%,100%{opacity:0;transform:translateX(1px)}}
+@media(prefers-reduced-motion:reduce){.pb-ic *{animation:none!important;opacity:1!important}}
+.pb-turn .turn-story .pb-underline{line-height:1.9}
+.pb-turn .turn-story p:first-child .pb-underline{background:none;padding:0;font-weight:700}
+
+/* 히어로 고정 — 다음 섹션이 위로 올라오며 히어로를 덮음 (히어로가 화면보다 길면 끝까지 본 뒤 고정) */
+.bc-root > .hero{position:sticky;top:var(--hero-top,0px);z-index:0}
+.bc-root > .hero ~ section{position:relative;z-index:1}
+.bc-root > .hero + section{box-shadow:0 -24px 48px rgba(0,0,0,.28);border-radius:clamp(24px,4vw,40px) clamp(24px,4vw,40px) 0 0;margin-top:calc(-1 * clamp(24px,4vw,40px))}
+
+/* 셀프 체크 — 콜드리딩 문장 체크리스트 */
+.ck-lead{margin-top:14px;font-size:var(--body-font-size);color:var(--text-gray);word-break:keep-all}
+.ck-grid{display:grid;grid-template-columns:1fr;gap:clamp(14px,2.4vw,20px);max-width:960px;margin:0 auto}
+@media(min-width:900px){.ck-grid{grid-template-columns:1fr 1fr}}
+.ck-group{background:var(--bg-light);border:1px solid var(--border-light);border-radius:20px;padding:clamp(20px,3.4vw,28px)}
+.ck-gh{display:flex;align-items:center;gap:10px;font-size:clamp(17px,3.4vw,19px);font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.ck-num{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:24px;padding:0 8px;border-radius:var(--radius-full);background:var(--ink);color:var(--brand);font-size:12.5px;font-weight:800}
+.ck-group ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ck-item{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;padding:13px 14px;border-radius:14px;border:1px solid var(--border-light);background:var(--bg-white);color:var(--text-dark);font:inherit;font-size:15px;line-height:1.6;word-break:keep-all;cursor:pointer;transition:background .2s,border-color .2s,transform .15s}
+.ck-item:hover{border-color:var(--ink)}
+.ck-item:active{transform:scale(.99)}
+.ck-box{flex-shrink:0;width:22px;height:22px;margin-top:2px;border-radius:50%;border:1.5px solid #c8c8c8;display:flex;align-items:center;justify-content:center;background:var(--bg-white);transition:background .2s,border-color .2s}
+.ck-box svg{width:14px;height:14px;fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:22;stroke-dashoffset:22;transition:stroke-dashoffset .25s}
+.ck-item[aria-pressed="true"]{background:#F7FBD0;border-color:var(--ink);color:var(--ink);font-weight:600}
+.ck-item[aria-pressed="true"] .ck-box{background:var(--brand);border-color:var(--ink)}
+.ck-item[aria-pressed="true"] .ck-box svg{stroke-dashoffset:0}
+.ck-result{max-width:560px;margin:clamp(16px,3vw,24px) auto 0;padding:20px 22px;border-radius:20px;background:var(--ink);color:#fff;text-align:center;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.ck-count{display:flex;align-items:baseline;justify-content:center;gap:6px;font-size:14px;color:rgba(255,255,255,.6)}
+.ck-n{font-size:clamp(34px,6vw,42px);font-weight:800;color:var(--brand);line-height:1;letter-spacing:-.03em}
+.ck-msg{margin-top:8px;font-size:15.5px;line-height:1.6;color:#fff;word-break:keep-all}
+.ck-msg b{color:var(--brand)}
+.ck-cta{margin-top:14px}.ck-cta[hidden]{display:none}
+.ck-pill{position:sticky;bottom:100px;z-index:2;width:fit-content;margin:clamp(20px,3.4vw,28px) auto 0;padding:9px 18px;border-radius:var(--radius-full);background:var(--ink);color:rgba(255,255,255,.7);font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.ck-pill b{color:var(--brand);font-size:17px;font-weight:800;margin-right:2px}
+.ck-pill.ok{background:var(--brand);color:var(--ink)}.ck-pill.ok b{color:var(--ink)}
+.ck-result.hit{animation:ckPop .4s ease}
+@keyframes ckPop{0%{transform:scale(1)}40%{transform:scale(1.03)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.ck-result.hit{animation:none}}
+.pb-turn .turn-story p.pb-turn-big{font-size:clamp(26px,5.4vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.35;color:var(--ink)}
+.pb-turn .turn-story p.pb-turn-big .pb-underline{font-weight:800;line-height:inherit}
+
+/* 방향 질문 섹션 — 어두운 배경, 손그림 스타일 일러스트(과거 ← / → 내 방향) */
+.bc-root > section.sec-dir{background:var(--bg-black)!important;color:#fff;text-align:center}
+.sec-dir .pb-turn-q{color:#fff}
+.sec-dir .em{color:var(--brand);background:none;padding:0}
+.dir-fig{max-width:560px;margin:clamp(36px,6vw,56px) auto 0}
+.dr{display:block;width:100%;height:auto;overflow:visible}
+.dr text{font-family:var(--font);text-anchor:middle;letter-spacing:.02em}
+.dr-pill{fill:#fff}.dr-pill-l{fill:var(--brand)}
+.dr-pt{fill:var(--ink);font-size:21px;font-weight:800}
+.dr-fig{fill:#5A5A5A;stroke:#fff;stroke-width:2.6;stroke-linejoin:round}
+.dr-bub{fill:#fff;stroke:#fff;stroke-width:2.6;stroke-linejoin:round}
+.dr-bubfix{stroke:#fff;stroke-width:5}
+.dr-bt{fill:var(--ink);font-size:21px;font-weight:800}
+.dr-line{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round}
+.dr-head{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.dr-lime{stroke:var(--brand)}
+.dr-dl{stroke-dasharray:7 8;opacity:.45}.dr .dr-dash .dr-dh{stroke-dasharray:6 6;opacity:.45}
+.dr-lb{fill:#fff;font-size:17px;font-weight:700;letter-spacing:.06em;opacity:.85}
+.dr-lbl{fill:var(--brand);opacity:1}
+.dr-rot{fill:none;stroke:var(--brand);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+/* 등장 */
+.dr-in,.dr-pop,.dr-spin,.dr-dash,.dr-head{opacity:0}
+.dr-draw{stroke-dasharray:1;stroke-dashoffset:1}
+.dr-pop,.dr-spin{transform-box:fill-box;transform-origin:50% 100%}
+.dir-fig.play .dr-in{animation:drIn .5s ease var(--d) both}
+.dir-fig.play .dr-pop{animation:drPop .5s cubic-bezier(.3,1.6,.6,1) var(--d) both}
+.dir-fig.play .dr-spin{transform-origin:center;animation:drSpin .8s ease var(--d) both}
+.dir-fig.play .dr-left .dr-draw,.dir-fig.play .dr-right .dr-draw{animation:drDraw .7s cubic-bezier(.6,0,.3,1) var(--d) forwards}
+.dir-fig.play .dr-left .dr-head{animation:drHeadL .35s ease calc(var(--d) + .6s) both}
+.dir-fig.play .dr-right .dr-head{animation:drHeadR .35s ease calc(var(--d) + .6s) both}
+.dir-fig.play .dr-dash{animation:drDash .8s ease var(--d) both}
+@keyframes drIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes drPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@keyframes drSpin{from{opacity:0;transform:rotate(-200deg) scale(.5)}to{opacity:1;transform:none}}
+@keyframes drDraw{to{stroke-dashoffset:0}}
+@keyframes drHeadL{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@keyframes drHeadR{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+@keyframes drNudge{0%,100%{transform:none}50%{transform:translateX(7px)}}
+@keyframes drDash{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.dr-in,.dr-pop,.dr-spin,.dr-dash,.dr-head{opacity:1}.dr-draw{stroke-dashoffset:0}.dir-fig.play *{animation:none!important}}
+
+/* 방향 일러스트 — 양쪽 흰 화살표 번갈아 연해졌다 진해졌다 */
+.dir-fig.play .dr-pa{animation:drPulse 2.4s ease-in-out 1.8s infinite}
+.dir-fig.play .dr-pb{animation:drPulse 2.4s ease-in-out 3s infinite}
+@keyframes drPulse{0%,100%{opacity:1}50%{opacity:.22}}
+
+/* 순서 비교 — 모바일에서 항목 한 줄 */
+@media(max-width:767px){.order.cmp{grid-template-columns:1fr 1fr}.cmp .ord li{font-size:14.5px;white-space:nowrap;gap:7px;letter-spacing:-.03em}.cmp .ord li::before{width:14px;height:14px;margin-top:3px}.order.cmp>.ord:not(.first){padding-left:12px;padding-right:8px}}
+
+/* 경력 박스 — 가격 박스 '평생 소장'과 같은 위치의 라벨 */
+.bc-root .career-grid{position:relative;overflow:visible}
+.career-grid::before{content:'김낙타의 HISTORY';position:absolute;top:-12px;left:50%;transform:translateX(-50%);z-index:1;white-space:nowrap;background:var(--brand);color:var(--brand-ink);font-size:12px;font-weight:700;letter-spacing:.02em;padding:6px 14px;border-radius:var(--radius-full)}
+.career-grid>.career-row:first-child{border-top-left-radius:inherit}
+
+/* 가격 제목 — 위 작게, 아래 크게 */
+.ps-h-s{display:block;font-size:clamp(17px,3.4vw,22px);font-weight:700;line-height:1.5;letter-spacing:-.03em;color:var(--text-dark);margin-bottom:clamp(8px,1.4vw,12px)}
+.ps-h-b{display:block;font-size:clamp(28px,8.6vw,54px);font-weight:800;line-height:1.3;letter-spacing:-.04em;word-break:keep-all}
+
+/* 경력 박스 — 라벨 왼쪽, 칸 세로 여유 */
+.career-grid::before{left:clamp(16px,2.4vw,22px);transform:none}
+.bc-root .career-grid .career-row{padding-top:clamp(30px,3.6vw,36px);padding-bottom:clamp(24px,3vw,30px)}
+@media(max-width:767px){.bc-root .story-split .career-row{padding:26px 22px}.bc-root .story-split .career-row:first-child{padding-top:34px}}
+
+/* 결과 섹션 — 위 여백 줄이고 아래 여백 늘림 */
+.bc-root > section.sec-res{padding-top:calc(var(--sec-y) * .6);padding-bottom:calc(var(--sec-y) * 1.4)}
+
+/* 가격 섹션 안 성과 블록 */
+.ps-proof{margin-top:clamp(56px,9vw,96px)}
+.proof-num .u{font-size:.58em}
+.proof-desc{font-size:clamp(13.5px,1.6vw,15px)}
+
+/* 성과 블록 제목 가운데 정렬 */
+.ps-proof-head,.ps-proof-head .h-sec{text-align:center;margin-left:auto;margin-right:auto}
+
+/* 히어로 — 모바일에서 텍스트를 보이는 화면 가운데쯤으로 올림 */
+@media(max-width:767px){.bc-root .hero{justify-content:flex-start;padding-top:clamp(100px,17svh,160px)}}
+
+/* 후기 카드 — C(인용형) 스타일, 흰 배경 */
+.reviews-dark .vc-list .voice-card{border-radius:24px;padding:28px 26px}
+.vc-list .vc-result{font-size:clamp(19px,2.6vw,22px);line-height:1.45;font-weight:800;letter-spacing:-.03em;margin:4px 0 14px}
+.vc-list .vc-result::before{content:none}
+.vc-list .vc-orig{font-size:14.5px;line-height:1.7;-webkit-line-clamp:4}
+.vc-list .vc-meta{margin-top:20px;font-size:13px}
+.vc-list .vc-meta span{text-align:right}
+
+/* 경력 표 첫 행 — 인스타 프로필 */
+.career-grid .cg-prof{grid-column:1/-1;margin:0;gap:14px;padding:clamp(34px,3.8vw,40px) clamp(16px,2.4vw,22px) clamp(20px,2.6vw,24px);border-bottom:1px solid var(--border-light);color:var(--ink)}
+.career-grid .cg-prof img{width:clamp(54px,7vw,64px);height:clamp(54px,7vw,64px)}
+.career-grid .cg-prof .author-profile-name{font-size:clamp(17px,2.4vw,19px)}
+.career-grid .cg-prof .author-profile-bio,.career-grid .cg-prof .author-profile-stats{font-size:clamp(12.5px,1.6vw,13.5px);color:var(--text-gray)}
+.career-grid .cg-prof .author-profile-stats b{color:var(--ink)}
+.bc-root .career-grid .cg-prof + .career-row{border-top:0}
+@media(max-width:767px){.bc-root .story-split .career-row:first-child{padding-top:26px}.bc-root .story-split .cg-prof + .career-row{border-top:0}}
+
+/* 대표 소개 — 모바일에서 제목을 사진 아래 어두운 부분까지 올림 */
+@media(max-width:767px){.bc-root .story-split .story-head{position:relative;z-index:2;margin-top:-110px}}
+
+/* 고민 카드 제목 18px */
+.bc-root .pb .pb-k{font-size:18px}
+
+/* ── flow-b ── */
+.fb-cmp{display:grid;grid-template-columns:1fr;gap:14px;max-width:880px;margin:clamp(28px,4vw,40px) auto 0;align-items:center}
+@media(min-width:768px){.fb-cmp{grid-template-columns:1fr auto 1.15fr;gap:18px}}
+.fb-k{display:inline-block;font-size:12.5px;font-weight:700;padding:6px 13px;border-radius:999px;background:#F1F1F1;color:#666;margin-bottom:16px}
+.fb-k.on{background:var(--brand);color:var(--brand-ink)}
+.fb-bricks{padding:clamp(20px,3.4vw,28px);border-radius:22px;background:#F7F7F5}
+.fb-wall{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.fb-wall span{background:#fff;border:1px solid #E2E2DC;border-radius:6px;padding:12px 8px;text-align:center;font-size:14.5px;font-weight:600;color:#777;letter-spacing:-.02em;white-space:nowrap}
+.fb-arrow{justify-self:center;font-size:13px;font-weight:800;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:4px}
+.fb-arrow::after{content:'↓';font-size:22px;line-height:1}
+@media(min-width:768px){.fb-arrow::after{content:'→'}}
+.fb-plan{padding:clamp(22px,3.8vw,32px);border-radius:22px;background:#fff;border:1.5px solid var(--ink);box-shadow:var(--shadow-md)}
+.fb-plan ol{list-style:none;counter-reset:fb;display:flex;flex-direction:column;gap:12px}
+.fb-plan li{counter-increment:fb;display:flex;align-items:center;gap:10px;font-size:clamp(15.5px,1.9vw,17px);font-weight:600;line-height:1.45;word-break:keep-all;letter-spacing:-.02em}
+.fb-plan li::before{content:counter(fb);flex:none;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--brand);font-size:12.5px;font-weight:800;display:grid;place-items:center}
+.fb-plan li b{font-weight:800;background:linear-gradient(transparent 58%,var(--brand) 58%)}
+.fb-plan li small{margin-left:auto;flex:none;font-size:11.5px;font-weight:700;color:#888;border:1px solid #E4E4E4;border-radius:999px;padding:2px 8px}
+.fb-sum{text-align:center;margin-top:clamp(28px,4vw,40px);font-size:var(--body-font-size);line-height:1.7;color:var(--text-gray);word-break:keep-all}
+.fb-sum strong{color:var(--ink)}
+.fb-rows{display:grid;grid-template-columns:1fr;gap:12px;max-width:880px;margin:0 auto}
+@media(min-width:768px){.fb-rows{grid-template-columns:1fr 1fr;gap:16px}}
+.fb-row{background:#fff;border:1px solid var(--border-light);border-radius:20px;padding:clamp(20px,3.4vw,26px)}
+.fb-tag{display:inline-block;font-size:12.5px;font-weight:800;background:var(--ink);color:var(--brand);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.fb-b{font-size:15px;color:#999;text-decoration:line-through;text-decoration-color:#bbb;margin-bottom:10px;word-break:keep-all}
+.fb-a{font-size:clamp(17px,2.1vw,19px);font-weight:700;line-height:1.5;letter-spacing:-.03em;word-break:keep-all}
+.fb-a::before{content:'→ ';color:var(--ink)}
+.fb-a b{font-weight:800;background:linear-gradient(transparent 58%,var(--brand) 58%)}
+.fb-cases{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.fb-cases{grid-template-columns:repeat(3,1fr)}}
+.fc{display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--border-light);border-radius:22px;padding:clamp(22px,3.4vw,28px)}
+.fc-who{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding-bottom:12px;border-bottom:1px solid var(--border-light);margin-bottom:4px}
+.fc-who b{font-size:17px;font-weight:800}.fc-who span{font-size:13px;color:#888}
+.fc-st{font-size:15px;line-height:1.55;color:#666;word-break:keep-all}
+.fc-st>span{display:inline-block;min-width:44px;font-size:11.5px;font-weight:800;color:#999;margin-right:6px}
+.fc-ch{background:var(--bg-tint,#FBFDEF);border-radius:12px;padding:12px 14px;color:var(--ink)}
+.fc-ch>span{display:block;color:var(--ink);margin-bottom:4px}
+.fc-ch em{font-style:normal;font-size:13px;color:#888}
+.fc-res{margin-top:6px;font-size:clamp(21px,2.4vw,24px);font-weight:800;line-height:1.4;letter-spacing:-.03em;word-break:keep-all}
+.fc-q{margin-top:auto;padding-top:12px;border-top:1px dashed #E2E2E2;font-size:13.5px;line-height:1.6;color:#888;word-break:keep-all}
+</style>
+</head>
+<body>
+<div class="bc-root">
+<svg class="svg-defs" aria-hidden="true"><symbol id="logo-commel" viewBox="0 0 573.51 125.93"><path fill="currentColor" fill-rule="evenodd" d="M572.23 124.65L563.23 124.77L561.85 123.42L561.89 2.42L562.23 0.99L563.23 0.00L572.23 0.14L573.30 1.42L573.51 123.42L572.23 124.65ZM49.23 125.54L42.23 125.60L33.23 124.04L29.23 122.93L22.23 119.69L17.27 116.42L13.55 113.42L10.62 110.42L6.16 104.42L1.97 95.42L0.44 88.42L0.00 83.42L0.10 79.42L1.75 70.42L4.75 63.42L7.77 58.42L11.92 53.42L15.02 50.42L21.23 45.87L27.23 42.77L36.23 39.90L44.23 39.08L48.23 39.15L56.23 39.96L61.23 41.50L65.23 42.87L71.23 45.98L78.23 51.26L82.13 55.42L81.23 56.89L78.23 58.90L73.23 61.96L72.23 61.97L67.16 57.42L60.23 53.25L54.05 51.42L48.85 50.42L42.23 50.42L39.23 50.96L31.55 53.42L26.23 56.37L22.45 59.42L19.54 62.42L15.23 68.80L13.23 74.13L12.20 79.42L12.13 84.42L13.23 90.82L15.23 96.07L17.97 100.42L22.23 105.18L27.37 109.42L33.38 112.42L38.23 113.69L47.23 114.38L53.23 113.68L57.23 112.60L61.23 110.78L67.86 106.42L72.23 102.21L73.23 102.14L77.23 104.10L82.12 107.42L81.23 109.25L76.95 113.42L68.23 119.85L62.23 122.62L58.23 123.85L49.23 125.54ZM139.23 125.43L133.23 125.60L123.23 123.85L120.23 122.86L114.23 119.90L109.23 116.75L103.23 111.13L100.10 107.42L96.67 101.42L94.04 94.42L92.80 87.42L92.67 79.42L93.90 71.42L96.90 63.42L99.82 58.42L106.23 51.11L112.23 46.12L118.23 42.94L129.23 39.83L136.23 39.43L144.23 40.13L153.23 43.07L158.23 45.74L163.23 49.05L170.38 56.42L173.82 61.42L176.56 67.42L177.99 72.42L178.95 78.42L178.85 86.42L177.90 92.42L176.57 97.42L173.74 103.42L168.65 110.42L165.89 113.42L162.23 116.52L155.23 120.95L151.23 122.87L148.23 123.82L139.23 125.43ZM451.23 124.61L442.23 124.47L441.23 124.14L440.71 123.42L440.63 77.42L440.23 73.03L438.42 66.42L435.23 60.57L431.23 56.25L427.04 53.42L423.23 51.78L420.23 50.99L417.23 50.43L414.12 50.42L409.23 51.37L404.23 53.24L399.51 56.42L397.23 58.63L394.23 62.42L392.73 65.42L391.13 69.42L389.93 76.42L389.90 123.42L389.23 124.35L388.23 124.60L380.23 124.59L379.23 124.37L378.12 123.42L378.26 77.42L377.56 71.42L376.23 66.70L373.23 60.98L370.23 57.50L364.88 53.42L360.18 51.42L355.23 50.54L351.23 50.64L347.23 51.40L342.23 53.29L336.21 57.42L333.23 60.78L330.23 65.64L328.89 69.42L327.43 77.42L327.36 123.42L326.23 124.69L316.23 124.51L315.49 123.42L315.47 77.42L314.45 71.42L312.23 64.76L308.81 59.42L306.09 56.42L304.23 55.03L301.78 53.42L298.23 51.86L292.23 50.49L290.23 50.42L284.23 51.28L281.23 52.19L278.23 53.38L273.75 56.42L270.83 59.42L268.01 63.42L266.16 67.42L264.96 71.42L264.21 77.42L264.17 123.42L263.23 124.34L262.23 124.62L254.23 124.59L253.23 124.29L252.61 123.42L252.46 75.42L251.23 68.91L248.37 62.42L245.23 58.21L243.23 56.25L239.23 53.42L233.23 51.25L227.23 50.63L222.23 51.16L216.23 53.29L211.69 56.42L208.23 60.12L205.23 64.57L202.85 70.42L201.85 76.42L201.80 123.42L201.23 124.22L200.23 124.56L191.23 124.68L190.15 123.42L190.13 77.42L190.73 70.42L192.10 65.42L195.14 58.42L198.23 53.95L201.23 50.54L206.23 46.30L212.23 42.88L221.23 39.85L228.23 39.52L235.23 39.95L244.23 43.07L249.23 46.18L252.23 48.84L255.43 52.42L259.23 58.56L260.23 58.09L262.23 54.87L266.66 49.42L270.23 46.23L275.23 42.89L279.23 41.20L284.23 39.83L291.23 39.50L298.23 40.06L306.23 42.84L313.23 47.27L316.55 50.42L319.59 54.42L322.23 59.32L323.23 60.08L324.23 59.15L326.09 55.42L329.12 51.42L334.23 46.16L339.23 42.87L347.23 39.97L354.23 39.54L361.23 39.91L370.23 42.87L375.23 46.05L377.23 47.77L380.58 51.42L383.44 55.42L384.23 57.35L385.23 58.14L386.23 58.35L387.00 56.42L389.73 52.42L393.23 48.58L396.23 45.87L401.23 42.93L410.23 39.87L417.23 39.54L423.23 39.90L432.23 42.89L437.23 45.88L441.23 49.18L444.68 53.42L447.24 57.42L450.46 64.42L451.73 69.42L452.34 76.42L452.38 123.42L451.23 124.61ZM514.23 125.58L505.23 125.93L500.23 125.62L496.23 124.79L489.23 122.69L481.23 118.07L476.23 113.83L473.23 110.66L468.74 104.42L465.91 98.42L463.93 90.42L463.28 83.42L463.85 76.42L464.77 71.42L465.88 67.42L468.69 61.42L471.82 56.42L477.52 50.42L483.23 46.13L489.23 42.95L499.23 39.95L507.23 39.50L516.23 40.04L525.23 42.95L533.23 47.46L539.88 53.42L542.42 56.42L545.52 61.42L548.63 69.42L549.87 75.42L550.24 84.42L549.98 85.42L549.23 85.97L477.23 86.04L476.01 86.42L475.66 88.42L476.13 92.42L479.15 99.42L482.23 103.76L488.23 109.52L493.49 112.42L497.23 113.83L503.23 115.14L507.23 115.46L511.23 115.09L517.23 113.84L521.23 112.57L525.23 110.55L530.87 106.42L533.23 103.72L535.23 102.95L542.23 107.12L543.46 108.42L543.41 109.42L542.82 110.42L539.23 114.05L536.23 116.56L531.23 119.88L525.23 122.79L521.23 124.10L514.23 125.58ZM536.61 76.42L537.88 75.42L538.08 74.42L536.59 69.42L535.34 66.42L533.42 63.42L530.15 59.42L526.74 56.42L522.12 53.42L516.66 51.42L509.23 50.17L504.23 50.32L497.23 51.86L492.86 53.42L487.75 56.42L482.23 61.44L479.20 65.42L476.19 72.42L475.84 74.42L476.23 75.94L477.23 76.42L536.61 76.42ZM138.23 114.42L143.23 113.63L147.19 112.42L150.23 110.94L154.23 108.40L160.23 102.68L163.26 98.42L166.23 91.13L167.24 81.42L166.39 74.42L164.92 70.42L162.23 65.42L160.23 62.54L157.23 59.28L153.65 56.42L148.23 53.23L142.89 51.42L136.23 50.42L128.84 51.42L123.23 53.19L117.47 56.42L113.23 60.11L110.23 63.73L107.23 68.59L105.80 72.42L104.57 77.42L104.00 83.42L104.88 89.42L107.21 96.42L110.21 101.42L114.55 106.42L118.25 109.42L124.23 112.54L131.23 114.20L138.23 114.42Z"/></symbol></svg>
+
+<!-- ═════ 1막 · 결론 먼저 ═════ -->
+
+<!-- [1] HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-over rv"><svg class="logo-mark" role="img" aria-label="commel"><use href="#logo-commel"/></svg><p class="hero-over-desc"><span class="hero-audience">뭘 더 해야할지 막막한 분</span><span class="hero-intro-light">들을 위한</span><br><span class="hero-intro-light">김낙타의 </span><span class="hero-book-title">브랜딩 단독 시리즈</span></p></div>
+    <h1 class="h-big rv rv-d1"><span class="hero-topic" aria-label="나의 브랜딩, 컨텐츠, 마케팅, 상품"><span aria-hidden="true">나의 <span class="hero-topic-words"><span>브랜딩</span><span>컨텐츠</span><span>마케팅</span><span>상품</span></span></span></span>뭐가 문제인지,<br><span class="em">드디어 보여요.</span></h1>
+    <p class="hero-sub rv rv-d2">콘텐츠 문제일까, 상품 문제일까, 마케팅 문제일까.<br><strong>질문 8개에 답하다 보면</strong> 내 문제가 보여요.</p>
+  </div>
+</section>
+
+
+<!-- [2b] 가격 (복제) — 결과 바로 뒤에서 한 번 먼저 보여줌 -->
+<section class="sec-price swap-light bg-t">
+  <div class="wrap">
+    <div class="price-split">
+      <div class="ps-l">
+    <div class="sec-head c rv"><svg class="logo-mark price-logo" role="img" aria-label="commel"><use href="#logo-commel"/></svg><h2 class="h-sec ps-h"><span class="ps-h-s">70만 인플루언서와 500억 브랜드가 찾는<br>김낙타의 브랜딩 단독 시리즈</span><span class="ps-h-b"><span class="em">브랜드가 돈이 되는 과정</span></span></h2></div>
+      </div>
+      <div class="price-box rv">
+        <div class="price-amt">99,000<span class="u">원</span></div>
+        <div class="price-note">단독 시리즈 · VAT 포함</div>
+      </div>
+    </div>
+    <div class="ps-proof">
+    <div class="sec-head ps-proof-head rv"><h2 class="h-sec">말로만 하는 이론이 아니라<br>김낙타가 실제로 낸 성과,<br><span class="em">그 방법을 그대로 담았어요.</span></h2></div>
+    <div class="proof-grid">
+      <div class="proof-card rv"><div class="proof-num" data-count="3800" data-suffix="만원">0</div><div class="proof-desc">광고 0원·판매글 0개로<br class="m-br"> 만든<br class="pc-br"> 첫 달 순이익</div></div>
+      <div class="proof-card rv rv-d1"><div class="proof-num" data-count="1800" data-suffix="만원">0</div><div class="proof-desc">릴스 0·게시물 0·광고 0원,<br>리브랜딩 후 <b style="color:var(--accent)">10일</b> 순수익</div></div>
+      <div class="proof-card rv rv-d2"><div class="proof-num" data-count="3" data-suffix="만 명">0</div><div class="proof-desc">같은 기간<br>유입된 사용자</div></div>
+      <div class="proof-card rv rv-d3"><div class="proof-num" data-count="4.9" data-dec="1" data-suffix="/5">0</div><div class="proof-desc">먼저 읽은 분들<br>평균 만족도</div></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- [5] 나 같은 사람 -->
+<!-- [2c] 셀프 체크 — 콜드리딩 문장, 3개 이상이면 시리즈가 필요한 분 -->
+<section class="sec bt sec-check bg-w">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">셀프 체크</span><h2 class="h-sec">이 중 <span class="em">3개 이상</span> 해당된다면,<br>이 시리즈가 필요한 분이에요</h2><p class="ck-lead">읽다가 '어, 내 얘기인데?' 싶은 문장을 눌러보세요.</p></div>
+    <div class="ck-grid">
+      <div class="ck-group rv"><div class="ck-gh"><span class="ck-num">01</span>콘텐츠</div><ul><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>매일 올리려고 사진은 찍어두는데, 막상 글을 쓰려면 오늘도 무슨 말을 할지 막막해요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>조회수가 잘 나온 날엔 기분 좋다가도, 그날 문의는 0건이라 괜히 더 허탈해져요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>"여기 뭐 하는 곳이에요?"라는 DM을 받으면, 반갑기보다 살짝 힘이 빠져요.</span></button></li></ul></div>
+      <div class="ck-group rv"><div class="ck-gh"><span class="ck-num">02</span>마케팅</div><ul><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>잘된다는 방법은 거의 다 해봤는데, 이상하게 나한테만 효과가 반쯤 나는 느낌이에요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>강의도 책도 꽤 봤는데, 막상 내 가게에 적용하려고 하면 어디서부터 해야 할지 막막해요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>첫 문장, 영상 길이는 계속 고치는데, 정작 내가 하는 말은 늘 비슷한 것 같아요.</span></button></li></ul></div>
+      <div class="ck-group rv"><div class="ck-gh"><span class="ck-num">03</span>설명</div><ul><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>"무슨 일 하세요?"라는 질문에 업종부터 말하고, 잘하는 걸 덧붙이려다 그냥 웃고 말아요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>소개글 한 줄을 고치려고 켰다가, 넣고 싶은 말이 많아 결국 원래 문장으로 돌아가요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>이 일을 시작한 이유는 분명 있는데, 소개글에 쓰려니 내 얘기만 하는 것 같아 망설여요.</span></button></li></ul></div>
+      <div class="ck-group rv"><div class="ck-gh"><span class="ck-num">04</span>선택</div><ul><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>실력엔 자신 있는데, 손님이 왜 옆 가게로 가는지는 솔직히 잘 모르겠어요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>우리만의 장점을 적으려는데 '친절, 꼼꼼'부터 떠올라서, 결국 남의 소개글을 찾아봐요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>한 번 온 손님은 만족하고 가는데, 그 손님이 왜 나를 골랐는지는 정확히 말하기 어려워요.</span></button></li></ul></div>
+      <div class="ck-group rv"><div class="ck-gh"><span class="ck-num">05</span>가격</div><ul><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>"다른 데는 더 싸던데요"라는 말을 들으면, 겉으론 웃어도 하루 종일 가격이 신경 쓰여요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>할인하면 사람은 몰리는데, 끝나고 나면 남는 것도 없고 다시 정가로 돌리기가 무서워요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>이 가격을 받을 이유는 있다고 생각하면서도, 가격 말고 뭘 내세워야 할지는 막막해요.</span></button></li></ul></div>
+      <div class="ck-group rv"><div class="ck-gh"><span class="ck-num">06</span>방향</div><ul><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>하루는 정신없이 바쁜데, 3개월 전과 비교하면 크게 달라진 게 없는 것 같아요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>문의가 뜸한 날이면 새 글을 쓸지 행사를 할지, 기준 없이 다른 가게부터 살펴봐요.</span></button></li><li><button type="button" class="ck-item" aria-pressed="false"><span class="ck-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>AI에게 홍보 글을 시켜보는데, 뭐라고 시켜야 할지 몰라서 늘 비슷한 글만 나와요.</span></button></li></ul></div>
+    </div>
+    <div class="ck-pill" aria-hidden="true"><b class="ck-pn">0</b> / 18개 체크</div>
+    <div class="ck-result rv" aria-live="polite">
+      <div class="ck-count"><b class="ck-n">0</b><span>/ 18개 해당</span></div>
+      <p class="ck-msg">해당하는 문장을 눌러 체크해 보세요.</p>
+      <a href="/shop_view?idx=6" class="btn btn-p ck-cta" hidden>내 방향부터 정리하기 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec bt reviews-dark swap-light">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">REVIEW</span><h2 class="h-sec">먼저 경험한 분들의<br><span class="em">쏟아지는 극찬과 성과들</span></h2></div>
+    <div class="pile" aria-hidden="true"></div>
+    <div class="voice-cards vc-list">
+      <div class="voice-card rv"><p class="vc-result">조회수 400 글 하나로 다음 날 3명 예약</p><p class="voice-txt vc-orig">낙타님 브랜딩클래스 너무 좋은 것 같아요 감사합니다. 고민이 많아서 노션 쓰는데 이틀 꼬박 걸렸는데 이게 최종일지는 모르는거지만, 그 전보다는 방향성이 많이 뾰족해지고 생각이 정리됐어요!!<br>네 그리고 전환율이 높아졌어요! 브랜딩 수정하고 난 후 새벽사이에 스레드 글 조회수400짜리 하나만 올렸는데 3분이 다음날 바로 예약하셨어요 좀 더 봐야겠지만...</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>t****</b><span>1인 서비스업(예약제)</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">글을 안 써도 예약 유입, 예상한 &#x27;꿈의 고객&#x27; 실제 방문</p><p class="voice-txt vc-orig">아니 글을 안 쓰는데 자꾸 예약이 들어오네요...? 그리고 오늘 제가 이 프로필 설정하면서 예상한 꿈의고객 (방송인, 유튜버) 중 한명 오셨어요<br>타겟설정, 포지셔닝 차이가 생각보다 더 크네요 너무 신기해요... 제가 파는 상품 자체는 바뀌지않았는데<br>마케팅클래스, 진단클래스 열리면 또 사야겠어요.. 효능감 미쳤다...</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>t****</b><span>1인 서비스업(예약제)</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">조회수는 낮아졌는데 일 매출 1.5배</p><p class="voice-txt vc-orig">낙타님! 저 컨설팅 이후로 말씀해주신 방향대로 포스팅 3개했는데 분명 이전 컨텐츠보다 조회수가 훨씬 낮은데도 일매출이 1.5배예요!! 대박적..<br>ㅎㅎ너무 감사해요 노션 쓰면쓸수록 요물이에요 PAS구조 글 읽고 너무 좋아서 데이터분석까지 다 하고, 노션에있는 릴스 자동화 클로드 프로젝트 만드는 것처럼 하고싶어서 PAS지침 만들어봤는데 전 응용은 안되나봐요 클로드가 말을 안들어요 ...ㅋㅋㅋㅋ 확장팩 기다려요... 리킷 데이터분석 시리즈 글 너무 좋더라구요!! 도움 많이 됩니다 사주에 올초에 귀인이 나타난다더니 낙타님인것같아요!!!!ㅋㅋㅋㅋ</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>김**</b><span>주얼리 브랜드</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">어머니 계정 팔로워 일주일 2만 증가</p><p class="voice-txt vc-orig">…메타에 권한을 다시 복구시켰더니 정상 돌아갑니다 :) 메세지가 닿은 김에,, ㅎㅎ 좋은 책 써주셔서 감사합니다. 올해 본 책 중 가장 좋은 책이었어요. (참고로 웬만한 강의 전부 사보는 사람입니다.) 모든 콘텐츠 다 최고이구요. 덕분에 저희 엄마 인스타그램도 브랜딩과 포지셔닝을 고민하게 되었고, 낙타님의 인사이트 덕분에 지난주 팔로우가 2만명이 늘었습니다. 진심으로 낙타님 덕이라고 생각해요 🙏 늦은 밤에도 cs 해주셔서 감사합니다. 앞으로도 무운을 빕니다 :) p.s. 혹시 저희 엄마 인스타가 궁금하실까봐…</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>익명</b><span>어머니 인스타 계정 운영</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">1년 반 고민하던 것이 99,000원(브랜딩 클래스 가격)으로 해결</p><p class="voice-txt vc-orig">저는 금액은 크게 중요치않습니다. <br>제가 1년반동안 고민하던게 99000원으로 해결됬거든요 수많은 교육과 자문을 받아왔는데 그어떤것보다도 좋았습니다 진심으로요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>연**</b><span>사업자</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">방향성과 &#x27;내 색깔&#x27;이 생김</p><p class="voice-txt vc-orig">안녕하세요 해운대쪽에서 카페를 운영하고 있는 자영업자입니다. 항상 운영하면서 부족해보이니까 여기 채워야지라는 마음으로 뭔가 아무런 목적과 이유없이 채우기만 했었습니다. 그걸 채우면서도 내가 왜 채워야하는지 이유도 없었던것이었습니다. 그렇게 아무 목적도 정확히 방향잡히지 않은채 무작정 달리기만 하고 있었든 상황에 브랜딩을 계속 시도해왔지만 부족함이 있었습니다. 그래서 인스타에서 항상 무료강의를 보다가 내가 깊이 빠져들고싶을 때 쯤 되어서, 강의를 결제하게 되었습니다. 저도 그 간절함이 있었기에 강의를 자세하게 깊이 이해하면서 볼 수 있었습니다. 대충하려고 하는 이들에겐 비추하지 않습니다. 정말 간절한사람에게 확실하게 길잡이가 되는 서비스인 것 같습니다. 강의를 직접 읽으며 여러가지 예시들과 경험을 직접 듣고 조금씩 조금씩 개선해가다보니 정말 내 것이 잡히고 있는 것 같습니다. 새로 가게를 리뉴얼하다보니 채워야하는 것도 계속 생기지만 정확히 방향성이 생겼기 때문에 내 색깔이 생겼고 계속 보완해야하가는 정확한 이유를 깨닫게되었습니다. 솔직히 하면서도 처음 제대로 브랜딩을 해보는 것이기에 이게 맞나 싶을때도 있지만 계속해서 강의를 처음부터 듣고있습니다.불안할때마다 다시 차근차근읽어보면 다시 확신이 생기는 것 같네요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>원****</b><span>카페(해운대)</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">조회수만 쫓던 생각이 바뀌고, 클래스+리킷대로 실행하니 길이 잡힘</p><p class="voice-txt vc-orig">낙타님 안녕하세요:) 릴스 보며 좋은 정보들 많이 얻고 있는 사람입니다 ㅎㅎㅎ 브랜딩 클래스 구매해서 쭉 읽어보았는데 질문에 답을 하며 많은 생각이 들더라구요.. 조회수만을 위해 변질되려 하는 저의 뇌구조를 싹 바꾸어주었습니다. 감사하다는 인사를 멀리서나마 꼭 전하고 싶었어요 다음에 꼭 기회가 된다면 45분 라이브도 신청해서 들어보고 싶어요!! (지금은 마감이더라구요 좋은 자료를 넘어 가치있는 정보들 주셔서 감사합니다<br>(스토리 답장) 저는 브랜딩 클래스 하고 리킷 쭉읽어보며 천천히 실행해보니 길이 잡혀서 그 내용으로 더욱 컨설팅 받아보고 싶더라구요!!! 컨설팅 여시면 바로 지원하러 달려갈거에요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>j****</b><span>속눈썹 샵</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">책 150권·강의로도 막막했던 &#x27;내 사업 적용&#x27;을 노션 워크북+낙타AI로 해결</p><p class="voice-txt vc-orig">낙타님의 인스타를 보고 마케팅에 대한 제고민을 해결해줄 수 있을거 같아서 이 브랜딩 클래스를 구입했습니다<br>결과적으론 진짜 대만족입니다.<br>사업을 제대로 하고싶고, 마케팅과 브랜딩에 경쟁력을 갖추기위해선 꼭 필요한 클래스에요. 저도 사업관련 책, 마케팅 책, 심리학 책 약 150권 읽어보고 여러강의도 들어봤지만 막상 제거에 적용하려면 항상 막막한 기분이 들었는데 이 클래스에서 들어준 예시는 실제 우리가 하고있는 사업에 어떻게 적용시켜야할지, 그리고 '현실적으로'고민하는 부분에 대해서 명쾌하게 방향을 알려줍니다.<br>이 내용이 책으로 나오면 사고싶을 만큼 너무너무 좋은 클래스였고<br>두고두고 보고싶습니다. 시중에 많은 브랜딩 마케팅 클래스들이 있지만 리필의 브랜딩클래스가 더 특별한건 바로 연동가능한 노션페이지로 제 생각을 작성할 수 있다는거에요. 기록하지않고 그냥 머리속으로만 '음 알겠다' 라고 넘어가는건, 누구나 다 하거든요. 그리고 그렇게 이론적인 지식만 남겨두면 늘 모호하고 뭔가 의문점이 드는데, 노션페이지와 '낙타AI'도움받아 차근차근 쓰다보면 정말로 구체적으로 내 사업체에 적용할 수 있는 솔루션들이 나오기땜에 정말 유익합니다 . 낙타AI같이 활용하시면 진짜진짜 최고에요,<br>이런 좋은 클래스 만들어주셔서 너무감사합니다!</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>김미****</b><span>사업자</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">여러 번 읽으며 1인 기업으로서 판단이 안 서던 부분까지 정리</p><p class="voice-txt vc-orig">안녕하세요 :)<br>브랜딩 클래스 여러번 보게 되더라구요. 내용이 너무 좋았어요. 궁금한점과 1인기업으로써 판단이 잘 안서는 그런 부분까지 정리가 되어 있어서 너무 좋았습니다! ☺️</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>조**</b><span>1인 기업</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">고객·찐팬을 만드는 브랜딩을 이해</p><p class="voice-txt vc-orig">브랜딩이 뭘까, 그건 어느 기업을 키워 매각했다는, 초히트 상품을 개발했다는 그런 사람들의 전유물이 아닐까? 아니, 그 전에 왜 콘텐츠 만드는데 브랜딩이 필요해? 라고도 생각했습니다. 저는 콘텐츠를 생산하는 것을 본업으로 두고있지만, 바이럴이 깡패라고만 생각했어요. 하지만 정말 고객을 만드는 것, 그라고 찐팬을 만드는 것, 그리고 사람들에게 인식되는 것 이 모든 일련의 과정은 브랜딩이 그 자체였습니다. 이제서야 제가 왜 부족한지 깨달았어요. 깊은 통찰을 주신 낙타님께 경의를 표합니다. 올해, 아니 작년에 읽은 모든 책과 강의 중 단연코 최고였어요.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>이**</b><span>콘텐츠 크리에이터</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">노션 질문으로 흐릿하던 아이디어를 스스로 버리고 프로필 완성</p><p class="voice-txt vc-orig">와 너무 기뻐요 낙타님도 관심가질 프로필...!!!<br>저 일대일 신청하면 더 업그레이드 시켜주세용<br>노션 질문들이 날카로워서 기존에 흐릿하게 이런 거 하면 되지않을까...? 했던 것들을 자진해서 버릴 수 있었어요</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>m****</b><span>1인 서비스업(예약제)</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">브랜딩 클래스 내용만으로 모든 고민이 해소</p><p class="voice-txt vc-orig">50대 아저씨가 쓴 책인 줄 알았다. 그 내용만으로도 모든 고민이 해소되었기에 컨설팅이 얼마든 상관없었다. 마주 앉아 이야기를 하고 싶었다. 그것만으로 충분하다. 그리고 감사하다.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>익명</b><span>사업자</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">체계와 페르소나를 세우고 싶어짐</p><p class="voice-txt vc-orig">마케팅에 대해 부정적이였던 이유는 눈속여서 파는 느낌이라 부정적이였다가 낙타님 전자책보고 그 생각이 바뀌게 되었습니다. 체계적인 구조(시스템)을 세우고 정확한 페르소나를 가지고 목표를 잡고 싶습니다.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>허**</b><span>재활·바디 관련</span></div></div>
+      <div class="voice-card rv"><p class="vc-result">스스로 방향을 잡을 인사이트를 얻음</p><p class="voice-txt vc-orig">마케팅이 중요한건 누구나 알고 있지만<br>잘 하는 것은 정말 어렵다.<br>브랜딩 클래스를 통해 <br>내 스스로 방향을 잡을 수 있는<br>인사이트를 정말 많이 얻을 수 있었고<br>정말 좋은 컨텐츠라고 확신한다.</p><button type="button" class="vc-toggle" hidden>원문 전체 보기</button><div class="vc-meta"><b>윤종****</b><span>사업자</span></div></div>
+    </div>
+    <div class="vc-more-wrap"><button type="button" class="vc-more">후기 더 보기</button></div>
+  </div>
+</section>
+
+
+<!-- ═════ 2막 · 공감 → 반전 ═════ -->
+
+<!-- [4] 대표 이야기 -->
+<section class="sec bt sec-story bg-w">
+  <div class="wrap">
+    <div class="story-split">
+      <div class="story-head"><span class="open-q rv" aria-hidden="true"></span>
+      <h2 class="h-sec rv">수백 명의 사업가와 셀러,<br>그리고 크리에이터를 만났어요.<br>다들 다른 질문을 들고 찾아주셨지만,<br>원인은 <span class="em">이 한가지였습니다.</span></h2></div>
+      <div class="story-photo rv"><picture><img src="story-photo-pc.jpg" alt="강연 중인 commel 대표 김낙타" width="827" height="1103" loading="lazy"></picture></div>
+      <div class="story-r">
+        <div class="body-text rv">
+          <p>저는 원래 파는 걸 어려워했어요. 권유하는 세일즈가 누구보다 싫었고요. 그래서 브랜딩을 더 파고들었어요. <strong>팔려고 애쓰지 않아도 팔리게 만들고 싶었으니까요.</strong></p>
+          <p>컨설팅에서 수많은 사장님을 만났어요. 상품이 나쁜 경우는 거의 없었어요. 다들 부지런하고 성실했죠. 그런데 콘텐츠를 바꾸고, 가격을 바꾸고, 대행사를 바꿔도 제자리였어요. <strong>그 성실함이 어디를 향해야 하는지 몰랐으니까요.</strong></p>
+          <p>질문을 하나씩 던지면 대답이 막히는 곳이 있었어요. 거기서 다들 "아, 이거였구나" 하셨죠. 브랜드의 재료는 이미 그분들 안에 다 있었어요. 본인이 못 찾았을 뿐이에요.</p>
+          <p><strong>그 질문들을 순서대로 묶은 게 이 시리즈예요.</strong> 저도 이 순서대로 방향을 잡았어요. 광고 없이, 피드에 판매글 하나 없이, 불편한 권유 없이 <strong>첫 달 순이익 3,800만원</strong>을 냈어요.</p>
+        </div>
+        <p class="story-sign rv"><svg class="logo-mark" role="img" aria-label="commel"><use href="#logo-commel"/></svg><span>대표 <b>김낙타</b></span></p>
+        <div class="career-grid rv rv-d1"><div class="author-profile cg-prof"><img src="assets/nak-ta-profile.jpg" alt="김낙타 프로필" width="64" height="64" loading="lazy"><div class="author-profile-info"><div class="author-profile-name"><span>nak__ta__</span><svg class="author-profile-badge" viewBox="0 0 24 24" role="img" aria-label="인스타그램 인증 배지"><path fill="#0095F6" d="m12 0 2.7 2 3.3-.4 1.3 3.1 3.1 1.3-.4 3.3 2 2.7-2 2.7.4 3.3-3.1 1.3-1.3 3.1-3.3-.4-2.7 2-2.7-2-3.3.4-1.3-3.1-3.1-1.3.4-3.3L0 12l2-2.7-.4-3.3 3.1-1.3 1.3-3.1 3.3.4Z"/><path d="m7 12 3.2 3.2L17 8.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="author-profile-more" aria-hidden="true">···</span></div><p class="author-profile-bio">RE:FEEEL 김낙타 | 마케팅·브랜딩 기획자</p><div class="author-profile-stats"><span>게시물 <b>94</b></span><span>팔로워 <b>5.2만</b></span><span>팔로우 <b>135</b></span></div></div></div>
+          <div class="career-row"><span class="career-n">1,000억</span><span class="career-d">리브랜딩을 맡긴 <b>브랜드 규모</b>. 창업 준비생부터 70만 인플루언서까지 만났어요.</span></div>
+          <div class="career-row"><span class="career-n">3,800만</span><span class="career-d">광고·판매글 없이 만든 <b>첫 달 순이익</b>.</span></div>
+          <div class="career-row"><span class="career-n">3만 명</span><span class="career-d">혼자 AI로 만든 서비스의 <b>첫 달 이용자</b>.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- [6] 다 고쳐봤죠 -->
+<section class="sec bt bg-t">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">수많은 크리에이터, 사업가들이 겪는 고민</span><h2 class="h-sec">혹시 당신도<br><span class="em">이런 고민이 있지 않나요?</span></h2></div>
+    <div class="pbs">
+      <div class="pb rv"><div class="pb-who"><span class="pb-av a" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2.5"/><path class="ic-play" d="M10.3 8v5l4.2-2.5z" fill="currentColor"/><path d="M5 20.5h14" opacity=".3"/><path class="ic-prog" d="M5 20.5h14"/></svg></span><span class="pb-txt"><span class="pb-k">내 콘텐츠가 문제인 것 같아요</span><span class="pb-cnt"><b>524명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“<strong class="pb-underline">콘텐츠</strong>가 문제인 줄 알고 수십, 수백만 원짜리 터지는 릴스 공식 강의를 듣고, 업로드 횟수를 늘리고, 릴스 스타일도 바꿨어요. 그래도 <strong class="pb-underline">문의는 늘지 않았어요.</strong>”</p></div></div>
+      <div class="pb rv"><div class="pb-who"><span class="pb-av b" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><rect x="4" y="10.5" width="16" height="9.5" rx="1.2"/><path d="M12 10.5V20"/><g class="ic-lid"><rect x="3" y="6.5" width="18" height="4" rx="1.2"/><path d="M12 6.5v4"/></g><path class="ic-spark" d="M8 3.2v1.6M12 2v2M16 3.2v1.6"/></svg></span><span class="pb-txt"><span class="pb-k">내 상품(서비스)이 문제인 것 같아요</span><span class="pb-cnt"><b>612명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“실력은 자신 있는데 손님이 오지 않아 <strong class="pb-underline">상품</strong>이 문제인 줄 알았어요. 그래서 신메뉴, 기획 상품, 이벤트 상품을 계속 내면서 <strong class="pb-underline">제품만 더 고도화</strong>했어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-who"><span class="pb-av c" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><g class="ic-tag"><path d="M11.5 3H19a2 2 0 0 1 2 2v7.5l-9.3 9.3a1.6 1.6 0 0 1-2.3 0l-6.2-6.2a1.6 1.6 0 0 1 0-2.3z"/><circle cx="16.5" cy="7.5" r="1.4"/><path class="ic-down" d="M11.5 10.5v5.5m-2.3-2.3 2.3 2.3 2.3-2.3"/></g></svg></span><span class="pb-txt"><span class="pb-k">가격이 문제인 것 같아요</span><span class="pb-cnt"><b>457명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“경쟁사가 가격을 내리니 <strong class="pb-underline">가격</strong>이 문제인 줄 알았어요. 그래서 저도 따라 내리고 또 내리다 보니, 끝없는 가격 경쟁에 <strong class="pb-underline">수익</strong>만 점점 줄었어요.”</p></div></div>
+      <div class="pb rv"><div class="pb-who"><span class="pb-av b" aria-hidden="true"><svg class="pb-ic" viewBox="0 0 24 24"><g class="ic-mega"><path d="M3 10v4a1 1 0 0 0 1 1h2.2l6.3 4.2V4.8L6.2 9H4a1 1 0 0 0-1 1z"/></g><path class="ic-w1" d="M15.6 9.4a3.6 3.6 0 0 1 0 5.2"/><path class="ic-w2" d="M18.2 6.8a7.3 7.3 0 0 1 0 10.4"/></svg></span><span class="pb-txt"><span class="pb-k">마케팅이 문제인 것 같아요</span><span class="pb-cnt"><b>683명</b>이 같은 고민을 해요</span></span></div><div class="pb-q"><p>“인스타, 블로그, 플레이스까지 해도 광고를 끄면 문의가 끊겨 <strong class="pb-underline">마케팅</strong>이 문제인 줄 알았어요. 그래서 <strong class="pb-underline">대행사</strong>를 계속 바꾸고, <strong class="pb-underline">광고비</strong>를 계속 올렸어요.”</p></div></div>
+    </div>
+    <div class="pb-turn">
+    <div class="turn-story rv">
+      <p>바쁜 시간 쪼개서<br><strong class="pb-underline">강의</strong>도 듣고 <strong class="pb-underline">업로드 횟수</strong>도 늘리고<br><strong class="pb-underline">메뉴 개발</strong>도 해보고 다양한 <strong class="pb-underline">프로모션</strong>에<br><strong class="pb-underline">가격</strong>도 내려보고 <strong class="pb-underline">광고비</strong>도 올리고</p>
+      <p><strong>누구보다 열심히 했고<br><span class="pb-underline">모든 방법</span>을 다 써봤지만</strong></p>
+    </div>
+    <div class="wall-fig"><p class="wl-msg"><span class="pb-underline">커다란 벽에 막힌 것 같은 느낌</span></p><svg class="wl" viewBox="38 0 1069 1000" aria-hidden="true" focusable="false"><defs><image id="wlImg" href="assets/wall.jpg" width="1145" height="1000"/><clipPath id="wb0"><rect x="34" y="70" width="97" height="53"/></clipPath><clipPath id="wb1"><rect x="125" y="70" width="106" height="53"/></clipPath><clipPath id="wb2"><rect x="225" y="70" width="107" height="53"/></clipPath><clipPath id="wb3"><rect x="326" y="70" width="91" height="53"/></clipPath><clipPath id="wb4"><rect x="411" y="70" width="119" height="53"/></clipPath><clipPath id="wb5"><rect x="524" y="70" width="94" height="53"/></clipPath><clipPath id="wb6"><rect x="612" y="70" width="105" height="53"/></clipPath><clipPath id="wb7"><rect x="711" y="70" width="90" height="53"/></clipPath><clipPath id="wb8"><rect x="795" y="70" width="120" height="53"/></clipPath><clipPath id="wb9"><rect x="909" y="70" width="99" height="53"/></clipPath><clipPath id="wb10"><rect x="1002" y="70" width="109" height="53"/></clipPath><clipPath id="wb11"><rect x="34" y="117" width="119" height="47"/></clipPath><clipPath id="wb12"><rect x="147" y="117" width="104" height="47"/></clipPath><clipPath id="wb13"><rect x="245" y="117" width="96" height="47"/></clipPath><clipPath id="wb14"><rect x="335" y="117" width="98" height="47"/></clipPath><clipPath id="wb15"><rect x="427" y="117" width="106" height="47"/></clipPath><clipPath id="wb16"><rect x="527" y="117" width="124" height="47"/></clipPath><clipPath id="wb17"><rect x="645" y="117" width="114" height="47"/></clipPath><clipPath id="wb18"><rect x="753" y="117" width="108" height="47"/></clipPath><clipPath id="wb19"><rect x="855" y="117" width="113" height="47"/></clipPath><clipPath id="wb20"><rect x="962" y="117" width="99" height="47"/></clipPath><clipPath id="wb21"><rect x="1055" y="117" width="56" height="47"/></clipPath><clipPath id="wb22"><rect x="34" y="158" width="89" height="50"/></clipPath><clipPath id="wb23"><rect x="117" y="158" width="106" height="50"/></clipPath><clipPath id="wb24"><rect x="217" y="158" width="96" height="50"/></clipPath><clipPath id="wb25"><rect x="307" y="158" width="98" height="50"/></clipPath><clipPath id="wb26"><rect x="399" y="158" width="104" height="50"/></clipPath><clipPath id="wb27"><rect x="497" y="158" width="118" height="50"/></clipPath><clipPath id="wb28"><rect x="609" y="158" width="96" height="50"/></clipPath><clipPath id="wb29"><rect x="699" y="158" width="107" height="50"/></clipPath><clipPath id="wb30"><rect x="800" y="158" width="99" height="50"/></clipPath><clipPath id="wb31"><rect x="893" y="158" width="102" height="50"/></clipPath><clipPath id="wb32"><rect x="989" y="158" width="122" height="50"/></clipPath><clipPath id="wb33"><rect x="34" y="202" width="79" height="45"/></clipPath><clipPath id="wb34"><rect x="107" y="202" width="78" height="45"/></clipPath><clipPath id="wb35"><rect x="179" y="202" width="112" height="45"/></clipPath><clipPath id="wb36"><rect x="285" y="202" width="120" height="45"/></clipPath><clipPath id="wb37"><rect x="399" y="202" width="102" height="45"/></clipPath><clipPath id="wb38"><rect x="495" y="202" width="109" height="45"/></clipPath><clipPath id="wb39"><rect x="598" y="202" width="112" height="45"/></clipPath><clipPath id="wb40"><rect x="704" y="202" width="115" height="45"/></clipPath><clipPath id="wb41"><rect x="813" y="202" width="106" height="45"/></clipPath><clipPath id="wb42"><rect x="913" y="202" width="94" height="45"/></clipPath><clipPath id="wb43"><rect x="1001" y="202" width="110" height="45"/></clipPath><clipPath id="wb44"><rect x="34" y="241" width="101" height="48"/></clipPath><clipPath id="wb45"><rect x="129" y="241" width="104" height="48"/></clipPath><clipPath id="wb46"><rect x="227" y="241" width="93" height="48"/></clipPath><clipPath id="wb47"><rect x="314" y="241" width="99" height="48"/></clipPath><clipPath id="wb48"><rect x="407" y="241" width="98" height="48"/></clipPath><clipPath id="wb49"><rect x="499" y="241" width="118" height="48"/></clipPath><clipPath id="wb50"><rect x="611" y="241" width="110" height="48"/></clipPath><clipPath id="wb51"><rect x="715" y="241" width="106" height="48"/></clipPath><clipPath id="wb52"><rect x="815" y="241" width="98" height="48"/></clipPath><clipPath id="wb53"><rect x="907" y="241" width="113" height="48"/></clipPath><clipPath id="wb54"><rect x="1014" y="241" width="97" height="48"/></clipPath><clipPath id="wb55"><rect x="34" y="283" width="113" height="48"/></clipPath><clipPath id="wb56"><rect x="141" y="283" width="98" height="48"/></clipPath><clipPath id="wb57"><rect x="233" y="283" width="92" height="48"/></clipPath><clipPath id="wb58"><rect x="319" y="283" width="78" height="48"/></clipPath><clipPath id="wb59"><rect x="391" y="283" width="110" height="48"/></clipPath><clipPath id="wb60"><rect x="495" y="283" width="108" height="48"/></clipPath><clipPath id="wb61"><rect x="597" y="283" width="98" height="48"/></clipPath><clipPath id="wb62"><rect x="689" y="283" width="116" height="48"/></clipPath><clipPath id="wb63"><rect x="799" y="283" width="114" height="48"/></clipPath><clipPath id="wb64"><rect x="907" y="283" width="92" height="48"/></clipPath><clipPath id="wb65"><rect x="993" y="283" width="118" height="48"/></clipPath><clipPath id="wb66"><rect x="34" y="325" width="85" height="48"/></clipPath><clipPath id="wb67"><rect x="113" y="325" width="96" height="48"/></clipPath><clipPath id="wb68"><rect x="203" y="325" width="92" height="48"/></clipPath><clipPath id="wb69"><rect x="289" y="325" width="98" height="48"/></clipPath><clipPath id="wb70"><rect x="381" y="325" width="96" height="48"/></clipPath><clipPath id="wb71"><rect x="471" y="325" width="96" height="48"/></clipPath><clipPath id="wb72"><rect x="561" y="325" width="101" height="48"/></clipPath><clipPath id="wb73"><rect x="656" y="325" width="117" height="48"/></clipPath><clipPath id="wb74"><rect x="767" y="325" width="98" height="48"/></clipPath><clipPath id="wb75"><rect x="859" y="325" width="106" height="48"/></clipPath><clipPath id="wb76"><rect x="959" y="325" width="93" height="48"/></clipPath><clipPath id="wb77"><rect x="1046" y="325" width="65" height="48"/></clipPath><clipPath id="wb78"><rect x="34" y="367" width="92" height="47"/></clipPath><clipPath id="wb79"><rect x="120" y="367" width="89" height="47"/></clipPath><clipPath id="wb80"><rect x="203" y="367" width="128" height="47"/></clipPath><clipPath id="wb81"><rect x="325" y="367" width="108" height="47"/></clipPath><clipPath id="wb82"><rect x="427" y="367" width="122" height="47"/></clipPath><clipPath id="wb83"><rect x="543" y="367" width="114" height="47"/></clipPath><clipPath id="wb84"><rect x="651" y="367" width="112" height="47"/></clipPath><clipPath id="wb85"><rect x="757" y="367" width="117" height="47"/></clipPath><clipPath id="wb86"><rect x="868" y="367" width="107" height="47"/></clipPath><clipPath id="wb87"><rect x="969" y="367" width="98" height="47"/></clipPath><clipPath id="wb88"><rect x="1061" y="367" width="50" height="47"/></clipPath><clipPath id="wb89"><rect x="34" y="408" width="120" height="46"/></clipPath><clipPath id="wb90"><rect x="148" y="408" width="107" height="46"/></clipPath><clipPath id="wb91"><rect x="249" y="408" width="108" height="46"/></clipPath><clipPath id="wb92"><rect x="351" y="408" width="99" height="46"/></clipPath><clipPath id="wb93"><rect x="444" y="408" width="111" height="46"/></clipPath><clipPath id="wb94"><rect x="549" y="408" width="108" height="46"/></clipPath><clipPath id="wb95"><rect x="651" y="408" width="127" height="46"/></clipPath><clipPath id="wb96"><rect x="772" y="408" width="109" height="46"/></clipPath><clipPath id="wb97"><rect x="875" y="408" width="110" height="46"/></clipPath><clipPath id="wb98"><rect x="979" y="408" width="132" height="46"/></clipPath><clipPath id="wb99"><rect x="34" y="448" width="89" height="48"/></clipPath><clipPath id="wb100"><rect x="117" y="448" width="96" height="48"/></clipPath><clipPath id="wb101"><rect x="207" y="448" width="96" height="48"/></clipPath><clipPath id="wb102"><rect x="297" y="448" width="106" height="48"/></clipPath><clipPath id="wb103"><rect x="397" y="448" width="134" height="48"/></clipPath><clipPath id="wb104"><rect x="525" y="448" width="98" height="48"/></clipPath><clipPath id="wb105"><rect x="617" y="448" width="97" height="48"/></clipPath><clipPath id="wb106"><rect x="708" y="448" width="106" height="48"/></clipPath><clipPath id="wb107"><rect x="808" y="448" width="111" height="48"/></clipPath><clipPath id="wb108"><rect x="913" y="448" width="102" height="48"/></clipPath><clipPath id="wb109"><rect x="1009" y="448" width="102" height="48"/></clipPath><clipPath id="wb110"><rect x="34" y="490" width="83" height="47"/></clipPath><clipPath id="wb111"><rect x="111" y="490" width="100" height="47"/></clipPath><clipPath id="wb112"><rect x="205" y="490" width="94" height="47"/></clipPath><clipPath id="wb113"><rect x="293" y="490" width="117" height="47"/></clipPath><clipPath id="wb114"><rect x="404" y="490" width="101" height="47"/></clipPath><clipPath id="wb115"><rect x="499" y="490" width="110" height="47"/></clipPath><clipPath id="wb116"><rect x="603" y="490" width="108" height="47"/></clipPath><clipPath id="wb117"><rect x="705" y="490" width="116" height="47"/></clipPath><clipPath id="wb118"><rect x="815" y="490" width="96" height="47"/></clipPath><clipPath id="wb119"><rect x="905" y="490" width="100" height="47"/></clipPath><clipPath id="wb120"><rect x="999" y="490" width="112" height="47"/></clipPath><clipPath id="wb121"><rect x="34" y="531" width="107" height="48"/></clipPath><clipPath id="wb122"><rect x="135" y="531" width="105" height="48"/></clipPath><clipPath id="wb123"><rect x="234" y="531" width="99" height="48"/></clipPath><clipPath id="wb124"><rect x="327" y="531" width="96" height="48"/></clipPath><clipPath id="wb125"><rect x="417" y="531" width="92" height="48"/></clipPath><clipPath id="wb126"><rect x="503" y="531" width="118" height="48"/></clipPath><clipPath id="wb127"><rect x="615" y="531" width="108" height="48"/></clipPath><clipPath id="wb128"><rect x="717" y="531" width="106" height="48"/></clipPath><clipPath id="wb129"><rect x="817" y="531" width="102" height="48"/></clipPath><clipPath id="wb130"><rect x="913" y="531" width="102" height="48"/></clipPath><clipPath id="wb131"><rect x="1009" y="531" width="102" height="48"/></clipPath><clipPath id="wb132"><rect x="34" y="573" width="114" height="47"/></clipPath><clipPath id="wb133"><rect x="142" y="573" width="101" height="47"/></clipPath><clipPath id="wb134"><rect x="237" y="573" width="108" height="47"/></clipPath><clipPath id="wb135"><rect x="339" y="573" width="114" height="47"/></clipPath><clipPath id="wb136"><rect x="447" y="573" width="120" height="47"/></clipPath><clipPath id="wb137"><rect x="561" y="573" width="106" height="47"/></clipPath><clipPath id="wb138"><rect x="661" y="573" width="100" height="47"/></clipPath><clipPath id="wb139"><rect x="755" y="573" width="92" height="47"/></clipPath><clipPath id="wb140"><rect x="841" y="573" width="111" height="47"/></clipPath><clipPath id="wb141"><rect x="946" y="573" width="93" height="47"/></clipPath><clipPath id="wb142"><rect x="1033" y="573" width="78" height="47"/></clipPath><clipPath id="wb143"><rect x="34" y="614" width="109" height="51"/></clipPath><clipPath id="wb144"><rect x="137" y="614" width="78" height="51"/></clipPath><clipPath id="wb145"><rect x="209" y="614" width="74" height="51"/></clipPath><clipPath id="wb146"><rect x="277" y="614" width="94" height="51"/></clipPath><clipPath id="wb147"><rect x="365" y="614" width="88" height="51"/></clipPath><clipPath id="wb148"><rect x="447" y="614" width="116" height="51"/></clipPath><clipPath id="wb149"><rect x="557" y="614" width="103" height="51"/></clipPath><clipPath id="wb150"><rect x="654" y="614" width="108" height="51"/></clipPath><clipPath id="wb151"><rect x="756" y="614" width="93" height="51"/></clipPath><clipPath id="wb152"><rect x="843" y="614" width="116" height="51"/></clipPath><clipPath id="wb153"><rect x="953" y="614" width="96" height="51"/></clipPath><clipPath id="wb154"><rect x="1043" y="614" width="68" height="51"/></clipPath><clipPath id="wb155"><rect x="34" y="659" width="84" height="48"/></clipPath><clipPath id="wb156"><rect x="112" y="659" width="99" height="48"/></clipPath><clipPath id="wb157"><rect x="205" y="659" width="100" height="48"/></clipPath><clipPath id="wb158"><rect x="299" y="659" width="98" height="48"/></clipPath><clipPath id="wb159"><rect x="391" y="659" width="98" height="48"/></clipPath><clipPath id="wb160"><rect x="483" y="659" width="93" height="48"/></clipPath><clipPath id="wb161"><rect x="570" y="659" width="115" height="48"/></clipPath><clipPath id="wb162"><rect x="679" y="659" width="94" height="48"/></clipPath><clipPath id="wb163"><rect x="767" y="659" width="96" height="48"/></clipPath><clipPath id="wb164"><rect x="857" y="659" width="90" height="48"/></clipPath><clipPath id="wb165"><rect x="941" y="659" width="94" height="48"/></clipPath><clipPath id="wb166"><rect x="1029" y="659" width="82" height="48"/></clipPath><clipPath id="wb167"><rect x="34" y="701" width="109" height="50"/></clipPath><clipPath id="wb168"><rect x="137" y="701" width="104" height="50"/></clipPath><clipPath id="wb169"><rect x="235" y="701" width="94" height="50"/></clipPath><clipPath id="wb170"><rect x="323" y="701" width="108" height="50"/></clipPath><clipPath id="wb171"><rect x="425" y="701" width="106" height="50"/></clipPath><clipPath id="wb172"><rect x="525" y="701" width="110" height="50"/></clipPath><clipPath id="wb173"><rect x="629" y="701" width="124" height="50"/></clipPath><clipPath id="wb174"><rect x="747" y="701" width="118" height="50"/></clipPath><clipPath id="wb175"><rect x="859" y="701" width="114" height="50"/></clipPath><clipPath id="wb176"><rect x="967" y="701" width="98" height="50"/></clipPath><clipPath id="wb177"><rect x="1059" y="701" width="52" height="50"/></clipPath><clipPath id="wb178"><rect x="34" y="745" width="115" height="48"/></clipPath><clipPath id="wb179"><rect x="143" y="745" width="106" height="48"/></clipPath><clipPath id="wb180"><rect x="243" y="745" width="102" height="48"/></clipPath><clipPath id="wb181"><rect x="339" y="745" width="104" height="48"/></clipPath><clipPath id="wb182"><rect x="437" y="745" width="131" height="48"/></clipPath><clipPath id="wb183"><rect x="562" y="745" width="115" height="48"/></clipPath><clipPath id="wb184"><rect x="671" y="745" width="88" height="48"/></clipPath><clipPath id="wb185"><rect x="753" y="745" width="84" height="48"/></clipPath><clipPath id="wb186"><rect x="831" y="745" width="108" height="48"/></clipPath><clipPath id="wb187"><rect x="933" y="745" width="98" height="48"/></clipPath><clipPath id="wb188"><rect x="1025" y="745" width="86" height="48"/></clipPath><clipPath id="wb189"><rect x="34" y="787" width="83" height="49"/></clipPath><clipPath id="wb190"><rect x="111" y="787" width="87" height="49"/></clipPath><clipPath id="wb191"><rect x="192" y="787" width="83" height="49"/></clipPath><clipPath id="wb192"><rect x="269" y="787" width="105" height="49"/></clipPath><clipPath id="wb193"><rect x="368" y="787" width="83" height="49"/></clipPath><clipPath id="wb194"><rect x="445" y="787" width="219" height="49"/></clipPath><clipPath id="wb195"><rect x="658" y="787" width="115" height="49"/></clipPath><clipPath id="wb196"><rect x="767" y="787" width="96" height="49"/></clipPath><clipPath id="wb197"><rect x="857" y="787" width="94" height="49"/></clipPath><clipPath id="wb198"><rect x="945" y="787" width="96" height="49"/></clipPath><clipPath id="wb199"><rect x="1035" y="787" width="76" height="49"/></clipPath><clipPath id="wb200"><rect x="34" y="830" width="89" height="48"/></clipPath><clipPath id="wb201"><rect x="117" y="830" width="105" height="48"/></clipPath><clipPath id="wb202"><rect x="216" y="830" width="93" height="48"/></clipPath><clipPath id="wb203"><rect x="303" y="830" width="104" height="48"/></clipPath><clipPath id="wb204"><rect x="401" y="830" width="103" height="48"/></clipPath><clipPath id="wb205"><rect x="498" y="830" width="43" height="48"/></clipPath><clipPath id="wb206"><rect x="535" y="830" width="56" height="48"/></clipPath><clipPath id="wb207"><rect x="585" y="830" width="139" height="48"/></clipPath><clipPath id="wb208"><rect x="718" y="830" width="101" height="48"/></clipPath><clipPath id="wb209"><rect x="813" y="830" width="110" height="48"/></clipPath><clipPath id="wb210"><rect x="917" y="830" width="94" height="48"/></clipPath><clipPath id="wb211"><rect x="1005" y="830" width="106" height="48"/></clipPath><clipPath id="wb212"><rect x="34" y="872" width="97" height="52"/></clipPath><clipPath id="wb213"><rect x="125" y="872" width="114" height="52"/></clipPath><clipPath id="wb214"><rect x="233" y="872" width="100" height="52"/></clipPath><clipPath id="wb215"><rect x="327" y="872" width="108" height="52"/></clipPath><clipPath id="wb216"><rect x="429" y="872" width="112" height="52"/></clipPath><clipPath id="wb217"><rect x="535" y="872" width="56" height="52"/></clipPath><clipPath id="wb218"><rect x="585" y="872" width="138" height="52"/></clipPath><clipPath id="wb219"><rect x="717" y="872" width="110" height="52"/></clipPath><clipPath id="wb220"><rect x="821" y="872" width="123" height="52"/></clipPath><clipPath id="wb221"><rect x="938" y="872" width="97" height="52"/></clipPath><clipPath id="wb222"><rect x="1029" y="872" width="82" height="52"/></clipPath><mask id="wlMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1145" height="1000"><rect width="1145" height="1000" fill="#fff"/><image href="assets/wall-man-mask.png" x="490" y="715" width="155" height="277"/></mask><clipPath id="wlRay"><rect x="470" y="10" width="205" height="60"/></clipPath></defs><g mask="url(#wlMask)"><g class="wl-br" style="--d:1.95s;--f:-260px;--r:7.6deg;transform-origin:82px 99px"><use href="#wlImg" clip-path="url(#wb0)"/></g><g class="wl-br" style="--d:1.96s;--f:-256px;--r:1.6deg;transform-origin:178px 99px"><use href="#wlImg" clip-path="url(#wb1)"/></g><g class="wl-br" style="--d:1.75s;--f:-256px;--r:2.3deg;transform-origin:278px 99px"><use href="#wlImg" clip-path="url(#wb2)"/></g><g class="wl-br" style="--d:2.21s;--f:-223px;--r:-3.5deg;transform-origin:372px 99px"><use href="#wlImg" clip-path="url(#wb3)"/></g><g class="wl-br" style="--d:1.68s;--f:-280px;--r:3.5deg;transform-origin:470px 99px"><use href="#wlImg" clip-path="url(#wb4)"/></g><g class="wl-br wl-star" style="--d:2.51s;--f:-218px;--r:8.7deg;transform-origin:571px 99px"><use href="#wlImg" clip-path="url(#wb5)"/></g><g class="wl-br" style="--d:2.34s;--f:-267px;--r:2.1deg;transform-origin:664px 99px"><use href="#wlImg" clip-path="url(#wb6)"/></g><g class="wl-br" style="--d:1.73s;--f:-216px;--r:0.5deg;transform-origin:756px 99px"><use href="#wlImg" clip-path="url(#wb7)"/></g><g class="wl-br" style="--d:1.66s;--f:-230px;--r:-4.6deg;transform-origin:855px 99px"><use href="#wlImg" clip-path="url(#wb8)"/></g><g class="wl-br" style="--d:1.64s;--f:-252px;--r:-1.1deg;transform-origin:958px 99px"><use href="#wlImg" clip-path="url(#wb9)"/></g><g class="wl-br" style="--d:2.24s;--f:-257px;--r:2.5deg;transform-origin:1056px 99px"><use href="#wlImg" clip-path="url(#wb10)"/></g><g class="wl-br" style="--d:1.9s;--f:-310px;--r:-0.8deg;transform-origin:94px 140px"><use href="#wlImg" clip-path="url(#wb11)"/></g><g class="wl-br" style="--d:1.74s;--f:-337px;--r:8.9deg;transform-origin:199px 140px"><use href="#wlImg" clip-path="url(#wb12)"/></g><g class="wl-br" style="--d:2.16s;--f:-314px;--r:-3.3deg;transform-origin:293px 140px"><use href="#wlImg" clip-path="url(#wb13)"/></g><g class="wl-br" style="--d:1.7s;--f:-280px;--r:-7.7deg;transform-origin:384px 140px"><use href="#wlImg" clip-path="url(#wb14)"/></g><g class="wl-br" style="--d:2.1s;--f:-289px;--r:6.2deg;transform-origin:480px 140px"><use href="#wlImg" clip-path="url(#wb15)"/></g><g class="wl-br" style="--d:1.82s;--f:-334px;--r:6.3deg;transform-origin:589px 140px"><use href="#wlImg" clip-path="url(#wb16)"/></g><g class="wl-br" style="--d:1.53s;--f:-274px;--r:7.4deg;transform-origin:702px 140px"><use href="#wlImg" clip-path="url(#wb17)"/></g><g class="wl-br" style="--d:1.88s;--f:-335px;--r:-1.8deg;transform-origin:807px 140px"><use href="#wlImg" clip-path="url(#wb18)"/></g><g class="wl-br" style="--d:1.58s;--f:-307px;--r:5.0deg;transform-origin:912px 140px"><use href="#wlImg" clip-path="url(#wb19)"/></g><g class="wl-br" style="--d:1.73s;--f:-264px;--r:-3.0deg;transform-origin:1012px 140px"><use href="#wlImg" clip-path="url(#wb20)"/></g><g class="wl-br" style="--d:2.25s;--f:-318px;--r:-6.9deg;transform-origin:1083px 140px"><use href="#wlImg" clip-path="url(#wb21)"/></g><g class="wl-br" style="--d:1.63s;--f:-306px;--r:-7.9deg;transform-origin:78px 183px"><use href="#wlImg" clip-path="url(#wb22)"/></g><g class="wl-br" style="--d:2.04s;--f:-312px;--r:1.1deg;transform-origin:170px 183px"><use href="#wlImg" clip-path="url(#wb23)"/></g><g class="wl-br" style="--d:1.78s;--f:-313px;--r:4.2deg;transform-origin:265px 183px"><use href="#wlImg" clip-path="url(#wb24)"/></g><g class="wl-br" style="--d:1.54s;--f:-349px;--r:-6.9deg;transform-origin:356px 183px"><use href="#wlImg" clip-path="url(#wb25)"/></g><g class="wl-br" style="--d:1.76s;--f:-315px;--r:-4.1deg;transform-origin:451px 183px"><use href="#wlImg" clip-path="url(#wb26)"/></g><g class="wl-br" style="--d:2.17s;--f:-362px;--r:-3.5deg;transform-origin:556px 183px"><use href="#wlImg" clip-path="url(#wb27)"/></g><g class="wl-br" style="--d:2.11s;--f:-315px;--r:-1.9deg;transform-origin:657px 183px"><use href="#wlImg" clip-path="url(#wb28)"/></g><g class="wl-br" style="--d:2.09s;--f:-349px;--r:-7.2deg;transform-origin:752px 183px"><use href="#wlImg" clip-path="url(#wb29)"/></g><g class="wl-br" style="--d:2.19s;--f:-315px;--r:-4.4deg;transform-origin:850px 183px"><use href="#wlImg" clip-path="url(#wb30)"/></g><g class="wl-br" style="--d:2.02s;--f:-324px;--r:-3.7deg;transform-origin:944px 183px"><use href="#wlImg" clip-path="url(#wb31)"/></g><g class="wl-br" style="--d:1.5s;--f:-305px;--r:1.5deg;transform-origin:1050px 183px"><use href="#wlImg" clip-path="url(#wb32)"/></g><g class="wl-br" style="--d:1.54s;--f:-390px;--r:-2.3deg;transform-origin:74px 224px"><use href="#wlImg" clip-path="url(#wb33)"/></g><g class="wl-br" style="--d:1.7s;--f:-419px;--r:-0.3deg;transform-origin:146px 224px"><use href="#wlImg" clip-path="url(#wb34)"/></g><g class="wl-br" style="--d:1.79s;--f:-411px;--r:-5.7deg;transform-origin:235px 224px"><use href="#wlImg" clip-path="url(#wb35)"/></g><g class="wl-br" style="--d:1.47s;--f:-415px;--r:5.7deg;transform-origin:345px 224px"><use href="#wlImg" clip-path="url(#wb36)"/></g><g class="wl-br" style="--d:1.54s;--f:-357px;--r:4.3deg;transform-origin:450px 224px"><use href="#wlImg" clip-path="url(#wb37)"/></g><g class="wl-br" style="--d:2.06s;--f:-358px;--r:8.1deg;transform-origin:550px 224px"><use href="#wlImg" clip-path="url(#wb38)"/></g><g class="wl-br" style="--d:2.02s;--f:-390px;--r:-1.4deg;transform-origin:654px 224px"><use href="#wlImg" clip-path="url(#wb39)"/></g><g class="wl-br" style="--d:1.43s;--f:-345px;--r:8.3deg;transform-origin:762px 224px"><use href="#wlImg" clip-path="url(#wb40)"/></g><g class="wl-br" style="--d:1.53s;--f:-398px;--r:-4.4deg;transform-origin:866px 224px"><use href="#wlImg" clip-path="url(#wb41)"/></g><g class="wl-br" style="--d:1.97s;--f:-390px;--r:-3.7deg;transform-origin:960px 224px"><use href="#wlImg" clip-path="url(#wb42)"/></g><g class="wl-br" style="--d:1.49s;--f:-400px;--r:-7.8deg;transform-origin:1056px 224px"><use href="#wlImg" clip-path="url(#wb43)"/></g><g class="wl-br" style="--d:1.45s;--f:-426px;--r:6.3deg;transform-origin:84px 265px"><use href="#wlImg" clip-path="url(#wb44)"/></g><g class="wl-br" style="--d:1.74s;--f:-403px;--r:7.5deg;transform-origin:181px 265px"><use href="#wlImg" clip-path="url(#wb45)"/></g><g class="wl-br" style="--d:1.43s;--f:-382px;--r:-4.2deg;transform-origin:274px 265px"><use href="#wlImg" clip-path="url(#wb46)"/></g><g class="wl-br" style="--d:1.61s;--f:-386px;--r:-5.8deg;transform-origin:364px 265px"><use href="#wlImg" clip-path="url(#wb47)"/></g><g class="wl-br" style="--d:1.55s;--f:-427px;--r:-6.6deg;transform-origin:456px 265px"><use href="#wlImg" clip-path="url(#wb48)"/></g><g class="wl-br" style="--d:1.55s;--f:-452px;--r:8.6deg;transform-origin:558px 265px"><use href="#wlImg" clip-path="url(#wb49)"/></g><g class="wl-br" style="--d:1.77s;--f:-436px;--r:1.5deg;transform-origin:666px 265px"><use href="#wlImg" clip-path="url(#wb50)"/></g><g class="wl-br" style="--d:1.38s;--f:-384px;--r:-8.7deg;transform-origin:768px 265px"><use href="#wlImg" clip-path="url(#wb51)"/></g><g class="wl-br" style="--d:1.96s;--f:-437px;--r:8.3deg;transform-origin:864px 265px"><use href="#wlImg" clip-path="url(#wb52)"/></g><g class="wl-br" style="--d:1.29s;--f:-432px;--r:-0.3deg;transform-origin:964px 265px"><use href="#wlImg" clip-path="url(#wb53)"/></g><g class="wl-br" style="--d:1.82s;--f:-407px;--r:9.0deg;transform-origin:1062px 265px"><use href="#wlImg" clip-path="url(#wb54)"/></g><g class="wl-br" style="--d:1.25s;--f:-467px;--r:4.3deg;transform-origin:90px 307px"><use href="#wlImg" clip-path="url(#wb55)"/></g><g class="wl-br" style="--d:1.87s;--f:-482px;--r:3.7deg;transform-origin:190px 307px"><use href="#wlImg" clip-path="url(#wb56)"/></g><g class="wl-br" style="--d:1.79s;--f:-496px;--r:-2.7deg;transform-origin:279px 307px"><use href="#wlImg" clip-path="url(#wb57)"/></g><g class="wl-br" style="--d:1.71s;--f:-495px;--r:6.7deg;transform-origin:358px 307px"><use href="#wlImg" clip-path="url(#wb58)"/></g><g class="wl-br" style="--d:1.5s;--f:-486px;--r:6.5deg;transform-origin:446px 307px"><use href="#wlImg" clip-path="url(#wb59)"/></g><g class="wl-br" style="--d:1.62s;--f:-473px;--r:-2.1deg;transform-origin:549px 307px"><use href="#wlImg" clip-path="url(#wb60)"/></g><g class="wl-br" style="--d:1.63s;--f:-472px;--r:-7.6deg;transform-origin:646px 307px"><use href="#wlImg" clip-path="url(#wb61)"/></g><g class="wl-br" style="--d:1.67s;--f:-502px;--r:6.8deg;transform-origin:747px 307px"><use href="#wlImg" clip-path="url(#wb62)"/></g><g class="wl-br" style="--d:1.74s;--f:-454px;--r:4.2deg;transform-origin:856px 307px"><use href="#wlImg" clip-path="url(#wb63)"/></g><g class="wl-br" style="--d:1.63s;--f:-458px;--r:6.1deg;transform-origin:953px 307px"><use href="#wlImg" clip-path="url(#wb64)"/></g><g class="wl-br" style="--d:1.25s;--f:-483px;--r:-8.5deg;transform-origin:1052px 307px"><use href="#wlImg" clip-path="url(#wb65)"/></g><g class="wl-br" style="--d:1.56s;--f:-503px;--r:-4.9deg;transform-origin:76px 349px"><use href="#wlImg" clip-path="url(#wb66)"/></g><g class="wl-br" style="--d:1.63s;--f:-505px;--r:2.1deg;transform-origin:161px 349px"><use href="#wlImg" clip-path="url(#wb67)"/></g><g class="wl-br" style="--d:1.8s;--f:-485px;--r:-8.8deg;transform-origin:249px 349px"><use href="#wlImg" clip-path="url(#wb68)"/></g><g class="wl-br" style="--d:1.33s;--f:-519px;--r:-5.4deg;transform-origin:338px 349px"><use href="#wlImg" clip-path="url(#wb69)"/></g><g class="wl-br" style="--d:1.23s;--f:-537px;--r:2.9deg;transform-origin:429px 349px"><use href="#wlImg" clip-path="url(#wb70)"/></g><g class="wl-br" style="--d:1.44s;--f:-536px;--r:-3.1deg;transform-origin:519px 349px"><use href="#wlImg" clip-path="url(#wb71)"/></g><g class="wl-br" style="--d:1.61s;--f:-481px;--r:-1.2deg;transform-origin:612px 349px"><use href="#wlImg" clip-path="url(#wb72)"/></g><g class="wl-br" style="--d:1.71s;--f:-538px;--r:6.8deg;transform-origin:714px 349px"><use href="#wlImg" clip-path="url(#wb73)"/></g><g class="wl-br" style="--d:1.4s;--f:-512px;--r:-3.3deg;transform-origin:816px 349px"><use href="#wlImg" clip-path="url(#wb74)"/></g><g class="wl-br" style="--d:1.21s;--f:-505px;--r:6.1deg;transform-origin:912px 349px"><use href="#wlImg" clip-path="url(#wb75)"/></g><g class="wl-br" style="--d:1.74s;--f:-522px;--r:8.1deg;transform-origin:1006px 349px"><use href="#wlImg" clip-path="url(#wb76)"/></g><g class="wl-br" style="--d:1.31s;--f:-479px;--r:-0.9deg;transform-origin:1078px 349px"><use href="#wlImg" clip-path="url(#wb77)"/></g><g class="wl-br" style="--d:1.23s;--f:-524px;--r:-1.5deg;transform-origin:80px 390px"><use href="#wlImg" clip-path="url(#wb78)"/></g><g class="wl-br" style="--d:1.49s;--f:-547px;--r:-3.3deg;transform-origin:164px 390px"><use href="#wlImg" clip-path="url(#wb79)"/></g><g class="wl-br" style="--d:1.65s;--f:-586px;--r:-0.9deg;transform-origin:267px 390px"><use href="#wlImg" clip-path="url(#wb80)"/></g><g class="wl-br" style="--d:1.08s;--f:-510px;--r:6.7deg;transform-origin:379px 390px"><use href="#wlImg" clip-path="url(#wb81)"/></g><g class="wl-br" style="--d:1.05s;--f:-564px;--r:1.3deg;transform-origin:488px 390px"><use href="#wlImg" clip-path="url(#wb82)"/></g><g class="wl-br" style="--d:1.25s;--f:-570px;--r:-8.7deg;transform-origin:600px 390px"><use href="#wlImg" clip-path="url(#wb83)"/></g><g class="wl-br" style="--d:1.12s;--f:-543px;--r:-8.6deg;transform-origin:707px 390px"><use href="#wlImg" clip-path="url(#wb84)"/></g><g class="wl-br" style="--d:1.64s;--f:-526px;--r:-6.5deg;transform-origin:816px 390px"><use href="#wlImg" clip-path="url(#wb85)"/></g><g class="wl-br" style="--d:1.06s;--f:-557px;--r:-1.0deg;transform-origin:922px 390px"><use href="#wlImg" clip-path="url(#wb86)"/></g><g class="wl-br" style="--d:1.49s;--f:-559px;--r:5.5deg;transform-origin:1018px 390px"><use href="#wlImg" clip-path="url(#wb87)"/></g><g class="wl-br" style="--d:1.74s;--f:-562px;--r:-5.4deg;transform-origin:1086px 390px"><use href="#wlImg" clip-path="url(#wb88)"/></g><g class="wl-br" style="--d:1.3s;--f:-562px;--r:-8.8deg;transform-origin:94px 431px"><use href="#wlImg" clip-path="url(#wb89)"/></g><g class="wl-br" style="--d:1.29s;--f:-605px;--r:-5.8deg;transform-origin:202px 431px"><use href="#wlImg" clip-path="url(#wb90)"/></g><g class="wl-br" style="--d:1.14s;--f:-576px;--r:3.6deg;transform-origin:303px 431px"><use href="#wlImg" clip-path="url(#wb91)"/></g><g class="wl-br" style="--d:1.33s;--f:-597px;--r:4.6deg;transform-origin:400px 431px"><use href="#wlImg" clip-path="url(#wb92)"/></g><g class="wl-br" style="--d:1.23s;--f:-611px;--r:7.3deg;transform-origin:500px 431px"><use href="#wlImg" clip-path="url(#wb93)"/></g><g class="wl-br" style="--d:1.0s;--f:-623px;--r:4.0deg;transform-origin:603px 431px"><use href="#wlImg" clip-path="url(#wb94)"/></g><g class="wl-br" style="--d:1.04s;--f:-584px;--r:2.3deg;transform-origin:714px 431px"><use href="#wlImg" clip-path="url(#wb95)"/></g><g class="wl-br" style="--d:1.62s;--f:-578px;--r:1.2deg;transform-origin:826px 431px"><use href="#wlImg" clip-path="url(#wb96)"/></g><g class="wl-br" style="--d:1.6s;--f:-612px;--r:8.0deg;transform-origin:930px 431px"><use href="#wlImg" clip-path="url(#wb97)"/></g><g class="wl-br" style="--d:1.29s;--f:-600px;--r:-5.3deg;transform-origin:1045px 431px"><use href="#wlImg" clip-path="url(#wb98)"/></g><g class="wl-br" style="--d:1.4s;--f:-653px;--r:2.5deg;transform-origin:78px 472px"><use href="#wlImg" clip-path="url(#wb99)"/></g><g class="wl-br" style="--d:1.4s;--f:-605px;--r:7.2deg;transform-origin:165px 472px"><use href="#wlImg" clip-path="url(#wb100)"/></g><g class="wl-br" style="--d:1.59s;--f:-666px;--r:0.7deg;transform-origin:255px 472px"><use href="#wlImg" clip-path="url(#wb101)"/></g><g class="wl-br" style="--d:1.45s;--f:-614px;--r:7.4deg;transform-origin:350px 472px"><use href="#wlImg" clip-path="url(#wb102)"/></g><g class="wl-br" style="--d:1.5s;--f:-616px;--r:-7.5deg;transform-origin:464px 472px"><use href="#wlImg" clip-path="url(#wb103)"/></g><g class="wl-br" style="--d:1.19s;--f:-632px;--r:4.8deg;transform-origin:574px 472px"><use href="#wlImg" clip-path="url(#wb104)"/></g><g class="wl-br" style="--d:1.22s;--f:-590px;--r:5.6deg;transform-origin:666px 472px"><use href="#wlImg" clip-path="url(#wb105)"/></g><g class="wl-br" style="--d:0.91s;--f:-652px;--r:-5.9deg;transform-origin:761px 472px"><use href="#wlImg" clip-path="url(#wb106)"/></g><g class="wl-br" style="--d:1.11s;--f:-651px;--r:-6.5deg;transform-origin:864px 472px"><use href="#wlImg" clip-path="url(#wb107)"/></g><g class="wl-br" style="--d:0.97s;--f:-629px;--r:4.0deg;transform-origin:964px 472px"><use href="#wlImg" clip-path="url(#wb108)"/></g><g class="wl-br" style="--d:1.49s;--f:-643px;--r:8.0deg;transform-origin:1060px 472px"><use href="#wlImg" clip-path="url(#wb109)"/></g><g class="wl-br" style="--d:1.14s;--f:-706px;--r:-7.5deg;transform-origin:76px 514px"><use href="#wlImg" clip-path="url(#wb110)"/></g><g class="wl-br" style="--d:0.94s;--f:-672px;--r:-3.8deg;transform-origin:161px 514px"><use href="#wlImg" clip-path="url(#wb111)"/></g><g class="wl-br" style="--d:1.32s;--f:-681px;--r:0.4deg;transform-origin:252px 514px"><use href="#wlImg" clip-path="url(#wb112)"/></g><g class="wl-br" style="--d:1.41s;--f:-675px;--r:-3.4deg;transform-origin:352px 514px"><use href="#wlImg" clip-path="url(#wb113)"/></g><g class="wl-br" style="--d:1.06s;--f:-698px;--r:7.2deg;transform-origin:454px 514px"><use href="#wlImg" clip-path="url(#wb114)"/></g><g class="wl-br" style="--d:0.93s;--f:-698px;--r:8.4deg;transform-origin:554px 514px"><use href="#wlImg" clip-path="url(#wb115)"/></g><g class="wl-br" style="--d:1.17s;--f:-676px;--r:-5.4deg;transform-origin:657px 514px"><use href="#wlImg" clip-path="url(#wb116)"/></g><g class="wl-br" style="--d:1.18s;--f:-670px;--r:1.9deg;transform-origin:763px 514px"><use href="#wlImg" clip-path="url(#wb117)"/></g><g class="wl-br" style="--d:0.79s;--f:-708px;--r:0.3deg;transform-origin:863px 514px"><use href="#wlImg" clip-path="url(#wb118)"/></g><g class="wl-br" style="--d:1.07s;--f:-694px;--r:1.1deg;transform-origin:955px 514px"><use href="#wlImg" clip-path="url(#wb119)"/></g><g class="wl-br" style="--d:1.14s;--f:-685px;--r:-7.8deg;transform-origin:1055px 514px"><use href="#wlImg" clip-path="url(#wb120)"/></g><g class="wl-br" style="--d:1.09s;--f:-704px;--r:8.2deg;transform-origin:88px 555px"><use href="#wlImg" clip-path="url(#wb121)"/></g><g class="wl-br" style="--d:1.38s;--f:-693px;--r:-0.5deg;transform-origin:188px 555px"><use href="#wlImg" clip-path="url(#wb122)"/></g><g class="wl-br" style="--d:0.79s;--f:-706px;--r:5.7deg;transform-origin:284px 555px"><use href="#wlImg" clip-path="url(#wb123)"/></g><g class="wl-br" style="--d:1.37s;--f:-709px;--r:-3.3deg;transform-origin:375px 555px"><use href="#wlImg" clip-path="url(#wb124)"/></g><g class="wl-br" style="--d:0.83s;--f:-720px;--r:7.7deg;transform-origin:463px 555px"><use href="#wlImg" clip-path="url(#wb125)"/></g><g class="wl-br" style="--d:0.79s;--f:-733px;--r:-8.6deg;transform-origin:562px 555px"><use href="#wlImg" clip-path="url(#wb126)"/></g><g class="wl-br" style="--d:0.84s;--f:-689px;--r:3.4deg;transform-origin:669px 555px"><use href="#wlImg" clip-path="url(#wb127)"/></g><g class="wl-br" style="--d:0.93s;--f:-699px;--r:2.2deg;transform-origin:770px 555px"><use href="#wlImg" clip-path="url(#wb128)"/></g><g class="wl-br" style="--d:0.77s;--f:-729px;--r:-6.8deg;transform-origin:868px 555px"><use href="#wlImg" clip-path="url(#wb129)"/></g><g class="wl-br" style="--d:1.07s;--f:-691px;--r:-5.4deg;transform-origin:964px 555px"><use href="#wlImg" clip-path="url(#wb130)"/></g><g class="wl-br" style="--d:1.09s;--f:-706px;--r:-2.2deg;transform-origin:1060px 555px"><use href="#wlImg" clip-path="url(#wb131)"/></g><g class="wl-br" style="--d:0.92s;--f:-755px;--r:-6.1deg;transform-origin:91px 596px"><use href="#wlImg" clip-path="url(#wb132)"/></g><g class="wl-br" style="--d:0.76s;--f:-764px;--r:2.5deg;transform-origin:192px 596px"><use href="#wlImg" clip-path="url(#wb133)"/></g><g class="wl-br" style="--d:1.0s;--f:-781px;--r:2.0deg;transform-origin:291px 596px"><use href="#wlImg" clip-path="url(#wb134)"/></g><g class="wl-br" style="--d:1.25s;--f:-732px;--r:4.3deg;transform-origin:396px 596px"><use href="#wlImg" clip-path="url(#wb135)"/></g><g class="wl-br" style="--d:1.21s;--f:-785px;--r:-3.3deg;transform-origin:507px 596px"><use href="#wlImg" clip-path="url(#wb136)"/></g><g class="wl-br" style="--d:0.84s;--f:-787px;--r:-5.1deg;transform-origin:614px 596px"><use href="#wlImg" clip-path="url(#wb137)"/></g><g class="wl-br" style="--d:1.35s;--f:-784px;--r:-6.6deg;transform-origin:711px 596px"><use href="#wlImg" clip-path="url(#wb138)"/></g><g class="wl-br" style="--d:0.78s;--f:-771px;--r:-4.3deg;transform-origin:801px 596px"><use href="#wlImg" clip-path="url(#wb139)"/></g><g class="wl-br" style="--d:0.68s;--f:-780px;--r:-1.4deg;transform-origin:896px 596px"><use href="#wlImg" clip-path="url(#wb140)"/></g><g class="wl-br" style="--d:1.2s;--f:-723px;--r:-1.7deg;transform-origin:992px 596px"><use href="#wlImg" clip-path="url(#wb141)"/></g><g class="wl-br" style="--d:1.12s;--f:-714px;--r:-5.4deg;transform-origin:1072px 596px"><use href="#wlImg" clip-path="url(#wb142)"/></g><g class="wl-br" style="--d:1.03s;--f:-827px;--r:8.4deg;transform-origin:88px 640px"><use href="#wlImg" clip-path="url(#wb143)"/></g><g class="wl-br" style="--d:0.61s;--f:-794px;--r:4.6deg;transform-origin:176px 640px"><use href="#wlImg" clip-path="url(#wb144)"/></g><g class="wl-br" style="--d:0.9s;--f:-809px;--r:-5.6deg;transform-origin:246px 640px"><use href="#wlImg" clip-path="url(#wb145)"/></g><g class="wl-br" style="--d:0.58s;--f:-762px;--r:-8.3deg;transform-origin:324px 640px"><use href="#wlImg" clip-path="url(#wb146)"/></g><g class="wl-br" style="--d:0.94s;--f:-795px;--r:1.2deg;transform-origin:409px 640px"><use href="#wlImg" clip-path="url(#wb147)"/></g><g class="wl-br" style="--d:0.63s;--f:-769px;--r:-5.3deg;transform-origin:505px 640px"><use href="#wlImg" clip-path="url(#wb148)"/></g><g class="wl-br" style="--d:1.15s;--f:-833px;--r:7.7deg;transform-origin:608px 640px"><use href="#wlImg" clip-path="url(#wb149)"/></g><g class="wl-br" style="--d:0.59s;--f:-759px;--r:8.1deg;transform-origin:708px 640px"><use href="#wlImg" clip-path="url(#wb150)"/></g><g class="wl-br" style="--d:0.87s;--f:-815px;--r:-3.1deg;transform-origin:802px 640px"><use href="#wlImg" clip-path="url(#wb151)"/></g><g class="wl-br" style="--d:0.87s;--f:-795px;--r:-1.3deg;transform-origin:901px 640px"><use href="#wlImg" clip-path="url(#wb152)"/></g><g class="wl-br" style="--d:0.97s;--f:-755px;--r:3.6deg;transform-origin:1001px 640px"><use href="#wlImg" clip-path="url(#wb153)"/></g><g class="wl-br" style="--d:1.16s;--f:-769px;--r:-0.8deg;transform-origin:1077px 640px"><use href="#wlImg" clip-path="url(#wb154)"/></g><g class="wl-br" style="--d:0.99s;--f:-831px;--r:-5.5deg;transform-origin:76px 683px"><use href="#wlImg" clip-path="url(#wb155)"/></g><g class="wl-br" style="--d:0.55s;--f:-840px;--r:-8.7deg;transform-origin:162px 683px"><use href="#wlImg" clip-path="url(#wb156)"/></g><g class="wl-br" style="--d:1.1s;--f:-863px;--r:3.7deg;transform-origin:255px 683px"><use href="#wlImg" clip-path="url(#wb157)"/></g><g class="wl-br" style="--d:1.08s;--f:-849px;--r:-1.7deg;transform-origin:348px 683px"><use href="#wlImg" clip-path="url(#wb158)"/></g><g class="wl-br" style="--d:0.88s;--f:-839px;--r:8.7deg;transform-origin:440px 683px"><use href="#wlImg" clip-path="url(#wb159)"/></g><g class="wl-br" style="--d:1.03s;--f:-820px;--r:7.4deg;transform-origin:530px 683px"><use href="#wlImg" clip-path="url(#wb160)"/></g><g class="wl-br" style="--d:0.99s;--f:-861px;--r:5.7deg;transform-origin:628px 683px"><use href="#wlImg" clip-path="url(#wb161)"/></g><g class="wl-br" style="--d:0.74s;--f:-871px;--r:6.8deg;transform-origin:726px 683px"><use href="#wlImg" clip-path="url(#wb162)"/></g><g class="wl-br" style="--d:0.95s;--f:-860px;--r:4.8deg;transform-origin:815px 683px"><use href="#wlImg" clip-path="url(#wb163)"/></g><g class="wl-br" style="--d:0.74s;--f:-857px;--r:-7.7deg;transform-origin:902px 683px"><use href="#wlImg" clip-path="url(#wb164)"/></g><g class="wl-br" style="--d:0.69s;--f:-837px;--r:-8.8deg;transform-origin:988px 683px"><use href="#wlImg" clip-path="url(#wb165)"/></g><g class="wl-br" style="--d:0.7s;--f:-850px;--r:2.2deg;transform-origin:1070px 683px"><use href="#wlImg" clip-path="url(#wb166)"/></g><g class="wl-br" style="--d:0.52s;--f:-917px;--r:3.0deg;transform-origin:88px 726px"><use href="#wlImg" clip-path="url(#wb167)"/></g><g class="wl-br" style="--d:0.6s;--f:-894px;--r:1.3deg;transform-origin:189px 726px"><use href="#wlImg" clip-path="url(#wb168)"/></g><g class="wl-br" style="--d:0.75s;--f:-872px;--r:9.0deg;transform-origin:282px 726px"><use href="#wlImg" clip-path="url(#wb169)"/></g><g class="wl-br" style="--d:0.83s;--f:-897px;--r:4.7deg;transform-origin:377px 726px"><use href="#wlImg" clip-path="url(#wb170)"/></g><g class="wl-br" style="--d:1.08s;--f:-843px;--r:2.1deg;transform-origin:478px 726px"><use href="#wlImg" clip-path="url(#wb171)"/></g><g class="wl-br" style="--d:0.9s;--f:-862px;--r:-1.8deg;transform-origin:580px 726px"><use href="#wlImg" clip-path="url(#wb172)"/></g><g class="wl-br" style="--d:0.38s;--f:-857px;--r:-2.2deg;transform-origin:691px 726px"><use href="#wlImg" clip-path="url(#wb173)"/></g><g class="wl-br" style="--d:0.42s;--f:-861px;--r:7.3deg;transform-origin:806px 726px"><use href="#wlImg" clip-path="url(#wb174)"/></g><g class="wl-br" style="--d:0.76s;--f:-882px;--r:8.4deg;transform-origin:916px 726px"><use href="#wlImg" clip-path="url(#wb175)"/></g><g class="wl-br" style="--d:0.77s;--f:-921px;--r:2.5deg;transform-origin:1016px 726px"><use href="#wlImg" clip-path="url(#wb176)"/></g><g class="wl-br" style="--d:0.95s;--f:-847px;--r:1.8deg;transform-origin:1085px 726px"><use href="#wlImg" clip-path="url(#wb177)"/></g><g class="wl-br" style="--d:0.83s;--f:-889px;--r:7.7deg;transform-origin:92px 769px"><use href="#wlImg" clip-path="url(#wb178)"/></g><g class="wl-br" style="--d:0.38s;--f:-923px;--r:-6.0deg;transform-origin:196px 769px"><use href="#wlImg" clip-path="url(#wb179)"/></g><g class="wl-br" style="--d:0.63s;--f:-934px;--r:-7.9deg;transform-origin:294px 769px"><use href="#wlImg" clip-path="url(#wb180)"/></g><g class="wl-br" style="--d:0.97s;--f:-919px;--r:0.5deg;transform-origin:391px 769px"><use href="#wlImg" clip-path="url(#wb181)"/></g><g class="wl-br" style="--d:0.71s;--f:-914px;--r:-3.9deg;transform-origin:502px 769px"><use href="#wlImg" clip-path="url(#wb182)"/></g><g class="wl-br" style="--d:0.75s;--f:-930px;--r:-3.9deg;transform-origin:620px 769px"><use href="#wlImg" clip-path="url(#wb183)"/></g><g class="wl-br" style="--d:0.79s;--f:-909px;--r:-8.7deg;transform-origin:715px 769px"><use href="#wlImg" clip-path="url(#wb184)"/></g><g class="wl-br" style="--d:0.44s;--f:-888px;--r:-6.2deg;transform-origin:795px 769px"><use href="#wlImg" clip-path="url(#wb185)"/></g><g class="wl-br" style="--d:0.82s;--f:-916px;--r:7.2deg;transform-origin:885px 769px"><use href="#wlImg" clip-path="url(#wb186)"/></g><g class="wl-br" style="--d:0.82s;--f:-889px;--r:8.8deg;transform-origin:982px 769px"><use href="#wlImg" clip-path="url(#wb187)"/></g><g class="wl-br" style="--d:0.97s;--f:-891px;--r:7.3deg;transform-origin:1068px 769px"><use href="#wlImg" clip-path="url(#wb188)"/></g><g class="wl-br" style="--d:0.49s;--f:-965px;--r:8.5deg;transform-origin:76px 812px"><use href="#wlImg" clip-path="url(#wb189)"/></g><g class="wl-br" style="--d:0.35s;--f:-969px;--r:7.9deg;transform-origin:154px 812px"><use href="#wlImg" clip-path="url(#wb190)"/></g><g class="wl-br" style="--d:0.71s;--f:-964px;--r:8.6deg;transform-origin:234px 812px"><use href="#wlImg" clip-path="url(#wb191)"/></g><g class="wl-br" style="--d:0.78s;--f:-975px;--r:-6.9deg;transform-origin:322px 812px"><use href="#wlImg" clip-path="url(#wb192)"/></g><g class="wl-br" style="--d:0.64s;--f:-963px;--r:-5.3deg;transform-origin:410px 812px"><use href="#wlImg" clip-path="url(#wb193)"/></g><g class="wl-br" style="--d:0.21s;--f:-969px;--r:-6.8deg;transform-origin:554px 812px"><use href="#wlImg" clip-path="url(#wb194)"/></g><g class="wl-br" style="--d:0.5s;--f:-980px;--r:-0.8deg;transform-origin:716px 812px"><use href="#wlImg" clip-path="url(#wb195)"/></g><g class="wl-br" style="--d:0.37s;--f:-974px;--r:-1.4deg;transform-origin:815px 812px"><use href="#wlImg" clip-path="url(#wb196)"/></g><g class="wl-br" style="--d:0.76s;--f:-969px;--r:9.0deg;transform-origin:904px 812px"><use href="#wlImg" clip-path="url(#wb197)"/></g><g class="wl-br" style="--d:0.89s;--f:-986px;--r:-4.7deg;transform-origin:993px 812px"><use href="#wlImg" clip-path="url(#wb198)"/></g><g class="wl-br" style="--d:0.26s;--f:-998px;--r:5.1deg;transform-origin:1073px 812px"><use href="#wlImg" clip-path="url(#wb199)"/></g><g class="wl-br" style="--d:0.55s;--f:-999px;--r:-4.1deg;transform-origin:78px 854px"><use href="#wlImg" clip-path="url(#wb200)"/></g><g class="wl-br" style="--d:0.6s;--f:-1015px;--r:1.7deg;transform-origin:170px 854px"><use href="#wlImg" clip-path="url(#wb201)"/></g><g class="wl-br" style="--d:0.56s;--f:-1030px;--r:-5.6deg;transform-origin:262px 854px"><use href="#wlImg" clip-path="url(#wb202)"/></g><g class="wl-br" style="--d:0.27s;--f:-1048px;--r:7.5deg;transform-origin:355px 854px"><use href="#wlImg" clip-path="url(#wb203)"/></g><g class="wl-br" style="--d:0.74s;--f:-973px;--r:-7.9deg;transform-origin:452px 854px"><use href="#wlImg" clip-path="url(#wb204)"/></g><g class="wl-br" style="--d:0.29s;--f:-1004px;--r:2.2deg;transform-origin:520px 854px"><use href="#wlImg" clip-path="url(#wb205)"/></g><g class="wl-br" style="--d:0.16s;--f:-1013px;--r:-7.7deg;transform-origin:563px 854px"><use href="#wlImg" clip-path="url(#wb206)"/></g><g class="wl-br" style="--d:0.15s;--f:-1024px;--r:0.9deg;transform-origin:654px 854px"><use href="#wlImg" clip-path="url(#wb207)"/></g><g class="wl-br" style="--d:0.56s;--f:-1000px;--r:-0.4deg;transform-origin:768px 854px"><use href="#wlImg" clip-path="url(#wb208)"/></g><g class="wl-br" style="--d:0.24s;--f:-997px;--r:4.4deg;transform-origin:868px 854px"><use href="#wlImg" clip-path="url(#wb209)"/></g><g class="wl-br" style="--d:0.71s;--f:-976px;--r:-6.8deg;transform-origin:964px 854px"><use href="#wlImg" clip-path="url(#wb210)"/></g><g class="wl-br" style="--d:0.69s;--f:-1020px;--r:4.8deg;transform-origin:1058px 854px"><use href="#wlImg" clip-path="url(#wb211)"/></g><g class="wl-br" style="--d:0.16s;--f:-1046px;--r:-4.4deg;transform-origin:82px 898px"><use href="#wlImg" clip-path="url(#wb212)"/></g><g class="wl-br" style="--d:0.61s;--f:-1042px;--r:2.8deg;transform-origin:182px 898px"><use href="#wlImg" clip-path="url(#wb213)"/></g><g class="wl-br" style="--d:0.74s;--f:-1038px;--r:0.9deg;transform-origin:283px 898px"><use href="#wlImg" clip-path="url(#wb214)"/></g><g class="wl-br" style="--d:0.56s;--f:-1086px;--r:-1.3deg;transform-origin:381px 898px"><use href="#wlImg" clip-path="url(#wb215)"/></g><g class="wl-br" style="--d:0.28s;--f:-1020px;--r:6.8deg;transform-origin:485px 898px"><use href="#wlImg" clip-path="url(#wb216)"/></g><g class="wl-br" style="--d:0.06s;--f:-1019px;--r:1.2deg;transform-origin:563px 898px"><use href="#wlImg" clip-path="url(#wb217)"/></g><g class="wl-br" style="--d:0.36s;--f:-1067px;--r:-3.6deg;transform-origin:654px 898px"><use href="#wlImg" clip-path="url(#wb218)"/></g><g class="wl-br" style="--d:0.58s;--f:-1018px;--r:-5.2deg;transform-origin:772px 898px"><use href="#wlImg" clip-path="url(#wb219)"/></g><g class="wl-br" style="--d:0.5s;--f:-1019px;--r:-3.5deg;transform-origin:882px 898px"><use href="#wlImg" clip-path="url(#wb220)"/></g><g class="wl-br" style="--d:0.54s;--f:-1068px;--r:-3.9deg;transform-origin:986px 898px"><use href="#wlImg" clip-path="url(#wb221)"/></g><g class="wl-br" style="--d:0.11s;--f:-1041px;--r:4.1deg;transform-origin:1070px 898px"><use href="#wlImg" clip-path="url(#wb222)"/></g></g><g class="wl-rays"><use href="#wlImg" clip-path="url(#wlRay)"/></g><image href="assets/wall-man.png" x="490" y="715" width="155" height="277"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- [B1] 벽에 막힌 진짜 이유 -->
+<section class="sec bt bg-w fb-why">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">벽에 막힌 진짜 이유</span><h2 class="h-sec">벽돌은 열심히 쌓았는데,<br><span class="em">설계도가 없었어요.</span></h2>
+      <p class="sec-lead">릴스, 광고, 신메뉴, 할인. 다 좋은 벽돌이에요.<br>그런데 <strong>어디로 갈지 안 정하고</strong> 쌓으면<br>길이 아니라 <strong>벽</strong>이 돼요.</p>
+    </div>
+    <div class="fb-cmp">
+      <div class="fb-bricks rv"><span class="fb-k">다들 열심히 쌓은 벽돌</span>
+        <div class="fb-wall"><span>릴스·피드 올리기</span><span>광고 돌리기</span><span>강의 듣기</span><span>신메뉴 내기</span><span>가격 내리기</span><span>대행사 바꾸기</span></div>
+      </div>
+      <div class="fb-arrow rv" aria-hidden="true">그 전에</div>
+      <div class="fb-plan rv rv-d1"><span class="fb-k on">먼저 그렸어야 할 설계도</span>
+        <ol>
+          <li><b>누구한테</b> 팔 건지<small>타겟</small></li>
+          <li>그 사람이 <b>뭘 제일 답답해</b>하는지<small>고객 문제</small></li>
+          <li>그 사람이 나를 <b>어디랑 비교</b>하는지<small>경쟁</small></li>
+          <li><b>왜 굳이 나</b>여야 하는지<small>차별점</small></li>
+          <li><b>어떤 말</b>에 마음이 움직이는지<small>메시지</small></li>
+        </ol>
+      </div>
+    </div>
+    <p class="fb-sum rv">설계도가 없으니 뭘 해도 <strong>"이게 맞나?"</strong> 싶고,<br>안 되면 또 다른 벽돌을 찾게 돼요.</p>
+  </div>
+</section>
+
+<!-- [B2] 설계도가 생기면 -->
+<section class="sec bt bg-t fb-fix">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">설계도가 생기면</span><h2 class="h-sec">같은 벽돌인데,<br><span class="em">이번엔 길이 돼요.</span></h2></div>
+    <div class="fb-rows">
+      <div class="fb-row rv"><span class="fb-tag">콘텐츠</span><p class="fb-b">조회수는 나오는데 문의는 0건</p><p class="fb-a"><b>딱 한 사람</b>한테 말하니까<br>"내 얘기네" 하고 문의가 와요</p></div>
+      <div class="fb-row rv"><span class="fb-tag">상품</span><p class="fb-b">신메뉴만 계속 늘렸어요</p><p class="fb-a">손님이 <b>제일 답답한 것</b>을 알면<br>있는 상품 하나로도 충분해요</p></div>
+      <div class="fb-row rv"><span class="fb-tag">가격</span><p class="fb-b">옆 가게 따라 계속 내렸어요</p><p class="fb-a"><b>비교 상대가 바뀌면</b><br>비싸도 사야 할 이유가 생겨요</p></div>
+      <div class="fb-row rv"><span class="fb-tag">마케팅</span><p class="fb-b">광고 끄면 문의도 끊겼어요</p><p class="fb-a"><b>"거기 가야 해"</b> 하는 이유가 생기면<br>광고 없이도 찾아와요</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- [B3] 사례 3개 -->
+<section class="sec bt bg-w fb-case">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">진짜 그런지 볼까요</span><h2 class="h-sec">벽돌은 그대로 두고,<br><span class="em">설계도만 바꿨어요.</span></h2></div>
+    <div class="fb-cases">
+      <div class="fc rv"><div class="fc-who"><b>1인 서비스업</b><span>예약제 · t****</span></div>
+        <div class="fc-st"><span>전</span>상품은 자신 있는데, 글을 써도 예약이 안 잡혔어요</div>
+        <div class="fc-st fc-ch"><span>바꾼 것</span><b>누구한테</b> 팔지, <b>뭐랑 비교</b>되는지 다시 정함<br><em>상품은 하나도 안 바꿨어요</em></div>
+        <div class="fc-res">조회수 400 글 하나로<br><span class="em">다음 날 3명 예약</span></div>
+        <p class="fc-q">“상품 자체는 바뀌지 않았는데, 타겟 설정·포지셔닝 차이가 생각보다 더 크네요.”</p>
+      </div>
+      <div class="fc rv rv-d1"><div class="fc-who"><b>주얼리 브랜드</b><span>온라인 판매 · 김**</span></div>
+        <div class="fc-st"><span>전</span>조회수 잘 나오는 콘텐츠를 계속 올렸어요</div>
+        <div class="fc-st fc-ch"><span>바꾼 것</span>정한 방향대로 <b>할 말</b>을 바꿔서<br>포스팅 딱 3개</div>
+        <div class="fc-res">조회수는 더 낮은데<br><span class="em">일 매출 1.5배</span></div>
+        <p class="fc-q">“이전 콘텐츠보다 조회수가 훨씬 낮은데도 일매출이 1.5배예요!”</p>
+      </div>
+      <div class="fc rv rv-d2"><div class="fc-who"><b>김낙타</b><span>직접 운영한 브랜드</span></div>
+        <div class="fc-st"><span>전</span>릴스, 게시물, 광고로 벽돌 쌓기</div>
+        <div class="fc-st fc-ch"><span>바꾼 것</span>설계도부터 다시 그리는 <b>리브랜딩</b><br><em>릴스 0 · 게시물 0 · 광고 0원</em></div>
+        <div class="fc-res">리브랜딩 후 10일<br><span class="em">순수익 1,800만 원</span></div>
+        <p class="fc-q">더 많이 올린 게 아니라, 먼저 정할 걸 정했을 뿐이에요.</p>
+      </div>
+    </div>
+    <p class="note">* 실제 후기와 사례를 요약했어요. 결과는 실행에 따라 다를 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- [9] 질문 8개 -->
+<section class="sec bt bg-t">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">그래서 이 시리즈는</span><h2 class="h-sec">질문 8개로<br><span class="em">내 설계도를 같이 그려요.</span></h2>
+      <p class="sec-lead">컨설팅에서 실제로 효과 본 질문이에요.<br>하나씩 답하다 보면 그게 <strong>내 사업 설계도</strong>가 돼요.</p>
+    </div>
+    <div class="q8-grid">
+      <div class="q8 rv"><span class="n">01</span><span class="t">나는 왜 이 일을 하나요?</span></div>
+      <div class="q8 rv rv-d1"><span class="n">02</span><span class="t">한 줄로, 뭐 하는 곳인가요?</span></div>
+      <div class="q8 rv"><span class="n">03</span><span class="t">누구한테 팔 건가요?</span></div>
+      <div class="q8 rv rv-d1"><span class="n">04</span><span class="t">손님은 나를 뭐랑 비교하나요?</span></div>
+      <div class="q8 rv"><span class="n">05</span><span class="t">손님이 나 대신 고르는 건 뭔가요?</span></div>
+      <div class="q8 rv rv-d1"><span class="n">06</span><span class="t">손님이 왜 나를 골라야 하나요?</span></div>
+      <div class="q8 rv"><span class="n">07</span><span class="t">뭐라고 말할 건가요?</span></div>
+      <div class="q8 rv rv-d1"><span class="n">08</span><span class="t">이번 달, 뭐부터 할 건가요?</span></div>
+    </div>
+    <div class="flow3 rv">
+      <div class="f3"><div class="n">1</div><div class="t">읽고</div></div>
+      <div class="f3"><div class="n">2</div><div class="t">직접 쓰고</div></div>
+      <div class="f3"><div class="n">3</div><div class="t">막히면<br>거기가 문제</div></div>
+    </div>
+    <div class="body-text rv" style="margin:var(--gap-md) auto 0;text-align:center">
+      <p>앞 질문에 답을 안 쓰면, 다음 질문에서 꼭 막혀요.</p>
+      <p>예를 들어 '누구한테 팔지'를 못 정하면 '뭐라고 말할지'에서 막혀요. 누구한테 하는 말인지 모르니까요. <strong>막힌 곳을 거꾸로 따라가면, 문제가 어디서 시작됐는지 보여요.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- [15] 읽고 끝나는 책? -->
+<section class="sec bt bg-w">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">이런 생각 드시죠</span><h2 class="h-sec">"그래서 결국<br class="br-m"> 책 아니에요?"</h2>
+      <p class="sec-lead">읽고 끝나는 책이 아니에요. 챕터마다 <strong>내 가게 얘기로 직접 답을 써요.</strong><br>막히는 칸이 내 문제고, 채운 칸이 내 설계도예요.<br>그래서 남의 정답이 아니라 <strong>내 답</strong>이 남아요.</p></div>
+    <div class="loops cmp">
+      <div class="loop rv">
+        <div class="loop-k">지금까지</div>
+        <div class="ls"><i>1</i>강의 듣고, 책 읽기</div><div class="ls"><i>2</i>따라 하기</div><div class="ls"><i>3</i>안 됨</div><div class="ls"><i>4</i>또 다른 강의·책 찾기</div>
+        <div class="ls-back">↺ 왜 안 됐는지 모른 채 처음으로</div>
+      </div>
+      <div class="loop good hl rv rv-d1">
+        <div class="loop-k">이 시리즈를 다 쓰고 난 다음부터</div>
+        <div class="ls"><i>1</i>내 답 정하기</div><div class="ls"><i>2</i>해보기</div><div class="ls"><i>3</i>반응 보기</div><div class="ls"><i>4</i>답 고치기</div>
+        <div class="ls-back">↺ 뭘 고칠지 알고 다음으로</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- [11] 1분 해보기 -->
+<section class="sec bt bg-t">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">1분 해보기</span><h2 class="h-sec">어떤 식인지,<br><span class="em">직접 한 칸 써볼까요?</span></h2></div>
+    <div class="try rv rv-d1" id="tryBox">
+      <div class="try-q">내 소개글에 들어 있는 말을 전부 골라보세요.</div>
+      <div class="try-opts">
+        <button type="button" class="try-opt">친절해요</button>
+        <button type="button" class="try-opt">꼼꼼한 상담</button>
+        <button type="button" class="try-opt">경력 10년</button>
+        <button type="button" class="try-opt">청결·위생 철저</button>
+        <button type="button" class="try-opt">합리적인 가격</button>
+        <button type="button" class="try-opt">최고의 퀄리티</button>
+        <button type="button" class="try-opt">고객 만족 최우선</button>
+        <button type="button" class="try-opt">원장 직접 시술</button>
+      </div>
+      <button type="button" class="btn btn-p try-go" id="tryGo">결과 보기 <span class="arr">→</span></button>
+      <div class="try-res" id="tryRes">
+        <div class="big" id="tryBig"></div>
+        <p>친절, 청결, 경력은 손님이 <strong>당연하게 여기는 것</strong>이에요. 없으면 안 가지만, 있다고 고르지도 않아요. 다들 똑같이 쓰니까 손님 눈엔 다 같은 가게로 보여요.</p>
+        <p style="margin-top:10px">손님이 나를 고르는 이유는 따로 있어요. 세 가지를 70점으로 하는 곳보다 <strong>하나를 90점으로 하는 곳</strong>이 기억돼요.</p>
+        <div class="from">→ 그 이유를 찾는 게 Chapter 07이에요</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- [13] 커리큘럼 -->
+<section class="sec-cur bg-w">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">목차</span><h2 class="h-sec">챕터 9개,<br>챕터마다 <span class="em">"아, 이거였구나"</span></h2></div>
+    <div class="cur-item rv"><div class="cur-num">00</div><div class="cur-body"><div class="cur-title">시작하기 전에 <span>· 무료</span></div><p class="cur-wow">광고까지 다 했는데 문의가 없던 PT샵. <b>문제는 '몇 명'이 아니라 '누가' 보느냐</b>였어요.</p></div></div>
+    <div class="cur-item rv"><div class="cur-num">01</div><div class="cur-body"><div class="cur-title">브랜딩의 기준</div><p class="cur-wow">머릿속엔 있는데 말로 안 나온다면, <b>아직 정리가 안 된 거</b>예요.</p></div></div>
+    <div class="cur-item rv"><div class="cur-num">02</div><div class="cur-body"><div class="cur-title">정체성 <span>· 뭐 하는 곳인지 한 줄로</span></div><p class="cur-wow">"PT샵이에요"보다 "어머니를 위한 PT"가 <b>훨씬 잘 기억돼요.</b></p></div></div>
+    <div class="cur-item rv"><div class="cur-num">03</div><div class="cur-body"><div class="cur-title">Why <span>· 왜 이 일을 하는지</span></div><p class="cur-wow">공식대로 써도 안 먹힌다면, <b>들려줄 내 이야기가 없어서</b>예요.</p></div></div>
+    <div class="cur-item rv"><div class="cur-num">04</div><div class="cur-body"><div class="cur-title">포지셔닝 <span>· 손님이 나를 뭐랑 비교하는지</span></div><p class="cur-wow">'작은 사치' 네일샵은 옆 네일샵이 아니라 <b>커피 한 잔이랑 비교돼요.</b></p></div></div>
+    <div class="cur-item rv"><div class="cur-num">05</div><div class="cur-body"><div class="cur-title">타겟 <span>· 누구한테 팔지</span></div><p class="cur-wow">"20~40대 여성"은 2천만 명이에요. <b>그건 타겟이 아니에요.</b></p></div></div>
+    <div class="cur-item rv"><div class="cur-num">06</div><div class="cur-body"><div class="cur-title">경쟁자 <span>· 진짜 상대는 누구인지</span></div><p class="cur-wow">제일 무서운 경쟁자는 옆 가게가 아니라 <b>'다음에 하지 뭐'</b>예요.</p></div></div>
+    <div class="cur-item rv"><div class="cur-num">07</div><div class="cur-body"><div class="cur-title">차별화 <span>· 손님이 나를 고르는 이유</span></div><p class="cur-wow">"친절해요, 깨끗해요, 경력 10년"은 <b>다른 데도 다 있어요.</b></p></div></div>
+    <div class="cur-item rv"><div class="cur-num">08</div><div class="cur-body"><div class="cur-title">메시지 <span>· 뭐라고 말할지</span></div><p class="cur-wow">콘텐츠가 부족한 게 아니에요. <b>할 말 없는 콘텐츠가 100개</b>인 거예요.</p></div></div>
+    <div class="cur-item rv"><div class="cur-num">09</div><div class="cur-body"><div class="cur-title">실행 <span>· 뭐부터 할지</span></div><p class="cur-wow">불안하면 올리고, 문의 없으면 할인하고. <b>방향이 없으면 급한 일만 해요.</b></p></div></div>
+  </div>
+</section>
+
+<!-- [14] 받는 것 -->
+<section class="sec bt bg-t">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">받는 것</span><h2 class="h-sec">책만 드리는 게 아니에요.<br><span class="em">이것까지 드려요.</span></h2></div>
+    <div class="del-grid">
+      <div class="del-card rv"><div class="del-thumb">시리즈 이미지</div><div class="del-info"><div class="del-name">시리즈 9챕터</div><p class="del-desc">작은 사업에 꼭 필요한 것만 담았어요. 평생 소장, 언제든 다시 읽어요.</p></div></div>
+      <div class="del-card rv rv-d1"><div class="del-thumb">워크북 이미지</div><div class="del-info"><div class="del-name">워크북 질문 8개</div><p class="del-desc">막히는 칸이 내 문제, 채운 답이 사업 기획서가 돼요.</p></div></div>
+      <div class="del-card rv"><div class="del-thumb">가이드라인 이미지</div><div class="del-info"><div class="del-name">브랜드 가이드라인</div><p class="del-desc">답을 한 장으로 정리해요. 직원, 외주, AI한테 그대로 넘기면 돼요.</p></div></div>
+      <div class="del-card rv rv-d1"><div class="del-thumb">채널 적용 이미지</div><div class="del-info"><div class="del-name">채널별 적용 가이드</div><p class="del-desc">인스타 프로필, 플레이스 소개, 상세페이지에 바로 옮겨 써요.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- [20] 가격 -->
+<section class="sec-price bg-w">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">가격</span><h2 class="h-sec">강의 한 번 값으로,<br><span class="em">더 이상 안 헤매게.</span></h2></div>
+    <div class="price-story rv">
+      <p>천만 원짜리 강의도, 방향이 없으면 다시 제자리예요.</p>
+      <p><strong>한 번 정한 방향은 어떤 채널에서든 써요.</strong> 사업이 커지면 워크북만 다시 꺼내면 돼요.</p>
+    </div>
+    <div class="price-box rv">
+      <div class="price-amt">99,000<span class="u">원</span></div>
+      <div class="price-note">단독 시리즈 · VAT 포함</div>
+      <div class="price-tags"><span class="price-tag">시리즈 9챕터</span><span class="price-tag">워크북 8문항</span><span class="price-tag">브랜드 가이드라인</span><span class="price-tag">채널별 적용</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- [20b] Chapter 00 무료 -->
+<section class="sec sec-free bg-t">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">무료 공개</span><h2 class="h-sec">Chapter 00,<br><span class="em">먼저 읽고 결정하세요</span></h2><p class="sec-lead">"마케팅이 왜 어려운지"부터 무료로 읽어보세요.<br>내 얘기 같으면 그때 시작해도 늦지 않아요.</p></div>
+    <div class="free-cta rv rv-d1"><a href="/brandingclass00" class="btn btn-p">Chapter 00 무료로 읽기 <span class="arr">→</span></a></div>
+  </div>
+</section>
+
+<!-- [21] FAQ -->
+<section class="sec bt bg-w">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">자주 묻는 질문</span><h2 class="h-sec">궁금한 거,<br>미리 답해드려요</h2></div>
+    <div class="faq-item rv"><div class="faq-q">읽기만 하면 매출이 오르나요?</div><div class="faq-a">아니요. 워크북을 쓰고 실제로 바꿔야 해요. 다만 뭘 할지 고민하는 시간은 확 줄어요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">제 문제를 정말 찾을 수 있을까요?</div><div class="faq-a">앞 질문에 답을 안 쓰면 다음 질문에서 막히게 만들었어요. 막히는 그 칸이 내 문제예요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">어떻게 읽으면 되나요?</div><div class="faq-a">하루에 한 챕터씩, 챕터 끝에 있는 워크북을 바로 채우세요. 막힌 칸은 표시해 두고, 그 챕터부터 다시 읽으면 돼요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">아직 사업을 시작 안 했는데요?</div><div class="faq-a">오히려 지금이 제일 좋아요. 시작하고 나서 돌아오는 게 훨씬 비싸요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">온라인이든 오프라인이든 상관없나요?</div><div class="faq-a">네. 누구한테, 뭘, 왜 파는지는 어떤 사업이든 먼저 정해야 해요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">RE:WORKSPACE(노션 템플릿)랑은 뭐가 달라요?</div><div class="faq-a">'브랜드가 만들어지는 과정'은 방향을 정하는 곳, RE:WORKSPACE는 그 방향대로 일을 관리하는 도구예요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">환불되나요?</div><div class="faq-a">디지털 콘텐츠라 열람 후에는 환불이 어려워요. 그래서 Chapter 00을 무료로 열어뒀어요. 먼저 읽어보고 결정하세요.</div></div>
+  </div>
+</section>
+
+<!-- [22] CTA -->
+<section class="cta-final">
+  <div class="wrap">
+    <p class="h-big rv">더 열심히 하기 전에,<br><span class="em">뭐가 문제인지</span>부터.</p>
+    <p class="cta-sub rv rv-d1">질문 8개면 보여요.</p>
+    <div class="cta-price rv rv-d1">99,000<span class="u">원</span></div>
+    <div class="cta-btns rv rv-d2">
+      <a href="/shop_view?idx=6" class="btn btn-p">구매하기 <span class="arr">→</span></a>
+      <a href="/brandingclass00" class="btn btn-g">Chapter 00 무료로 읽기 <span class="arr">→</span></a>
+    </div>
+    <p class="cta-risk rv rv-d2">고민되면, Chapter 00부터 무료로 읽어보세요.</p>
+  </div>
+</section>
+
+<div class="foot"><svg class="logo-mark" role="img" aria-label="commel"><use href="#logo-commel"/></svg><span>© commel</span></div>
+</div>
+
+<div class="stk">
+  <div class="stk-left"><div class="stk-price">99,000원</div><div class="stk-note">단독 시리즈 · 평생 소장</div></div>
+  <a href="/shop_view?idx=6" class="stk-btn">구매하기</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script>
+/* 스크롤 리빌 */
+(function(){var e=document.querySelectorAll('.rv');if(!e.length)return;if(!('IntersectionObserver' in window)){e.forEach(function(i){i.classList.add('on')});return}var o=new IntersectionObserver(function(n){n.forEach(function(i){if(i.isIntersecting){i.target.classList.add('on');o.unobserve(i.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});e.forEach(function(i){o.observe(i)})})();
+
+/* 숫자 카운트업 */
+(function(){
+  var nums=document.querySelectorAll('.proof-num[data-count]');if(!nums.length)return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting)return;var el=en.target;io.unobserve(el);
+      var target=parseFloat(el.getAttribute('data-count'));var dec=parseInt(el.getAttribute('data-dec')||'0',10);var suffix=el.getAttribute('data-suffix')||'';
+      var dur=1100,start=null;
+      function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var ease=1-Math.pow(1-p,3);var cur=target*ease;el.innerHTML=(dec?cur.toFixed(dec):Math.round(cur).toLocaleString('en-US'))+'<span class="u">'+suffix+'</span>';if(p<1)requestAnimationFrame(step)}
+      requestAnimationFrame(step);
+    });
+  },{threshold:.4});
+  nums.forEach(function(n){io.observe(n)});
+})();
+
+/* 1분 해보기 */
+(function(){
+  var box=document.getElementById('tryBox');if(!box)return;
+  var opts=box.querySelectorAll('.try-opt'),go=document.getElementById('tryGo'),res=document.getElementById('tryRes'),big=document.getElementById('tryBig');
+  opts.forEach(function(o){o.addEventListener('click',function(){o.classList.toggle('on')})});
+  go.addEventListener('click',function(){
+    var n=box.querySelectorAll('.try-opt.on').length;
+    big.innerHTML=n?'고른 <span class="em">'+n+'개</span>, 다른 가게도 다 쓰는 말이에요.':'하나도 없다면, 이미 고민해 본 분이에요.';
+    res.classList.add('show');
+  });
+})();
+
+/* 자가진단 */
+(function(){
+  var w=document.getElementById('diagWidget');if(!w)return;
+  var qs=w.querySelectorAll('.dw-q');var res=document.getElementById('dwResult');var total=qs.length;
+  function update(){
+    var c=0,miss=[];
+    qs.forEach(function(q){if(q.classList.contains('checked'))c++;else miss.push(q.getAttribute('data-c'))});
+    var msg;
+    if(c===0)msg='답할 수 있는 것만 체크해 보세요. <span class="dw-count">0 / '+total+'</span>';
+    else if(c===total)msg='<span class="dw-count">'+total+' / '+total+'</span> 이미 방향이 있는 분이에요.<br><strong>더 날카롭게</strong> 다듬어 보세요.';
+    else{
+      msg='<span class="dw-count">'+c+' / '+total+'</span> 체크 못 한 게 <strong>지금 내 문제</strong>예요.<br>여기부터 읽어보세요';
+      msg+='<div class="dw-start">'+miss.slice(0,4).map(function(m){return '<span>'+m+'</span>'}).join('')+(miss.length>4?'<span>+'+(miss.length-4)+'</span>':'')+'</div>';
+    }
+    res.innerHTML=msg;
+  }
+  qs.forEach(function(q){q.addEventListener('click',function(){q.classList.toggle('checked');update()})});
+  update();
+})();
+
+/* 부모 프레임 리사이즈 (임베드용) */
+(function(){function h(){var s=document.documentElement.scrollHeight;if(window.parent!==window){try{window.parent.postMessage({type:'resize',height:s,source:'branding-class'},'*')}catch(e){}}}window.addEventListener('load',h);window.addEventListener('resize',h);if(window.ResizeObserver){new ResizeObserver(h).observe(document.body)}setTimeout(h,1000);setTimeout(h,3000)})();
+
+/* 후기 — 원문 펼치기, 더 보기 */
+(function(){
+  var list=document.querySelector('.vc-list'); if(!list) return;
+  list.classList.add('collapsed');
+  function fit(){ list.querySelectorAll('.voice-card').forEach(function(c){
+    var t=c.querySelector('.vc-orig'), b=c.querySelector('.vc-toggle');
+    if(!c.classList.contains('open')) b.hidden = t.scrollHeight <= t.clientHeight+2;
+  });}
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('.vc-toggle'); if(!b) return;
+    var c=b.closest('.voice-card'); c.classList.toggle('open');
+    b.textContent=c.classList.contains('open')?'접기':'원문 전체 보기';
+  });
+  var more=document.querySelector('.vc-more');
+  if(list.children.length<=6) more.parentNode.remove();
+  else more.addEventListener('click',function(){ list.classList.remove('collapsed'); list.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')}); more.parentNode.remove(); fit(); });
+  window.addEventListener('load',fit); window.addEventListener('resize',fit); setTimeout(fit,300);
+})();
+
+/* 후기 — 성과 블럭 쌓기 (Matter.js, 화면에 보일 때 한 번) */
+(function(){
+  var box=document.querySelector('.pile'); if(!box||!window.Matter) return;
+  var M=Matter, W=[
+    ['글 하나로 3명 예약','k'],['일 매출 1.5배','l'],['팔로워 2만 증가','k'],['쌓이는 예약','w'],
+    ['꿈의 고객 방문','l'],['글 안 써도 예약','w'],['1년 반 고민 해결','k'],['조회수 낮아도 매출 UP','w'],
+    ['방향이 뾰족해짐','l'],['내 색깔이 생김','w'],['찐팬이 생김','k'],['전환율 상승','l'],
+    ['길이 잡혔어요','w'],['다음 날 바로 예약','k'],['확신이 생김','w'],['고민 해소','l'],
+    ['예약','s w'],['매출 UP','s l'],['문의','s k'],['예약','s l'],['재구매','s w'],['팔로워','s k'],['결제','s w'],['찐팬','s l']
+  ];
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, started=false;
+  function gauss(){return (Math.random()+Math.random()+Math.random()-1.5)/1.5}
+  function run(){
+    started=true;
+    var w=box.clientWidth, h=box.clientHeight, eng=M.Engine.create({gravity:{y:1}}), items=[];
+    var st={isStatic:true}; M.Composite.add(eng.world,[
+      M.Bodies.rectangle(w/2,h+100,w*3,200,st),M.Bodies.rectangle(-100+6,h/2-400,200,h*4,st),M.Bodies.rectangle(w+100-6,h/2-400,200,h*4,st)]);
+    var mob=w<600, list=mob?W.filter(function(d){return d[1].indexOf('s ')<0||Math.random()<.5}):W;
+    list.forEach(function(d,i){
+      var el=document.createElement('span'); el.className='pile-b '+d[1]; el.textContent=d[0]; box.appendChild(el);
+      var bw=el.offsetWidth, bh=el.offsetHeight;
+      var x=Math.max(bw/2+8,Math.min(w-bw/2-8,w/2+gauss()*w*(mob?0.2:0.13)));
+      var b=M.Bodies.rectangle(x,-bh-20,bw,bh,{chamfer:{radius:8},friction:.9,frictionStatic:1.2,restitution:.08,density:.002,angle:(Math.random()-.5)*0.6});
+      items.push({el:el,b:b,bw:bw,bh:bh,t:i*(w<600?9:7)});
+    });
+    var LIM=.42;
+    function clamp(){items.forEach(function(it){ if(!it.added) return; var a=it.b.angle;
+      if(a>LIM||a<-LIM){ M.Body.setAngularVelocity(it.b,0); M.Body.setAngle(it.b,a>0?LIM:-LIM); }});}
+    function draw(){items.forEach(function(it){ if(!it.added) return; var p=it.b.position;
+      it.el.style.transform='translate('+(p.x-it.bw/2)+'px,'+(p.y-it.bh/2)+'px) rotate('+it.b.angle+'rad)'; it.el.style.visibility='visible';});}
+    if(reduce){ items.forEach(function(it,i){ M.Composite.add(eng.world,it.b); it.added=true; for(var k=0;k<40;k++){ M.Engine.update(eng,1000/60); clamp(); }});
+      for(var k=0;k<300;k++){ M.Engine.update(eng,1000/60); clamp(); } draw(); return; }
+    var f=0, calm=0, lastT=items[items.length-1].t;
+    (function tick(){
+      items.forEach(function(it){ if(!it.added&&f>=it.t){ M.Composite.add(eng.world,it.b); it.added=true; }});
+      M.Engine.update(eng,1000/60); clamp(); draw(); f++;
+      var moving=items.some(function(it){return it.b.speed>.08||Math.abs(it.b.angularSpeed)>.004});
+      calm=(f>lastT&&!moving)?calm+1:0;
+      if(calm<90&&f<3600) requestAnimationFrame(tick);
+    })();
+  }
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting&&!started){ io.disconnect(); (document.fonts?document.fonts.ready:Promise.resolve()).then(run); }},{threshold:.35});
+  io.observe(box);
+})();
+
+/* 히어로 고정 — 화면보다 긴 히어로는 아랫부분까지 보인 다음 고정 */
+(function(){
+  var h=document.querySelector('.bc-root > .hero'); if(!h) return;
+  function fit(){ h.style.setProperty('--hero-top',Math.min(0,window.innerHeight-h.offsetHeight)+'px'); }
+  fit(); window.addEventListener('resize',fit); window.addEventListener('load',fit);
+})();
+
+/* 셀프 체크 — 눌러서 체크, 3개 이상이면 안내 문구와 버튼 */
+(function(){
+  var sec=document.querySelector('.sec-check'); if(!sec) return;
+  var items=sec.querySelectorAll('.ck-item'), nEl=sec.querySelector('.ck-n'), msg=sec.querySelector('.ck-msg'), cta=sec.querySelector('.ck-cta'), box=sec.querySelector('.ck-result'), was=0;
+  function upd(){
+    var n=sec.querySelectorAll('.ck-item[aria-pressed="true"]').length; nEl.textContent=n; sec.querySelector('.ck-pn').textContent=n; sec.querySelector('.ck-pill').classList.toggle('ok',n>=3);
+    if(n===0) msg.textContent='해당하는 문장을 눌러 체크해 보세요.';
+    else if(n<3) msg.innerHTML='조금 더 읽어보세요. <b>'+(3-n)+'개</b>만 더 해당되면 이 시리즈가 필요한 분이에요.';
+    else msg.innerHTML='<b>'+n+'개</b>나 해당돼요. 덜 열심히 해서가 아니에요.<br>지금 필요한 건 <b>방향을 먼저 정하는 일</b>이에요.';
+    cta.hidden=n<3;
+    if(n>=3&&was<3){ box.classList.remove('hit'); void box.offsetWidth; box.classList.add('hit'); }
+    was=n;
+  }
+  items.forEach(function(b){ b.addEventListener('click',function(){ b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true'); upd(); }); });
+})();
+
+/* 거대한 벽 — 화면에 들어오면 벽돌이 아래부터 쌓임 */
+(function(){
+  var f=document.querySelector('.wall-fig'); if(!f) return;
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:.3});
+  io.observe(f);
+})();
+
+/* 방향 질문 일러스트 — 화면에 들어오면 등장 */
+(function(){
+  var f=document.querySelector('.dir-fig'); if(!f) return;
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:.35});
+  io.observe(f);
+})();
+</script>
+</body>
+</html>
