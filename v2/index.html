@@ -771,6 +771,74 @@ a{color:inherit;text-decoration:none}
 
 /* 고민 카드 제목 18px */
 .bc-root .pb .pb-k{font-size:18px}
+
+/* 질문 8개 — 워크북 애니메이션 (10s 루프) */
+.wb-fig{max-width:520px;margin:clamp(24px,4vw,36px) auto 0}
+.wb{display:block;width:100%;height:auto;overflow:visible}
+.wb *{--T:10s}
+.wb-paper{fill:#fff;stroke:var(--ink);stroke-width:3}
+.wb-cap{font-size:13px;font-weight:800;letter-spacing:.06em;fill:#999}
+.wb-ln{fill:none;stroke:#C9C9C9;stroke-width:6;stroke-linecap:round}
+.wb-div{stroke:#E6E6E6;stroke-width:2;stroke-dasharray:6 6}
+.wb-q{font-size:19px;font-weight:800;fill:var(--ink);letter-spacing:-.03em}
+.wb-base{stroke:#DADADA;stroke-width:2;stroke-dasharray:5 6}
+.wb-ink{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.wb-hl{fill:var(--brand);transform-box:fill-box;transform-origin:left center;transform:scaleX(0)}
+.wb-ok circle{fill:var(--brand);stroke:var(--ink);stroke-width:2.4}.wb-ok path{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.wb-ok,.wb-tag,.wb-qm{transform-box:fill-box;transform-origin:center;opacity:0}
+.wb-stuck{fill:var(--brand);opacity:0;stroke:var(--ink);stroke-width:2.4}
+.wb-qm{font-size:30px;font-weight:900;fill:var(--ink);font-style:italic}
+.wb-tag rect{fill:var(--ink)}.wb-tag text{fill:var(--brand);font-size:17px;font-weight:800;text-anchor:middle}
+.wb-pen-b{fill:#fff;stroke:var(--ink);stroke-width:2.4;stroke-linejoin:round}.wb-pen-e{fill:var(--brand);stroke:var(--ink);stroke-width:2.4;stroke-linejoin:round}
+.wb-pen-w{fill:#F3E3C3;stroke:var(--ink);stroke-width:2.4;stroke-linejoin:round}.wb-pen-g{fill:var(--ink)}
+.wb-pen{transform:translate(470px,70px)}
+.wb-fig.play .wb-hl1{animation:wbHl1 var(--T) infinite}
+.wb-fig.play .wb-hl2{animation:wbHl2 var(--T) infinite}
+.wb-fig.play .wb-hl3{animation:wbHl3 var(--T) infinite}
+.wb-fig.play .wb-a1{animation:wbA1 var(--T) infinite linear}
+.wb-fig.play .wb-a2{animation:wbA2 var(--T) infinite linear}
+.wb-fig.play .wb-a3{animation:wbA3 var(--T) infinite linear}
+.wb-fig.play .wb-ok1{animation:wbOk1 var(--T) infinite}
+.wb-fig.play .wb-ok2{animation:wbOk2 var(--T) infinite}
+.wb-fig.play .wb-qm1{animation:wbQm1 var(--T) infinite}
+.wb-fig.play .wb-qm2{animation:wbQm2 var(--T) infinite}
+.wb-fig.play .wb-qm3{animation:wbQm3 var(--T) infinite}
+.wb-fig.play .wb-stuck{animation:wbStuck var(--T) infinite}
+.wb-fig.play .wb-tag{animation:wbTag var(--T) infinite}
+.wb-fig.play .wb-pen{animation:wbPen var(--T) infinite}
+@keyframes wbHl1{0%,2%{transform:scaleX(0)}7%,94%{transform:scaleX(1)}98%,100%{transform:scaleX(0)}}
+@keyframes wbHl2{0%,6%{transform:scaleX(0)}10%,94%{transform:scaleX(1)}98%,100%{transform:scaleX(0)}}
+@keyframes wbHl3{0%,9%{transform:scaleX(0)}13%,94%{transform:scaleX(1)}98%,100%{transform:scaleX(0)}}
+@keyframes wbA1{0%,18%{stroke-dashoffset:1;opacity:1}34%,94%{stroke-dashoffset:0;opacity:1}98%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:1;opacity:0}}
+@keyframes wbA2{0%,40%{stroke-dashoffset:1;opacity:1}56%,94%{stroke-dashoffset:0;opacity:1}98%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:1;opacity:0}}
+@keyframes wbA3{0%,62%{stroke-dashoffset:1;opacity:1}65%,94%{stroke-dashoffset:0;opacity:1}98%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:1;opacity:0}}
+@keyframes wbOk1{0%,34%{opacity:0;transform:scale(.3)}37%{opacity:1;transform:scale(1.2)}39%,94%{opacity:1;transform:scale(1)}98%,100%{opacity:0}}
+@keyframes wbOk2{0%,56%{opacity:0;transform:scale(.3)}59%{opacity:1;transform:scale(1.2)}61%,94%{opacity:1;transform:scale(1)}98%,100%{opacity:0}}
+@keyframes wbQm1{0%,66%{opacity:0;transform:translateY(8px)}68%,94%{opacity:1;transform:none}98%,100%{opacity:0}}
+@keyframes wbQm2{0%,68%{opacity:0;transform:translateY(8px)}70%,94%{opacity:1;transform:rotate(12deg)}98%,100%{opacity:0}}
+@keyframes wbQm3{0%,70%{opacity:0;transform:translateY(8px)}72%,94%{opacity:1;transform:rotate(-10deg)}98%,100%{opacity:0}}
+@keyframes wbStuck{0%,73%{opacity:0}76%{opacity:.9}79%{opacity:.55}82%,94%{opacity:.9}98%,100%{opacity:0}}
+@keyframes wbTag{0%,76%{opacity:0;transform:scale(.4) rotate(-12deg)}79%{opacity:1;transform:scale(1.12) rotate(-5deg)}81%,94%{opacity:1;transform:scale(1) rotate(-5deg)}98%,100%{opacity:0}}
+@keyframes wbPen{
+  0%,14%{transform:translate(470px,70px)}
+  18%{transform:translate(52px,206px)}
+  20%{transform:translate(95px,200px)}22%{transform:translate(140px,210px)}24%{transform:translate(185px,201px)}26%{transform:translate(230px,209px)}28%{transform:translate(275px,200px)}30%{transform:translate(320px,210px)}32%{transform:translate(360px,202px)}34%,37%{transform:translate(400px,206px)}
+  40%{transform:translate(52px,290px)}
+  42%{transform:translate(95px,284px)}44%{transform:translate(140px,294px)}46%{transform:translate(185px,285px)}48%{transform:translate(230px,293px)}50%{transform:translate(275px,284px)}52%{transform:translate(320px,294px)}54%{transform:translate(355px,286px)}56%,59%{transform:translate(386px,290px)}
+  62%{transform:translate(52px,382px)}65%{transform:translate(94px,382px)}
+  66%{transform:translate(98px,378px) rotate(-6deg)}67%{transform:translate(92px,384px) rotate(5deg)}68%{transform:translate(99px,379px) rotate(-5deg)}69%{transform:translate(93px,384px) rotate(4deg)}70%,94%{transform:translate(95px,382px)}
+  98%,100%{transform:translate(470px,70px)}}
+.wb-steps{max-width:520px;margin:16px auto 0}
+.wb-steps .f3,.wb-steps .f3:last-child{background:#fff;border-color:var(--border-light);transition:none}
+.wb-steps .f3 .n,.wb-steps .f3:last-child .n{color:var(--text-light)}
+.wb-fig.play + .wb-steps .f3:nth-child(1){animation:wbS1 var(--T,10s) infinite}
+.wb-fig.play + .wb-steps .f3:nth-child(2){animation:wbS2 var(--T,10s) infinite}
+.wb-fig.play + .wb-steps .f3:nth-child(3){animation:wbS3 var(--T,10s) infinite}
+.wb-steps{--T:10s}
+@keyframes wbS1{0%,15%{background:var(--brand);border-color:var(--ink)}17%,100%{background:#fff;border-color:var(--border-light)}}
+@keyframes wbS2{0%,15%{background:#fff;border-color:var(--border-light)}17%,61%{background:var(--brand);border-color:var(--ink)}63%,100%{background:#fff;border-color:var(--border-light)}}
+@keyframes wbS3{0%,61%{background:#fff;border-color:var(--border-light)}63%,95%{background:var(--brand);border-color:var(--ink)}97%,100%{background:#fff;border-color:var(--border-light)}}
+@media (prefers-reduced-motion:reduce){.wb-fig.play *,.wb-fig.play + .wb-steps .f3{animation:none!important}.wb-ink{stroke-dashoffset:0}.wb-hl{transform:none}.wb-ok,.wb-qm,.wb-tag{opacity:1}.wb-stuck{opacity:.9}}
 </style>
 </head>
 <body>
@@ -908,28 +976,10 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [3b] 방향 질문 — 열심히 vs 방향 -->
-<section class="sec bt sec-dir">
-  <div class="wrap">
-    <p class="pb-turn-q rv">열심히 달리는 거 말고<br><span class="em">지금 이 방향이 맞는지</span><br>생각해 본 적 있나요?</p>
-    <div class="dir-fig"><svg class="dr" viewBox="20 425 560 180" role="img" aria-label="이 방향이 맞나 고민하며 갈림길에 선 사람">
-<g class="dr-b">
-  <g class="dr-pop" style="--d:0s"><g transform="translate(300 590)"><circle class="dr-fig" cx="0" cy="-100" r="12"/><path class="dr-fig" d="M-7 -86C-17 -84 -21 -76 -24 -68L-30 -56C-32 -52 -27 -49 -24 -52L-14 -58L-12 -30L-11 -3C-11 1 -3 1 -3 -3L-1 -30H1L3 -3C3 1 11 1 11 -3L12 -30L13 -54L14 -40C14 -35 20 -35 20 -40L20 -58C20 -72 17 -84 7 -86Z"/></g></g>
-  <g class="dr-spin" style="--d:.2s"><path class="dr-rot" d="M280 456C282 446 292 442 300 446M297 438L301 446L293 449M320 452C318 462 308 466 300 462M303 470L299 462L307 459"/></g>
-  <g class="dr-pop dr-bubg" style="--d:.35s"><path class="dr-bub" d="M249 488L262 512L249 510"/><ellipse class="dr-bub" cx="170" cy="500" rx="82" ry="56"/><path class="dr-bubfix" d="M246 491L246 507"/><text class="dr-bt" x="170" y="493">이 방향이</text><text class="dr-bt" x="170" y="522">맞나…?</text></g>
-  <g class="dr-pa"><g class="dr-left" style="--d:.7s"><path class="dr-line dr-draw" pathLength="1" d="M266 578C200 577 120 579 42 578"/><path class="dr-head" d="M60 562L40 578L60 594"/></g></g>
-  <g class="dr-pb"><g class="dr-right" style="--d:.7s"><path class="dr-line dr-draw" pathLength="1" d="M334 578C400 577 480 579 558 578"/><path class="dr-head" d="M540 562L560 578L540 594"/></g></g>
-</g>
-</svg></div>
-  </div>
-</section>
-
-
 <!-- [8] 순서가 거꾸로 -->
 <section class="sec bg-w">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">벽에 막힌 진짜 이유</span><h2 class="h-sec">노력이 부족했던 게 아니라,<br><span class="em">건너뛴 순서가 있었어요.</span></h2>
-      <p class="sec-lead">다들 2단계부터 시작해요.<br>그런데 <strong>1단계를 건너뛰면</strong><br class="br-m"> 2단계는 아무리 해도 쌓이지 않아요.</p>
     </div>
     <div class="order cmp">
       <div class="ord rv"><span class="ord-k">다들 여기부터 해요</span><div class="ord-t">어떻게 팔지</div><ul><li>릴스·피드 올리기</li><li>광고 돌리기</li><li>강의 듣기</li><li>신메뉴 내기</li><li>가격 내리기</li><li>대행사 바꾸기</li></ul></div>
@@ -937,11 +987,6 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="body-text rv" style="max-width:860px;margin:var(--gap-lg) auto 0;text-align:center">
       <p>누구한테 팔지 안 정하고 릴스를 올리면, <strong>모두에게 하는 말</strong>이 돼요.<br>모두에게 하는 말은 아무한테도 안 꽂혀요.<br>그래서 조회수는 나와도 문의는 안 와요.</p>
-      <p>광고도, 할인도 똑같아요. 보는 사람은 늘어도 <strong>사는 사람은 안 늘어요.</strong><br>열심히 할수록 지치는 이유예요.</p>
-    </div>
-    <div class="vs cmp">
-      <div class="vs-c rv"><div class="vs-k">이게 없으면</div><ul><li>광고비만 늘어요</li><li>가격으로 싸워요</li><li>"거기 뭐 하는 데였지?"</li></ul></div>
-      <div class="vs-c hl rv rv-d1"><div class="vs-k">이게 있으면</div><ul><li>같은 광고비로 더 팔려요</li><li>비싸도 이유가 있어요</li><li>"아, 거기!" 하고 기억해요</li></ul></div>
     </div>
   </div>
 </section>
@@ -960,20 +1005,29 @@ a{color:inherit;text-decoration:none}
 <!-- [9] 질문 8개 -->
 <section class="sec bt bg-w">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">이 시리즈에서 하는 것</span><h2 class="h-sec">먼저 정할 것,<br><span class="em">질문 8개</span>로 정리했어요.</h2>
+    <div class="sec-head c rv"><span class="label">이 시리즈에서 하는 것</span><h2 class="h-sec">먼저 정할 것,<br><span class="em">질문 8개</span>로 정리했어요.</h2>
       <p class="sec-lead">컨설팅에서 실제로 효과 본 질문이에요.<br>다 답하면 그게 <strong>내 사업 기획서</strong>가 돼요.</p>
     </div>
-    <div class="q8-grid">
-      <div class="q8 rv"><span class="n">01</span><span class="t">나는 왜 이 일을 하나요?</span></div>
-      <div class="q8 rv rv-d1"><span class="n">02</span><span class="t">한 줄로, 뭐 하는 곳인가요?</span></div>
-      <div class="q8 rv"><span class="n">03</span><span class="t">누구한테 팔 건가요?</span></div>
-      <div class="q8 rv rv-d1"><span class="n">04</span><span class="t">손님은 나를 뭐랑 비교하나요?</span></div>
-      <div class="q8 rv"><span class="n">05</span><span class="t">손님이 나 대신 고르는 건 뭔가요?</span></div>
-      <div class="q8 rv rv-d1"><span class="n">06</span><span class="t">손님이 왜 나를 골라야 하나요?</span></div>
-      <div class="q8 rv"><span class="n">07</span><span class="t">뭐라고 말할 건가요?</span></div>
-      <div class="q8 rv rv-d1"><span class="n">08</span><span class="t">이번 달, 뭐부터 할 건가요?</span></div>
-    </div>
-    <div class="flow3 rv">
+    <div class="wb-fig rv"><svg class="wb" viewBox="0 0 520 440" role="img" aria-label="워크북을 읽고, 질문에 답을 쓰다가 막히는 칸이 내 문제라는 것을 보여주는 애니메이션">
+<rect class="wb-paper" x="20" y="14" width="480" height="412" rx="18"/>
+<text class="wb-cap" x="48" y="50">CHAPTER 05 · 읽기</text>
+<rect class="wb-hl wb-hl1" x="44" y="68" width="420" height="14" rx="3"/><rect class="wb-hl wb-hl2" x="44" y="88" width="390" height="14" rx="3"/><rect class="wb-hl wb-hl3" x="44" y="108" width="330" height="14" rx="3"/>
+<path class="wb-ln" d="M48 76H460M48 96H430M48 116H370"/>
+<path class="wb-div" d="M40 142H480"/>
+<text class="wb-q" x="48" y="178">Q1. 누구한테 팔 건가요?</text>
+<path class="wb-base" d="M48 218H440"/><path class="wb-ink wb-a1" pathLength="1" d="M52 206q7 -8 14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0"/>
+<g class="wb-ok wb-ok1"><circle cx="466" cy="204" r="15"/><path d="M459 204l5 5l9 -10"/></g>
+<text class="wb-q" x="48" y="262">Q2. 손님은 나를 뭐랑 비교하나요?</text>
+<path class="wb-base" d="M48 302H440"/><path class="wb-ink wb-a2" pathLength="1" d="M52 290q7 -8 14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0"/>
+<g class="wb-ok wb-ok2"><circle cx="466" cy="288" r="15"/><path d="M459 288l5 5l9 -10"/></g>
+<rect class="wb-stuck" x="34" y="320" width="452" height="96" rx="14"/>
+<text class="wb-q" x="48" y="352">Q3. 손님이 왜 나를 골라야 하나요?</text>
+<path class="wb-base" d="M48 394H440"/><path class="wb-ink wb-a3" pathLength="1" d="M52 382q7 -8 14 0t14 0t14 0"/>
+<text class="wb-qm wb-qm1" x="132" y="388">?</text><text class="wb-qm wb-qm2" x="160" y="372">?</text><text class="wb-qm wb-qm3" x="186" y="390">?</text>
+<g class="wb-tag"><rect x="318" y="300" width="166" height="38" rx="19"/><text x="401" y="325">여기가 내 문제!</text></g>
+<g class="wb-pen"><path class="wb-pen-b" d="M6 -16L44 -54L54 -44L16 -6Z"/><path class="wb-pen-e" d="M44 -54L50 -60Q53 -63 56 -60L60 -56Q63 -53 60 -50L54 -44Z"/><path class="wb-pen-w" d="M0 0L6 -16L16 -6Z"/><path class="wb-pen-g" d="M0 0L2.6 -6.8L6.8 -2.6Z"/></g>
+</svg></div>
+    <div class="flow3 wb-steps">
       <div class="f3"><div class="n">1</div><div class="t">읽고</div></div>
       <div class="f3"><div class="n">2</div><div class="t">직접 쓰고</div></div>
       <div class="f3"><div class="n">3</div><div class="t">막히면<br>거기가 문제</div></div>
@@ -1347,6 +1401,13 @@ a{color:inherit;text-decoration:none}
 /* 방향 질문 일러스트 — 화면에 들어오면 등장 */
 (function(){
   var f=document.querySelector('.dir-fig'); if(!f) return;
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:.35});
+  io.observe(f);
+})();
+
+/* 질문 8개 워크북 — 화면에 들어오면 재생 */
+(function(){
+  var f=document.querySelector('.wb-fig'); if(!f) return;
   var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:.35});
   io.observe(f);
 })();
