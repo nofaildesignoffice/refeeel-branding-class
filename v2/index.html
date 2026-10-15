@@ -765,6 +765,9 @@ a{color:inherit;text-decoration:none}
 .career-grid .cg-prof .author-profile-stats b{color:var(--ink)}
 .bc-root .career-grid .cg-prof + .career-row{border-top:0}
 @media(max-width:767px){.bc-root .story-split .career-row:first-child{padding-top:26px}.bc-root .story-split .cg-prof + .career-row{border-top:0}}
+
+/* 대표 소개 — 모바일에서 제목을 사진 아래 어두운 부분까지 올림 */
+@media(max-width:767px){.bc-root .story-split .story-head{position:relative;z-index:2;margin-top:-110px}}
 </style>
 </head>
 <body>
