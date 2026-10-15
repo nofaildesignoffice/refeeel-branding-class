@@ -907,7 +907,7 @@ a{color:inherit;text-decoration:none}
 .sec:has(.bone)+.sec{border-radius:28px 28px 0 0;box-shadow:0 -18px 40px -12px rgba(0,0,0,.12)}
 .bone.off{margin-bottom:0}
 .bone-defs{position:absolute;width:0;height:0}
-.bone-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center}
+.bone-pin{position:sticky;top:0;background:var(--bg-white);height:100vh;height:100svh;display:flex;align-items:center;justify-content:center}
 .bone .order.cmp{margin:0 auto!important;width:100%}
 .bone-goo{position:absolute;inset:0;filter:url(#bone-goo);pointer-events:none}
 .bone-goo i,.bone-goo .bone-dp{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);opacity:0;will-change:transform,width,height}
@@ -1060,7 +1060,7 @@ a{color:inherit;text-decoration:none}
       <p class="sec-lead">릴스, 광고, 할인보다 먼저 세웠어야 할 것.<br>바로 <strong>브랜드의 뼈대(=브랜드 기획)</strong>예요.</p>
     </div>
     <div class="bone" id="bone">
-      <svg class="bone-defs" aria-hidden="true"><filter id="bone-goo"><feGaussianBlur in="SourceGraphic" stdDeviation="13" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -11" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter></svg>
+      <svg class="bone-defs" aria-hidden="true"><filter id="bone-goo"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -11" result="g"/><feComposite in="SourceGraphic" in2="g" operator="atop"/></filter></svg>
       <div class="bone-pin">
         <div class="order cmp">
           <div class="ord rv"><span class="ord-k">다들 여기부터 해요</span><div class="ord-t">어떻게 팔지</div><ul><li>릴스·피드 올리기</li><li>광고 돌리기</li><li>강의 듣기</li><li>신메뉴 내기</li><li>가격 내리기</li><li>대행사 바꾸기</li></ul></div>
@@ -1519,7 +1519,7 @@ a{color:inherit;text-decoration:none}
     R.style.opacity=fr?1-fr:'';
     L.style.pointerEvents=R.style.pointerEvents=p>.16?'none':'';
     var t2=seg(p,.3,.56), t3=0;
-    var Dm=D*(1-.36*ez(t2))*(1-t3);
+    var Dm=D*(1-.46*ez(t2))*(1-t3);
     var bx=lerp(cr.x+cr.w/2,cx,t1), by=lerp(cr.y+cr.h/2,cy,t1);
     var bw=t2>0?Dm:lerp(cr.w,D,t1), bh=t2>0?Dm:lerp(cr.h,D,t1);
     if(t2===0 && t3>0){ bw=bh=D*(1-t3); }
