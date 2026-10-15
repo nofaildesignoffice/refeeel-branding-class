@@ -848,57 +848,28 @@ a{color:inherit;text-decoration:none}
 .career-grid .cg-prof img{width:clamp(68px,8vw,78px)!important;height:clamp(68px,8vw,78px)!important}
 .career-t{white-space:nowrap}
 
-/* [8a] 도미노 */
-.ch{display:grid;grid-template-columns:1fr;gap:clamp(36px,5vw,48px);max-width:880px;margin:clamp(36px,5vw,52px) auto 0}
-@media(min-width:768px){.ch{grid-template-columns:1fr 1fr;gap:28px;align-items:start}}
-.ch-col{display:flex;flex-direction:column;align-items:stretch}
-.ch-k{align-self:center;font-size:13px;font-weight:800;background:var(--ink);color:var(--brand);padding:6px 14px;border-radius:999px;margin-bottom:16px}
-.ch-st{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--ink);border-radius:16px;padding:14px 16px;box-shadow:3px 3px 0 var(--ink)}
-.ch-n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--brand);border:1.5px solid var(--ink);font-size:12.5px;font-weight:800;display:grid;place-items:center}
-.ch-st p,.ch-end p{font-size:clamp(15.5px,1.9vw,17px);line-height:1.45;letter-spacing:-.02em;word-break:keep-all}
-.ch-st b{font-weight:800;background:linear-gradient(transparent 60%,var(--brand) 60%)}
-.ch-ar{align-self:center;width:2px;height:22px;background:var(--ink);position:relative;margin:2px 0 8px}
-.ch-ar::after{content:'';position:absolute;left:50%;bottom:-6px;width:9px;height:9px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateX(-50%) rotate(45deg)}
-.ch-end{display:flex;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:16px;padding:18px 18px}
-.ch-end b{color:var(--brand);font-weight:800}
-.ch-x{flex:none;width:28px;height:28px;border-radius:50%;background:#E5484D;color:#fff;font-size:14px;font-weight:900;display:grid;place-items:center}
-.ch-res{max-width:880px;margin:clamp(28px,4vw,40px) auto 0;text-align:center;border:2px dashed var(--ink);border-radius:20px;padding:clamp(22px,3.6vw,30px) 18px;background:#fff}
-.ch-res p{font-size:clamp(19px,2.6vw,24px);font-weight:800;line-height:1.45;letter-spacing:-.03em;word-break:keep-all}
-.ch-res p b{background:linear-gradient(transparent 60%,var(--brand) 60%)}
-.ch-res span{display:block;margin-top:8px;font-size:14.5px;color:var(--text-gray)}
-/* 도미노 등장 */
-.sec-chain .ch-st,.sec-chain .ch-end{opacity:0;transform:translateY(-14px) rotate(-5deg);transform-origin:left bottom;transition:opacity .45s ease,transform .55s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--i)*.32s)}
-.sec-chain .ch-ar{opacity:0;transform:scaleY(0);transform-origin:top;transition:opacity .2s,transform .3s ease;transition-delay:calc(var(--i)*.32s + .22s)}
-.sec-chain .ch-col:nth-child(2) .ch-st,.sec-chain .ch-col:nth-child(2) .ch-end{transition-delay:calc(var(--i)*.32s + .5s)}
-.sec-chain .ch-col:nth-child(2) .ch-ar{transition-delay:calc(var(--i)*.32s + .72s)}
-.sec-chain .ch-col.play .ch-st,.sec-chain .ch-col.play .ch-end{opacity:1;transform:none}
-.sec-chain .ch-col.play .ch-ar{opacity:1;transform:none}
-.sec-chain .ch-col.play .ch-end{animation:chShake .5s ease calc(var(--i)*.32s + .6s) 1}
-.sec-chain .ch-col.play:nth-child(2) .ch-end{animation-delay:calc(var(--i)*.32s + 1.1s)}
-@keyframes chShake{0%,100%{translate:0}20%{translate:-6px}40%{translate:6px}60%{translate:-4px}80%{translate:3px}}
-/* 남는 돈 */
-.pf{max-width:880px;margin:clamp(64px,9vw,96px) auto 0;text-align:center}
-.pf-h{font-size:clamp(23px,3.4vw,32px);font-weight:800;line-height:1.4;letter-spacing:-.035em;word-break:keep-all}
-.pf-h b{font-weight:800}
-.pf-p{max-width:560px;margin:14px auto 0;font-size:var(--body-font-size);line-height:1.75;color:var(--text-gray);word-break:keep-all}
-.pf-p strong{color:var(--ink)}
-.pf-bars{display:flex;justify-content:center;gap:clamp(28px,8vw,72px);margin-top:clamp(28px,4vw,40px)}
-.pf-c{display:flex;flex-direction:column;align-items:center;width:clamp(130px,30vw,180px)}
-.pf-bar{width:clamp(96px,22vw,128px);height:clamp(220px,34vw,280px);display:flex;flex-direction:column;border:2px solid var(--ink);border-radius:14px;overflow:hidden;background:#fff}
-.pf-cost,.pf-net{display:flex;align-items:center;justify-content:center;flex:0 0 var(--h);transition:flex-basis 1.1s cubic-bezier(.2,.8,.2,1)}
-.pf-cost{background:#E6E6E2;color:#777}
-.pf-net{background:var(--brand);color:var(--brand-ink);border-top:2px solid var(--ink)}
-.pf-cost span,.pf-net span{font-size:clamp(12px,1.5vw,13.5px);font-weight:800;white-space:nowrap}
-.pf-bars:not(.play) .pf-net{flex-basis:0}.pf-bars:not(.play) .pf-cost{flex-basis:100%}
-.pf-bars:not(.play) .pf-net span{opacity:0}
-.pf-net span{transition:opacity .3s 1s}
-.pf-l{margin-top:14px;font-size:clamp(15px,1.9vw,17px);font-weight:800;letter-spacing:-.02em}
-.pf-c.good .pf-l{background:var(--ink);color:var(--brand);padding:4px 12px;border-radius:999px}
-.pf-s{margin-top:6px;font-size:13.5px;line-height:1.5;color:var(--text-gray);word-break:keep-all}
-.pf-note{margin-top:14px;font-size:12px;color:#aaa}
-.pf-end{margin-top:clamp(24px,3.4vw,32px);font-size:clamp(17px,2.2vw,20px);font-weight:700;line-height:1.6;letter-spacing:-.02em;word-break:keep-all}
-.pf-end b{font-weight:800}
-@media (prefers-reduced-motion:reduce){.sec-chain .ch-st,.sec-chain .ch-end,.sec-chain .ch-ar{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* [8a] 뼈대 없이 / 세우고 */
+.wo-grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:960px;margin:clamp(28px,4vw,40px) auto 0}
+@media(min-width:620px){.wo-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.wo-grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+.wo-c{background:#F4F4F1;border-radius:18px;padding:clamp(18px,2.6vw,22px)}
+.wo-t{display:inline-block;font-size:12.5px;font-weight:700;color:#777;background:#fff;border:1px solid #E2E2DC;border-radius:999px;padding:4px 11px}
+.wo-h{display:flex;align-items:flex-start;gap:9px;margin-top:12px;font-size:clamp(17.5px,2.2vw,19.5px);font-weight:800;line-height:1.4;letter-spacing:-.03em;word-break:keep-all;color:#555}
+.wo-h i{flex:none;width:24px;height:24px;margin-top:1px;border-radius:50%;background:#E5484D;color:#fff;font-style:normal;font-size:12px;font-weight:900;display:grid;place-items:center}
+.wo-d{margin-top:8px;font-size:14.5px;line-height:1.6;color:#888;word-break:keep-all}
+.sec-wo.good .wo-c{background:#fff;border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.sec-wo.good .wo-t{background:var(--ink);color:var(--brand);border-color:var(--ink)}
+.sec-wo.good .wo-h{color:var(--ink)}
+.sec-wo.good .wo-h i{background:var(--brand);color:var(--ink);border:1.5px solid var(--ink)}
+.sec-wo.good .wo-d{color:#555}
+.wo-turn{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:clamp(40px,6vw,56px)}
+.wo-turn span{font-size:clamp(17px,2.2vw,20px);font-weight:800;letter-spacing:-.03em;background:var(--ink);color:var(--brand);padding:10px 20px;border-radius:999px}
+.wo-turn::after{content:'';width:2px;height:40px;background:linear-gradient(var(--ink),transparent);animation:woDrop 1.6s ease-in-out infinite}
+@keyframes woDrop{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.wo-punch{max-width:960px;margin:clamp(36px,5vw,52px) auto 0;background:var(--ink);border-radius:20px;padding:clamp(24px,4vw,34px) 18px;text-align:center}
+.wo-punch p{color:#fff;font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.45;letter-spacing:-.035em;word-break:keep-all}
+.wo-punch b{font-weight:800}.wo-punch .em{color:var(--brand);background:none;padding:0}
 </style>
 </head>
 <body>
@@ -1052,28 +1023,21 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- [8a] 뼈대가 없으면 — 도미노 -->
-<section class="sec bt bg-t sec-chain">
+<!-- [8a] 뼈대 없이 하면 -->
+<section class="sec bt bg-t sec-wo">
   <div class="wrap">
-    <div class="sec-head c rv"><span class="label">뼈대가 없으면 생기는 일</span><h2 class="h-sec">첫 단추 하나가 비면,<br><span class="em">줄줄이 무너져요.</span></h2>
-      <p class="sec-lead">브랜드 기획 없이 달릴 때<br>실제로 벌어지는 일이에요.</p>
-    </div>
-    <div class="ch">
-      <div class="ch-col"><div class="ch-k">콘텐츠에서는</div><div class="ch-st" style="--i:0"><span class="ch-n">1</span><p><b>누구한테 팔지</b> 안 정했어요</p></div><div class="ch-ar" style="--i:0" aria-hidden="true"></div><div class="ch-st" style="--i:1"><span class="ch-n">2</span><p>그러니 <b>내 손님이 누군지</b> 흐릿해요</p></div><div class="ch-ar" style="--i:1" aria-hidden="true"></div><div class="ch-st" style="--i:2"><span class="ch-n">3</span><p>손님의 <b>진짜 고민</b>을 몰라요</p></div><div class="ch-ar" style="--i:2" aria-hidden="true"></div><div class="ch-st" style="--i:3"><span class="ch-n">4</span><p>그래서 <b>할 말</b>이 없어요</p></div><div class="ch-ar" style="--i:3" aria-hidden="true"></div><div class="ch-end" style="--i:4"><span class="ch-x" aria-hidden="true">✕</span><p>조회수는 나와도,<br><b>사는 사람</b>이 없어요</p></div></div>
-      <div class="ch-col"><div class="ch-k">가격에서는</div><div class="ch-st" style="--i:0"><span class="ch-n">1</span><p>손님의 <b>진짜 고민</b>을 몰라요</p></div><div class="ch-ar" style="--i:0" aria-hidden="true"></div><div class="ch-st" style="--i:1"><span class="ch-n">2</span><p>그러니 <b>나만의 이유</b>를 못 만들어요</p></div><div class="ch-ar" style="--i:1" aria-hidden="true"></div><div class="ch-st" style="--i:2"><span class="ch-n">3</span><p>손님 눈엔 <b>옆 가게랑 똑같아</b> 보여요</p></div><div class="ch-ar" style="--i:2" aria-hidden="true"></div><div class="ch-end" style="--i:3"><span class="ch-x" aria-hidden="true">✕</span><p>결국 <b>가격</b>으로만<br>싸우게 돼요</p></div></div>
-    </div>
-    <div class="ch-res"><p>이 상태에선 <b>광고비를 올려도</b><br>효율이 나오지 않아요.</p><span>밑 빠진 독에 물 붓기예요.</span></div>
+    <div class="sec-head c rv"><span class="label">뼈대 없이 하면</span><h2 class="h-sec">열심히 한 일들이,<br><span class="em">이렇게 돼요.</span></h2></div>
+    <div class="wo-grid"><div class="wo-c rv"><span class="wo-t">릴스·피드 올리기</span><div class="wo-h"><i aria-hidden="true">✕</i>조회수는 나와도 문의는 0건</div><p class="wo-d">누구한테 하는 말인지 없어서, 다들 보고 그냥 지나가요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">광고 돌리기</span><div class="wo-h"><i aria-hidden="true">✕</i>광고를 끄면 문의도 끊겨요</div><p class="wo-d">광고비만큼만 팔려요. 올릴수록 남는 게 줄어요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">강의 듣기</span><div class="wo-h"><i aria-hidden="true">✕</i>배운 대로 해도 안 돼요</div><p class="wo-d">남의 가게 공식이라 내 가게엔 안 맞아요.</p></div><div class="wo-c rv"><span class="wo-t">신메뉴 내기</span><div class="wo-h"><i aria-hidden="true">✕</i>메뉴만 늘고 손님은 그대로</div><p class="wo-d">손님이 진짜 원하는 걸 모르고 만들었으니까요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">가격 내리기</span><div class="wo-h"><i aria-hidden="true">✕</i>팔수록 남는 게 없어요</div><p class="wo-d">옆 가게랑 똑같아 보이니 가격으로만 비교돼요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">대행사 바꾸기</span><div class="wo-h"><i aria-hidden="true">✕</i>바꿔도 결과는 비슷해요</div><p class="wo-d">맡길 때 건넬 정답지가 없으니까요.</p></div></div>
+    <div class="wo-turn rv"><span>같은 일, 뼈대를 세우고 하면?</span></div>
+  </div>
+</section>
 
-    <div class="pf">
-      <h3 class="pf-h">광고는 <b>매출</b>을 키우고,<br><span class="em">브랜딩은 남는 돈을 키워요.</span></h3>
-      <p class="pf-p">광고로 매출은 키울 수 있어요. 그런데 광고비도 같이 늘어서, <strong>남는 돈엔 한계</strong>가 있어요. 매출이 커져도 남는 게 없으면 소용없죠.</p>
-      <div class="pf-bars">
-        <div class="pf-c"><div class="pf-bar"><div class="pf-cost" style="--h:84%"><span>광고비·비용</span></div><div class="pf-net" style="--h:16%"><span>남는 돈</span></div></div><div class="pf-l">광고만 키웠을 때</div><div class="pf-s">매출은 커져도 남는 건 조금</div></div>
-        <div class="pf-c good"><div class="pf-bar"><div class="pf-cost" style="--h:58%"><span>광고비·비용</span></div><div class="pf-net" style="--h:42%"><span>남는 돈</span></div></div><div class="pf-l">뼈대를 세웠을 때</div><div class="pf-s">같은 광고비로 더 팔려서 남는 돈 ↑</div></div>
-      </div>
-      <p class="pf-note">* 이해를 돕기 위한 예시 그래프예요.</p>
-      <p class="pf-end">뼈대가 서면 <b>나만의 이유</b>가 생기고,<br>같은 광고비로 더 팔려요. 그래서 <span class="em">남는 돈이 늘어나요.</span></p>
-    </div>
+<!-- [8a2] 뼈대를 세우고 하면 -->
+<section class="sec bt bg-w sec-wo good">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">뼈대를 세우고 하면</span><h2 class="h-sec">똑같은 일인데,<br><span class="em">결과가 달라져요.</span></h2></div>
+    <div class="wo-grid"><div class="wo-c rv"><span class="wo-t">릴스·피드 올리기</span><div class="wo-h"><i aria-hidden="true">✓</i>조회수가 적어도 문의가 와요</div><p class="wo-d">딱 그 사람한테 하는 말이라 "내 얘기네" 하고 연락해요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">광고 돌리기</span><div class="wo-h"><i aria-hidden="true">✓</i>같은 광고비로 더 팔려요</div><p class="wo-d">보여줄 사람과 할 말이 정해져 있어서 클릭이 구매로 이어져요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">강의 듣기</span><div class="wo-h"><i aria-hidden="true">✓</i>배운 걸 내 가게에 바로 써요</div><p class="wo-d">내 기준이 있으니 뭘 가져다 쓸지 골라져요.</p></div><div class="wo-c rv"><span class="wo-t">신메뉴 내기</span><div class="wo-h"><i aria-hidden="true">✓</i>하나를 내도 반응이 와요</div><p class="wo-d">손님의 진짜 고민을 풀어주는 메뉴라서요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">가격 내리기</span><div class="wo-h"><i aria-hidden="true">✓</i>비싸도 사는 이유가 생겨요</div><p class="wo-d">비교 기준이 '가격'에서 '나만의 이유'로 바뀌어요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">대행사 바꾸기</span><div class="wo-h"><i aria-hidden="true">✓</i>누구에게 맡겨도 같은 방향</div><p class="wo-d">정리된 한 장이면 직원·외주·AI가 같은 말을 해요.</p></div></div>
+    <div class="wo-punch rv"><p>광고는 <b>매출</b>을 키우고,<br>브랜딩은 <span class="em">남는 돈</span>을 키워요.</p></div>
   </div>
 </section>
 
@@ -1467,13 +1431,6 @@ a{color:inherit;text-decoration:none}
   io.observe(f);
 })();
 
-/* 도미노·남는 돈 — 화면에 들어오면 재생 */
-(function(){
-  document.querySelectorAll('.sec-chain .ch-col, .sec-chain .pf-bars').forEach(function(el){
-    var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ el.classList.add('play'); io.disconnect(); } },{threshold:.25});
-    io.observe(el);
-  });
-})();
 </script>
 </body>
 </html>
