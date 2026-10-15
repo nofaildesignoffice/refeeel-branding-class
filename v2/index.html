@@ -902,7 +902,9 @@ a{color:inherit;text-decoration:none}
 @media (prefers-reduced-motion:reduce){.wo-viz .a{animation:none!important}}
 
 /* [8] 뼈대 → 액체 원 → 세포 분열 */
-.bone{position:relative;height:330vh;margin-top:clamp(24px,4vw,40px);margin-bottom:-45vh}
+.bone{position:relative;height:360vh;margin-top:clamp(24px,4vw,40px);margin-bottom:-100vh}
+.bone+*,.sec:has(.bone)+.sec{position:relative;z-index:3}
+.sec:has(.bone)+.sec{border-radius:28px 28px 0 0;box-shadow:0 -18px 40px -12px rgba(0,0,0,.12)}
 .bone.off{margin-bottom:0}
 .bone-defs{position:absolute;width:0;height:0}
 .bone-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;justify-content:center}
@@ -1510,13 +1512,13 @@ a{color:inherit;text-decoration:none}
     var p=ps, cx=W/2, cy=H/2;
     var sq=Math.max(-.16,Math.min(.16,vel*22));   /* 스크롤 속도만큼 늘어남 */
     /* 1. 카드 → 액체 원 */
-    var fl=seg(p,.04,.16), fr=seg(p,.1,.16), t1=ez(seg(p,.12,.32)), fo=seg(p,.14,.2);
+    var fl=seg(p,.03,.12), fr=seg(p,.08,.13), t1=ez(seg(p,.1,.26)), fo=seg(p,.12,.17);
     if(p>0){ L.style.transition=R.style.transition='none'; }
     ord.style.opacity=fo?1-fo:'';
     L.style.opacity=fl?1-fl:''; L.style.transform=fl?'translateX('+(-40*fl)+'px)':'';
     R.style.opacity=fr?1-fr:'';
-    L.style.pointerEvents=R.style.pointerEvents=p>.2?'none':'';
-    var t2=seg(p,.36,.7), t3=ez(seg(p,.78,.92));
+    L.style.pointerEvents=R.style.pointerEvents=p>.16?'none':'';
+    var t2=seg(p,.3,.56), t3=0;
     var Dm=D*(1-.36*ez(t2))*(1-t3);
     var bx=lerp(cr.x+cr.w/2,cx,t1), by=lerp(cr.y+cr.h/2,cy,t1);
     var bw=t2>0?Dm:lerp(cr.w,D,t1), bh=t2>0?Dm:lerp(cr.h,D,t1);
@@ -1524,22 +1526,22 @@ a{color:inherit;text-decoration:none}
     /* 카드 모서리(px) → 출렁이는 원(%) */
     var rad = t1<.6 ? lerp(26,Math.min(bw,bh)/2,t1/.6)+'px' : wob(tm,0,lerp(0,9,(t1-.6)/.4)+6*Math.sin(Math.PI*t2));
     var breathe=1+.025*Math.sin(tm*.0024);
-    put(m,bx,by,bw,bh,rad,seg(p,.05,.12),(t1>.6?breathe:1)*(1-sq*.6),(t1>.6?1/breathe:1)*(1+sq),Math.sin(tm*.0007)*8);
-    var mo=seg(p,.26,.34)*(1-seg(p,.76,.83));
+    put(m,bx,by,bw,bh,rad,seg(p,.04,.1),(t1>.6?breathe:1)*(1-sq*.6),(t1>.6?1/breathe:1)*(1+sq),Math.sin(tm*.0007)*8);
+    var mo=seg(p,.2,.27);
     mt.style.fontSize=Math.max(20,D*.12)*(1-.2*ez(t2))+'px';
     mt.style.transform='translate('+bx+'px,'+by+'px) translate(-50%,-50%)'; mt.style.opacity=mo;
     /* 2. 분열 — 탄성 있게 떨어져 나오고, 사이에 물방울 다리가 생겼다 끊김 */
     for(var i=0;i<cs.length;i++){
-      var raw=seg(p,.36+i*.022,.62+i*.022), ti=back(raw), ang=(-90+i*60+Math.sin(tm*.0009+i)*4)*Math.PI/180;
+      var raw=seg(p,.3+i*.018,.5+i*.018), ti=back(raw), ang=(-90+i*60+Math.sin(tm*.0009+i)*4)*Math.PI/180;
       var drift=Math.sin(tm*.0016+i*2.1)*5*raw;
       var dist=(RR*ti+drift)*(1+.35*t3), sz=d*(.3+.7*ez(raw))*(1-t3);
       var x=cx+Math.cos(ang)*dist, y=cy+Math.sin(ang)*dist;
       var st=1+.22*Math.sin(Math.PI*raw);        /* 떨어질 때 바깥 방향으로 늘어남 */
-      put(cs[i],x,y,sz*st,sz/st,wob(tm,i*3.1,raw*10),p>.34&&sz>2?1:0,1,1,(-90+i*60));
+      put(cs[i],x,y,sz*st,sz/st,wob(tm,i*3.1,raw*10),p>.28&&sz>2?1:0,1,1,(-90+i*60));
       var dsz=d*.42*Math.sin(Math.PI*cl(raw*1.15))*(1-t3), dd=dist*.52;
       put(dps[i],cx+Math.cos(ang)*dd,cy+Math.sin(ang)*dd,dsz,dsz,'50%',dsz>2?1:0);
       ls[i].style.transform='translate('+x+'px,'+y+'px) translate(-50%,-50%) scale('+(.85+.15*ez(raw))+')';
-      ls[i].style.opacity=seg(p,.6+i*.015,.7+i*.015)*(1-seg(p,.76,.82));
+      ls[i].style.opacity=seg(p,.48+i*.012,.56+i*.012);
     }
   }
   function init(){ L.style.transform=''; measure(); }
