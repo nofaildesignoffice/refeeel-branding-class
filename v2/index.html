@@ -1512,17 +1512,17 @@ a{color:inherit;text-decoration:none}
     var bx=lerp(cr.x+cr.w/2,cx,t1), by=lerp(cr.y+cr.h/2,cy,t1);
     var bw=t2>0?Dm:lerp(cr.w,D,t1), bh=t2>0?Dm:lerp(cr.h,D,t1);
     if(t2===0 && t3>0){ bw=bh=D*(1-t3); }
-    put(m,bx,by,bw,bh,lerp(26,Math.max(bw,bh)/2,t1),seg(p,.05,.12)*(1-t3));
-    var mo=seg(p,.26,.34)*(1-seg(p,.8,.9));
+    put(m,bx,by,bw,bh,lerp(26,Math.max(bw,bh)/2,t1),seg(p,.05,.12));
+    var mo=seg(p,.26,.34)*(1-seg(p,.76,.83));
     mt.style.fontSize=Math.max(20,D*.12)*(1-.2*t2)+'px';
     mt.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; mt.style.opacity=mo;
     for(var i=0;i<cs.length;i++){
       var ti=ez(seg(p,.36+i*.02,.6+i*.02)), ang=(-90+i*60)*Math.PI/180;
       var dist=RR*ti*(1+.3*t3), sz=d*(.3+.7*ti)*(1-t3);
       var x=cx+Math.cos(ang)*dist, y=cy+Math.sin(ang)*dist;
-      put(cs[i],x,y,sz,sz,sz/2,p>.34?(1-t3):0);
+      put(cs[i],x,y,sz,sz,sz/2,p>.34&&sz>2?1:0);
       ls[i].style.transform='translate('+x+'px,'+y+'px) translate(-50%,-50%) scale('+(.85+.15*ti)+')';
-      ls[i].style.opacity=seg(p,.6+i*.015,.7+i*.015)*(1-seg(p,.8,.88));
+      ls[i].style.opacity=seg(p,.6+i*.015,.7+i*.015)*(1-seg(p,.76,.82));
     }
   }
   function req(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
