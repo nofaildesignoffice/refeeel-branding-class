@@ -1893,7 +1893,7 @@ a{color:inherit;text-decoration:none}
 /* 거대한 벽 — 화면에 들어오면 벽돌이 아래부터 쌓임 */
 (function(){
   var f=document.querySelector('.wall-fig'); if(!f) return;
-  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:.3});
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:0,rootMargin:'0px 0px -50% 0px'});
   io.observe(f);
 })();
 
