@@ -1094,7 +1094,7 @@ a{color:inherit;text-decoration:none}
 .ck-n{color:var(--ink)!important}
 .ck-msg{color:#555!important;font-size:clamp(15px,1.8vw,16.5px)!important;line-height:1.7!important}
 .ck-msg b{color:var(--ink)!important;background:linear-gradient(transparent 60%,var(--brand) 60%);padding:0 2px}
-.ck-lead{display:block;margin-bottom:8px;font-size:clamp(20px,3vw,24px);font-weight:800;line-height:1.4;letter-spacing:-.03em;color:var(--ink)}
+.ck-big{display:block;margin-bottom:8px;font-size:clamp(20px,3vw,24px);font-weight:800;line-height:1.4;letter-spacing:-.03em;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -1612,7 +1612,7 @@ a{color:inherit;text-decoration:none}
     var n=sec.querySelectorAll('.ck-item[aria-pressed="true"]').length; nEl.textContent=n; sec.querySelector('.ck-pn').textContent=n; sec.querySelector('.ck-pill').classList.toggle('ok',n>=3);
     if(n===0) msg.textContent='해당하는 문장을 눌러 체크해 보세요.';
     else if(n<3) msg.innerHTML='<b>'+(3-n)+'개</b>만 더 해당되면, 이 시리즈가 필요한 분이에요.';
-    else msg.innerHTML='<strong class="ck-lead"><b>'+n+'개</b>, 노력이 부족해서가 아니에요.</strong>먼저 읽은 사장님들도 같은 문장에서 멈췄고,<br>질문 8개에 답하며 하나씩 풀어냈어요.<br>이제 내 답을 쓸 차례예요.';
+    else msg.innerHTML='<strong class="ck-big"><b>'+n+'개</b>, 노력이 부족해서가 아니에요.</strong>먼저 읽은 사장님들도 같은 문장에서 멈췄고,<br>질문 8개에 답하며 하나씩 풀어냈어요.<br>이제 내 답을 쓸 차례예요.';
     if(n>=3&&was<3){ box.classList.remove('hit'); void box.offsetWidth; box.classList.add('hit'); }
     was=n;
   }
