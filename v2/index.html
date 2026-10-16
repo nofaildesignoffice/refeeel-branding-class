@@ -903,8 +903,7 @@ a{color:inherit;text-decoration:none}
 
 /* [8] 뼈대 → 액체 원 → 세포 분열 */
 .bone{position:relative;height:420vh;margin-top:0;margin-bottom:-100vh}
-.bone+*,.sec:has(.bone)+.sec{position:relative;z-index:3}
-.sec:has(.bone)+.sec{border-radius:28px 28px 0 0;box-shadow:0 -18px 40px -12px rgba(0,0,0,.12)}
+.bone+*{position:relative;z-index:3}
 .bone.off{margin-bottom:0}
 .bone-defs{position:absolute;width:0;height:0}
 .bone-pin{position:sticky;top:0;background:var(--pinbg,#fff);box-shadow:0 0 0 100vmax var(--pinbg,#fff);clip-path:inset(0 -100vmax);height:100vh;height:100svh;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(52px,7vw,64px);box-sizing:border-box}
@@ -934,9 +933,16 @@ a{color:inherit;text-decoration:none}
 .wo-was{margin-top:12px;font-size:14.5px;line-height:1.5;color:#9A9A92;text-decoration:line-through;text-decoration-color:rgba(0,0,0,.25);word-break:keep-all;transition:color .3s}
 .wo-was+.wo-h{margin-top:4px}
 .wo-c.inf .wo-k,.wo-c.inf .wo-was{color:#4A4A40}
-.wo-fill{position:absolute!important;left:0;top:0;z-index:0!important;width:10px;height:10px;background:var(--brand);transform:scale(0);pointer-events:none;will-change:transform}
+.wo-fill{position:absolute!important;inset:-40px;z-index:0!important;pointer-events:none;filter:url(#bone-goo)}
+.wo-fill i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);opacity:0;will-change:transform,width,height}
 .flow{position:fixed;inset:0;z-index:6;pointer-events:none;filter:url(#bone-goo);display:none}
 .flow i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);will-change:transform,width,height}
+
+/* 카드를 뼈대 무대와 같은 어두운 섹션 안에 */
+.wo-after{position:relative}
+.wo-after::before{content:'';position:absolute;z-index:-1;top:100vh;bottom:calc(-1*var(--sec-y));left:-100vmax;right:-100vmax;background:#262626 radial-gradient(rgba(255,255,255,.09) 1px,transparent 1.5px) 0 0/22px 22px}
+.sec-wo.good.wo-after .wo-c{border-color:#262626;box-shadow:0 14px 36px rgba(0,0,0,.4)}
+.bone.off+.wo-after::before{top:0}
 </style>
 </head>
 <body>
@@ -1092,14 +1098,7 @@ a{color:inherit;text-decoration:none}
         <div class="bone-txt" aria-hidden="true"><b>브랜드<br>뼈대</b><span>정체성</span><span>포지셔닝</span><span>스토리</span><span>타겟</span><span>경쟁력</span><span>차별성</span><em class="bone-cap">뼈대를 세우고 하면,<br>똑같은 일도 <span class="em">결과가 달라져요.</span></em></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- [8a2] 뼈대를 세우고 하면 -->
-<section class="sec bt bg-t sec-wo good">
-  <div class="wrap">
-    <div class="wo-grid"><div class="wo-c rv"><div class="wo-top"><span class="wo-t">릴스·피드 올리기</span><span class="wo-k">콘텐츠</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 70 C80 67,130 60,186 54" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="54.0" r="3"/><text x="193" y="57.5">조회</text></g><path d="M12 72 C70 66,120 42,186 22 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 72 C70 66,120 42,186 22" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><p class="wo-was">조회수만 높고 문의가 안 들어왔었지만</p><div class="wo-h"><i aria-hidden="true">✓</i>조회수가 낮더라도 문의가 쏟아지게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">광고 돌리기</span><span class="wo-k">마케팅</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><rect x="50" y="10" width="70" height="64"/><text x="85.0" y="21">광고 ON</text></g><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22 L186 74 L12 74Z" class="ar"/><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 광고비로 더 많이 팔리게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">가격 경쟁</span><span class="wo-k">경쟁력</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 60 H70 V53 H130 V46 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="46" r="3"/><text x="193" y="49.5">가격</text></g><path d="M12 70 C70 64,120 42,186 20 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 70 C70 64,120 42,186 20" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="20" r="3"/><text x="193" y="23.5">선택</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>가격을 높이더라도 고객이 경쟁사가 아닌 나를 선택하게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">순수익 최적화</span><span class="wo-k">비용 최적화</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 30 C70 29,120 31,186 30" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="30" r="3"/><text x="193" y="33.5">매출</text></g><path d="M12 70 C70 67,120 60,186 50 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 70 C70 67,120 60,186 50" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="50" r="3"/><text x="193" y="53.5">순수익</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 매출 볼륨에서 순수익률이 올라가게 되죠.</div></div></div>
-    <div class="wo-punch rv"><p>광고는 <b>매출</b>을 키우고,<br>브랜딩은 <span class="em">남는 돈</span>을 키워요.</p></div>
+    <div class="sec-wo good wo-after"><div class="wo-grid"><div class="wo-c rv"><div class="wo-top"><span class="wo-t">릴스·피드 올리기</span><span class="wo-k">콘텐츠</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 70 C80 67,130 60,186 54" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="54.0" r="3"/><text x="193" y="57.5">조회</text></g><path d="M12 72 C70 66,120 42,186 22 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 72 C70 66,120 42,186 22" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><p class="wo-was">조회수만 높고 문의가 안 들어왔었지만</p><div class="wo-h"><i aria-hidden="true">✓</i>조회수가 낮더라도 문의가 쏟아지게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">광고 돌리기</span><span class="wo-k">마케팅</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><rect x="50" y="10" width="70" height="64"/><text x="85.0" y="21">광고 ON</text></g><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22 L186 74 L12 74Z" class="ar"/><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 광고비로 더 많이 팔리게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">가격 경쟁</span><span class="wo-k">경쟁력</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 60 H70 V53 H130 V46 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="46" r="3"/><text x="193" y="49.5">가격</text></g><path d="M12 70 C70 64,120 42,186 20 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 70 C70 64,120 42,186 20" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="20" r="3"/><text x="193" y="23.5">선택</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>가격을 높이더라도 고객이 경쟁사가 아닌 나를 선택하게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">순수익 최적화</span><span class="wo-k">비용 최적화</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 30 C70 29,120 31,186 30" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="30" r="3"/><text x="193" y="33.5">매출</text></g><path d="M12 70 C70 67,120 60,186 50 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 70 C70 67,120 60,186 50" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="50" r="3"/><text x="193" y="53.5">순수익</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 매출 볼륨에서 순수익률이 올라가게 되죠.</div></div></div></div>
   </div>
 </section>
 
@@ -1506,7 +1505,7 @@ a{color:inherit;text-decoration:none}
   var sec=document.querySelector('.sec-wo.good'), wc=sec?sec.querySelectorAll('.wo-c'):[], fills=[], flowEl=null, fb=null, trs=[], fon=false, bpx=0, bpy=0, bsz=0, lpx=0, lpy=0, sa=0;
   if(sec){ flowEl=document.createElement('div'); flowEl.className='flow'; flowEl.setAttribute('aria-hidden','true'); fb=document.createElement('i'); flowEl.appendChild(fb);
     for(k=0;k<3;k++){ var te=document.createElement('i'); flowEl.appendChild(te); trs.push({el:te,x:0,y:0,f:[.62,.44,.3][k]}); } sec.appendChild(flowEl);
-    for(k=0;k<wc.length;k++){ var fe=document.createElement('i'); fe.className='wo-fill'; fe.setAttribute('aria-hidden','true'); wc[k].insertBefore(fe,wc[k].firstChild); fills.push(fe); } }
+    for(k=0;k<wc.length;k++){ var fe=document.createElement('div'); fe.className='wo-fill'; fe.setAttribute('aria-hidden','true'); for(var q=0;q<4;q++) fe.appendChild(document.createElement('i')); wc[k].insertBefore(fe,wc[k].firstChild); fills.push(fe.children); } }
   var W,H,cr,D,d,RR, ps=0, pv=0, vel=0, run=false, last=0;
   function cl(v){ return v<0?0:v>1?1:v; }
   function seg(p,a,b){ return cl((p-a)/(b-a)); }
@@ -1539,10 +1538,25 @@ a{color:inherit;text-decoration:none}
     function cin(i){ var r=rs[i], o=10; return i%2?[r.right-o,r.top+o]:[r.left+o,r.top+o]; }
     function cout(i){ var r=rs[i], o=10; return i%2?[r.left+o,r.bottom-o]:[r.right-o,r.bottom-o]; }
     for(i=0;i<n;i++){
-      var fs=ez(seg(us[i],.02,.44)), r=rs[i], c=cin(i), S=2.2*Math.hypot(r.width,r.height);
-      fills[i].style.width=fills[i].style.height=S+'px'; fills[i].style.borderRadius=wob(tm,i*2.3,fs<1?9:0);
-      fills[i].style.transform='translate('+(c[0]-r.left-S/2)+'px,'+(c[1]-r.top-S/2)+'px) scale('+fs+')';
+      /* 닿은 모서리에서 액체가 손가락처럼 가장자리를 타고 퍼지며 카드 전체를 삼킴 (goo로 하나처럼 붙음) */
+      var ui=us[i], r=rs[i], w=r.width, h=r.height, c=cin(i), P=40, x0=c[0]-r.left+P, y0=c[1]-r.top+P;
+      var xo=(i%2?10:w-10)+P, yo=h-10+P, fs=ez(seg(ui,.04,.42)), tf=ez(seg(ui,0,.26)), S=2.2*Math.hypot(w,h), F=fills[i];
+      var grow=cl(ui/.06)*(ui<.5?1:1), fz=Math.min(w,h)*.62*grow;
+      put(F[0],x0,y0,S*fs,S*fs,wob(tm,i*2.3,fs<1?9:0),fs>0?1:0);
+      put(F[1],lerp(x0,xo,tf),y0,fz,fz*.8,wob(tm,i+1,12),ui>0?1:0);
+      put(F[2],x0,lerp(y0,yo,tf),fz*.8,fz,wob(tm,i+2,12),ui>0?1:0);
+      put(F[3],lerp(x0,(w/2+P),tf*.9),lerp(y0,(h/2+P),tf*.9),fz*1.1,fz*1.1,wob(tm,i+3,12),ui>0?1:0);
       wc[i].classList.toggle('inf',fs>.55);
+      /* 닿는 순간·빠져나가는 순간 카드가 말랑하게 출렁 */
+      var hit=Math.sin(Math.PI*seg(ui,0,.22)), out=Math.sin(Math.PI*seg(ui,.46,.64)), co2=cout(i);
+      if(wc[i].classList.contains('on')){
+        if(hit>0||out>0){
+          wc[i].style.transition='none';
+          var oc=hit>=out?c:co2, sk=hit>=out?hit:out*.6;
+          wc[i].style.transformOrigin=(oc[0]-r.left)+'px '+(oc[1]-r.top)+'px';
+          wc[i].style.transform='scale('+(1+.035*sk)+','+(1-.025*sk)+')';
+        } else if(wc[i].style.transform){ wc[i].style.transform=''; }
+      }
     }
     if(!hand){ if(fon){ flowEl.style.display='none'; fon=false; } return; }
     var tx,ty,ts, db=Math.max(56,Math.min(84,innerWidth*.16)), u0=us[0];
