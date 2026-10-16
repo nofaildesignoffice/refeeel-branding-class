@@ -1394,6 +1394,16 @@ a{color:inherit;text-decoration:none}
 .bp-ls{display:flex!important;justify-content:space-between;height:auto!important;margin:16px 0 0!important}
 .bp-ml{position:static!important;transform:none!important;font-size:12.5px}
 .bp-knob{left:calc(100% - 7px)}
+
+/* 데스크탑 — 가운데 정렬·본문폭 800px */
+@media(min-width:900px){
+  .bp-sec>.wrap,.cv-sec>.wrap{max-width:800px!important}
+  .bp-sec .sec-head,.cv-sec .sec-head,.rvf-head,.cost-sec .sec-head{text-align:center!important}
+  .bp-sec .sec-lead,.cv-sec .sec-lead,.cost-sec .sec-lead{margin-left:auto!important;margin-right:auto!important}
+}
+
+/* FAQ — 데스크탑 본문폭 800px */
+@media(min-width:900px){.faq-sec>.wrap{max-width:800px!important}}
 </style>
 </head>
 <body>
@@ -1604,7 +1614,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [15] 읽고 끝나는 책? -->
-<section class="sec bt bg-w">
+<section class="bp-sec sec bt bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">이런 걱정 드시죠</span><h2 class="h-sec">"이것도 결국<br class="br-m"> 읽고 끝나는 글 아니에요?"</h2>
       <p class="sec-lead"><strong>단순히 이론만 전달하지 않아요.</strong><br>읽고 질문에 답하면서 Chapter 09까지 마치면<br>브랜드 뼈대가 생기고, <strong>무엇을, 왜, 어떻게 해야 할지</strong> 보여요.</p></div>
@@ -1618,7 +1628,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [16] 업종 -->
-<section class="sec bt bg-t">
+<section class="cv-sec sec bt bg-t">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">이런 걱정도요</span><h2 class="h-sec">"저에게도<br class="br-m"> 효과가 있을까요?"</h2><p class="sec-lead">업종도, 규모도 상관없어요.<br>누구한테, 뭘, 왜 파는지는 <strong>어떤 사업이든 먼저 정해야 하거든요.</strong></p></div>
     <div class="cv rv rv-d1">
@@ -1663,9 +1673,9 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [20] 가격 -->
-<section class="sec-price bg-w">
+<section class="cost-sec sec-price bg-w">
   <div class="wrap">
-    <div class="sec-head rv"><h2 class="h-sec">더 쓰기 전에,<br><span class="em">어디에 쓸지부터.</span></h2><p class="sec-lead">방향 없이 하나씩 해보면, 보통 이만큼 들어요.</p></div>
+    <div class="sec-head rv"><h2 class="h-sec">더 쓰기 전에,<br><span class="em">어디에 쓸지부터.</span></h2><p class="sec-lead">브랜드 뼈대를 잡으면 매출만이 아니라,<br>앞으로 들어갈 시간과 돈을 아낄 수 있어요.</p></div>
     <div class="cost rv">
       <div class="cost-row">
         <div class="cost-k"><b>뼈대 없이 하나씩 해볼 때</b><span>약 6개월</span></div>
@@ -1697,9 +1707,9 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [21] FAQ -->
-<section class="sec bt bg-w">
+<section class="faq-sec sec bt bg-w">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">자주 묻는 질문</span><h2 class="h-sec">궁금한 거,<br>미리 답해드려요</h2></div>
+    <div class="sec-head c rv"><span class="label">자주 묻는 질문</span><h2 class="h-sec">궁금한 거,<br>미리 답해드려요</h2></div>
     <div class="faq-item rv"><div class="faq-q">어떤 형식이에요? 영상 강의인가요?</div><div class="faq-a">아니요, 온라인으로 읽는 글이에요. 내 속도대로 읽고, 챕터 끝 워크북에 바로 내 답을 쓰면 돼요.</div></div>
     <div class="faq-item rv"><div class="faq-q">브랜딩을 하나도 몰라도 괜찮나요?</div><div class="faq-a">네. 먼저 읽은 사장님들도 대부분 처음이었어요. 어려운 용어 없이, 질문을 따라 내 답만 쓰면 돼요.</div></div>
     <div class="faq-item rv"><div class="faq-q">이미 브랜딩을 해봤는데도 도움이 될까요?</div><div class="faq-a">네. 질문에 답하다 보면 내 답이 어디서 흔들리는지 바로 보여요. 정리돼 있다고 생각한 부분이 제일 많이 바뀌어요.</div></div>
