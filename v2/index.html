@@ -23,6 +23,7 @@
    섹션 교차는 흰색 ↔ 옅은 라임 틴트(#FBFDEF). 큰 전환 지점만 어두운 면(#1A1A1A). */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 html,body{overscroll-behavior:none !important}
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -776,7 +777,7 @@ a{color:inherit;text-decoration:none}
 .wb-fig{max-width:520px;margin:clamp(24px,4vw,36px) auto 0}
 .wb{display:block;width:100%;height:auto;overflow:visible}
 .wb *{--T:10s}
-.wb-paper{fill:#fff;stroke:var(--ink);stroke-width:3}
+.wb-paper{fill:url(#wbPg);stroke:#E6E5DE;stroke-width:1;filter:url(#wbSh)}
 .wb-cap{font-size:13px;font-weight:800;letter-spacing:.06em;fill:#999}
 .wb-ln{fill:none;stroke:#BDBDBD;stroke-width:5;stroke-linecap:round}
 .wb-div{stroke:#E6E6E6;stroke-width:2;stroke-dasharray:6 6}
@@ -831,14 +832,14 @@ a{color:inherit;text-decoration:none}
 .wb-steps{max-width:520px;margin:16px auto 0}
 .wb-steps .f3,.wb-steps .f3:last-child{background:#fff;border-color:var(--border-light);transition:none}
 .wb-steps .f3 .n,.wb-steps .f3:last-child .n{color:var(--text-light)}
-.wb-fig.play + .wb-steps .f3:nth-child(1){animation:wbS1 var(--T,10s) infinite}
-.wb-fig.play + .wb-steps .f3:nth-child(2){animation:wbS2 var(--T,10s) infinite}
-.wb-fig.play + .wb-steps .f3:nth-child(3){animation:wbS3 var(--T,10s) infinite}
+.wb-steps.play .f3:nth-child(1){animation:wbS1 var(--T,10s) infinite}
+.wb-steps.play .f3:nth-child(2){animation:wbS2 var(--T,10s) infinite}
+.wb-steps.play .f3:nth-child(3){animation:wbS3 var(--T,10s) infinite}
 .wb-steps{--T:10s}
 @keyframes wbS1{0%,15%{background:var(--brand);border-color:var(--ink)}17%,100%{background:#fff;border-color:var(--border-light)}}
 @keyframes wbS2{0%,15%{background:#fff;border-color:var(--border-light)}17%,61%{background:var(--brand);border-color:var(--ink)}63%,100%{background:#fff;border-color:var(--border-light)}}
 @keyframes wbS3{0%,61%{background:#fff;border-color:var(--border-light)}63%,95%{background:var(--brand);border-color:var(--ink)}97%,100%{background:#fff;border-color:var(--border-light)}}
-@media (prefers-reduced-motion:reduce){.wb-fig.play *,.wb-fig.play + .wb-steps .f3{animation:none!important}.wb-ink{stroke-dashoffset:0;opacity:1}.wb-hl{transform:none}.wb-ok,.wb-qm,.wb-tag{opacity:1}.wb-stuck{opacity:.9}}
+@media (prefers-reduced-motion:reduce){.wb-fig.play *,.wb-steps.play .f3{animation:none!important}.wb-cv{transform:scaleX(0)}.wb-ink{stroke-dashoffset:0;opacity:1}.wb-hl{transform:none}.wb-ok,.wb-qm,.wb-tag{opacity:1}.wb-stuck{opacity:.9}}
 @media(max-width:767px){.order.cmp .ord.first li{white-space:normal;word-break:keep-all}}
 .order.cmp{margin-top:clamp(80px,10vw,104px)!important;margin-bottom:0!important}
 .bc-root .career-grid .career-row{flex-direction:column!important;align-items:flex-start!important;gap:6px!important}
@@ -1112,6 +1113,40 @@ a{color:inherit;text-decoration:none}
 .ui-btn{color:#fff!important}
 .bb.me .bb-t{fill:#fff!important}
 .st.me .st-nm{fill:#fff!important}
+
+/* 워크북 — 사실적인 종이·스프링·손글씨 */
+.wb-back{fill:#F6F5F0;stroke:#E4E3DC;stroke-width:1}.wb-back2{fill:#EFEEE8;stroke:#E0DFD8;stroke-width:1}
+.wb-hole{fill:#E7E6E0;stroke:#D6D5CE;stroke-width:.8}
+.wb-ring{fill:none;stroke:url(#wbRg);stroke-width:3;stroke-linecap:round}
+.wb-cap{font-size:12px!important;letter-spacing:.08em!important;fill:#A3A39C!important}
+.wb-tx{font-size:13.5px;font-weight:500;fill:#55554F;letter-spacing:-.02em}
+.wb-hl{fill:#E6F23A!important;opacity:.55!important;mix-blend-mode:multiply}
+.wb-div{stroke:#E8E7E1!important;stroke-dasharray:none!important;stroke-width:1!important}
+.wb-q{font-size:18px!important;font-weight:700!important}
+.wb-base{stroke:#DCDBD4!important;stroke-dasharray:none!important;stroke-width:1.2!important}
+.wb-hand{font-family:'Nanum Pen Script',cursive;font-size:29px;fill:#23324A;letter-spacing:.01em}
+.wb-cv{fill:#FDFCF8;transform-box:fill-box;transform-origin:right center}
+.wb-fig.play .wb-c1{animation:wbC1 var(--T) infinite linear}
+.wb-fig.play .wb-c2{animation:wbC2 var(--T) infinite linear}
+.wb-fig.play .wb-c3{animation:wbC3 var(--T) infinite linear}
+@keyframes wbC1{0%,18%{transform:scaleX(1)}34%,94%{transform:scaleX(0)}98%,100%{transform:scaleX(1)}}
+@keyframes wbC2{0%,40%{transform:scaleX(1)}56%,94%{transform:scaleX(0)}98%,100%{transform:scaleX(1)}}
+@keyframes wbC3{0%,62%{transform:scaleX(1)}65%,94%{transform:scaleX(0)}98%,100%{transform:scaleX(1)}}
+.wb-ok circle{fill:var(--brand);stroke:none!important}.wb-ok path{stroke-width:2.4!important}
+.wb-stuck{fill:#EEF7A0!important;stroke:none!important}
+.wb-qm{font-family:'Nanum Pen Script',cursive;font-style:normal!important;font-weight:400!important;font-size:38px!important;fill:#23324A!important}
+.wb-tag rect{filter:drop-shadow(0 6px 10px rgba(0,0,0,.18))}
+.wb-pen-b{fill:url(#wbBr)!important;stroke:none!important}
+.wb-pen-c{fill:url(#wbMt);stroke:none}
+.wb-pen-e{fill:#2A2A28!important;stroke:none!important}
+.wb-pen-w{fill:url(#wbMt)!important;stroke:none!important}.wb-pen-g{fill:#111!important}
+/* 단계 — 원형, 제목 바로 아래 */
+.wb-steps{display:flex!important;justify-content:center;align-items:center;max-width:440px;margin:clamp(20px,3vw,28px) auto 0!important}
+.wb-steps .f3{position:relative;flex:none;width:clamp(88px,23vw,108px);aspect-ratio:1;border-radius:50%!important;padding:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center;border-width:1.5px!important}
+.wb-steps .f3+.f3{margin-left:clamp(18px,4vw,30px)}
+.wb-steps .f3+.f3::before{content:'';position:absolute;right:calc(100% + 4px);top:50%;width:clamp(10px,2.6vw,22px);height:1.5px;background:#C9C9C2}
+.wb-steps .f3 .n{margin-bottom:2px!important;font-size:11px!important}
+.wb-steps .f3 .t{font-size:clamp(13.5px,3.4vw,16px)!important;line-height:1.3!important}
 </style>
 </head>
 <body>
@@ -1289,30 +1324,12 @@ a{color:inherit;text-decoration:none}
     <div class="sec-head c rv"><span class="label">이 시리즈에서 하는 것</span><h2 class="h-sec">먼저 정할 것,<br><span class="em">질문 8개</span>로 정리했어요.</h2>
       <p class="sec-lead">컨설팅에서 실제로 효과 본 질문이에요.<br>다 답하면 그게 <strong>내 브랜드의 뼈대</strong>가 돼요.</p>
     </div>
-    <div class="wb-fig rv"><svg class="wb" viewBox="0 0 520 440" role="img" aria-label="워크북을 읽고, 질문에 답을 쓰다가 막히는 칸이 내 문제라는 것을 보여주는 애니메이션">
-<rect class="wb-paper" x="20" y="14" width="480" height="412" rx="18"/>
-<text class="wb-cap" x="48" y="50">CHAPTER 05 · 읽기</text>
-<rect class="wb-hl wb-hl1" x="44" y="68" width="420" height="14" rx="3"/><rect class="wb-hl wb-hl2" x="44" y="88" width="390" height="14" rx="3"/><rect class="wb-hl wb-hl3" x="44" y="108" width="330" height="14" rx="3"/>
-<path class="wb-ln" d="M48 76H460M48 96H430M48 116H370"/>
-<path class="wb-div" d="M40 142H480"/>
-<text class="wb-q" x="48" y="178">Q1. 누구한테 팔 건가요?</text>
-<path class="wb-base" d="M48 218H440"/><path class="wb-ink wb-a1" pathLength="1" d="M52 206q7 -8 14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0"/>
-<g class="wb-ok wb-ok1"><circle cx="466" cy="204" r="15"/><path d="M459 204l5 5l9 -10"/></g>
-<text class="wb-q" x="48" y="262">Q2. 손님은 나를 뭐랑 비교하나요?</text>
-<path class="wb-base" d="M48 302H440"/><path class="wb-ink wb-a2" pathLength="1" d="M52 290q7 -8 14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0t14 0"/>
-<g class="wb-ok wb-ok2"><circle cx="466" cy="288" r="15"/><path d="M459 288l5 5l9 -10"/></g>
-<rect class="wb-stuck" x="34" y="320" width="452" height="96" rx="14"/>
-<text class="wb-q" x="48" y="352">Q3. 손님이 왜 나를 골라야 하나요?</text>
-<path class="wb-base" d="M48 394H440"/><path class="wb-ink wb-a3" pathLength="1" d="M52 382q7 -8 14 0t14 0t14 0"/>
-<text class="wb-qm wb-qm1" x="132" y="388">?</text><text class="wb-qm wb-qm2" x="160" y="372">?</text><text class="wb-qm wb-qm3" x="186" y="390">?</text>
-<g class="wb-tag"><rect x="306" y="362" width="166" height="38" rx="19"/><text x="389" y="387">여기가 내 문제!</text></g>
-<g class="wb-pen"><g transform="rotate(28) scale(.82)"><path class="wb-pen-b" d="M6 -16L44 -54L54 -44L16 -6Z"/><path class="wb-pen-e" d="M44 -54L50 -60Q53 -63 56 -60L60 -56Q63 -53 60 -50L54 -44Z"/><path class="wb-pen-w" d="M0 0L6 -16L16 -6Z"/><path class="wb-pen-g" d="M0 0L2.6 -6.8L6.8 -2.6Z"/></g></g>
-</svg></div>
     <div class="flow3 wb-steps">
       <div class="f3"><div class="n">1</div><div class="t">읽고</div></div>
       <div class="f3"><div class="n">2</div><div class="t">직접 쓰고</div></div>
       <div class="f3"><div class="n">3</div><div class="t">막히면<br>거기가 문제</div></div>
     </div>
+    <div class="wb-fig rv"><svg class="wb" viewBox="0 0 520 440" role="img" aria-label="워크북을 읽고, 질문에 답을 쓰다가 막히는 칸이 내 문제라는 것을 보여주는 애니메이션"><defs><filter id="wbSh" x="-15%" y="-10%" width="130%" height="135%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1A1A1A" flood-opacity=".12"/></filter><filter id="wbPs" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="#000" flood-opacity=".22"/></filter><linearGradient id="wbPg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFD"/><stop offset="1" stop-color="#FAF9F4"/></linearGradient><linearGradient id="wbBr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4A4A48"/><stop offset=".45" stop-color="#1F1F1E"/><stop offset="1" stop-color="#0E0E0E"/></linearGradient><linearGradient id="wbMt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2F2F0"/><stop offset=".5" stop-color="#B9B9B5"/><stop offset="1" stop-color="#E6E6E3"/></linearGradient><linearGradient id="wbRg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8E8E8A"/><stop offset=".5" stop-color="#E9E9E6"/><stop offset="1" stop-color="#77776F"/></linearGradient></defs><rect class="wb-back2" x="30" y="26" width="470" height="408" rx="14"/><rect class="wb-back" x="25" y="20" width="476" height="410" rx="14"/><rect class="wb-paper" x="20" y="14" width="480" height="412" rx="14"/><circle class="wb-hole" cx="64" cy="30" r="4.2"/><path class="wb-ring" d="M64 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="98" cy="30" r="4.2"/><path class="wb-ring" d="M98 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="132" cy="30" r="4.2"/><path class="wb-ring" d="M132 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="166" cy="30" r="4.2"/><path class="wb-ring" d="M166 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="200" cy="30" r="4.2"/><path class="wb-ring" d="M200 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="234" cy="30" r="4.2"/><path class="wb-ring" d="M234 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="268" cy="30" r="4.2"/><path class="wb-ring" d="M268 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="302" cy="30" r="4.2"/><path class="wb-ring" d="M302 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="336" cy="30" r="4.2"/><path class="wb-ring" d="M336 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="370" cy="30" r="4.2"/><path class="wb-ring" d="M370 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="404" cy="30" r="4.2"/><path class="wb-ring" d="M404 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="438" cy="30" r="4.2"/><path class="wb-ring" d="M438 31 V12 a5 5 0 0 1 10 0 V18"/><text class="wb-cap" x="48" y="62">CHAPTER 05 · 읽기</text><rect class="wb-hl wb-hl1" x="44" y="70" width="372" height="15" rx="2"/><rect class="wb-hl wb-hl2" x="44" y="91" width="350" height="15" rx="2"/><rect class="wb-hl wb-hl3" x="44" y="112" width="300" height="15" rx="2"/><text class="wb-tx" x="48" y="82">브랜드의 뼈대는 ‘누구에게, 무엇을, 왜’에서 시작해요.</text><text class="wb-tx" x="48" y="103">타겟이 흐리면 메시지도 흐려지고, 결국 가격으로</text><text class="wb-tx" x="48" y="124">비교당해요. 아래 질문에 직접 답을 써 보세요.</text><path class="wb-div" d="M40 146H480"/><text class="wb-q" x="48" y="180">Q1. 누구한테 팔 건가요?</text><path class="wb-base" d="M48 218H440"/><text class="wb-hand" x="50" y="211">아이 키우며 운동할 틈 없는 30대 엄마</text><rect class="wb-cv wb-c1" x="46" y="184" width="398" height="30"/><g class="wb-ok wb-ok1"><circle cx="466" cy="204" r="14"/><path d="M459.5 204l4.5 4.5l8.5 -9"/></g><text class="wb-q" x="48" y="264">Q2. 손님은 나를 뭐랑 비교하나요?</text><path class="wb-base" d="M48 302H440"/><text class="wb-hand" x="50" y="295">동네 헬스장, 유튜브 홈트</text><rect class="wb-cv wb-c2" x="46" y="268" width="398" height="30"/><g class="wb-ok wb-ok2"><circle cx="466" cy="288" r="14"/><path d="M459.5 288l4.5 4.5l8.5 -9"/></g><rect class="wb-stuck" x="34" y="320" width="452" height="96" rx="10"/><text class="wb-q" x="48" y="354">Q3. 손님이 왜 나를 골라야 하나요?</text><path class="wb-base" d="M48 394H440"/><text class="wb-hand" x="50" y="387">음…</text><rect class="wb-cv wb-c3" x="46" y="360" width="60" height="30"/><text class="wb-qm wb-qm1" x="128" y="388">?</text><text class="wb-qm wb-qm2" x="156" y="372">?</text><text class="wb-qm wb-qm3" x="182" y="390">?</text><g class="wb-tag"><rect x="306" y="362" width="166" height="38" rx="19"/><text x="389" y="387">여기가 내 문제!</text></g><g class="wb-pen"><g transform="rotate(28) scale(.82)" filter="url(#wbPs)"><path class="wb-pen-b" d="M6 -16L44 -54L54 -44L16 -6Z"/><path class="wb-pen-c" d="M30 -44L46 -60L49 -57L33 -41Z"/><path class="wb-pen-e" d="M44 -54L50 -60Q53 -63 56 -60L60 -56Q63 -53 60 -50L54 -44Z"/><path class="wb-pen-w" d="M0 0L6 -16L16 -6Z"/><path class="wb-pen-g" d="M0 0L2.6 -6.8L6.8 -2.6Z"/></g></g></svg></div>
     <div class="body-text rv" style="margin:var(--gap-md) auto 0;text-align:center">
       <p>앞 질문에 답을 안 쓰면, 다음 질문에서 꼭 막혀요.</p>
       <p>예를 들어 '누구한테 팔지'를 못 정하면 '뭐라고 말할지'에서 막혀요. 누구한테 하는 말인지 모르니까요. <strong>막힌 곳을 거꾸로 따라가면, 문제가 어디서 시작됐는지 보여요.</strong></p>
@@ -1655,7 +1672,7 @@ a{color:inherit;text-decoration:none}
 /* 질문 8개 워크북 — 화면에 들어오면 재생 */
 (function(){
   var f=document.querySelector('.wb-fig'); if(!f) return;
-  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:.35});
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); var ws=document.querySelector('.wb-steps'); if(ws) ws.classList.add('play'); io.disconnect(); } },{threshold:.35});
   io.observe(f);
 })();
 
