@@ -1423,6 +1423,17 @@ a{color:inherit;text-decoration:none}
 
 /* 진행 게이지 — 데스크탑 박스 폭 800px */
 @media(min-width:900px){.bp-fig{max-width:800px!important}}
+
+/* 아낀 돈 카운터 — 비용 막대와 한 묶음 */
+.cost-save{position:relative;text-align:center;border:1px solid var(--border-light);border-radius:20px;background:#fff;padding:30px 20px 26px;margin-top:6px;box-shadow:0 12px 32px rgba(0,0,0,.05)}
+.cost-save::before{content:'';position:absolute;left:50%;top:-14px;width:1px;height:14px;background:var(--border-light)}
+.cs-cap{font-size:13px;font-weight:700;color:var(--text-light)}
+.cs-num{margin-top:8px;font-size:clamp(38px,10vw,52px);font-weight:900;letter-spacing:-.04em;line-height:1.1;font-variant-numeric:tabular-nums;display:inline-block;background:linear-gradient(transparent 62%,var(--brand) 62%) no-repeat 0 0/0 100%;transition:background-size .7s cubic-bezier(.25,1,.5,1)}
+.cs-num small{font-size:.42em;margin-left:3px;font-weight:800}
+.cost-save.done .cs-num{background-size:100% 100%}
+.cs-sub{margin-top:12px;font-size:15px;color:var(--text-gray)}
+.cs-sub b{color:var(--ink)}
+.cost-row .cost-v{color:var(--ink)!important}
 </style>
 </head>
 <body>
@@ -1702,10 +1713,10 @@ a{color:inherit;text-decoration:none}
         <div class="cost-lg"><span><i class="c1"></i>강의 50만</span><span><i class="c2"></i>광고 3개월 180만</span><span><i class="c3"></i>대행사 3개월 300만</span></div>
         <div class="cost-v">약 530만 원</div>
       </div>
-      <div class="cost-row me">
-        <div class="cost-k"><b>뼈대부터 세울 때</b><span>1~2주</span></div>
-        <div class="cost-bar"><i style="--w:1.9%"></i></div>
-        <div class="cost-v">99,000원</div>
+      <div class="cost-save">
+        <p class="cs-cap">뼈대부터 세우면 아끼는 돈</p>
+        <div class="cs-num"><span class="cs-n" data-to="5201000">5,201,000</span><small>원</small></div>
+        <p class="cs-sub">530만 원 들 일을, <b>99,000원</b>으로</p>
       </div>
       <p class="cost-note">* 초기 브랜드들이 흔히 시도하는 항목의 일반적인 비용으로 만든 예시예요.</p>
     </div>
@@ -2231,6 +2242,21 @@ a{color:inherit;text-decoration:none}
       if(now-t0<1600+ns.length*150) requestAnimationFrame(step); })(t0);
   },{threshold:.35,rootMargin:'0px 0px -20% 0px'});
   io.observe(g);
+})();
+
+/* 아낀 돈 카운터 */
+(function(){
+  var box=document.querySelector('.cost-save'); if(!box) return;
+  var n=box.querySelector('.cs-n'), to=+n.dataset.to;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){ box.classList.add('done'); return; }
+  n.textContent='0';
+  var io=new IntersectionObserver(function(es){ if(!es[0].isIntersecting) return; io.disconnect();
+    setTimeout(function(){ var t0=performance.now();
+      (function step(now){ var k=Math.min(1,(now-t0)/1800), e=1-Math.pow(1-k,3); n.textContent=Math.round(to*e).toLocaleString('ko-KR');
+        if(k<1) requestAnimationFrame(step); else box.classList.add('done'); })(t0);
+    },500);
+  },{threshold:.4,rootMargin:'0px 0px -15% 0px'});
+  io.observe(box);
 })();
 </script>
 </body>
