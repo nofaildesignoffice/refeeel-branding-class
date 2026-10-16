@@ -1188,6 +1188,10 @@ a{color:inherit;text-decoration:none}
 .js-flow .wo-concl.in p{opacity:1;transform:none;filter:none}
 .js-flow .wo-concl.in p.a{transition-delay:.18s}
 @media (prefers-reduced-motion:reduce){.js-flow .wo-concl p{opacity:1;transform:none;filter:none;transition:none}}
+
+/* 캔버스 액체 */
+.cvgoo{filter:none!important}.cvgoo>i{display:none!important}
+.goo-cv{position:absolute;left:0;top:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -1366,7 +1370,7 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- [13] 커리큘럼 -->
-<section class="sec-cur bg-t">
+<section class="sec-cur bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">목차</span><h2 class="h-sec">한눈에 보는<br><span class="em">시리즈 구성</span></h2><p class="sec-lead">9개 챕터를 읽고, 챕터 사이 <strong>질문 8개</strong>에 답하며<br>내 브랜드를 하나씩 정리해요.</p></div>
     <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 00</div><div class="cur-title">시작하기 전에 <span>· 무료</span></div><p class="cur-wow">광고까지 다 했는데 문의가 없던 PT샵. <b>문제는 '몇 명'이 아니라 '누가' 보느냐</b>였어요.</p></div></div>
@@ -1379,20 +1383,6 @@ a{color:inherit;text-decoration:none}
     <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 07</div><div class="cur-title">차별화 <span>· 손님이 나를 고르는 이유</span></div><p class="cur-wow">"친절해요, 깨끗해요, 경력 10년"은 <b>다른 데도 다 있어요.</b></p></div></div>
     <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 08</div><div class="cur-title">메시지 <span>· 뭐라고 말할지</span></div><p class="cur-wow">콘텐츠가 부족한 게 아니에요. <b>할 말 없는 콘텐츠가 100개</b>인 거예요.</p></div></div>
     <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 09</div><div class="cur-title">실행 <span>· 뭐부터 할지</span></div><p class="cur-wow">불안하면 올리고, 문의 없으면 할인하고. <b>방향이 없으면 급한 일만 해요.</b></p></div></div>
-  </div>
-</section>
-
-<!-- [2] 다른 점 -->
-<section class="sec bt bg-w">
-  <div class="wrap">
-    <div class="sec-head c rv" style="margin-bottom:0"><span class="label">다른 콘텐츠와 다른 점</span><h2 class="h-sec">정답을 알려주지 않아요.<br><span class="em">내 답을 쓰게 해요.</span></h2>
-      <p class="sec-lead">남이 짚어준 문제는 금방 잊혀요.<br>직접 쓰다가 <strong>막히는 곳, 거기가 내 문제</strong>예요.</p>
-    </div>
-    <div class="sus rv rv-d1">
-      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">콘텐츠가<br>문제일까</div></div>
-      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">상품이<br>문제일까</div></div>
-      <div class="sus-card"><div class="sus-q">?</div><div class="sus-t">마케팅이<br>문제일까</div></div>
-    </div>
   </div>
 </section>
 
@@ -1713,12 +1703,67 @@ a{color:inherit;text-decoration:none}
   var goo=bone.querySelector('.bone-goo'), m=bone.querySelector('.bone-m'), cs=bone.querySelectorAll('.bone-c'), mt=bone.querySelector('.bone-txt b'), ls=bone.querySelectorAll('.bone-txt > span');
   var deco=bone.querySelector('.bone-deco'), bg=bone.querySelector('.bone-bg'), o1=deco.querySelector('.o1'), o2=deco.querySelector('.o2'), cap=bone.querySelector('.bone-cap');
   var dps=[]; for(var k=0;k<6;k++){ var e=document.createElement('i'); e.className='bone-dp'; goo.appendChild(e); dps.push(e); }
+
+  /* 캔버스 액체 렌더러 — 각 조각을 둥근 도형 거리장(SDF)으로 그리고 부드럽게 합침 (SVG 필터보다 훨씬 가벼움) */
+  var goos=[], CELL=innerWidth<768?2.5:2;
+  function Goo(host,k){
+    var g=this, cv=document.createElement('canvas'), ctx=cv.getContext('2d'), cols=0, rows=0, img=null, pb=null;
+    cv.className='goo-cv'; host.appendChild(cv); host.classList.add('cvgoo');
+    g.dirty=true; g.kids=[].slice.call(host.querySelectorAll('i'));
+    g.kids.forEach(function(e){ e.__g=g; });
+    function fit(){
+      var w=host.offsetWidth, h=host.offsetHeight, c=Math.ceil(w/CELL)+1, r=Math.ceil(h/CELL)+1;
+      if(c===cols && r===rows) return;
+      cols=c; rows=r; cv.width=c; cv.height=r; cv.style.width=c*CELL+'px'; cv.style.height=r*CELL+'px';
+      img=ctx.createImageData(c,r); var d=img.data; for(var i=0;i<d.length;i+=4){ d[i]=223; d[i+1]=240; d[i+2]=0; d[i+3]=0; } pb=null; g.dirty=true;
+    }
+    g.draw=function(){
+      if(!g.dirty) return;
+      if(!host.offsetWidth) return;
+      var hr=host.getBoundingClientRect(); if(hr.bottom<-50||hr.top>innerHeight+50) return;
+      g.dirty=false; fit();
+      var B=[], x0=1e9, y0=1e9, x1=-1e9, y1=-1e9, i, q;
+      for(i=0;i<g.kids.length;i++){ q=g.kids[i].__q; if(!q||q.op<=.02) continue;
+        var hx=q.w*q.sx/2, hy=q.h*q.sy/2; if(hx<.5||hy<.5) continue;
+        var px=/px$/.test(q.rad), sk=null, amp=0;
+        if(!px){ var nm=q.rad.match(/[\d.]+/g); if(nm&&nm.length>=8){ sk=[]; for(var j=0;j<4;j++){ var v=(+nm[j]+ +nm[4+j])/100; sk.push(1+(v-1)*.7); amp=Math.max(amp,Math.abs(v-1)*.7); } } }
+        var ro=q.rot*Math.PI/180, R=Math.max(hx,hy)*(1+amp);
+        B.push({x:q.x,y:q.y,hx:hx,hy:hy,rr:px?Math.min(parseFloat(q.rad)*Math.min(q.sx,q.sy),hx,hy):-1,c:Math.cos(ro),s:Math.sin(ro),sk:sk,R:R,mn:Math.min(hx,hy)/Math.max(hx,hy),op:q.op});
+        x0=Math.min(x0,q.x-R); x1=Math.max(x1,q.x+R); y0=Math.min(y0,q.y-R); y1=Math.max(y1,q.y+R);
+      }
+      var d=img.data, nb={c0:Math.max(0,Math.floor((x0-k)/CELL)-1),r0:Math.max(0,Math.floor((y0-k)/CELL)-1),c1:Math.min(cols,Math.ceil((x1+k)/CELL)+1),r1:Math.min(rows,Math.ceil((y1+k)/CELL)+1)};
+      if(!B.length) nb={c0:0,r0:0,c1:0,r1:0};
+      if(pb){ for(var r=pb.r0;r<pb.r1;r++) for(var c=pb.c0;c<pb.c1;c++) d[(r*cols+c)*4+3]=0; }
+      for(var r=nb.r0;r<nb.r1;r++){ var py=(r+.5)*CELL;
+        for(var c=nb.c0;c<nb.c1;c++){ var ppx=(c+.5)*CELL, D=1e9, O=1;
+          for(i=0;i<B.length;i++){ var b=B[i], dx=ppx-b.x, dy=py-b.y, dd=Math.sqrt(dx*dx+dy*dy);
+            if((dd-b.R)*b.mn>D+k) continue;
+            var u=dx*b.c+dy*b.s, v=-dx*b.s+dy*b.c, sd;
+            if(b.rr>=0){ var qx=Math.abs(u)-b.hx+b.rr, qy=Math.abs(v)-b.hy+b.rr, mx=Math.max(qx,0), my=Math.max(qy,0); sd=Math.sqrt(mx*mx+my*my)+Math.min(Math.max(qx,qy),0)-b.rr; }
+            else{ var f=1;
+              if(b.sk){ var t=Math.atan2(v,u), w0=Math.cos(t+2.356), w1=Math.cos(t+.785), w2=Math.cos(t-.785), w3=Math.cos(t-2.356);
+                w0=w0>0?w0*w0:0; w1=w1>0?w1*w1:0; w2=w2>0?w2*w2:0; w3=w3>0?w3*w3:0; f=w0*b.sk[0]+w1*b.sk[1]+w2*b.sk[2]+w3*b.sk[3]; }
+              var nx=u/(b.hx*f), ny=v/(b.hy*f); sd=(Math.sqrt(nx*nx+ny*ny)-1)*Math.min(b.hx,b.hy)*f; }
+            if(D>=1e8){ D=sd; O=b.op; }
+            else{ if(sd<D) O=b.op; var h=Math.max(k-Math.abs(D-sd),0)/k; D=Math.min(D,sd)-h*h*k*.25; }
+          }
+          var a=.5-D/CELL; d[(r*cols+c)*4+3]=a<=0?0:a>=1?255*O:255*a*O;
+        }
+      }
+      var u0=pb?{c0:Math.min(pb.c0,nb.c0),r0:Math.min(pb.r0,nb.r0),c1:Math.max(pb.c1,nb.c1),r1:Math.max(pb.r1,nb.r1)}:{c0:0,r0:0,c1:cols,r1:rows};
+      if(!B.length&&pb) u0=pb;
+      if(u0.c1>u0.c0&&u0.r1>u0.r0) ctx.putImageData(img,0,0,u0.c0,u0.r0,u0.c1-u0.c0,u0.r1-u0.r0);
+      pb=nb;
+    };
+    goos.push(g);
+  }
   /* 카드 섹션: 액체 레이어 + 카드 안 채움 */
   var sec=document.querySelector('.sec-wo.good'), wc=sec?sec.querySelectorAll('.wo-c'):[], wq=sec?sec.querySelector('.wq'):null, fills=[], flowEl=null, fb=null, fa=null, nks=[], trs=[], fon=false, bpx=0, bpy=0, bsz=0, lpx=0, lpy=0, sa=0;
   if(sec){ flowEl=document.createElement('div'); flowEl.className='flow'; flowEl.setAttribute('aria-hidden','true'); fb=document.createElement('i'); flowEl.appendChild(fb); fa=document.createElement('i'); flowEl.appendChild(fa);
     for(k=0;k<3;k++){ var ne=document.createElement('i'); flowEl.appendChild(ne); nks.push(ne); }
     for(k=0;k<3;k++){ var te=document.createElement('i'); flowEl.appendChild(te); trs.push({el:te,x:0,y:0,f:[.62,.44,.3][k]}); } sec.appendChild(flowEl); sec.classList.add('js-flow');
     for(k=0;k<wc.length;k++){ var fe=document.createElement('div'); fe.className='wo-fill'; fe.setAttribute('aria-hidden','true'); for(var q=0;q<4;q++) fe.appendChild(document.createElement('i')); wc[k].insertBefore(fe,wc[k].firstChild); fills.push(fe.children); } }
+  new Goo(goo,22); if(flowEl) new Goo(flowEl,22); for(k=0;k<wc.length;k++) new Goo(wc[k].querySelector('.wo-fill'),22);
   var W,H,cr,D,d,RR, ps=0, pv=0, vel=0, run=false, last=0;
   function cl(v){ return v<0?0:v>1?1:v; }
   function seg(p,a,b){ return cl((p-a)/(b-a)); }
@@ -1738,6 +1783,9 @@ a{color:inherit;text-decoration:none}
     return o.slice(0,4).join(' ')+' / '+o.slice(4).join(' ');
   }
   function put(el,x,y,w,h,rad,op,sx,sy,rot){
+    if(el.__g){ var q=el.__q||(el.__q={}); sx=sx||1; sy=sy||1; rot=rot||0; op=+op||0;
+      if(q.x!==x||q.y!==y||q.w!==w||q.h!==h||q.rad!==rad||q.op!==op||q.sx!==sx||q.sy!==sy||q.rot!==rot){ if(op>0||q.op>0) el.__g.dirty=true; q.x=x; q.y=y; q.w=w; q.h=h; q.rad=rad; q.op=op; q.sx=sx; q.sy=sy; q.rot=rot; }
+      return; }
     el.style.width=w+'px'; el.style.height=h+'px'; el.style.borderRadius=rad; el.style.opacity=op;
     el.style.transform='translate('+(x-w/2)+'px,'+(y-h/2)+'px) rotate('+(rot||0)+'deg) scale('+(sx||1)+','+(sy||1)+')';
   }
@@ -1869,6 +1917,7 @@ a{color:inherit;text-decoration:none}
     }
     goo.style.opacity=hand?0:'';
     var pr=pin.getBoundingClientRect(); flow(tm,hand,pr.left+cx,pr.top+cy);
+    for(var gi=0;gi<goos.length;gi++) goos[gi].draw();
   }
   function init(){ L.style.transform=''; measure(); }
   var vis={};
