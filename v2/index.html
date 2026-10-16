@@ -1866,21 +1866,24 @@ a{color:inherit;text-decoration:none}
   var dps=[]; for(var k=0;k<6;k++){ var e=document.createElement('i'); e.className='bone-dp'; goo.appendChild(e); dps.push(e); }
 
   /* 캔버스 액체 렌더러 — 각 조각을 둥근 도형 거리장(SDF)으로 그리고 부드럽게 합침 (SVG 필터보다 훨씬 가벼움) */
-  var goos=[], CELL=innerWidth<768?3:2.5;
+  var goos=[], CELL=Math.max(3,Math.min(5,innerWidth/320)), gooRs=true;
+  window.addEventListener('resize',function(){ gooRs=true; CELL=Math.max(3,Math.min(5,innerWidth/320)); });
+  var gooIO=window.IntersectionObserver?new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.target.__goo){ e.target.__goo.vis=e.isIntersecting; if(e.isIntersecting) e.target.__goo.dirty=true; } }); },{rootMargin:'60px 0px'}):null;
   function Goo(host,k){
     var g=this, cv=document.createElement('canvas'), ctx=cv.getContext('2d'), cw=0, ch=0, dpr=1, pb=null, F=null;
     cv.className='goo-cv'; host.appendChild(cv); host.classList.add('cvgoo');
     g.dirty=true; g.kids=[].slice.call(host.querySelectorAll('i'));
     g.kids.forEach(function(e){ e.__g=g; });
+    g.vis=!gooIO; host.__goo=g; if(gooIO) gooIO.observe(host); var szAt=-1;
     function fit(){
+      if(!gooRs && szAt>=0) return; szAt=1;
       var w=host.offsetWidth, h=host.offsetHeight, r=Math.min(window.devicePixelRatio||1,2);
       if(w===cw && h===ch && r===dpr) return;
       cw=w; ch=h; dpr=r; cv.width=Math.ceil(w*r); cv.height=Math.ceil(h*r); cv.style.width=w+'px'; cv.style.height=h+'px'; pb=null;
     }
     g.draw=function(){
       if(!g.dirty) return;
-      if(!host.offsetWidth) return;
-      var hr=host.getBoundingClientRect(); if(hr.bottom<-50||hr.top>innerHeight+50) return;
+      if(!g.vis) return;
       g.dirty=false; fit();
       var B=[], x0=1e9, y0=1e9, x1=-1e9, y1=-1e9, i, q, OP=0;
       for(i=0;i<g.kids.length;i++){ q=g.kids[i].__q; if(!q||q.op<=.02) continue;
@@ -2100,7 +2103,7 @@ a{color:inherit;text-decoration:none}
     }
     goo.style.opacity=hand?0:'';
     var pr=pin.getBoundingClientRect(); flow(tm,hand,pr.left+cx,pr.top+cy);
-    for(var gi=0;gi<goos.length;gi++) goos[gi].draw();
+    for(var gi=0;gi<goos.length;gi++) goos[gi].draw(); gooRs=false;
   }
   function init(){ L.style.transform=''; measure(); }
   var vis={};
