@@ -1470,6 +1470,10 @@ a{color:inherit;text-decoration:none}
 @media(min-width:900px){.price-sec>.wrap{max-width:800px!important}.price-sec .price-box{max-width:800px!important}.price-sec .pb-list{grid-template-columns:1fr 1fr}}
 
 .price-sec .price-box::before{display:none!important}
+
+/* 무료 공개 — 상단 경계 틈 제거 */
+.sec-free::before{inset:-2px 0!important}
+.bc-root>section.sec-free{margin-top:-1px;clip-path:inset(1px 0 0 0)}
 </style>
 </head>
 <body>
