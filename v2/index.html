@@ -1287,6 +1287,26 @@ a{color:inherit;text-decoration:none}
 .proof-card{gap:14px!important}
 @media(max-width:767px){.proof-card{padding:40px 8px!important}}
 @media(min-width:768px){.proof-card{padding:28px 12px!important}}
+
+/* 가격 — 비용 비교 막대 */
+.cost{max-width:520px;margin:0 auto var(--gap-lg);display:grid;gap:26px}
+.cost-k{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.cost-k b{font-size:15px;font-weight:800;letter-spacing:-.02em}
+.cost-k span{font-size:13px;font-weight:700;color:var(--text-light)}
+.cost-bar{display:flex;height:16px;border-radius:99px;background:#EFEFEA;overflow:hidden}
+.cost-bar i{display:block;height:100%;width:0;transition:width 1.1s cubic-bezier(.25,1,.5,1)}
+.cost-bar i:nth-child(1){background:#C9C9C2}.cost-bar i:nth-child(2){background:#A3A39C;transition-delay:.15s}.cost-bar i:nth-child(3){background:#6F6F68;transition-delay:.3s}
+.cost.on .cost-bar i{width:var(--w)}
+.cost-row.me .cost-bar i{background:var(--brand);min-width:14px;border-radius:99px;transition-delay:1.1s}
+.cost-lg{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:10px;font-size:12.5px;color:var(--text-gray)}
+.cost-lg span{display:inline-flex;align-items:center;gap:5px}.cost-lg i{width:8px;height:8px;border-radius:50%}
+.cost-lg .c1{background:#C9C9C2}.cost-lg .c2{background:#A3A39C}.cost-lg .c3{background:#6F6F68}
+.cost-v{margin-top:8px;font-size:clamp(22px,5vw,26px);font-weight:800;letter-spacing:-.03em;text-align:right;color:#8A8A83}
+.cost-row.me .cost-v{color:var(--ink)}
+.cost-row.me .cost-v{background:linear-gradient(transparent 60%,var(--brand) 60%) no-repeat 100% 0/0 100%;justify-self:end;width:max-content;margin-left:auto;transition:background-size .6s ease 1.6s}
+.cost.on .cost-row.me .cost-v{background-size:100% 100%}
+.cost-note{font-size:12px;color:var(--text-light);margin-top:-6px}
+@media (prefers-reduced-motion:reduce){.cost-bar i,.cost-row.me .cost-v{transition:none!important}}
 </style>
 </head>
 <body>
@@ -1567,10 +1587,20 @@ a{color:inherit;text-decoration:none}
 <!-- [20] 가격 -->
 <section class="sec-price bg-w">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">가격</span><h2 class="h-sec">강의 한 번 값으로,<br><span class="em">더 이상 안 헤매게.</span></h2></div>
-    <div class="price-story rv">
-      <p>천만 원짜리 강의도, 방향이 없으면 다시 제자리예요.</p>
-      <p><strong>한 번 정한 방향은 어떤 채널에서든 써요.</strong> 사업이 커지면 워크북만 다시 꺼내면 돼요.</p>
+    <div class="sec-head rv"><span class="label">가격</span><h2 class="h-sec">더 쓰기 전에,<br><span class="em">어디에 쓸지부터.</span></h2><p class="sec-lead">방향 없이 하나씩 해보면, 보통 이만큼 들어요.</p></div>
+    <div class="cost rv">
+      <div class="cost-row">
+        <div class="cost-k"><b>뼈대 없이 하나씩 해볼 때</b><span>약 6개월</span></div>
+        <div class="cost-bar"><i style="--w:9.4%"></i><i style="--w:34%"></i><i style="--w:56.6%"></i></div>
+        <div class="cost-lg"><span><i class="c1"></i>강의 50만</span><span><i class="c2"></i>광고 3개월 180만</span><span><i class="c3"></i>대행사 3개월 300만</span></div>
+        <div class="cost-v">약 530만 원</div>
+      </div>
+      <div class="cost-row me">
+        <div class="cost-k"><b>뼈대부터 세울 때</b><span>1~2주</span></div>
+        <div class="cost-bar"><i style="--w:1.9%"></i></div>
+        <div class="cost-v">99,000원</div>
+      </div>
+      <p class="cost-note">* 작은 사업에서 흔히 시도하는 항목의 일반적인 비용으로 만든 예시예요.</p>
     </div>
     <div class="price-box rv">
       <div class="price-amt">99,000<span class="u">원</span></div>
