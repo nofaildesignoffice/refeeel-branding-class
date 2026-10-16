@@ -1209,6 +1209,44 @@ a{color:inherit;text-decoration:none}
 .rvf-sec .rvf-run .vc-meta{margin-top:auto;padding-top:14px}
 .rvf-sec .rvf-run .vc-toggle{margin-bottom:18px}
 @media (prefers-reduced-motion:reduce){.rvf-srun{animation:none}}
+
+/* 읽고 끝나는 글? — 진행 바 + 기획서 */
+.bp-fig{--T:11s;max-width:440px;margin:clamp(28px,4vw,40px) auto 0;background:#fff;border:1px solid var(--border-light);border-radius:20px;padding:20px 20px 18px;box-shadow:0 12px 32px rgba(0,0,0,.05)}
+.bp-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:#9A9A92;margin-bottom:14px}
+.bp-top b{color:var(--ink);font-weight:800;font-size:14px;letter-spacing:-.01em}
+.bp-num{display:inline-block;height:1.25em;line-height:1.25em;overflow:hidden;vertical-align:bottom}
+.bp-num>span{display:block;transform:translateY(-11.25em)}.bp-num i{display:block;font-style:normal}
+.bp-bar{position:relative;height:8px;margin:0 8px;border-radius:99px;background:#EFEFEA}
+.bp-fl{position:absolute;inset:0;border-radius:inherit;background:var(--brand);transform-origin:left center}
+.bp-mk{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;box-sizing:border-box;transform:translate(-50%,-50%);background:var(--ink);border:2px solid var(--ink)}
+.bp-ls{position:relative;height:22px;margin:10px 8px 0}
+.bp-ml{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:700;color:var(--ink)}
+.bp-ml.m1{transform:translateX(-30%)}.bp-ml.m3{transform:translateX(-100%)}
+.bp-doc{position:relative;margin-top:22px;border:1px solid #ECECE6;border-radius:14px;padding:14px 14px 6px;background:#FCFCF8}
+.bp-dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.bp-dh b{font-size:14px;font-weight:800}
+.bp-st{font-size:11px;font-weight:800;color:var(--brand);background:var(--ink);border-radius:99px;padding:3px 10px;transform:rotate(-6deg)}
+.bp-r{display:grid;grid-template-columns:54px 1fr;align-items:center;gap:8px;padding:9px 0;border-top:1px dashed #E2E2DA}
+.bp-r b{font-size:13px;font-weight:700;color:#777}
+.bp-r span{font-family:'Nanum Pen Script',cursive;font-size:23px;line-height:1.1;color:#23324A;border-bottom:1px solid #DCDBD4;padding-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bp-fig.play .bp-num>span{animation:bpNum var(--T) infinite}
+.bp-fig.play .bp-fl{animation:bpBar var(--T) infinite linear}
+.bp-fig.play .bp-mk.m1{animation:bpMk1 var(--T) infinite}.bp-fig.play .bp-mk.m2{animation:bpMk2 var(--T) infinite}.bp-fig.play .bp-mk.m3{animation:bpMk3 var(--T) infinite}
+.bp-fig.play .bp-ml.m1{animation:bpMl1 var(--T) infinite}.bp-fig.play .bp-ml.m2{animation:bpMl2 var(--T) infinite}.bp-fig.play .bp-ml.m3{animation:bpMl3 var(--T) infinite}
+.bp-fig.play .bp-r.r1 span{animation:bpW1 var(--T) infinite}.bp-fig.play .bp-r.r2 span{animation:bpW2 var(--T) infinite}.bp-fig.play .bp-r.r3 span{animation:bpW3 var(--T) infinite}
+.bp-fig.play .bp-st{animation:bpSt var(--T) infinite cubic-bezier(.3,1.6,.5,1)}
+@keyframes bpNum{0%,5%{transform:translateY(0);animation-timing-function:steps(9,end)}66%,96%{transform:translateY(-11.25em)}100%{transform:translateY(0)}}
+@keyframes bpBar{0%,5%{transform:scaleX(0)}66%,96%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+@keyframes bpMk1{0%,18%{background:#fff;border-color:#D5D5CE}19%,96%{background:var(--ink);border-color:var(--ink)}100%{background:#fff;border-color:#D5D5CE}}
+@keyframes bpMk2{0%,38%{background:#fff;border-color:#D5D5CE}39%,96%{background:var(--ink);border-color:var(--ink)}100%{background:#fff;border-color:#D5D5CE}}
+@keyframes bpMk3{0%,65%{background:#fff;border-color:#D5D5CE}66%,96%{background:var(--ink);border-color:var(--ink)}100%{background:#fff;border-color:#D5D5CE}}
+@keyframes bpMl1{0%,18%{color:#B5B5AE}19%,96%{color:var(--ink)}100%{color:#B5B5AE}}
+@keyframes bpMl2{0%,38%{color:#B5B5AE}39%,96%{color:var(--ink)}100%{color:#B5B5AE}}
+@keyframes bpMl3{0%,65%{color:#B5B5AE}66%,96%{color:var(--ink)}100%{color:#B5B5AE}}
+@keyframes bpW1{0%,68%{clip-path:inset(0 100% 0 0)}75%,96%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 100% 0 0)}}
+@keyframes bpW2{0%,75%{clip-path:inset(0 100% 0 0)}82%,96%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 100% 0 0)}}
+@keyframes bpW3{0%,82%{clip-path:inset(0 100% 0 0)}89%,96%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(0 100% 0 0)}}
+@keyframes bpSt{0%,89%{opacity:0;transform:rotate(-6deg) scale(.4)}92%,96%{opacity:1;transform:rotate(-6deg) scale(1)}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.bp-fig *{animation:none!important}}
 </style>
 </head>
 <body>
@@ -1423,17 +1461,15 @@ a{color:inherit;text-decoration:none}
 <section class="sec bt bg-w">
   <div class="wrap">
     <div class="sec-head rv"><span class="label">이런 걱정 드시죠</span><h2 class="h-sec">"이것도 결국<br class="br-m"> 읽고 끝나는 글 아니에요?"</h2>
-      <p class="sec-lead">보통 책이나 강의는 <strong>'어떻게 하는지'</strong>를 알려줘요. 그런데 누구한테 할지가 없으면 배운 걸 써도 결과가 안 나와요. 그래서 또 다른 걸 찾게 되죠. 이 시리즈는 <strong>읽고 끝내는 게 아니라, 직접 쓰면서 따라가요.</strong></p></div>
-    <div class="loops cmp">
-      <div class="loop rv">
-        <div class="loop-k">지금까지</div>
-        <div class="ls"><i>1</i>강의 듣고, 책 읽기</div><div class="ls"><i>2</i>따라 하기</div><div class="ls"><i>3</i>안 됨</div><div class="ls"><i>4</i>또 다른 강의·책 찾기</div>
-        <div class="ls-back">↺ 왜 안 됐는지 모른 채 처음으로</div>
-      </div>
-      <div class="loop good hl rv rv-d1">
-        <div class="loop-k">이 시리즈를 다 쓰고 난 다음부터</div>
-        <div class="ls"><i>1</i>내 답 정하기</div><div class="ls"><i>2</i>해보기</div><div class="ls"><i>3</i>반응 보기</div><div class="ls"><i>4</i>답 고치기</div>
-        <div class="ls-back">↺ 뭘 고칠지 알고 다음으로</div>
+      <p class="sec-lead">끝날 때 손에 남는 건 글이 아니라 <strong>내 답</strong>이에요.<br>읽으면서 내 문제를 알게 되고, 질문에 답하며 내 답을 찾아요. Chapter 09까지 마치면 브랜드 뼈대가 생기고, <strong>무엇을, 왜, 어떻게 해야 할지</strong> 보여요.</p></div>
+    <div class="bp-fig rv" aria-label="챕터를 진행하며 내 문제를 발견하고, 질문으로 답을 찾고, Chapter 09에서 브랜드 기획서가 완성되는 모습">
+      <div class="bp-top"><span>진행 중</span><b>Chapter <span class="bp-num"><span><i>00</i><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i><i>07</i><i>08</i><i>09</i></span></span> / 09</b></div>
+      <div class="bp-bar"><i class="bp-fl"></i><span class="bp-mk m1" style="left:22.2%"></span><span class="bp-mk m2" style="left:55.5%"></span><span class="bp-mk m3" style="left:100%"></span></div>
+      <div class="bp-ls"><span class="bp-ml m1" style="left:22.2%">내 문제 발견</span><span class="bp-ml m2" style="left:55.5%">질문으로 답 찾기</span><span class="bp-ml m3" style="left:100%">뼈대 완성</span></div>
+      <div class="bp-doc"><div class="bp-dh"><b>내 브랜드 기획서</b><span class="bp-st">완성</span></div>
+        <div class="bp-r r1"><b>무엇을</b><span>어머니를 위한 1:1 PT</span></div>
+        <div class="bp-r r2"><b>왜</b><span>출산 후 무너진 몸, 혼자선 못 하니까</span></div>
+        <div class="bp-r r3"><b>어떻게</b><span>전후 사례 콘텐츠 + 첫 상담 무료</span></div>
       </div>
     </div>
   </div>
@@ -1978,6 +2014,13 @@ a{color:inherit;text-decoration:none}
   new IntersectionObserver(function(es){ vis=es[0].isIntersecting; },{rootMargin:'100px 0px'}).observe(sec);
   window.addEventListener('load',reset); window.addEventListener('resize',reset); setTimeout(reset,300);
   requestAnimationFrame(step);
+})();
+
+/* 읽고 끝나는 글? — 화면에 들어오면 처음부터 재생 */
+(function(){
+  var f=document.querySelector('.bp-fig'); if(!f) return;
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ f.classList.add('play'); io.disconnect(); } },{threshold:.4});
+  io.observe(f);
 })();
 </script>
 </body>
