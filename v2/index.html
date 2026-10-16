@@ -1782,37 +1782,40 @@ a{color:inherit;text-decoration:none}
   var dps=[]; for(var k=0;k<6;k++){ var e=document.createElement('i'); e.className='bone-dp'; goo.appendChild(e); dps.push(e); }
 
   /* 캔버스 액체 렌더러 — 각 조각을 둥근 도형 거리장(SDF)으로 그리고 부드럽게 합침 (SVG 필터보다 훨씬 가벼움) */
-  var goos=[], CELL=innerWidth<768?2.5:2;
+  var goos=[], CELL=innerWidth<768?3:2.5;
   function Goo(host,k){
-    var g=this, cv=document.createElement('canvas'), ctx=cv.getContext('2d'), cols=0, rows=0, img=null, pb=null;
+    var g=this, cv=document.createElement('canvas'), ctx=cv.getContext('2d'), cw=0, ch=0, dpr=1, pb=null, F=null;
     cv.className='goo-cv'; host.appendChild(cv); host.classList.add('cvgoo');
     g.dirty=true; g.kids=[].slice.call(host.querySelectorAll('i'));
     g.kids.forEach(function(e){ e.__g=g; });
     function fit(){
-      var w=host.offsetWidth, h=host.offsetHeight, c=Math.ceil(w/CELL)+1, r=Math.ceil(h/CELL)+1;
-      if(c===cols && r===rows) return;
-      cols=c; rows=r; cv.width=c; cv.height=r; cv.style.width=c*CELL+'px'; cv.style.height=r*CELL+'px';
-      img=ctx.createImageData(c,r); var d=img.data; for(var i=0;i<d.length;i+=4){ d[i]=223; d[i+1]=240; d[i+2]=0; d[i+3]=0; } pb=null; g.dirty=true;
+      var w=host.offsetWidth, h=host.offsetHeight, r=Math.min(window.devicePixelRatio||1,2.5);
+      if(w===cw && h===ch && r===dpr) return;
+      cw=w; ch=h; dpr=r; cv.width=Math.ceil(w*r); cv.height=Math.ceil(h*r); cv.style.width=w+'px'; cv.style.height=h+'px'; pb=null;
     }
     g.draw=function(){
       if(!g.dirty) return;
       if(!host.offsetWidth) return;
       var hr=host.getBoundingClientRect(); if(hr.bottom<-50||hr.top>innerHeight+50) return;
       g.dirty=false; fit();
-      var B=[], x0=1e9, y0=1e9, x1=-1e9, y1=-1e9, i, q;
+      var B=[], x0=1e9, y0=1e9, x1=-1e9, y1=-1e9, i, q, OP=0;
       for(i=0;i<g.kids.length;i++){ q=g.kids[i].__q; if(!q||q.op<=.02) continue;
         var hx=q.w*q.sx/2, hy=q.h*q.sy/2; if(hx<.5||hy<.5) continue;
         var px=/px$/.test(q.rad), sk=null, amp=0;
         if(!px){ var nm=q.rad.match(/[\d.]+/g); if(nm&&nm.length>=8){ sk=[]; for(var j=0;j<4;j++){ var v=(+nm[j]+ +nm[4+j])/100; sk.push(1+(v-1)*.7); amp=Math.max(amp,Math.abs(v-1)*.7); } } }
         var ro=q.rot*Math.PI/180, R=Math.max(hx,hy)*(1+amp);
-        B.push({x:q.x,y:q.y,hx:hx,hy:hy,rr:px?Math.min(parseFloat(q.rad)*Math.min(q.sx,q.sy),hx,hy):-1,c:Math.cos(ro),s:Math.sin(ro),sk:sk,R:R,mn:Math.min(hx,hy)/Math.max(hx,hy),op:q.op});
+        B.push({x:q.x,y:q.y,hx:hx,hy:hy,rr:px?Math.min(parseFloat(q.rad)*Math.min(q.sx,q.sy),hx,hy):-1,c:Math.cos(ro),s:Math.sin(ro),sk:sk,R:R,mn:Math.min(hx,hy)/Math.max(hx,hy)});
+        OP=Math.max(OP,q.op);
         x0=Math.min(x0,q.x-R); x1=Math.max(x1,q.x+R); y0=Math.min(y0,q.y-R); y1=Math.max(y1,q.y+R);
       }
-      var d=img.data, nb={c0:Math.max(0,Math.floor((x0-k)/CELL)-1),r0:Math.max(0,Math.floor((y0-k)/CELL)-1),c1:Math.min(cols,Math.ceil((x1+k)/CELL)+1),r1:Math.min(rows,Math.ceil((y1+k)/CELL)+1)};
-      if(!B.length) nb={c0:0,r0:0,c1:0,r1:0};
-      if(pb){ for(var r=pb.r0;r<pb.r1;r++) for(var c=pb.c0;c<pb.c1;c++) d[(r*cols+c)*4+3]=0; }
-      for(var r=nb.r0;r<nb.r1;r++){ var py=(r+.5)*CELL;
-        for(var c=nb.c0;c<nb.c1;c++){ var ppx=(c+.5)*CELL, D=1e9, O=1;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      if(pb) ctx.clearRect(pb[0]-2,pb[1]-2,pb[2]-pb[0]+4,pb[3]-pb[1]+4);
+      if(!B.length){ pb=null; return; }
+      /* 격자 꼭짓점마다 거리값 */
+      var gx0=Math.floor((x0-k)/CELL)*CELL, gy0=Math.floor((y0-k)/CELL)*CELL, nc=Math.ceil((x1+k-gx0)/CELL)+1, nr=Math.ceil((y1+k-gy0)/CELL)+1;
+      if(!F||F.length<nc*nr) F=new Float32Array(nc*nr*1.3|0);
+      for(var r=0;r<nr;r++){ var py=gy0+r*CELL;
+        for(var c=0;c<nc;c++){ var ppx=gx0+c*CELL, D=1e9;
           for(i=0;i<B.length;i++){ var b=B[i], dx=ppx-b.x, dy=py-b.y, dd=Math.sqrt(dx*dx+dy*dy);
             if((dd-b.R)*b.mn>D+k) continue;
             var u=dx*b.c+dy*b.s, v=-dx*b.s+dy*b.c, sd;
@@ -1821,16 +1824,31 @@ a{color:inherit;text-decoration:none}
               if(b.sk){ var t=Math.atan2(v,u), w0=Math.cos(t+2.356), w1=Math.cos(t+.785), w2=Math.cos(t-.785), w3=Math.cos(t-2.356);
                 w0=w0>0?w0*w0:0; w1=w1>0?w1*w1:0; w2=w2>0?w2*w2:0; w3=w3>0?w3*w3:0; f=w0*b.sk[0]+w1*b.sk[1]+w2*b.sk[2]+w3*b.sk[3]; }
               var nx=u/(b.hx*f), ny=v/(b.hy*f); sd=(Math.sqrt(nx*nx+ny*ny)-1)*Math.min(b.hx,b.hy)*f; }
-            if(D>=1e8){ D=sd; O=b.op; }
-            else{ if(sd<D) O=b.op; var h=Math.max(k-Math.abs(D-sd),0)/k; D=Math.min(D,sd)-h*h*k*.25; }
+            if(D>=1e8) D=sd; else { var h=Math.max(k-Math.abs(D-sd),0)/k; D=Math.min(D,sd)-h*h*k*.25; }
           }
-          var a=.5-D/CELL; d[(r*cols+c)*4+3]=a<=0?0:a>=1?255*O:255*a*O;
+          F[r*nc+c]=D;
         }
       }
-      var u0=pb?{c0:Math.min(pb.c0,nb.c0),r0:Math.min(pb.r0,nb.r0),c1:Math.max(pb.c1,nb.c1),r1:Math.max(pb.r1,nb.r1)}:{c0:0,r0:0,c1:cols,r1:rows};
-      if(!B.length&&pb) u0=pb;
-      if(u0.c1>u0.c0&&u0.r1>u0.r0) ctx.putImageData(img,0,0,u0.c0,u0.r0,u0.c1-u0.c0,u0.r1-u0.r0);
-      pb=nb;
+      /* 윤곽(marching squares)을 하나의 패스로 → 기기 해상도로 채움 */
+      ctx.beginPath();
+      for(r=0;r<nr-1;r++){ var Y=gy0+r*CELL, run=-1;
+        for(c=0;c<nc-1;c++){
+          var a0=F[r*nc+c], a1=F[r*nc+c+1], a2=F[(r+1)*nc+c+1], a3=F[(r+1)*nc+c];
+          var full=a0<0&&a1<0&&a2<0&&a3<0;
+          if(full){ if(run<0) run=c; continue; }
+          if(run>=0){ ctx.rect(gx0+run*CELL,Y,(c-run)*CELL+.4,CELL+.4); run=-1; }
+          if(a0>=0&&a1>=0&&a2>=0&&a3>=0) continue;
+          var X=gx0+c*CELL, P=[[X,Y,a0],[X+CELL,Y,a1],[X+CELL,Y+CELL,a2],[X,Y+CELL,a3]], st=true;
+          for(var e=0;e<4;e++){ var A=P[e], Bq=P[(e+1)%4];
+            if(A[2]<0){ if(st){ ctx.moveTo(A[0],A[1]); st=false; } else ctx.lineTo(A[0],A[1]); }
+            if((A[2]<0)!==(Bq[2]<0)){ var tt=A[2]/(A[2]-Bq[2]), ex=A[0]+(Bq[0]-A[0])*tt, ey=A[1]+(Bq[1]-A[1])*tt; if(st){ ctx.moveTo(ex,ey); st=false; } else ctx.lineTo(ex,ey); }
+          }
+          ctx.closePath();
+        }
+        if(run>=0) ctx.rect(gx0+run*CELL,Y,(nc-1-run)*CELL+.4,CELL+.4);
+      }
+      ctx.globalAlpha=Math.min(1,OP); ctx.fillStyle='#DFF000'; ctx.fill('nonzero'); ctx.globalAlpha=1;
+      pb=[gx0,gy0,gx0+nc*CELL,gy0+nr*CELL];
     };
     goos.push(g);
   }
