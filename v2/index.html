@@ -1331,6 +1331,19 @@ a{color:inherit;text-decoration:none}
 .pb-head{margin-bottom:clamp(44px,8vw,64px)!important}
 .pbs{gap:clamp(64px,14vw,96px)!important}
 .pb-who{margin-bottom:18px!important}
+
+/* 목차 카드 — 이미지 + 키워드 + 제목 + 설명 + 태그 */
+.cur-item{display:grid!important;grid-template-columns:84px 1fr;gap:16px!important;align-items:start!important;padding:16px!important;border-radius:18px!important}
+.cur-th{position:relative;width:84px;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#E9E9E3}
+.cur-th img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15)}
+.cur-th span{position:absolute;inset:0;display:grid;place-items:center;background:rgba(20,20,20,.38);color:#fff;font-size:26px;font-weight:800;letter-spacing:-.03em}
+.cur-kw{font-size:11px;font-weight:800;letter-spacing:.06em;color:#9A9A92;margin:2px 0 6px;display:flex;align-items:center;gap:6px}
+.cur-free{font-style:normal;letter-spacing:0;font-size:10.5px;color:var(--ink);background:var(--brand);border-radius:99px;padding:1px 7px}
+.cur-item .cur-title{font-size:16.5px!important;line-height:1.4!important;margin-bottom:6px!important}
+.cur-item .cur-wow{font-size:14.5px!important;line-height:1.6!important;color:var(--text-gray)!important;margin:0}
+.cur-tags{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:10px}
+.cur-tags span{font-size:12px;font-weight:600;color:#8A8A83}
+.cur-tags span::before{content:'#';margin-right:1px;color:#B5B5AE}
 </style>
 </head>
 <body>
@@ -1512,16 +1525,16 @@ a{color:inherit;text-decoration:none}
 <section class="sec-cur bg-w">
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">목차</span><h2 class="h-sec">한눈에 보는 <span class="em">시리즈 구성</span></h2><p class="sec-lead">9개 챕터를 읽고, <strong>8개 항목의 질문</strong>에 답하며<br>내 브랜드를 하나씩 정리해요.</p></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 00</div><div class="cur-title">시작하기 전에 <span>· 무료</span></div><p class="cur-wow">광고까지 다 했는데 문의가 없던 PT샵. <b>문제는 '몇 명'이 아니라 '누가' 보느냐</b>였어요.</p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 01</div><div class="cur-title">브랜딩의 기준</div><p class="cur-wow">머릿속엔 있는데 말로 안 나온다면, <b>아직 정리가 안 된 거</b>예요.</p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 02</div><div class="cur-title">정체성 <span>· 뭐 하는 곳인지 한 줄로</span></div><p class="cur-wow">"PT샵이에요"보다 "어머니를 위한 PT"가 <b>훨씬 잘 기억돼요.</b></p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 03</div><div class="cur-title">Why <span>· 왜 이 일을 하는지</span></div><p class="cur-wow">공식대로 써도 안 먹힌다면, <b>들려줄 내 이야기가 없어서</b>예요.</p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 04</div><div class="cur-title">포지셔닝 <span>· 손님이 나를 뭐랑 비교하는지</span></div><p class="cur-wow">'작은 사치' 네일샵은 옆 네일샵이 아니라 <b>커피 한 잔이랑 비교돼요.</b></p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 05</div><div class="cur-title">타겟 <span>· 누구한테 팔지</span></div><p class="cur-wow">"20~40대 여성"은 2천만 명이에요. <b>그건 타겟이 아니에요.</b></p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 06</div><div class="cur-title">경쟁자 <span>· 진짜 상대는 누구인지</span></div><p class="cur-wow">제일 무서운 경쟁자는 옆 가게가 아니라 <b>'다음에 하지 뭐'</b>예요.</p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 07</div><div class="cur-title">차별화 <span>· 손님이 나를 고르는 이유</span></div><p class="cur-wow">"친절해요, 깨끗해요, 경력 10년"은 <b>다른 데도 다 있어요.</b></p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 08</div><div class="cur-title">메시지 <span>· 뭐라고 말할지</span></div><p class="cur-wow">콘텐츠가 부족한 게 아니에요. <b>할 말 없는 콘텐츠가 100개</b>인 거예요.</p></div></div>
-    <div class="cur-item rv"><div class="cur-body"><div class="cur-num">Chapter 09</div><div class="cur-title">실행 <span>· 뭐부터 할지</span></div><p class="cur-wow">불안하면 올리고, 문의 없으면 할인하고. <b>방향이 없으면 급한 일만 해요.</b></p></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/1200x/fd/27/bb/fd27bb9084ad15f98b3a2c5e6ebeee63.jpg" alt="" loading="lazy" decoding="async"><span>00</span></div><div class="cur-body"><div class="cur-kw">Chapter 00 · PROLOGUE <em class="cur-free">무료</em></div><div class="cur-title">이 클래스를 시작하기 전에</div><p class="cur-wow">브랜딩은 꾸미기가 아니라 사업의 뼈대를 조립하는 겁니다.</p><div class="cur-tags"><span>순수익 구조</span><span>뼈대→직감→심장</span><span>마케팅 퍼널 예고</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/6b/25/db/6b25dbe6ac01a311776e34508eedc9a3.jpg" alt="" loading="lazy" decoding="async"><span>01</span></div><div class="cur-body"><div class="cur-kw">Chapter 01 · INTRO</div><div class="cur-title">브랜딩이 사업이 되는 순간</div><p class="cur-wow">8가지 질문이 왜 필요한지, 전체 그림을 먼저 그립니다.</p><div class="cur-tags"><span>첫인상 설계</span><span>올드 vs 클래식</span><span>브랜드의 인간화</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/cc/c4/a6/ccc4a6d55e6d6f8674c70326f7c6965d.jpg" alt="" loading="lazy" decoding="async"><span>02</span></div><div class="cur-body"><div class="cur-kw">Chapter 02 · IDENTITY</div><div class="cur-title">정체성: 당신의 브랜드는 누구인가</div><p class="cur-wow">“뭘 하는 곳이에요?” 이 질문에 한 문장으로 답할 수 있나요.</p><div class="cur-tags"><span>자기부정 공식</span><span>키워드 울타리</span><span>역설계</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/91/b3/1a/91b31a082d2342497657b9dd83b0aea0.jpg" alt="" loading="lazy" decoding="async"><span>03</span></div><div class="cur-body"><div class="cur-kw">Chapter 03 · WORLDVIEW</div><div class="cur-title">Why: 왜 굳이 이 사업을 하는가</div><p class="cur-wow">같은 업종이라도 세계관이 다르면 완전히 다른 브랜드가 됩니다.</p><div class="cur-tags"><span>골든서클</span><span>Why 3요소</span><span>프로세스 이코노미</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/0a/07/c9/0a07c90c85b41bd6d516a6515365c3f4.jpg" alt="" loading="lazy" decoding="async"><span>04</span></div><div class="cur-body"><div class="cur-kw">Chapter 04 · POSITIONING</div><div class="cur-title">포지셔닝: 당신의 브랜드의 위치는?</div><p class="cur-wow">시장의 크기가 아니라 경계를 긋는 것이 핵심.</p><div class="cur-tags"><span>콜드리딩 vs 핫리딩</span><span>경쟁자 재정의</span><span>교집합 공식</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/e9/52/55/e952558778a5adca514306dac2f42898.jpg" alt="" loading="lazy" decoding="async"><span>05</span></div><div class="cur-body"><div class="cur-kw">Chapter 05 · TARGET</div><div class="cur-title">타겟: 돈이 되는 사람은 누구인가</div><p class="cur-wow">“30대 여성”은 타겟이 아닙니다. 진짜 타겟을 찾는 질문들.</p><div class="cur-tags"><span>상황 기반 타겟</span><span>지불 의사</span><span>수익성 역산</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/39/7e/41/397e416347fbf5c2bb0b03c9b2771654.jpg" alt="" loading="lazy" decoding="async"><span>06</span></div><div class="cur-body"><div class="cur-kw">Chapter 06 · COMPETITION</div><div class="cur-title">경쟁: 왜 꼭 당신이어야 할까?</div><p class="cur-wow">고객의 피드에서 당신과 똑같이 보이는 모든 계정이 경쟁자예요.</p><div class="cur-tags"><span>해결책 목록</span><span>Void(결핍의 틈새)</span><span>대체재 분석</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/82/f0/f7/82f0f7daa7e46ece2fec1d596f79b4e5.jpg" alt="" loading="lazy" decoding="async"><span>07</span></div><div class="cur-body"><div class="cur-kw">Chapter 07 · DIFFERENCE</div><div class="cur-title">차별화: 당신만의 무기를 찾는 법</div><p class="cur-wow">“친절합니다”는 차별점이 아닙니다. 다르게 하는 것.</p><div class="cur-tags"><span>POP·POD</span><span>DO·DON’T</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/736x/c5/46/81/c54681d71e65b0bb5367ca593f4379ad.jpg" alt="" loading="lazy" decoding="async"><span>08</span></div><div class="cur-body"><div class="cur-kw">Chapter 08 · MESSAGE</div><div class="cur-title">원칙: 어떻게 말하고 드러낼 것인가</div><p class="cur-wow">전략이 아무리 좋아도 고객에게 닿는 건 한 줄의 메시지.</p><div class="cur-tags"><span>접점별 메시지</span><span>고객 여정 설계</span></div></div></div>
+    <div class="cur-item rv"><div class="cur-th"><img src="https://i.pinimg.com/1200x/74/82/29/74822907eb66e5ee986e6a247af6b664.jpg" alt="" loading="lazy" decoding="async"><span>09</span></div><div class="cur-body"><div class="cur-kw">Chapter 09 · COMPLETE</div><div class="cur-title">브랜드를 완성하다</div><p class="cur-wow">8가지 답을 한 장의 전략 문서로 정리합니다.</p><div class="cur-tags"><span>워크북 정합성 검증</span><span>브랜딩→마케팅 순환</span><span>플레이스 체크리스트</span></div></div></div>
   </div>
 </section>
 
