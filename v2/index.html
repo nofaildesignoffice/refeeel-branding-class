@@ -639,7 +639,8 @@ a{color:inherit;text-decoration:none}
 
 /* 히어로 고정 — 다음 섹션이 위로 올라오며 히어로를 덮음 (히어로가 화면보다 길면 끝까지 본 뒤 고정) */
 .bc-root > .hero{position:sticky;top:var(--hero-top,0px);z-index:0}
-.bc-root > .hero ~ section{position:relative;z-index:1}
+.bc-root > .hero ~ section,.bc-root > .hero ~ .foot{position:relative;z-index:1}
+.bc-root > .foot{background:var(--bg-white)}
 .bc-root > .hero + section{box-shadow:0 -24px 48px rgba(0,0,0,.28);border-radius:clamp(24px,4vw,40px) clamp(24px,4vw,40px) 0 0;margin-top:calc(-1 * clamp(24px,4vw,40px))}
 
 /* 셀프 체크 — 콜드리딩 문장 체크리스트 */
