@@ -1967,7 +1967,7 @@ a{color:inherit;text-decoration:none}
     if(A){
       put(fa,A[0],A[1],aSz,aSz,wob(tm,7,10),aSz>1?1:0);
       for(i=0;i<3;i++){ var tk=(i+1)/4, nz=nk*[.8,1,.8][i]; put(nks[i],lerp(bpx,A[0],tk),lerp(bpy,A[1],tk),nz,nz,'50%',nz>1?1:0); }
-    } else { fa.style.opacity=0; for(i=0;i<3;i++) nks[i].style.opacity=0; }
+    } else { put(fa,0,0,0,0,'50%',0); for(i=0;i<3;i++) put(nks[i],0,0,0,0,'50%',0); }
     var px=bpx, py=bpy;
     for(i=0;i<3;i++){ var tr=trs[i]; tr.x+=(px-tr.x)*.3; tr.y+=(py-tr.y)*.3; var tz=bsz*tr.f; put(tr.el,tr.x,tr.y,tz,tz,'50%',tz>1?1:0); px=tr.x; py=tr.y; }
   }
