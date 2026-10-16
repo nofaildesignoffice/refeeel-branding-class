@@ -350,7 +350,7 @@ a{color:inherit;text-decoration:none}
 
 /* 가격 (위쪽) — 왼쪽 타이틀·본문, 오른쪽 가격 카드 */
 .price-split{display:grid;grid-template-columns:1fr;gap:var(--gap-lg);align-items:center}
-@media(min-width:900px){.price-split{grid-template-columns:1fr 440px;gap:clamp(40px,6vw,80px)}}
+@media(min-width:900px){.price-split{grid-template-columns:1fr;gap:var(--gap-lg);justify-items:center}.price-split .price-box{max-width:440px}}
 .price-split .price-story{margin-bottom:0}
 .price-audience{margin-top:clamp(72px,11vw,112px)}
 .bc-root>section.reviews-dark{background:var(--ink);color:#fff}
