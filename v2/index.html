@@ -908,10 +908,10 @@ a{color:inherit;text-decoration:none}
 .bone+*{position:relative;z-index:3}
 .bone.off{margin-bottom:0}
 .bone-defs{position:absolute;width:0;height:0}
-.bone-pin{position:sticky;top:0;background:var(--pinbg,#fff);box-shadow:0 0 0 100vmax var(--pinbg,#fff);clip-path:inset(0 -100vmax);height:100vh;height:100svh;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(52px,7vw,64px);box-sizing:border-box}
+.bone-pin{position:sticky;top:0;background:var(--pinbg,#fff);box-shadow:0 0 0 100vmax var(--pinbg,#fff);clip-path:inset(0 -100vmax -40vh);height:100vh;height:100svh;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(52px,7vw,64px);box-sizing:border-box}
 .bone .order.cmp{margin:0 auto!important;width:100%}
 .bone-goo{position:absolute;inset:0;filter:url(#bone-goo);pointer-events:none}
-.bone-goo i,.bone-goo .bone-dp{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);opacity:0;will-change:transform,width,height}
+.bone-goo i,.bone-goo .bone-dp{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);opacity:0}
 .bone-txt{position:absolute;inset:0;pointer-events:none}
 .bone-txt b,.bone-txt span{position:absolute;left:0;top:0;opacity:0;color:var(--ink);text-align:center;white-space:nowrap;letter-spacing:-.03em;will-change:transform,opacity}
 .bone-txt b{font-weight:900;line-height:1.2}
@@ -936,9 +936,9 @@ a{color:inherit;text-decoration:none}
 .wo-was+.wo-h{margin-top:4px}
 .wo-c.inf .wo-k,.wo-c.inf .wo-was{color:#4A4A40}
 .wo-fill{position:absolute!important;inset:-40px;z-index:0!important;pointer-events:none;filter:url(#bone-goo)}
-.wo-fill i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);opacity:0;will-change:transform,width,height}
+.wo-fill i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);opacity:0}
 .flow{position:fixed;inset:0;z-index:6;pointer-events:none;filter:url(#bone-goo);display:none}
-.flow i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);will-change:transform,width,height}
+.flow i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand)}
 
 /* 카드를 뼈대 무대와 같은 어두운 섹션 안에 */
 .wo-after{position:relative}
