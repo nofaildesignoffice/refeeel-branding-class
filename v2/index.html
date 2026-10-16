@@ -1591,6 +1591,11 @@ a{color:inherit;text-decoration:none}
 
 /* 박스 테두리 통일 — 연회색 */
 .cv,.diag-w,.cost-save{border:1px solid var(--border-light)!important}
+
+/* FAQ 카드 — 아래→위 등장 */
+.bc-root .faq-sec .faq-item.rv{transform:translateY(32px);transition-property:opacity,transform;transition-duration:.8s,1s;transition-timing-function:ease,cubic-bezier(.2,.8,.2,1)}
+.bc-root .faq-sec .faq-item.rv.on{transform:none}
+@media (prefers-reduced-motion:reduce){.bc-root .faq-sec .faq-item.rv{transform:none!important}}
 </style>
 </head>
 <body>
