@@ -1796,7 +1796,7 @@ a{color:inherit;text-decoration:none}
     g.dirty=true; g.kids=[].slice.call(host.querySelectorAll('i'));
     g.kids.forEach(function(e){ e.__g=g; });
     function fit(){
-      var w=host.offsetWidth, h=host.offsetHeight, r=Math.min(window.devicePixelRatio||1,2.5);
+      var w=host.offsetWidth, h=host.offsetHeight, r=Math.min(window.devicePixelRatio||1,2);
       if(w===cw && h===ch && r===dpr) return;
       cw=w; ch=h; dpr=r; cv.width=Math.ceil(w*r); cv.height=Math.ceil(h*r); cv.style.width=w+'px'; cv.style.height=h+'px'; pb=null;
     }
@@ -1818,44 +1818,48 @@ a{color:inherit;text-decoration:none}
       ctx.setTransform(dpr,0,0,dpr,0,0);
       if(pb) ctx.clearRect(pb[0]-2,pb[1]-2,pb[2]-pb[0]+4,pb[3]-pb[1]+4);
       if(!B.length){ pb=null; return; }
-      /* 격자 꼭짓점마다 거리값 */
-      var gx0=Math.floor((x0-k)/CELL)*CELL, gy0=Math.floor((y0-k)/CELL)*CELL, nc=Math.ceil((x1+k-gx0)/CELL)+1, nr=Math.ceil((y1+k-gy0)/CELL)+1;
-      if(!F||F.length<nc*nr) F=new Float32Array(nc*nr*1.3|0);
-      for(var r=0;r<nr;r++){ var py=gy0+r*CELL;
-        for(var c=0;c<nc;c++){ var ppx=gx0+c*CELL, D=1e9;
-          for(i=0;i<B.length;i++){ var b=B[i], dx=ppx-b.x, dy=py-b.y, dd=Math.sqrt(dx*dx+dy*dy);
-            if((dd-b.R)*b.mn>D+k) continue;
-            var u=dx*b.c+dy*b.s, v=-dx*b.s+dy*b.c, sd;
-            if(b.rr>=0){ var qx=Math.abs(u)-b.hx+b.rr, qy=Math.abs(v)-b.hy+b.rr, mx=Math.max(qx,0), my=Math.max(qy,0); sd=Math.sqrt(mx*mx+my*my)+Math.min(Math.max(qx,qy),0)-b.rr; }
-            else{ var f=1;
-              if(b.sk){ var t=Math.atan2(v,u), w0=Math.cos(t+2.356), w1=Math.cos(t+.785), w2=Math.cos(t-.785), w3=Math.cos(t-2.356);
-                w0=w0>0?w0*w0:0; w1=w1>0?w1*w1:0; w2=w2>0?w2*w2:0; w3=w3>0?w3*w3:0; f=w0*b.sk[0]+w1*b.sk[1]+w2*b.sk[2]+w3*b.sk[3]; }
-              var nx=u/(b.hx*f), ny=v/(b.hy*f); sd=(Math.sqrt(nx*nx+ny*ny)-1)*Math.min(b.hx,b.hy)*f; }
-            if(D>=1e8) D=sd; else { var h=Math.max(k-Math.abs(D-sd),0)/k; D=Math.min(D,sd)-h*h*k*.25; }
-          }
-          F[r*nc+c]=D;
+      /* 거리장: 한 점의 값 */
+      function fd(ppx,py){ var D=1e9;
+        for(var i=0;i<B.length;i++){ var b=B[i], dx=ppx-b.x, dy=py-b.y, dd=Math.sqrt(dx*dx+dy*dy);
+          if((dd-b.R)*b.mn>D+k) continue;
+          var u=dx*b.c+dy*b.s, v=-dx*b.s+dy*b.c, sd;
+          if(b.rr>=0){ var qx=Math.abs(u)-b.hx+b.rr, qy=Math.abs(v)-b.hy+b.rr, mx=Math.max(qx,0), my=Math.max(qy,0); sd=Math.sqrt(mx*mx+my*my)+Math.min(Math.max(qx,qy),0)-b.rr; }
+          else{ var f=1;
+            if(b.sk){ var t=Math.atan2(v,u), w0=Math.cos(t+2.356), w1=Math.cos(t+.785), w2=Math.cos(t-.785), w3=Math.cos(t-2.356);
+              w0=w0>0?w0*w0:0; w1=w1>0?w1*w1:0; w2=w2>0?w2*w2:0; w3=w3>0?w3*w3:0; f=w0*b.sk[0]+w1*b.sk[1]+w2*b.sk[2]+w3*b.sk[3]; }
+            var nx=u/(b.hx*f), ny=v/(b.hy*f); sd=(Math.sqrt(nx*nx+ny*ny)-1)*Math.min(b.hx,b.hy)*f; }
+          if(D>=1e8) D=sd; else { var h=Math.max(k-Math.abs(D-sd),0)/k; D=Math.min(D,sd)-h*h*k*.25; }
         }
-      }
-      /* 윤곽(marching squares)을 하나의 패스로 → 기기 해상도로 채움 */
+        return D; }
+      /* 블록(5x5칸)마다 중심값으로 안/밖을 먼저 판정 → 테두리 블록만 꼭짓점 계산 + 윤곽 */
+      var BS=5, S=BS*CELL, gx0=Math.floor((x0-k)/S)*S, gy0=Math.floor((y0-k)/S)*S, nbx=Math.ceil((x1+k-gx0)/S), nby=Math.ceil((y1+k-gy0)/S), M=S*1.05;
+      if(!F) F=new Float32Array((BS+1)*(BS+1));
       ctx.beginPath();
-      for(r=0;r<nr-1;r++){ var Y=gy0+r*CELL, run=-1;
-        for(c=0;c<nc-1;c++){
-          var a0=F[r*nc+c], a1=F[r*nc+c+1], a2=F[(r+1)*nc+c+1], a3=F[(r+1)*nc+c];
-          var full=a0<0&&a1<0&&a2<0&&a3<0;
-          if(full){ if(run<0) run=c; continue; }
-          if(run>=0){ ctx.rect(gx0+run*CELL,Y,(c-run)*CELL+.4,CELL+.4); run=-1; }
-          if(a0>=0&&a1>=0&&a2>=0&&a3>=0) continue;
-          var X=gx0+c*CELL, P=[[X,Y,a0],[X+CELL,Y,a1],[X+CELL,Y+CELL,a2],[X,Y+CELL,a3]], st=true;
-          for(var e=0;e<4;e++){ var A=P[e], Bq=P[(e+1)%4];
-            if(A[2]<0){ if(st){ ctx.moveTo(A[0],A[1]); st=false; } else ctx.lineTo(A[0],A[1]); }
-            if((A[2]<0)!==(Bq[2]<0)){ var tt=A[2]/(A[2]-Bq[2]), ex=A[0]+(Bq[0]-A[0])*tt, ey=A[1]+(Bq[1]-A[1])*tt; if(st){ ctx.moveTo(ex,ey); st=false; } else ctx.lineTo(ex,ey); }
+      for(var by=0;by<nby;by++){ var Y0=gy0+by*S, run=-1;
+        for(var bx=0;bx<=nbx;bx++){
+          var X0=gx0+bx*S, Dc=bx<nbx?fd(X0+S/2,Y0+S/2):1e9;
+          if(Dc<-M){ if(run<0) run=bx; continue; }
+          if(run>=0){ ctx.rect(gx0+run*S,Y0,(bx-run)*S+.4,S+.4); run=-1; }
+          if(Dc>M) continue;
+          for(var r=0;r<=BS;r++) for(var c=0;c<=BS;c++) F[r*(BS+1)+c]=fd(X0+c*CELL,Y0+r*CELL);
+          for(r=0;r<BS;r++){ var Y=Y0+r*CELL;
+            for(c=0;c<BS;c++){
+              var a0=F[r*(BS+1)+c], a1=F[r*(BS+1)+c+1], a2=F[(r+1)*(BS+1)+c+1], a3=F[(r+1)*(BS+1)+c];
+              if(a0>=0&&a1>=0&&a2>=0&&a3>=0) continue;
+              var X=X0+c*CELL;
+              if(a0<0&&a1<0&&a2<0&&a3<0){ ctx.rect(X,Y,CELL+.4,CELL+.4); continue; }
+              var P=[[X,Y,a0],[X+CELL,Y,a1],[X+CELL,Y+CELL,a2],[X,Y+CELL,a3]], st=true;
+              for(var e=0;e<4;e++){ var A=P[e], Bq=P[(e+1)%4];
+                if(A[2]<0){ if(st){ ctx.moveTo(A[0],A[1]); st=false; } else ctx.lineTo(A[0],A[1]); }
+                if((A[2]<0)!==(Bq[2]<0)){ var tt=A[2]/(A[2]-Bq[2]), ex=A[0]+(Bq[0]-A[0])*tt, ey=A[1]+(Bq[1]-A[1])*tt; if(st){ ctx.moveTo(ex,ey); st=false; } else ctx.lineTo(ex,ey); }
+              }
+              ctx.closePath();
+            }
           }
-          ctx.closePath();
         }
-        if(run>=0) ctx.rect(gx0+run*CELL,Y,(nc-1-run)*CELL+.4,CELL+.4);
       }
       ctx.globalAlpha=Math.min(1,OP); ctx.fillStyle='#DFF000'; ctx.fill('nonzero'); ctx.globalAlpha=1;
-      pb=[gx0,gy0,gx0+nc*CELL,gy0+nr*CELL];
+      pb=[gx0,gy0,gx0+(nbx+1)*S,gy0+nby*S];
     };
     goos.push(g);
   }
