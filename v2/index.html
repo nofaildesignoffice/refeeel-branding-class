@@ -945,8 +945,8 @@ a{color:inherit;text-decoration:none}
 .bone.off+.wo-after::before{top:0}
 
 /* 지표: refeeel 서비스 소개 스타일 — 라벨 위, 큰 숫자, 세로 구분선, 숫자 릴 */
-.proof-grid{grid-template-columns:1fr 1fr!important;gap:32px 0!important;max-width:880px;margin:0 auto}
-@media(min-width:768px){.proof-grid{grid-template-columns:repeat(4,1fr)!important}}
+.proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:32px 0!important;max-width:880px;margin:0 auto}
+@media(min-width:768px){.proof-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
 .proof-card{background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;padding:12px 8px!important;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:10px;text-align:center}
 .proof-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--ink);transform:scaleY(0);transform-origin:top;transition:transform .9s cubic-bezier(.25,1,.5,1) .3s}
 .proof-card:nth-child(odd)::before{display:none}
