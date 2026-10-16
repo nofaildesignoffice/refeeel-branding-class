@@ -1434,6 +1434,10 @@ a{color:inherit;text-decoration:none}
 .cs-sub{margin-top:12px;font-size:15px;color:var(--text-gray)}
 .cs-sub b{color:var(--ink)}
 .cost-row .cost-v{color:var(--ink)!important}
+
+/* 아낀 돈 카드 안에 비용 막대 */
+.cost-save::before{display:none}
+.cost-save .cost-row{text-align:left;margin-top:22px;padding-top:20px;border-top:1px dashed var(--border-light)}
 </style>
 </head>
 <body>
@@ -1707,16 +1711,15 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="sec-head rv"><h2 class="h-sec">더 쓰기 전에,<br><span class="em">어디에 쓸지부터.</span></h2><p class="sec-lead">브랜드 뼈대를 잡으면 매출만이 아니라,<br>앞으로 들어갈 시간과 돈을 아낄 수 있어요.</p></div>
     <div class="cost rv">
-      <div class="cost-row">
-        <div class="cost-k"><b>뼈대 없이 하나씩 해볼 때</b><span>약 6개월</span></div>
-        <div class="cost-bar"><i style="--w:9.4%"></i><i style="--w:34%"></i><i style="--w:56.6%"></i></div>
-        <div class="cost-lg"><span><i class="c1"></i>강의 50만</span><span><i class="c2"></i>광고 3개월 180만</span><span><i class="c3"></i>대행사 3개월 300만</span></div>
-        <div class="cost-v">약 530만 원</div>
-      </div>
       <div class="cost-save">
         <p class="cs-cap">뼈대부터 세우면 아끼는 돈</p>
         <div class="cs-num"><span class="cs-n" data-to="5201000">5,201,000</span><small>원</small></div>
         <p class="cs-sub">530만 원 들 일을, <b>99,000원</b>으로</p>
+        <div class="cost-row">
+          <div class="cost-k"><b>뼈대 없이 하나씩 해볼 때</b><span>약 6개월</span></div>
+          <div class="cost-bar"><i style="--w:9.4%"></i><i style="--w:34%"></i><i style="--w:56.6%"></i></div>
+          <div class="cost-lg"><span><i class="c1"></i>강의 50만</span><span><i class="c2"></i>광고 3개월 180만</span><span><i class="c3"></i>대행사 3개월 300만</span></div>
+        </div>
       </div>
       <p class="cost-note">* 초기 브랜드들이 흔히 시도하는 항목의 일반적인 비용으로 만든 예시예요.</p>
     </div>
