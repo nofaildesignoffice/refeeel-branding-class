@@ -1448,6 +1448,14 @@ a{color:inherit;text-decoration:none}
 .cs-cap{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--brand);color:var(--brand-ink)!important;font-size:12px!important;font-weight:700!important;padding:6px 14px;border-radius:var(--radius-full)}
 .cost-save{padding-top:36px!important;margin-top:18px!important}
 .cs-num{margin-top:0!important}
+
+/* 가격 박스 — 포함 항목·구매 버튼 */
+.price-sec .sec-lead{color:rgba(255,255,255,.72)!important;margin-left:auto;margin-right:auto}
+.pb-list{list-style:none;text-align:left;margin:22px 0 0;padding:20px 4px 0;border-top:1px solid var(--border-light);display:grid;gap:12px}
+.pb-list li{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--ink)}
+.pb-list li::before{content:'';flex:none;width:20px;height:20px;border-radius:50%;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4L18 8' fill='none' stroke='%231A1A1A' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat}
+.pb-buy{display:flex!important;width:100%;margin-top:24px;padding:17px 20px!important;font-size:16px!important;border-radius:14px!important}
+.pb-free{display:inline-block;margin-top:14px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -1738,11 +1746,18 @@ a{color:inherit;text-decoration:none}
 <!-- [20c] 가격 박스 -->
 <section class="sec bt del-sec price-sec">
   <div class="wrap">
-    <div class="sec-head c rv"><h2 class="h-sec">530만 원 들 일을,<br><span class="em">99,000원으로</span></h2></div>
+    <div class="sec-head c rv"><span class="label">브랜드가 돈이 되는 과정</span><h2 class="h-sec">530만 원 들 일을,<br><span class="em">99,000원으로</span></h2><p class="sec-lead">한 번 세운 뼈대는 콘텐츠, 광고, 가격 어디에든 그대로 써요.</p></div>
     <div class="price-box rv">
       <div class="price-amt">99,000<span class="u">원</span></div>
       <div class="price-note">단독 시리즈 · VAT 포함</div>
-      <div class="price-tags"><span class="price-tag">시리즈 9챕터</span><span class="price-tag">8개 항목의 질문</span><span class="price-tag">채널별 적용</span></div>
+      <ul class="pb-list">
+        <li>시리즈 9챕터</li>
+        <li>8개 항목의 질문 워크북</li>
+        <li>채널별 적용 가이드</li>
+        <li>핸드폰·PC 어디서든, 평생 소장</li>
+      </ul>
+      <a href="/shop_view?idx=6" class="btn btn-p pb-buy">구매하기 <span class="arr">→</span></a>
+      <a href="/brandingclass00" class="pb-free">Chapter 00 무료로 읽기 →</a>
     </div>
   </div>
 </section>
