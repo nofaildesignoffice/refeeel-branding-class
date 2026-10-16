@@ -1522,8 +1522,9 @@ a{color:inherit;text-decoration:none}
   var deco=bone.querySelector('.bone-deco'), bg=bone.querySelector('.bone-bg'), o1=deco.querySelector('.o1'), o2=deco.querySelector('.o2'), cap=bone.querySelector('.bone-cap');
   var dps=[]; for(var k=0;k<6;k++){ var e=document.createElement('i'); e.className='bone-dp'; goo.appendChild(e); dps.push(e); }
   /* 카드 섹션: 액체 레이어 + 카드 안 채움 */
-  var sec=document.querySelector('.sec-wo.good'), wc=sec?sec.querySelectorAll('.wo-c'):[], fills=[], flowEl=null, fb=null, trs=[], fon=false, bpx=0, bpy=0, bsz=0, lpx=0, lpy=0, sa=0;
-  if(sec){ flowEl=document.createElement('div'); flowEl.className='flow'; flowEl.setAttribute('aria-hidden','true'); fb=document.createElement('i'); flowEl.appendChild(fb);
+  var sec=document.querySelector('.sec-wo.good'), wc=sec?sec.querySelectorAll('.wo-c'):[], fills=[], flowEl=null, fb=null, fa=null, nks=[], trs=[], fon=false, bpx=0, bpy=0, bsz=0, lpx=0, lpy=0, sa=0;
+  if(sec){ flowEl=document.createElement('div'); flowEl.className='flow'; flowEl.setAttribute('aria-hidden','true'); fb=document.createElement('i'); flowEl.appendChild(fb); fa=document.createElement('i'); flowEl.appendChild(fa);
+    for(k=0;k<3;k++){ var ne=document.createElement('i'); flowEl.appendChild(ne); nks.push(ne); }
     for(k=0;k<3;k++){ var te=document.createElement('i'); flowEl.appendChild(te); trs.push({el:te,x:0,y:0,f:[.62,.44,.3][k]}); } sec.appendChild(flowEl);
     for(k=0;k<wc.length;k++){ var fe=document.createElement('div'); fe.className='wo-fill'; fe.setAttribute('aria-hidden','true'); for(var q=0;q<4;q++) fe.appendChild(document.createElement('i')); wc[k].insertBefore(fe,wc[k].firstChild); fills.push(fe.children); } }
   var W,H,cr,D,d,RR, ps=0, pv=0, vel=0, run=false, last=0;
@@ -1579,27 +1580,45 @@ a{color:inherit;text-decoration:none}
       }
     }
     if(!hand){ if(fon){ flowEl.style.display='none'; fon=false; } return; }
-    var tx,ty,ts,sqA=0,sqK=0, db=Math.max(56,Math.min(84,innerWidth*.16)), u0=us[0];
-    if(u0<0){ var t0=ez(cl(1+u0)), c0=cin(0); tx=lerp(sx,c0[0],t0); ty=lerp(sy,c0[1],t0); ts=lerp(D,db,ez(cl((1+u0)*1.5))); }
+    var tx,ty,ts, db=Math.max(56,Math.min(84,innerWidth*.16)), u0=us[0], stK=0, ir=0, A=null, aSz=0, nk=0;
+    function ang(j){ return (j%2?135:45)*Math.PI/180; }          /* 들어가는 모서리 → 카드 안쪽, 나오는 모서리 → 카드 바깥쪽 */
+    function ap(j){ var c=cin(j), a=ang(j); return [c[0]-Math.cos(a)*db*.5, c[1]-Math.sin(a)*db*.5]; }
+    if(u0<0){ var t0=ez(cl(1+u0)), a0=ap(0); tx=lerp(sx,a0[0],t0); ty=lerp(sy,a0[1],t0); ts=lerp(D,db,ez(cl((1+u0)*1.5))); }
     else{
       var j=0; for(i=0;i<n;i++) if(us[i]>=0) j=i;
-      var u=us[j], ci=cin(j), co=cout(j);
-      if(u<.3){ var kk=ez(u/.3); sqA=j%2?135:45; var ir=sqA*Math.PI/180; ts=db*(1-kk);
-        sqK=.36*Math.min(1,u/.05)*(1-.4*kk);                       /* 모서리에 눌려 납작해짐 */
-        tx=ci[0]-Math.cos(ir)*ts*(.34-.2*kk); ty=ci[1]-Math.sin(ir)*ts*(.34-.2*kk); }
+      var u=us[j], ci=cin(j), co=cout(j); ir=ang(j); var cx_=Math.cos(ir), sy_=Math.sin(ir);
+      if(u<.3){
+        /* 닿음: 모서리 쪽으로 늘어나며 빨려 들어가고, 사이에 물방울 다리 */
+        var kk=ez(u/.3), a1=ap(j);
+        tx=lerp(a1[0],ci[0]+cx_*db*.15,kk); ty=lerp(a1[1],ci[1]+sy_*db*.15,kk);
+        ts=db*(1-.85*kk)*(1-seg(u,.24,.3)); stK=.38*Math.sin(Math.PI*kk);
+        A=[ci[0]+cx_*12,ci[1]+sy_*12]; aSz=db*.85*Math.sin(Math.PI*cl(kk*1.05)); nk=db*.42*Math.sin(Math.PI*kk);
+      }
       else if(u<.62){ var hid=u<.46?ci:co; tx=hid[0]; ty=hid[1]; ts=0; }
-      else if(u<.76){ tx=co[0]; ty=co[1]; ts=db*back(seg(u,.62,.76)); }
-      else if(j<n-1){ var t1=ez(seg(u,.76,1)), cn=cin(j+1); tx=lerp(co[0],cn[0],t1); ty=lerp(co[1],cn[1],t1); ts=db; }
-      else{ var t9=ez(seg(u,.76,1)); tx=co[0]; ty=co[1]+60*t9; ts=db*(1-t9); }
+      else if(u<.82){
+        /* 분리: 모서리에서 탄성 있게 떨어져 나오며 다리가 늘어났다 끊김 */
+        var raw=seg(u,.62,.82), ti=back(raw);
+        tx=co[0]+cx_*db*.62*ti; ty=co[1]+sy_*db*.62*ti; ts=db*(.35+.65*ez(raw)); stK=.26*Math.sin(Math.PI*raw);
+        A=[co[0]-cx_*10,co[1]-sy_*10]; aSz=db*.8*(1-ez(raw)); nk=db*.42*Math.sin(Math.PI*cl(raw*1.15));
+      }
+      else{
+        var E=[co[0]+cx_*db*.62,co[1]+sy_*db*.62];
+        if(j<n-1){ var t1=ez(seg(u,.82,1)), an=ap(j+1); tx=lerp(E[0],an[0],t1); ty=lerp(E[1],an[1],t1); ts=db; }
+        else{ var t9=ez(seg(u,.82,1)); tx=E[0]; ty=E[1]+60*t9; ts=db*(1-t9); }
+      }
     }
     if(!fon){ fon=true; flowEl.style.display='block'; bpx=lpx=tx; bpy=lpy=ty; bsz=ts; for(i=0;i<3;i++){ trs[i].x=tx; trs[i].y=ty; } }
     if(ts===0 && bsz<1.5){ bpx=tx; bpy=ty; for(i=0;i<3;i++){ trs[i].x=tx; trs[i].y=ty; } }
-    bpx+=(tx-bpx)*.42; bpy+=(ty-bpy)*.42; bsz+=(ts-bsz)*(sqK>0?.18:.3);
+    var sm=A?.55:.42; bpx+=(tx-bpx)*sm; bpy+=(ty-bpy)*sm; bsz+=(ts-bsz)*(A?.4:.3);
     var vx=bpx-lpx, vy=bpy-lpy, sp=Math.hypot(vx,vy); lpx=bpx; lpy=bpy;
     if(sp>.5) sa=Math.atan2(vy,vx)*180/Math.PI;
     var st=Math.min(.45,sp*.02);
-    if(sqK>0) put(fb,bpx,bpy,bsz,bsz,wob(tm,5,6),bsz>1?1:0,1-sqK,1+sqK*.75,sqA);
+    if(stK>0) put(fb,bpx,bpy,bsz,bsz,wob(tm,5,9),bsz>1?1:0,1+stK,1/(1+stK*.8),ir*180/Math.PI);
     else put(fb,bpx,bpy,bsz,bsz,wob(tm,5,9),bsz>1?1:0,1+st,1/(1+st*.7),sa);
+    if(A){
+      put(fa,A[0],A[1],aSz,aSz,wob(tm,7,10),aSz>1?1:0);
+      for(i=0;i<3;i++){ var tk=(i+1)/4, nz=nk*[.8,1,.8][i]; put(nks[i],lerp(bpx,A[0],tk),lerp(bpy,A[1],tk),nz,nz,'50%',nz>1?1:0); }
+    } else { fa.style.opacity=0; for(i=0;i<3;i++) nks[i].style.opacity=0; }
     var px=bpx, py=bpy;
     for(i=0;i<3;i++){ var tr=trs[i]; tr.x+=(px-tr.x)*.3; tr.y+=(py-tr.y)*.3; var tz=bsz*tr.f; put(tr.el,tr.x,tr.y,tz,tz,'50%',tz>1?1:0); px=tr.x; py=tr.y; }
   }
