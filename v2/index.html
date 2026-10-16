@@ -902,7 +902,7 @@ a{color:inherit;text-decoration:none}
 @media (prefers-reduced-motion:reduce){.wo-viz .a{animation:none!important}}
 
 /* [8] 뼈대 → 액체 원 → 세포 분열 */
-.bone{position:relative;height:360vh;margin-top:0;margin-bottom:-100vh}
+.bone{position:relative;height:420vh;margin-top:0;margin-bottom:-100vh}
 .bone+*,.sec:has(.bone)+.sec{position:relative;z-index:3}
 .sec:has(.bone)+.sec{border-radius:28px 28px 0 0;box-shadow:0 -18px 40px -12px rgba(0,0,0,.12)}
 .bone.off{margin-bottom:0}
@@ -923,6 +923,20 @@ a{color:inherit;text-decoration:none}
 .bone-cap{font-size:clamp(24px,3.4vw,34px);font-weight:800;line-height:1.35;letter-spacing:-.035em!important;color:#fff;text-align:center}
 .bone-txt .bone-cap span.em{position:static;opacity:1;color:var(--brand);background:none;font-weight:800;font-size:inherit;transform:none!important}
 .sec-wo.good{padding-top:clamp(40px,6vw,64px)!important}
+
+/* [8a2] 액체가 카드를 지그재그로 통과 */
+.sec-wo.good .wo-grid{grid-template-columns:1fr!important;gap:clamp(48px,7vw,72px)!important;max-width:960px}
+@media(min-width:768px){.sec-wo.good .wo-c{width:min(100%,560px)}.sec-wo.good .wo-c:nth-child(odd){justify-self:start}.sec-wo.good .wo-c:nth-child(even){justify-self:end}}
+.sec-wo.good .wo-c{position:relative;overflow:hidden;isolation:isolate}
+.sec-wo.good .wo-c>*:not(.wo-fill){position:relative;z-index:1}
+.wo-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.wo-k{font-size:12.5px;font-weight:700;color:#8A8A84;letter-spacing:-.01em;transition:color .3s}
+.wo-was{margin-top:12px;font-size:14.5px;line-height:1.5;color:#9A9A92;text-decoration:line-through;text-decoration-color:rgba(0,0,0,.25);word-break:keep-all;transition:color .3s}
+.wo-was+.wo-h{margin-top:4px}
+.wo-c.inf .wo-k,.wo-c.inf .wo-was{color:#4A4A40}
+.wo-fill{position:absolute!important;left:0;top:0;z-index:0!important;width:10px;height:10px;background:var(--brand);transform:scale(0);pointer-events:none;will-change:transform}
+.flow{position:fixed;inset:0;z-index:6;pointer-events:none;filter:url(#bone-goo);display:none}
+.flow i{position:absolute;left:0;top:0;width:10px;height:10px;background:var(--brand);will-change:transform,width,height}
 </style>
 </head>
 <body>
@@ -1084,7 +1098,7 @@ a{color:inherit;text-decoration:none}
 <!-- [8a2] 뼈대를 세우고 하면 -->
 <section class="sec bt bg-t sec-wo good">
   <div class="wrap">
-    <div class="wo-grid"><div class="wo-c rv"><span class="wo-t">릴스·피드 올리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 70 C80 67,130 60,186 54" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="54.0" r="3"/><text x="193" y="57.5">조회</text></g><path d="M12 72 C70 66,120 42,186 22 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 72 C70 66,120 42,186 22" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>조회수가 적어도 문의가 와요</div><p class="wo-d">딱 그 사람한테 하는 말이라 "내 얘기네" 하고 연락해요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">광고 돌리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><rect x="50" y="10" width="70" height="64"/><text x="85.0" y="21">광고 ON</text></g><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22 L186 74 L12 74Z" class="ar"/><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 광고비로 더 팔려요</div><p class="wo-d">보여줄 사람과 할 말이 정해져 있어서 클릭이 구매로 이어져요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">강의 듣기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><line x1="70" y1="14" x2="70" y2="74" class="mk"/><text x="70" y="11">강의 수강</text></g><path d="M12 60 L70 58 C102 54,132 34,186 20 L186 74 L12 74Z" class="ar"/><path d="M12 60 L70 58 C102 54,132 34,186 20" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="20.0" r="3"/><text x="193" y="23.5">매출</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>배운 걸 내 가게에 바로 써요</div><p class="wo-d">내 기준이 있으니 뭘 가져다 쓸지 골라져요.</p></div><div class="wo-c rv"><span class="wo-t">신메뉴 내기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 62 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="62.0" r="3"/><text x="193" y="65.5">메뉴</text></g><path d="M12 68 C70 62,120 40,186 22 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 68 C70 62,120 40,186 22" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">손님</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>하나를 내도 반응이 와요</div><p class="wo-d">손님의 진짜 고민을 풀어주는 메뉴라서요.</p></div><div class="wo-c rv rv-d1"><span class="wo-t">가격 내리기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 22 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">가격</text></g><path d="M12 66 C70 62,120 50,186 40 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 66 C70 62,120 50,186 40" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="40.0" r="3"/><text x="193" y="43.5">남는 돈</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>비싸도 사는 이유가 생겨요</div><p class="wo-d">비교 기준이 '가격'에서 '나만의 이유'로 바뀌어요.</p></div><div class="wo-c rv rv-d2"><span class="wo-t">대행사 바꾸기</span><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><line x1="68" y1="14" x2="68" y2="74" class="mk"/><line x1="126" y1="14" x2="126" y2="74" class="mk"/><text x="40.0" y="11">A사</text><text x="97.0" y="11">B사</text><text x="156.0" y="11">C사</text></g><path d="M12 66 C40 62,60 56,68 54 C90 50,110 44,126 41 C150 36,170 28,186 22 L186 74 L12 74Z" class="ar"/><path d="M12 66 C40 62,60 56,68 54 C90 50,110 44,126 41 C150 36,170 28,186 22" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">매출</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>누구에게 맡겨도 같은 방향</div><p class="wo-d">정리된 한 장이면 직원·외주·AI가 같은 말을 해요.</p></div></div>
+    <div class="wo-grid"><div class="wo-c rv"><div class="wo-top"><span class="wo-t">릴스·피드 올리기</span><span class="wo-k">콘텐츠</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 70 C80 67,130 60,186 54" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="54.0" r="3"/><text x="193" y="57.5">조회</text></g><path d="M12 72 C70 66,120 42,186 22 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 72 C70 66,120 42,186 22" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><p class="wo-was">조회수만 높고 문의가 안 들어왔었지만</p><div class="wo-h"><i aria-hidden="true">✓</i>조회수가 낮더라도 문의가 쏟아지게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">광고 돌리기</span><span class="wo-k">마케팅</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><g class="bd"><rect x="50" y="10" width="70" height="64"/><text x="85.0" y="21">광고 ON</text></g><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22 L186 74 L12 74Z" class="ar"/><path d="M12 72 L50 72 C60 72,64 42,82 40 L112 36 C132 33,152 28,186 22" pathLength="1" class="ln good"/><g class="en good"><circle cx="186" cy="22.0" r="3"/><text x="193" y="25.5">문의</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 광고비로 더 많이 팔리게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">가격 경쟁</span><span class="wo-k">경쟁력</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 60 H70 V53 H130 V46 H186" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="46" r="3"/><text x="193" y="49.5">가격</text></g><path d="M12 70 C70 64,120 42,186 20 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 70 C70 64,120 42,186 20" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="20" r="3"/><text x="193" y="23.5">선택</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>가격을 높이더라도 고객이 경쟁사가 아닌 나를 선택하게 되고</div></div><div class="wo-c rv"><div class="wo-top"><span class="wo-t">순수익 최적화</span><span class="wo-k">비용 최적화</span></div><div class="wo-viz" aria-hidden="true"><svg viewBox="0 0 240 90"><line x1="12" y1="34" x2="186" y2="34" class="gl"/><line x1="12" y1="54" x2="186" y2="54" class="gl"/><line x1="12" y1="74" x2="186" y2="74" class="bl"/><path d="M12 30 C70 29,120 31,186 30" pathLength="1" class="ln ctx"/><g class="en ctx"><circle cx="186" cy="30" r="3"/><text x="193" y="33.5">매출</text></g><path d="M12 70 C70 67,120 60,186 50 L186 74 L12 74Z" class="ar" style="animation-delay:0.5s"/><path d="M12 70 C70 67,120 60,186 50" pathLength="1" class="ln good" style="animation-delay:0.5s"/><g class="en good" style="animation-delay:0.5s"><circle cx="186" cy="50" r="3"/><text x="193" y="53.5">순수익</text></g></svg></div><div class="wo-h"><i aria-hidden="true">✓</i>같은 매출 볼륨에서 순수익률이 올라가게 되죠.</div></div></div>
     <div class="wo-punch rv"><p>광고는 <b>매출</b>을 키우고,<br>브랜딩은 <span class="em">남는 돈</span>을 키워요.</p></div>
   </div>
 </section>
@@ -1488,6 +1502,11 @@ a{color:inherit;text-decoration:none}
   var goo=bone.querySelector('.bone-goo'), m=bone.querySelector('.bone-m'), cs=bone.querySelectorAll('.bone-c'), mt=bone.querySelector('.bone-txt b'), ls=bone.querySelectorAll('.bone-txt > span');
   var deco=bone.querySelector('.bone-deco'), bg=bone.querySelector('.bone-bg'), o1=deco.querySelector('.o1'), o2=deco.querySelector('.o2'), cap=bone.querySelector('.bone-cap');
   var dps=[]; for(var k=0;k<6;k++){ var e=document.createElement('i'); e.className='bone-dp'; goo.appendChild(e); dps.push(e); }
+  /* 카드 섹션: 액체 레이어 + 카드 안 채움 */
+  var sec=document.querySelector('.sec-wo.good'), wc=sec?sec.querySelectorAll('.wo-c'):[], fills=[], flowEl=null, fb=null, trs=[], fon=false, bpx=0, bpy=0, bsz=0, lpx=0, lpy=0, sa=0;
+  if(sec){ flowEl=document.createElement('div'); flowEl.className='flow'; flowEl.setAttribute('aria-hidden','true'); fb=document.createElement('i'); flowEl.appendChild(fb);
+    for(k=0;k<3;k++){ var te=document.createElement('i'); flowEl.appendChild(te); trs.push({el:te,x:0,y:0,f:[.62,.44,.3][k]}); } sec.appendChild(flowEl);
+    for(k=0;k<wc.length;k++){ var fe=document.createElement('i'); fe.className='wo-fill'; fe.setAttribute('aria-hidden','true'); wc[k].insertBefore(fe,wc[k].firstChild); fills.push(fe); } }
   var W,H,cr,D,d,RR, ps=0, pv=0, vel=0, run=false, last=0;
   function cl(v){ return v<0?0:v>1?1:v; }
   function seg(p,a,b){ return cl((p-a)/(b-a)); }
@@ -1510,6 +1529,43 @@ a{color:inherit;text-decoration:none}
     el.style.width=w+'px'; el.style.height=h+'px'; el.style.borderRadius=rad; el.style.opacity=op;
     el.style.transform='translate('+(x-w/2)+'px,'+(y-h/2)+'px) rotate('+(rot||0)+'deg) scale('+(sx||1)+','+(sy||1)+')';
   }
+
+  /* 합쳐진 액체가 카드 모서리로 들어가 카드를 물들이고, 반대쪽 모서리로 빠져나와 다음 카드로 */
+  function flow(tm,hand,sx,sy){
+    if(!sec) return;
+    var vh=innerHeight, Y0=vh*.66, n=wc.length, rs=[], us=[], i;
+    for(i=0;i<n;i++) rs.push(wc[i].getBoundingClientRect());
+    for(i=0;i<n;i++){ var pitch=i<n-1?rs[i+1].top-rs[i].top:rs[i].height+60; us.push((Y0-rs[i].top)/pitch); }
+    function cin(i){ var r=rs[i], o=10; return i%2?[r.right-o,r.top+o]:[r.left+o,r.top+o]; }
+    function cout(i){ var r=rs[i], o=10; return i%2?[r.left+o,r.bottom-o]:[r.right-o,r.bottom-o]; }
+    for(i=0;i<n;i++){
+      var fs=ez(seg(us[i],.02,.44)), r=rs[i], c=cin(i), S=2.2*Math.hypot(r.width,r.height);
+      fills[i].style.width=fills[i].style.height=S+'px'; fills[i].style.borderRadius=wob(tm,i*2.3,fs<1?9:0);
+      fills[i].style.transform='translate('+(c[0]-r.left-S/2)+'px,'+(c[1]-r.top-S/2)+'px) scale('+fs+')';
+      wc[i].classList.toggle('inf',fs>.55);
+    }
+    if(!hand){ if(fon){ flowEl.style.display='none'; fon=false; } return; }
+    var tx,ty,ts, db=Math.max(56,Math.min(84,innerWidth*.16)), u0=us[0];
+    if(u0<0){ var t0=ez(cl(1+u0)), c0=cin(0); tx=lerp(sx,c0[0],t0); ty=lerp(sy,c0[1],t0); ts=lerp(D,db,ez(cl((1+u0)*1.5))); }
+    else{
+      var j=0; for(i=0;i<n;i++) if(us[i]>=0) j=i;
+      var u=us[j], ci=cin(j), co=cout(j);
+      if(u<.14){ tx=ci[0]; ty=ci[1]; ts=db*(1-ez(u/.14)); }
+      else if(u<.46){ var hid=u<.3?ci:co; tx=hid[0]; ty=hid[1]; ts=0; }
+      else if(u<.6){ tx=co[0]; ty=co[1]; ts=db*back(seg(u,.46,.6)); }
+      else if(j<n-1){ var t1=ez(seg(u,.6,1)), cn=cin(j+1); tx=lerp(co[0],cn[0],t1); ty=lerp(co[1],cn[1],t1); ts=db; }
+      else{ var t9=ez(seg(u,.6,.9)); tx=co[0]; ty=co[1]+60*t9; ts=db*(1-t9); }
+    }
+    if(!fon){ fon=true; flowEl.style.display='block'; bpx=lpx=tx; bpy=lpy=ty; bsz=ts; for(i=0;i<3;i++){ trs[i].x=tx; trs[i].y=ty; } }
+    if(ts===0 && bsz<1.5){ bpx=tx; bpy=ty; for(i=0;i<3;i++){ trs[i].x=tx; trs[i].y=ty; } }
+    bpx+=(tx-bpx)*.42; bpy+=(ty-bpy)*.42; bsz+=(ts-bsz)*.3;
+    var vx=bpx-lpx, vy=bpy-lpy, sp=Math.hypot(vx,vy); lpx=bpx; lpy=bpy;
+    if(sp>.5) sa=Math.atan2(vy,vx)*180/Math.PI;
+    var st=Math.min(.45,sp*.02);
+    put(fb,bpx,bpy,bsz,bsz,wob(tm,5,9),bsz>1?1:0,1+st,1/(1+st*.7),sa);
+    var px=bpx, py=bpy;
+    for(i=0;i<3;i++){ var tr=trs[i]; tr.x+=(px-tr.x)*.3; tr.y+=(py-tr.y)*.3; var tz=bsz*tr.f; put(tr.el,tr.x,tr.y,tz,tz,'50%',tz>1?1:0); px=tr.x; py=tr.y; }
+  }
   function target(){ var br=bone.getBoundingClientRect(); return cl(-br.top/(bone.offsetHeight-H)); }
   function frame(tm){
     if(!run) return;
@@ -1517,11 +1573,12 @@ a{color:inherit;text-decoration:none}
     var tp=target();
     /* 관성: 실제 스크롤을 살짝 늦게 따라가며 출렁임 */
     ps+=(tp-ps)*.11; vel=lerp(vel,ps-pv,.25); pv=ps;
-    var p=ps, cx=W/2, cy=H/2;
+    var p=ps/.8125, cx=W/2, cy=H/2;   /* 뒤쪽에 합치기 구간을 붙이며 늘린 길이만큼 기존 타이밍 유지 */
+    var mg=ez(seg(p,.68,.8)), hand=p>=.8;
     /* 배경: 흰색 → 진한 회색, 장식 등장 */
     var dk=ez(seg(p,.09,.22)), cv=Math.round(255-(255-38)*dk);
     pin.style.setProperty('--pinbg','rgb('+cv+','+cv+','+(cv+(dk?0:0))+')'); bg.style.opacity=dk;
-    var oo=ez(seg(p,.24,.4));
+    var oo=ez(seg(p,.24,.4))*(1-mg);
     o1.setAttribute('cx',cx); o1.setAttribute('cy',cy); o1.setAttribute('r',RR*lerp(.4,1,oo)); o1.style.opacity=oo; o1.style.strokeDashoffset=-tm*.006;
     o2.setAttribute('cx',cx); o2.setAttribute('cy',cy); o2.setAttribute('r',RR*lerp(.6,1.48,oo)); o2.style.opacity=oo;
     var lo=seg(p,.5,.62);
@@ -1535,37 +1592,41 @@ a{color:inherit;text-decoration:none}
     R.style.opacity=fr?1-fr:'';
     L.style.pointerEvents=R.style.pointerEvents=p>.16?'none':'';
     var t2=seg(p,.3,.56), t3=0;
-    var Dm=D*(1-.46*ez(t2))*(1-t3);
+    var Dm=D*(1-.46*ez(t2)*(1-mg))*(1-t3);
     var bx=lerp(cr.x+cr.w/2,cx,t1), by=lerp(cr.y+cr.h/2,cy,t1);
     var bw=t2>0?Dm:lerp(cr.w,D,t1), bh=t2>0?Dm:lerp(cr.h,D,t1);
     if(t2===0 && t3>0){ bw=bh=D*(1-t3); }
     /* 카드 모서리(px) → 출렁이는 원(%) */
-    var rad = t1<.6 ? lerp(26,Math.min(bw,bh)/2,t1/.6)+'px' : wob(tm,0,lerp(0,9,(t1-.6)/.4)+6*Math.sin(Math.PI*t2));
+    var rad = t1<.6 ? lerp(26,Math.min(bw,bh)/2,t1/.6)+'px' : wob(tm,0,lerp(0,9,(t1-.6)/.4)+6*Math.sin(Math.PI*t2)+8*Math.sin(Math.PI*mg));
     var breathe=1+.025*Math.sin(tm*.0024);
     put(m,bx,by,bw,bh,rad,seg(p,.04,.1),(t1>.6?breathe:1)*(1-sq*.6),(t1>.6?1/breathe:1)*(1+sq),Math.sin(tm*.0007)*8);
-    var mo=seg(p,.2,.27);
+    var mo=seg(p,.2,.27)*(1-seg(p,.64,.7));
     mt.style.fontSize=Math.max(20,D*.12)*(1-.2*ez(t2))+'px';
     mt.style.transform='translate('+bx+'px,'+by+'px) translate(-50%,-50%)'; mt.style.opacity=mo;
     /* 2. 분열 — 탄성 있게 떨어져 나오고, 사이에 물방울 다리가 생겼다 끊김 */
     for(var i=0;i<cs.length;i++){
       var raw=seg(p,.3+i*.018,.5+i*.018), ti=back(raw), ang=(-90+i*60+Math.sin(tm*.0009+i)*4)*Math.PI/180;
       var drift=Math.sin(tm*.0016+i*2.1)*5*raw;
-      var dist=(RR*ti+drift)*(1+.35*t3), sz=d*(.3+.7*ez(raw))*(1-t3);
+      var dist=(RR*ti+drift)*(1-mg), sz=d*(.3+.7*ez(raw))*(1-.45*mg);
       var x=cx+Math.cos(ang)*dist, y=cy+Math.sin(ang)*dist;
       var st=1+.22*Math.sin(Math.PI*raw);        /* 떨어질 때 바깥 방향으로 늘어남 */
       put(cs[i],x,y,sz*st,sz/st,wob(tm,i*3.1,raw*10),p>.28&&sz>2?1:0,1,1,(-90+i*60));
-      var dsz=d*.42*Math.sin(Math.PI*cl(raw*1.15))*(1-t3), dd=dist*.52;
+      var dsz=Math.max(d*.42*Math.sin(Math.PI*cl(raw*1.15)),d*.5*Math.sin(Math.PI*mg)), dd=dist*.52;
       put(dps[i],cx+Math.cos(ang)*dd,cy+Math.sin(ang)*dd,dsz,dsz,'50%',dsz>2?1:0);
       ls[i].style.transform='translate('+x+'px,'+y+'px) translate(-50%,-50%) scale('+(.85+.15*ez(raw))+')';
-      ls[i].style.opacity=seg(p,.48+i*.012,.56+i*.012);
+      ls[i].style.opacity=seg(p,.48+i*.012,.56+i*.012)*(1-seg(p,.64,.7));
     }
+    goo.style.opacity=hand?0:'';
+    var pr=pin.getBoundingClientRect(); flow(tm,hand,pr.left+cx,pr.top+cy);
   }
   function init(){ L.style.transform=''; measure(); }
+  var vis={};
   var io=new IntersectionObserver(function(es){
-    var on=es[0].isIntersecting;
-    if(on && !run){ run=true; ps=pv=target(); requestAnimationFrame(frame); } else if(!on){ run=false; }
+    es.forEach(function(e){ vis[e.target===bone?'b':'s']=e.isIntersecting; });
+    var on=vis.b||vis.s;
+    if(on && !run){ run=true; ps=pv=target(); requestAnimationFrame(frame); } else if(!on){ run=false; if(flowEl){ flowEl.style.display='none'; fon=false; } }
   },{rootMargin:'100px 0px'});
-  io.observe(bone);
+  io.observe(bone); if(sec) io.observe(sec);
   window.addEventListener('resize',init);
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(init);
   init();
