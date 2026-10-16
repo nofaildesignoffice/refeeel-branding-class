@@ -1474,6 +1474,11 @@ a{color:inherit;text-decoration:none}
 /* 무료 공개 — 상단 경계 틈 제거 */
 .sec-free::before{inset:-2px 0!important}
 .bc-root>section.sec-free{margin-top:-1px;clip-path:inset(1px 0 0 0)}
+
+/* 무료 공개 — 오버레이를 고정 레이어에 합쳐 경계선 제거 */
+.free-bg{background:linear-gradient(rgba(15,15,15,.72),rgba(15,15,15,.72)),url(assets/free-bg.jpg) center/cover no-repeat!important}
+.sec-free::before{display:none!important}
+.bc-root>section.sec-free{margin-top:0!important;clip-path:inset(0)!important;background:#262626!important}
 </style>
 </head>
 <body>
