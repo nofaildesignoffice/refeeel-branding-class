@@ -1315,6 +1315,14 @@ a{color:inherit;text-decoration:none}
 .rvf-strip::after{background:linear-gradient(#fff 0%,rgba(255,255,255,.3) 45%,rgba(255,255,255,0) 100%)!important}
 .rvf-srun img{filter:none!important;opacity:.32!important;min-width:100px}
 @media(min-width:768px){.rvf-srun img{filter:blur(2px)!important;opacity:.4!important}}
+
+/* 무료 공개 — 배경 이미지 + 검은 오버레이 */
+.bc-root>section.sec-free{position:relative;background:#1A1A1A url(assets/free-bg.jpg) center/cover no-repeat!important;color:#fff;overflow:hidden}
+.sec-free::before{content:'';position:absolute;inset:0;background:rgba(15,15,15,.72);pointer-events:none}
+.sec-free>.wrap{position:relative;z-index:1}
+.sec-free .h-sec{color:#fff}.sec-free .sec-lead{color:rgba(255,255,255,.78)}
+.sec-free .sec-head .em{color:var(--brand);background:none}
+.sec-free .label{color:var(--ink);background:var(--brand)}
 </style>
 </head>
 <body>
@@ -1538,6 +1546,22 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<!-- [16] 업종 -->
+<section class="sec bt bg-t">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="label">이런 걱정도요</span><h2 class="h-sec">"저에게도<br class="br-m"> 효과가 있을까요?"</h2><p class="sec-lead">업종도, 규모도 상관없어요.<br>누구한테, 뭘, 왜 파는지는 <strong>어떤 사업이든 먼저 정해야 하거든요.</strong></p></div>
+    <div class="cv rv rv-d1">
+      <div class="cv-hd"><span>업종은 그대로</span><span>뼈대를 세운 뒤</span></div>
+      <div class="cv-r" style="--i:0"><s>동네 PT샵</s><i aria-hidden="true">→</i><b>무용 전공생 부상 없는 몸 관리</b></div>
+      <div class="cv-r" style="--i:1"><s>동네 피부관리샵</s><i aria-hidden="true">→</i><b>레이저 후 예민해진 피부 회복</b></div>
+      <div class="cv-r" style="--i:2"><s>동네 동물병원</s><i aria-hidden="true">→</i><b>강아지 슬개골 전문</b></div>
+      <div class="cv-r" style="--i:3"><s>동네 네일샵</s><i aria-hidden="true">→</i><b>얇은 손톱도 3~4주 가는 젤</b></div>
+      <div class="cv-r" style="--i:4"><s>동네 카페</s><i aria-hidden="true">→</i><b>로스팅 날짜 보고 마시는 커피</b></div>
+      <div class="cv-r" style="--i:5"><s>동네 반찬가게</s><i aria-hidden="true">→</i><b>반찬 말고 시간을 파는 곳</b></div>
+    </div>
+  </div>
+</section>
+
 <!-- [17] 후기 — 사진 띠 + 2줄 자동 회전 -->
 <section class="sec bt reviews-dark swap-light rvf-sec">
   <div class="wrap"><div class="sec-head rv rvf-head"><span class="label">결과</span><h2 class="h-sec">이 시리즈로 브랜드 뼈대를<br>만든 분들의 <span class="em">성과</span></h2></div></div>
@@ -1570,7 +1594,7 @@ a{color:inherit;text-decoration:none}
 <!-- [20] 가격 -->
 <section class="sec-price bg-w">
   <div class="wrap">
-    <div class="sec-head rv"><span class="label">가격</span><h2 class="h-sec">더 쓰기 전에,<br><span class="em">어디에 쓸지부터.</span></h2><p class="sec-lead">방향 없이 하나씩 해보면, 보통 이만큼 들어요.</p></div>
+    <div class="sec-head rv"><h2 class="h-sec">더 쓰기 전에,<br><span class="em">어디에 쓸지부터.</span></h2><p class="sec-lead">방향 없이 하나씩 해보면, 보통 이만큼 들어요.</p></div>
     <div class="cost rv">
       <div class="cost-row">
         <div class="cost-k"><b>뼈대 없이 하나씩 해볼 때</b><span>약 6개월</span></div>
@@ -1583,7 +1607,7 @@ a{color:inherit;text-decoration:none}
         <div class="cost-bar"><i style="--w:1.9%"></i></div>
         <div class="cost-v">99,000원</div>
       </div>
-      <p class="cost-note">* 작은 사업에서 흔히 시도하는 항목의 일반적인 비용으로 만든 예시예요.</p>
+      <p class="cost-note">* 초기 브랜드들이 흔히 시도하는 항목의 일반적인 비용으로 만든 예시예요.</p>
     </div>
     <div class="price-box rv">
       <div class="price-amt">99,000<span class="u">원</span></div>
