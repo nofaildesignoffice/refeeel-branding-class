@@ -1087,6 +1087,14 @@ a{color:inherit;text-decoration:none}
 .ui-spend b{font-size:15px;font-weight:800;color:#1A1A1A;letter-spacing:-.03em}
 .ui-spend em{font-style:normal;font-size:10px;font-weight:700;color:#555;background:#F0F0EB;border-radius:999px;padding:1px 6px}
 .wo-h .wo-pre{font-weight:500;color:#6A6A62}
+
+/* 셀프 체크 결과 — 박스 없이 텍스트만 */
+.ck-result{background:none!important;box-shadow:none!important;border-radius:0!important;color:var(--ink)!important;padding:clamp(20px,3vw,28px) 0 0!important}
+.ck-count{color:#8A8A84}
+.ck-n{color:var(--ink)!important}
+.ck-msg{color:#555!important;font-size:clamp(15px,1.8vw,16.5px)!important;line-height:1.7!important}
+.ck-msg b{color:var(--ink)!important;background:linear-gradient(transparent 60%,var(--brand) 60%);padding:0 2px}
+.ck-lead{display:block;margin-bottom:8px;font-size:clamp(20px,3vw,24px);font-weight:800;line-height:1.4;letter-spacing:-.03em;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -1146,7 +1154,6 @@ a{color:inherit;text-decoration:none}
     <div class="ck-result rv" aria-live="polite">
       <div class="ck-count"><b class="ck-n">0</b><span>/ 18개 해당</span></div>
       <p class="ck-msg">해당하는 문장을 눌러 체크해 보세요.</p>
-      <a href="/shop_view?idx=6" class="btn btn-p ck-cta" hidden>내 방향부터 정리하기 →</a>
     </div>
   </div>
 </section>
@@ -1600,13 +1607,12 @@ a{color:inherit;text-decoration:none}
 /* 셀프 체크 — 눌러서 체크, 3개 이상이면 안내 문구와 버튼 */
 (function(){
   var sec=document.querySelector('.sec-check'); if(!sec) return;
-  var items=sec.querySelectorAll('.ck-item'), nEl=sec.querySelector('.ck-n'), msg=sec.querySelector('.ck-msg'), cta=sec.querySelector('.ck-cta'), box=sec.querySelector('.ck-result'), was=0;
+  var items=sec.querySelectorAll('.ck-item'), nEl=sec.querySelector('.ck-n'), msg=sec.querySelector('.ck-msg'), box=sec.querySelector('.ck-result'), was=0;
   function upd(){
     var n=sec.querySelectorAll('.ck-item[aria-pressed="true"]').length; nEl.textContent=n; sec.querySelector('.ck-pn').textContent=n; sec.querySelector('.ck-pill').classList.toggle('ok',n>=3);
     if(n===0) msg.textContent='해당하는 문장을 눌러 체크해 보세요.';
-    else if(n<3) msg.innerHTML='조금 더 읽어보세요. <b>'+(3-n)+'개</b>만 더 해당되면 이 시리즈가 필요한 분이에요.';
-    else msg.innerHTML='<b>'+n+'개</b>나 해당돼요. 덜 열심히 해서가 아니에요.<br>지금 필요한 건 <b>방향을 먼저 정하는 일</b>이에요.';
-    cta.hidden=n<3;
+    else if(n<3) msg.innerHTML='<b>'+(3-n)+'개</b>만 더 해당되면, 이 시리즈가 필요한 분이에요.';
+    else msg.innerHTML='<strong class="ck-lead"><b>'+n+'개</b>, 노력이 부족해서가 아니에요.</strong>먼저 읽은 사장님들도 같은 문장에서 멈췄고,<br>질문 8개에 답하며 하나씩 풀어냈어요.<br>이제 내 답을 쓸 차례예요.';
     if(n>=3&&was<3){ box.classList.remove('hit'); void box.offsetWidth; box.classList.add('hit'); }
     was=n;
   }
