@@ -1506,6 +1506,15 @@ a{color:inherit;text-decoration:none}
 .bc-root .rv:is(.sec-head,.h-sec,.h-big,.hero-over,.hero-sub,.body-text,.turn-story,.story-sign,.ck-result){transform:translateY(28px);filter:blur(10px);transition-property:opacity,transform,filter;transition-duration:.9s,1s,.9s;transition-timing-function:ease,cubic-bezier(.2,.8,.2,1),ease}
 .bc-root .rv.on:is(.sec-head,.h-sec,.h-big,.hero-over,.hero-sub,.body-text,.turn-story,.story-sign,.ck-result){transform:none;filter:none}
 @media (prefers-reduced-motion:reduce){.bc-root .rv{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
+
+/* 결과 섹션 사진 띠 — 모바일 사파리 흰 화면 버그: mask 대신 그라디언트로 가장자리 처리 */
+@media(max-width:767px){
+  .rvf-strip{-webkit-mask-image:none!important;mask-image:none!important;transform:translateZ(0)}
+  .rvf-strip::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,0) 14%,rgba(255,255,255,0) 86%,#fff 100%)}
+  .rvf-strip::after{z-index:1;background:linear-gradient(#fff 0%,rgba(255,255,255,.15) 40%,rgba(255,255,255,0) 100%)!important}
+  .rvf-srun{will-change:transform}
+  .rvf-srun img{opacity:.45!important}
+}
 </style>
 </head>
 <body>
