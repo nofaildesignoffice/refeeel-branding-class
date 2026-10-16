@@ -1459,6 +1459,12 @@ a{color:inherit;text-decoration:none}
 
 /* 비용 섹션 — 데스크탑 800px */
 @media(min-width:900px){.cost-sec>.wrap{max-width:800px!important}.cost-sec .cost{max-width:800px!important}}
+
+/* 무료 공개 — 배경 이미지 고정 (iOS 포함: clip-path + fixed 레이어) */
+.bc-root>section.sec-free{background:#1A1A1A!important;clip-path:inset(0)}
+.free-bg{position:fixed;inset:0;z-index:0;background:url(assets/free-bg.jpg) center/cover no-repeat;pointer-events:none}
+.sec-free::before{z-index:1!important}
+.sec-free>.wrap{z-index:2!important}
 </style>
 </head>
 <body>
@@ -1767,6 +1773,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- [20b] Chapter 00 무료 -->
 <section class="sec sec-free bg-t">
+  <div class="free-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head c rv"><span class="label">무료 공개</span><h2 class="h-sec">Chapter 00,<br><span class="em">먼저 읽고 결정하세요</span></h2><p class="sec-lead">"마케팅이 왜 어려운지"부터 무료로 읽어보세요.<br>내 얘기 같으면 그때 시작해도 늦지 않아요.</p></div>
     <div class="free-cta rv rv-d1"><a href="/brandingclass00" class="btn btn-p">Chapter 00 무료로 읽기 <span class="arr">→</span></a></div>
