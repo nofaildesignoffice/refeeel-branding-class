@@ -1149,6 +1149,28 @@ a{color:inherit;text-decoration:none}
 .wb-steps .f3 .t{font-size:clamp(13.5px,3.4vw,16px)!important;line-height:1.3!important}
 .concl .q::before{content:none!important}
 .concl .open-q{margin:0 auto 18px;width:28px;height:28px}
+
+/* 단계 — 세그먼트 컨트롤 + 워크북 진행에 맞춰 움직이는 표시 */
+.wb-steps{position:relative;display:grid!important;grid-template-columns:repeat(3,1fr);gap:0;max-width:440px;margin:clamp(20px,3vw,28px) auto 0!important;padding:5px;border-radius:18px;background:#F4F4F0;box-shadow:inset 0 0 0 1px #E8E8E2}
+.wb-steps::before{content:'';position:absolute;z-index:0;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/3);border-radius:14px;background:var(--ink);box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.wb-steps.play::before{animation:wbInd var(--T,10s) infinite cubic-bezier(.6,0,.3,1)}
+@keyframes wbInd{0%,15%{transform:translateX(0)}18%,61%{transform:translateX(100%)}64%,95%{transform:translateX(200%)}98%,100%{transform:translateX(0)}}
+.wb-steps .f3,.wb-steps .f3:last-child{position:relative;z-index:1;width:auto!important;aspect-ratio:auto!important;border:0!important;border-radius:0!important;background:none!important;padding:11px 4px!important;margin:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;animation:none!important}
+.wb-steps .f3::before{content:none!important}
+.wb-steps .f3 .n{margin:0!important;font-size:10.5px!important;font-weight:800;letter-spacing:.06em;color:#A3A39C!important}
+.wb-steps .f3 .t{font-size:clamp(13px,3.3vw,15px)!important;font-weight:700!important;color:#77776F;white-space:nowrap;letter-spacing:-.03em}
+.wb-steps:not(.play) .f3:first-child .n,.wb-steps.play .f3:nth-child(1) .n{color:var(--brand)!important}
+.wb-steps:not(.play) .f3:first-child .t{color:#fff}
+.wb-steps.play .f3:nth-child(1) .t{animation:wbT1 var(--T,10s) infinite}.wb-steps.play .f3:nth-child(1) .n{animation:wbN1 var(--T,10s) infinite}
+.wb-steps.play .f3:nth-child(2) .t{animation:wbT2 var(--T,10s) infinite}.wb-steps.play .f3:nth-child(2) .n{animation:wbN2 var(--T,10s) infinite}
+.wb-steps.play .f3:nth-child(3) .t{animation:wbT3 var(--T,10s) infinite}.wb-steps.play .f3:nth-child(3) .n{animation:wbN3 var(--T,10s) infinite}
+@keyframes wbT1{0%,15%,98%,100%{color:#fff}18%,95%{color:#77776F}}
+@keyframes wbN1{0%,15%,98%,100%{color:#DFF000}18%,95%{color:#A3A39C}}
+@keyframes wbT2{0%,15%,64%,100%{color:#77776F}18%,61%{color:#fff}}
+@keyframes wbN2{0%,15%,64%,100%{color:#A3A39C}18%,61%{color:#DFF000}}
+@keyframes wbT3{0%,61%,98%,100%{color:#77776F}64%,95%{color:#fff}}
+@keyframes wbN3{0%,61%,98%,100%{color:#A3A39C}64%,95%{color:#DFF000}}
+@media (prefers-reduced-motion:reduce){.wb-steps::before,.wb-steps .f3 .t,.wb-steps .f3 .n{animation:none!important}}
 </style>
 </head>
 <body>
@@ -1328,9 +1350,9 @@ a{color:inherit;text-decoration:none}
       <p class="sec-lead">컨설팅에서 실제로 효과 본 질문이에요.<br>다 답하면 그게 <strong>내 브랜드의 뼈대</strong>가 돼요.</p>
     </div>
     <div class="flow3 wb-steps">
-      <div class="f3"><div class="n">1</div><div class="t">읽고</div></div>
-      <div class="f3"><div class="n">2</div><div class="t">직접 쓰고</div></div>
-      <div class="f3"><div class="n">3</div><div class="t">막히면<br>거기가 문제</div></div>
+      <div class="f3"><div class="n">01</div><div class="t">읽고</div></div>
+      <div class="f3"><div class="n">02</div><div class="t">직접 쓰고</div></div>
+      <div class="f3"><div class="n">03</div><div class="t">막힌 곳이 내 문제</div></div>
     </div>
     <div class="wb-fig rv"><svg class="wb" viewBox="0 0 520 440" role="img" aria-label="워크북을 읽고, 질문에 답을 쓰다가 막히는 칸이 내 문제라는 것을 보여주는 애니메이션"><defs><filter id="wbSh" x="-15%" y="-10%" width="130%" height="135%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#1A1A1A" flood-opacity=".12"/></filter><filter id="wbPs" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="3" dy="6" stdDeviation="3" flood-color="#000" flood-opacity=".22"/></filter><linearGradient id="wbPg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFD"/><stop offset="1" stop-color="#FAF9F4"/></linearGradient><linearGradient id="wbBr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4A4A48"/><stop offset=".45" stop-color="#1F1F1E"/><stop offset="1" stop-color="#0E0E0E"/></linearGradient><linearGradient id="wbMt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2F2F0"/><stop offset=".5" stop-color="#B9B9B5"/><stop offset="1" stop-color="#E6E6E3"/></linearGradient><linearGradient id="wbRg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8E8E8A"/><stop offset=".5" stop-color="#E9E9E6"/><stop offset="1" stop-color="#77776F"/></linearGradient></defs><rect class="wb-back2" x="30" y="26" width="470" height="408" rx="14"/><rect class="wb-back" x="25" y="20" width="476" height="410" rx="14"/><rect class="wb-paper" x="20" y="14" width="480" height="412" rx="14"/><circle class="wb-hole" cx="64" cy="30" r="4.2"/><path class="wb-ring" d="M64 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="98" cy="30" r="4.2"/><path class="wb-ring" d="M98 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="132" cy="30" r="4.2"/><path class="wb-ring" d="M132 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="166" cy="30" r="4.2"/><path class="wb-ring" d="M166 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="200" cy="30" r="4.2"/><path class="wb-ring" d="M200 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="234" cy="30" r="4.2"/><path class="wb-ring" d="M234 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="268" cy="30" r="4.2"/><path class="wb-ring" d="M268 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="302" cy="30" r="4.2"/><path class="wb-ring" d="M302 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="336" cy="30" r="4.2"/><path class="wb-ring" d="M336 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="370" cy="30" r="4.2"/><path class="wb-ring" d="M370 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="404" cy="30" r="4.2"/><path class="wb-ring" d="M404 31 V12 a5 5 0 0 1 10 0 V18"/><circle class="wb-hole" cx="438" cy="30" r="4.2"/><path class="wb-ring" d="M438 31 V12 a5 5 0 0 1 10 0 V18"/><text class="wb-cap" x="48" y="62">CHAPTER 05 · 읽기</text><rect class="wb-hl wb-hl1" x="44" y="70" width="372" height="15" rx="2"/><rect class="wb-hl wb-hl2" x="44" y="91" width="350" height="15" rx="2"/><rect class="wb-hl wb-hl3" x="44" y="112" width="300" height="15" rx="2"/><text class="wb-tx" x="48" y="82">브랜드의 뼈대는 ‘누구에게, 무엇을, 왜’에서 시작해요.</text><text class="wb-tx" x="48" y="103">타겟이 흐리면 메시지도 흐려지고, 결국 가격으로</text><text class="wb-tx" x="48" y="124">비교당해요. 아래 질문에 직접 답을 써 보세요.</text><path class="wb-div" d="M40 146H480"/><text class="wb-q" x="48" y="180">Q1. 누구한테 팔 건가요?</text><path class="wb-base" d="M48 218H440"/><text class="wb-hand" x="50" y="211">아이 키우며 운동할 틈 없는 30대 엄마</text><rect class="wb-cv wb-c1" x="46" y="184" width="398" height="30"/><g class="wb-ok wb-ok1"><circle cx="466" cy="204" r="14"/><path d="M459.5 204l4.5 4.5l8.5 -9"/></g><text class="wb-q" x="48" y="264">Q2. 손님은 나를 뭐랑 비교하나요?</text><path class="wb-base" d="M48 302H440"/><text class="wb-hand" x="50" y="295">동네 헬스장, 유튜브 홈트</text><rect class="wb-cv wb-c2" x="46" y="268" width="398" height="30"/><g class="wb-ok wb-ok2"><circle cx="466" cy="288" r="14"/><path d="M459.5 288l4.5 4.5l8.5 -9"/></g><rect class="wb-stuck" x="34" y="320" width="452" height="96" rx="10"/><text class="wb-q" x="48" y="354">Q3. 손님이 왜 나를 골라야 하나요?</text><path class="wb-base" d="M48 394H440"/><text class="wb-hand" x="50" y="387">음…</text><rect class="wb-cv wb-c3" x="46" y="360" width="60" height="30"/><text class="wb-qm wb-qm1" x="128" y="388">?</text><text class="wb-qm wb-qm2" x="156" y="372">?</text><text class="wb-qm wb-qm3" x="182" y="390">?</text><g class="wb-tag"><rect x="306" y="362" width="166" height="38" rx="19"/><text x="389" y="387">여기가 내 문제!</text></g><g class="wb-pen"><g transform="rotate(28) scale(.82)" filter="url(#wbPs)"><path class="wb-pen-b" d="M6 -16L44 -54L54 -44L16 -6Z"/><path class="wb-pen-c" d="M30 -44L46 -60L49 -57L33 -41Z"/><path class="wb-pen-e" d="M44 -54L50 -60Q53 -63 56 -60L60 -56Q63 -53 60 -50L54 -44Z"/><path class="wb-pen-w" d="M0 0L6 -16L16 -6Z"/><path class="wb-pen-g" d="M0 0L2.6 -6.8L6.8 -2.6Z"/></g></g></svg></div>
     <div class="body-text rv" style="margin:var(--gap-md) auto 0;text-align:center">
