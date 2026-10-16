@@ -243,7 +243,8 @@ a{color:inherit;text-decoration:none}
 
 /* 받는 것 */
 .del-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.8vw,16px)}
-@media(min-width:900px){.del-grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.del-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:899px){.del-grid .del-card:last-child:nth-child(odd){grid-column:1/-1}}
 .del-card{background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden}
 .del-thumb{width:100%;aspect-ratio:4/3;background:var(--placeholder-bg);display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:13px}
 .del-info{padding:clamp(14px,2.6vw,20px)}
@@ -1468,9 +1469,8 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="sec-head rv"><span class="label">받는 것</span><h2 class="h-sec">이 시리즈에<br><span class="em">포함된 것</span></h2></div>
     <div class="del-grid">
-      <div class="del-card rv"><div class="del-thumb">시리즈 이미지</div><div class="del-info"><div class="del-name">시리즈 9챕터</div><p class="del-desc">작은 사업에 꼭 필요한 것만 담았어요. 평생 소장, 언제든 다시 읽어요.</p></div></div>
-      <div class="del-card rv rv-d1"><div class="del-thumb">워크북 이미지</div><div class="del-info"><div class="del-name">워크북 질문 8개</div><p class="del-desc">막히는 칸이 내 문제, 채운 답이 사업 기획서가 돼요.</p></div></div>
-      <div class="del-card rv"><div class="del-thumb">가이드라인 이미지</div><div class="del-info"><div class="del-name">브랜드 가이드라인</div><p class="del-desc">답을 한 장으로 정리해요. 직원, 외주, AI한테 그대로 넘기면 돼요.</p></div></div>
+      <div class="del-card rv"><div class="del-thumb">시리즈 이미지</div><div class="del-info"><div class="del-name">시리즈 9챕터</div><p class="del-desc">브랜딩이 뭔지부터 내 사업에 어떻게 적용하는지까지, 처음이어도 이해되게 풀었어요.</p></div></div>
+      <div class="del-card rv rv-d1"><div class="del-thumb">워크북 이미지</div><div class="del-info"><div class="del-name">워크북 질문 8개</div><p class="del-desc">내 브랜드 뼈대를 세우는 질문이에요. 하나씩 답하면 내 브랜드가 정리돼요.</p></div></div>
       <div class="del-card rv rv-d1"><div class="del-thumb">채널 적용 이미지</div><div class="del-info"><div class="del-name">채널별 적용 가이드</div><p class="del-desc">인스타 프로필, 플레이스 소개, 상세페이지에 바로 옮겨 써요.</p></div></div>
     </div>
   </div>
@@ -1558,7 +1558,7 @@ a{color:inherit;text-decoration:none}
     <div class="price-box rv">
       <div class="price-amt">99,000<span class="u">원</span></div>
       <div class="price-note">단독 시리즈 · VAT 포함</div>
-      <div class="price-tags"><span class="price-tag">시리즈 9챕터</span><span class="price-tag">워크북 8문항</span><span class="price-tag">브랜드 가이드라인</span><span class="price-tag">채널별 적용</span></div>
+      <div class="price-tags"><span class="price-tag">시리즈 9챕터</span><span class="price-tag">워크북 8문항</span><span class="price-tag">채널별 적용</span></div>
     </div>
   </div>
 </section>
@@ -1585,7 +1585,7 @@ a{color:inherit;text-decoration:none}
     <div class="faq-item rv"><div class="faq-q">읽기만 하면 매출이 오르나요?</div><div class="faq-a">아니요. 워크북을 쓰고 실제로 바꿔야 해요. 다만 뭘 할지 고민하는 시간은 확 줄어요.</div></div>
     <div class="faq-item rv"><div class="faq-q">아직 사업을 시작 안 했는데요?</div><div class="faq-a">오히려 지금이 제일 좋아요. 시작하고 나서 돌아오는 게 훨씬 비싸요.</div></div>
     <div class="faq-item rv"><div class="faq-q">온라인이든 오프라인이든 상관없나요?</div><div class="faq-a">네. 누구한테, 뭘, 왜 파는지는 어떤 사업이든 먼저 정해야 해요.</div></div>
-    <div class="faq-item rv"><div class="faq-q">혼자 하는 1인 사업자도 괜찮나요?</div><div class="faq-a">혼자일수록 더 필요해요. 정리한 브랜드 가이드라인은 나중에 직원, 외주, AI한테 그대로 넘기면 돼요.</div></div>
+    <div class="faq-item rv"><div class="faq-q">혼자 하는 1인 사업자도 괜찮나요?</div><div class="faq-a">혼자일수록 더 필요해요. 뭘 할지 정해주는 사람이 없으니, 기준이 될 뼈대가 먼저 있어야 해요.</div></div>
     <div class="faq-item rv"><div class="faq-q">컨설팅이랑은 뭐가 달라요?</div><div class="faq-a">컨설팅은 제가 짚어드리고, 이 시리즈는 직접 답을 쓰며 스스로 찾게 해요. 컨설팅에서 효과 본 질문을 그대로 담았어요.</div></div>
     <div class="faq-item rv"><div class="faq-q">핸드폰으로도 볼 수 있나요?</div><div class="faq-a">네, 핸드폰과 PC 어디서든 볼 수 있어요. 워크북은 PC에서 쓰면 더 편해요.</div></div>
     <div class="faq-item rv"><div class="faq-q">언제까지 볼 수 있어요?</div><div class="faq-a">평생 소장이에요. 사업이 커지거나 방향이 바뀔 때 다시 꺼내 쓰세요.</div></div>
