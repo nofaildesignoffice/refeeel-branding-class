@@ -1663,6 +1663,9 @@ a{color:inherit;text-decoration:none}
 /* 스토리 본문 — 핵심 단어 볼드(흰색), 핵심 문장 흰색 */
 .sec-story .story-r .body-text strong{color:#fff!important;font-weight:700}
 .story-r .body-text .st-hl{font-style:normal;font-weight:700;color:#fff}
+
+/* 뼈대 섹션 — 상단 고정 메뉴(아임웹 GNB) 높이만큼 내림 (깃헙에선 0) */
+.bone-pin{padding-top:calc(clamp(52px,7vw,64px) + var(--rfbc-gnb,0px))!important}
 </style>
 </head>
 <body>
@@ -2263,7 +2266,7 @@ a{color:inherit;text-decoration:none}
     for(k=0;k<3;k++){ var te=document.createElement('i'); flowEl.appendChild(te); trs.push({el:te,x:0,y:0,f:[.62,.44,.3][k]}); } sec.appendChild(flowEl); sec.classList.add('js-flow');
     for(k=0;k<wc.length;k++){ var fe=document.createElement('div'); fe.className='wo-fill'; fe.setAttribute('aria-hidden','true'); for(var q=0;q<4;q++) fe.appendChild(document.createElement('i')); wc[k].insertBefore(fe,wc[k].firstChild); fills.push(fe.children); } }
   new Goo(goo,22); if(flowEl) new Goo(flowEl,22); for(k=0;k<wc.length;k++) new Goo(wc[k].querySelector('.wo-fill'),22);
-  var W,H,cr,D,d,RR, ps=0, pv=0, vel=0, run=false, last=0;
+  var W,H,cr,D,d,RR,CY,TS=16,tick=0, ps=0, pv=0, vel=0, run=false, last=0;
   function cl(v){ return v<0?0:v>1?1:v; }
   function seg(p,a,b){ return cl((p-a)/(b-a)); }
   function ez(t){ return t*t*(3-2*t); }
@@ -2274,7 +2277,13 @@ a{color:inherit;text-decoration:none}
     W=pr.width; H=pr.height; cr={x:r.left-pr.left, y:r.top-pr.top, w:r.width, h:r.height};
     D=Math.min(W*.56,H*.42,300); d=Math.max(76,D*.4);
     RR=Math.min(W/2-d/2-10,H/2-d/2-70,D*1.02);
+    /* 결론 문구(위) + 원 + 하단 구매 바가 한 화면에 겹치지 않게: 공간이 모자라면 원을 줄이고 아래로 */
+    var capH=cap.offsetHeight||0, sk=document.querySelector('.stk'), bs=sk&&sk.offsetHeight?sk.offsetHeight+24:0;
+    TS=topSafe(); var need=TS+capH+26;
+    RR=Math.max(40,Math.min(RR,(H-need-bs-d)/2));
+    CY=Math.max(H/2,need+RR+d/2); CY=Math.min(CY,Math.max(H/2,H-bs-RR-d/2));
   }
+  function topSafe(){ return (window.__rfbcTop?window.__rfbcTop():0)+16; }
   /* 출렁이는 테두리: 8개 반지름(%) */
   function wob(tm,seed,amt,base){
     var o=[]; for(var j=0;j<8;j++){ o.push((50+amt*Math.sin(tm*(.0011+j*.00017)+seed+j*1.7))+'%'); }
@@ -2371,7 +2380,8 @@ a{color:inherit;text-decoration:none}
     var tp=target();
     /* 관성: 실제 스크롤을 살짝 늦게 따라가며 출렁임 */
     ps+=(tp-ps)*.11; vel=lerp(vel,ps-pv,.25); pv=ps;
-    var p=ps/.8125, cx=W/2, cy=H/2;   /* 뒤쪽에 합치기 구간을 붙이며 늘린 길이만큼 기존 타이밍 유지 */
+    if(++tick%45===0 && topSafe()!==TS) measure();
+    var p=ps/.8125, cx=W/2, cy=CY;   /* 뒤쪽에 합치기 구간을 붙이며 늘린 길이만큼 기존 타이밍 유지 */
     var mg=ez(seg(p,.68,.8)), hand=p>=.8;
     /* 배경: 흰색 → 진한 회색, 장식 등장 */
     var dk=ez(seg(p,.09,.22)), cv=Math.round(255-(255-38)*dk);
@@ -2380,7 +2390,7 @@ a{color:inherit;text-decoration:none}
     o1.setAttribute('cx',cx); o1.setAttribute('cy',cy); o1.setAttribute('r',RR*lerp(.4,1,oo)); o1.style.opacity=oo; o1.style.strokeDashoffset=-tm*.006;
     o2.setAttribute('cx',cx); o2.setAttribute('cy',cy); o2.setAttribute('r',RR*lerp(.6,1.48,oo)); o2.style.opacity=oo;
     var lo=seg(p,.5,.62);
-    cap.style.transform='translate(-50%,'+(Math.max(20,cy-RR-d/2-cap.offsetHeight-26)+12*(1-lo))+'px)'; cap.style.opacity=lo;
+    cap.style.transform='translate(-50%,'+(Math.max(TS,cy-RR-d/2-cap.offsetHeight-26)+12*(1-lo))+'px)'; cap.style.opacity=lo;
     var sq=Math.max(-.16,Math.min(.16,vel*22));   /* 스크롤 속도만큼 늘어남 */
     /* 1. 카드 → 액체 원 */
     var fl=seg(p,.03,.12), fr=seg(p,.08,.13), t1=ez(seg(p,.1,.26)), fo=seg(p,.12,.17);
