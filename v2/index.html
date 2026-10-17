@@ -1622,6 +1622,11 @@ a{color:inherit;text-decoration:none}
 
 /* 고민 섹션 — 제목 위 한 줄 */
 .pb-pre{margin:0 0 14px;font-size:clamp(15px,1.8vw,17px);font-weight:600;line-height:1.6;color:var(--text-gray)}
+
+/* 고민 섹션 제목 — 모바일에서 3줄 유지 */
+@media(max-width:767px){.pb-head .h-sec{font-size:clamp(18px,calc(6.2vw - 4px),26px)!important}}
+/* 서명 — 위 여백 넓게, 오른쪽 정렬 */
+.bc-root .story-sign{margin-top:clamp(40px,5vw,56px)!important;align-items:flex-end!important;text-align:right;width:100%}
 </style>
 </head>
 <body>
