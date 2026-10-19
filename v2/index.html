@@ -1991,15 +1991,12 @@ a{color:inherit;text-decoration:none}
 .cs-track::-webkit-scrollbar{display:none}
 .cs-card{flex:0 0 min(82%,360px);scroll-snap-align:start;min-width:0}
 .cs-media{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;margin:0;border-radius:var(--radius-lg);overflow:hidden;background:#000;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.cs-media img,.cs-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.cs-media video{object-fit:contain;background:#000}
+.cs-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .cs-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.004) 45%,rgba(26,26,26,.55) 100%);pointer-events:none;transition:opacity .3s ease}
 .cs-play{position:absolute;left:50%;top:50%;z-index:1;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform .25s ease}
 .cs-play svg{width:20px;height:20px;margin-left:3px;fill:var(--ink)}
 .cs-dur{position:absolute;right:10px;bottom:10px;z-index:1;font-size:12px;font-weight:600;color:#fff;background:rgba(26,26,26,.7);padding:3px 8px;border-radius:var(--radius-full)}
 .cs-media:hover .cs-play{transform:scale(1.08)}
-.cs-media.on .cs-play,.cs-media.on .cs-dur{display:none}
-.cs-media.on::after{opacity:0}
 .cs-t{margin:16px 0 0;font-size:clamp(17px,3.4vw,19px);font-weight:700;line-height:1.4;letter-spacing:-.02em;color:#fff;word-break:keep-all}
 .cs-d{margin:6px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.62);word-break:keep-all}
 .cs-nav{display:flex;justify-content:center;gap:10px;margin-top:28px}
@@ -2007,6 +2004,17 @@ a{color:inherit;text-decoration:none}
 .cs-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cs-btn:hover{border-color:var(--brand);background:rgba(223,240,0,.08)}
 .cs-btn:disabled{opacity:.3;cursor:default;border-color:rgba(255,255,255,.22);background:transparent}
+.cs-modal{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);background:rgba(10,10,10,.88);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;overscroll-behavior:contain}
+.cs-modal.open{opacity:1;visibility:visible}
+.cs-mbox{position:relative;width:min(100%,1080px);transform:translateY(16px) scale(.98);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.cs-modal.open .cs-mbox{transform:none}
+.cs-mvid{position:relative;width:100%;aspect-ratio:16/9;max-height:calc(100vh - 160px);border-radius:var(--radius-lg);overflow:hidden;background:#000}
+.cs-mvid video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.cs-mt{margin:16px 0 0;font-size:clamp(17px,3.4vw,20px);font-weight:700;color:#fff;letter-spacing:-.02em;word-break:keep-all}
+.cs-md{margin:4px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.62);word-break:keep-all}
+.cs-x{position:absolute;right:0;top:-52px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease}
+.cs-x:hover{background:rgba(255,255,255,.22)}
+.cs-x svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
 @media(min-width:768px){.cs-card{flex:0 0 calc((100% - 32px) / 3)}.cs-track{margin:0;padding:0;scroll-padding:0}}
 </style>
 </head>
@@ -2864,22 +2872,35 @@ a{color:inherit;text-decoration:none}
   io.observe(g);
 })();
 
-/* 컨설팅 현장 영상: 누르면 그 자리에서 재생, 한 번에 하나만 */
+/* 컨설팅 현장 영상: 카드를 누르면 모달 플레이어로 재생 */
 (function(){
   var sec=document.querySelector('.cs-sec'); if(!sec) return;
   var track=sec.querySelector('.cs-track'), prev=sec.querySelector('.cs-prev'), next=sec.querySelector('.cs-next');
-  var cur=null;
-  sec.querySelectorAll('.cs-media').forEach(function(b){
-    b.addEventListener('click',function(){
-      if(b.classList.contains('on')) return;
-      if(cur&&cur!==b){ var v0=cur.querySelector('video'); if(v0) v0.pause(); }
-      var v=document.createElement('video');
-      v.src=b.dataset.src; v.controls=true; v.playsInline=true; v.setAttribute('playsinline',''); v.preload='auto';
-      b.appendChild(v); b.classList.add('on'); cur=b;
-      v.addEventListener('play',function(){ if(cur&&cur!==b){ var o=cur.querySelector('video'); if(o) o.pause(); } cur=b; });
-      var p=v.play(); if(p&&p.catch) p.catch(function(){});
-    });
-  });
+  var m=document.createElement('div'); m.className='cs-modal'; m.setAttribute('role','dialog'); m.setAttribute('aria-modal','true'); m.setAttribute('aria-hidden','true');
+  m.innerHTML='<div class="cs-mbox"><button type="button" class="cs-x" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="cs-mvid"></div><p class="cs-mt"></p><p class="cs-md"></p></div>';
+  sec.appendChild(m);
+  var box=m.querySelector('.cs-mvid'), mt=m.querySelector('.cs-mt'), md=m.querySelector('.cs-md'), last=null;
+  function close(){
+    if(!m.classList.contains('open')) return;
+    var v=box.querySelector('video'); if(v){ v.pause(); v.removeAttribute('src'); v.load(); }
+    m.classList.remove('open'); m.setAttribute('aria-hidden','true');
+    setTimeout(function(){ if(!m.classList.contains('open')) box.innerHTML=''; },300);
+    if(last) last.focus({preventScroll:true});
+  }
+  function open(b){
+    var card=b.closest('.cs-card'); last=b;
+    mt.textContent=card.querySelector('.cs-t').textContent; md.textContent=card.querySelector('.cs-d').textContent;
+    box.innerHTML='';
+    var v=document.createElement('video');
+    v.src=b.dataset.src; v.poster=b.querySelector('img').src; v.controls=true; v.playsInline=true; v.setAttribute('playsinline',''); v.preload='auto';
+    box.appendChild(v);
+    m.classList.add('open'); m.setAttribute('aria-hidden','false');
+    var p=v.play(); if(p&&p.catch) p.catch(function(){});
+    m.querySelector('.cs-x').focus({preventScroll:true});
+  }
+  sec.querySelectorAll('.cs-media').forEach(function(b){ b.addEventListener('click',function(){ open(b); }); });
+  m.addEventListener('click',function(e){ if(e.target===m||e.target.closest('.cs-x')) close(); });
+  window.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
   function step(){ var c=track.querySelector('.cs-card'); return c ? c.getBoundingClientRect().width+16 : track.clientWidth; }
   function upd(){ prev.disabled=track.scrollLeft<=4; next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4; }
   prev.addEventListener('click',function(){ track.scrollBy({left:-step(),behavior:'smooth'}); });
