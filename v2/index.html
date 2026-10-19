@@ -2878,7 +2878,7 @@ a{color:inherit;text-decoration:none}
   var track=sec.querySelector('.cs-track'), prev=sec.querySelector('.cs-prev'), next=sec.querySelector('.cs-next');
   var m=document.createElement('div'); m.className='cs-modal'; m.setAttribute('role','dialog'); m.setAttribute('aria-modal','true'); m.setAttribute('aria-hidden','true');
   m.innerHTML='<div class="cs-mbox"><button type="button" class="cs-x" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button><div class="cs-mvid"></div><p class="cs-mt"></p><p class="cs-md"></p></div>';
-  sec.appendChild(m);
+  (document.querySelector('.bc-root')||sec).appendChild(m);
   var box=m.querySelector('.cs-mvid'), mt=m.querySelector('.cs-mt'), md=m.querySelector('.cs-md'), last=null;
   function close(){
     if(!m.classList.contains('open')) return;
