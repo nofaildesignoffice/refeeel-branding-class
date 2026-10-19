@@ -1979,6 +1979,35 @@ a{color:inherit;text-decoration:none}
 .foot-nav a:hover{color:var(--ink)}
 .foot-biz,.foot-upd{padding:0 20px;font-size:11.5px;line-height:1.7;color:var(--text-light);word-break:keep-all}
 .foot .foot-biz span{font-size:inherit;color:inherit;white-space:nowrap}
+
+/* ── 컨설팅 현장 영상 ── */
+.bc-root > section.cs-sec{background:var(--ink)!important;color:#fff;padding-top:0}
+.cs-sec .h-sec{color:#fff}
+.cs-sec .em{color:var(--brand);background:none;padding:0}
+.cs-sec .label{color:var(--ink);background:var(--brand)}
+.cs-sec .sec-lead{color:rgba(255,255,255,.72)}
+.cs-sec .sec-lead strong{color:#fff}
+.cs-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 calc(-1 * clamp(20px,5vw,40px));padding:0 clamp(20px,5vw,40px);scroll-padding:0 clamp(20px,5vw,40px)}
+.cs-track::-webkit-scrollbar{display:none}
+.cs-card{flex:0 0 min(82%,360px);scroll-snap-align:start;min-width:0}
+.cs-media{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;margin:0;border-radius:var(--radius-lg);overflow:hidden;background:#000;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cs-media img,.cs-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cs-media video{object-fit:contain;background:#000}
+.cs-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.004) 45%,rgba(26,26,26,.55) 100%);pointer-events:none;transition:opacity .3s ease}
+.cs-play{position:absolute;left:50%;top:50%;z-index:1;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:transform .25s ease}
+.cs-play svg{width:20px;height:20px;margin-left:3px;fill:var(--ink)}
+.cs-dur{position:absolute;right:10px;bottom:10px;z-index:1;font-size:12px;font-weight:600;color:#fff;background:rgba(26,26,26,.7);padding:3px 8px;border-radius:var(--radius-full)}
+.cs-media:hover .cs-play{transform:scale(1.08)}
+.cs-media.on .cs-play,.cs-media.on .cs-dur{display:none}
+.cs-media.on::after{opacity:0}
+.cs-t{margin:16px 0 0;font-size:clamp(17px,3.4vw,19px);font-weight:700;line-height:1.4;letter-spacing:-.02em;color:#fff;word-break:keep-all}
+.cs-d{margin:6px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.62);word-break:keep-all}
+.cs-nav{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.cs-btn{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease,border-color .2s ease,opacity .2s ease}
+.cs-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cs-btn:hover{border-color:var(--brand);background:rgba(223,240,0,.08)}
+.cs-btn:disabled{opacity:.3;cursor:default;border-color:rgba(255,255,255,.22);background:transparent}
+@media(min-width:768px){.cs-card{flex:0 0 calc((100% - 32px) / 3)}.cs-track{margin:0;padding:0;scroll-padding:0}}
 </style>
 </head>
 <body>
@@ -2110,6 +2139,26 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- [5] 컨설팅 현장 영상 -->
+<section class="sec bt cs-sec">
+  <div class="wrap">
+    <div class="sec-head c rv"><span class="label">컨설팅 현장</span><h2 class="h-sec">현장에서도<br><span class="em">같은 질문</span>부터 던졌어요.</h2>
+      <p class="sec-lead">콘텐츠, 가격, 마케팅을 손보기 전에<br>먼저 답해야 할 질문이 있어요.<br>김낙타가 사장님들과 <strong>실제로 나눈 대화</strong>를 짧게 담았어요.</p>
+    </div>
+    <div class="cs-track rv">
+      <div class="cs-card"><button type="button" class="cs-media" data-src="assets/video/cs-1.mp4" aria-label="마케팅이 어려운 진짜 이유 영상 재생"><img src="assets/video/cs-1.webp" alt="마케팅이 어려운 진짜 이유 영상 미리보기" width="960" height="540" loading="lazy" decoding="async"><span class="cs-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cs-dur">0:17</span></button><h3 class="cs-t">마케팅이 어려운 진짜 이유</h3><p class="cs-d">마진이 30%뿐이라면, 어떤 마케팅도 버티기 어려워요.</p></div>
+      <div class="cs-card"><button type="button" class="cs-media" data-src="assets/video/cs-2.mp4" aria-label="콘텐츠보다 먼저 정할 것 영상 재생"><img src="assets/video/cs-2.webp" alt="콘텐츠보다 먼저 정할 것 영상 미리보기" width="960" height="540" loading="lazy" decoding="async"><span class="cs-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cs-dur">0:27</span></button><h3 class="cs-t">콘텐츠보다 먼저 정할 것</h3><p class="cs-d">저녁 장사인지, 밀키트인지. 왜 만드는지 알아야 방향이 잡혀요.</p></div>
+      <div class="cs-card"><button type="button" class="cs-media" data-src="assets/video/cs-3.mp4" aria-label="1억 뷰가 터져도 안 팔리는 이유 영상 재생"><img src="assets/video/cs-3.webp" alt="1억 뷰가 터져도 안 팔리는 이유 영상 미리보기" width="960" height="540" loading="lazy" decoding="async"><span class="cs-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cs-dur">0:20</span></button><h3 class="cs-t">1억 뷰가 터져도 안 팔리는 이유</h3><p class="cs-d">고객이 언제, 왜 사는지 모르면 조회수는 매출이 되지 않아요.</p></div>
+      <div class="cs-card"><button type="button" class="cs-media" data-src="assets/video/cs-4.mp4" aria-label="차별점보다 기본이 먼저 영상 재생"><img src="assets/video/cs-4.webp" alt="차별점보다 기본이 먼저 영상 미리보기" width="960" height="540" loading="lazy" decoding="async"><span class="cs-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cs-dur">0:25</span></button><h3 class="cs-t">차별점보다 기본이 먼저</h3><p class="cs-d">기본 요건 없이 이벤트만 얹으면 제대로 되는 게 없어요.</p></div>
+      <div class="cs-card"><button type="button" class="cs-media" data-src="assets/video/cs-5.mp4" aria-label="95대 5 법칙 영상 재생"><img src="assets/video/cs-5.webp" alt="95대 5 법칙 영상 미리보기" width="960" height="540" loading="lazy" decoding="async"><span class="cs-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cs-dur">0:42</span></button><h3 class="cs-t">95대 5 법칙</h3><p class="cs-d">95%는 효율로, 고객 눈에 보이는 5%에만 정성을 쏟아요.</p></div>
+      <div class="cs-card"><button type="button" class="cs-media" data-src="assets/video/cs-6.mp4" aria-label="정성을 콘텐츠로 보여주는 법 영상 재생"><img src="assets/video/cs-6.webp" alt="정성을 콘텐츠로 보여주는 법 영상 미리보기" width="960" height="540" loading="lazy" decoding="async"><span class="cs-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cs-dur">0:35</span></button><h3 class="cs-t">정성을 콘텐츠로 보여주는 법</h3><p class="cs-d">130g 쿠키처럼, 고객이 모르는 정성은 과정으로 보여줘야 해요.</p></div>
+      <div class="cs-card"><button type="button" class="cs-media" data-src="assets/video/cs-7.mp4" aria-label="추측 말고 물어보세요 영상 재생"><img src="assets/video/cs-7.webp" alt="추측 말고 물어보세요 영상 미리보기" width="960" height="540" loading="lazy" decoding="async"><span class="cs-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span><span class="cs-dur">0:44</span></button><h3 class="cs-t">추측 말고 물어보세요</h3><p class="cs-d">햄버거를 반 남긴 손님, 물어보니 소식하는 단골이었어요.</p></div>
+    </div>
+    <div class="cs-nav"><button type="button" class="cs-btn cs-prev" aria-label="이전 영상"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="cs-btn cs-next" aria-label="다음 영상"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
   </div>
 </section>
 
@@ -2813,6 +2862,29 @@ a{color:inherit;text-decoration:none}
       if(now-t0<1600+ns.length*150) requestAnimationFrame(step); })(t0);
   },{threshold:.35,rootMargin:'0px 0px -20% 0px'});
   io.observe(g);
+})();
+
+/* 컨설팅 현장 영상: 누르면 그 자리에서 재생, 한 번에 하나만 */
+(function(){
+  var sec=document.querySelector('.cs-sec'); if(!sec) return;
+  var track=sec.querySelector('.cs-track'), prev=sec.querySelector('.cs-prev'), next=sec.querySelector('.cs-next');
+  var cur=null;
+  sec.querySelectorAll('.cs-media').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(b.classList.contains('on')) return;
+      if(cur&&cur!==b){ var v0=cur.querySelector('video'); if(v0) v0.pause(); }
+      var v=document.createElement('video');
+      v.src=b.dataset.src; v.controls=true; v.playsInline=true; v.setAttribute('playsinline',''); v.preload='auto';
+      b.appendChild(v); b.classList.add('on'); cur=b;
+      v.addEventListener('play',function(){ if(cur&&cur!==b){ var o=cur.querySelector('video'); if(o) o.pause(); } cur=b; });
+      var p=v.play(); if(p&&p.catch) p.catch(function(){});
+    });
+  });
+  function step(){ var c=track.querySelector('.cs-card'); return c ? c.getBoundingClientRect().width+16 : track.clientWidth; }
+  function upd(){ prev.disabled=track.scrollLeft<=4; next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4; }
+  prev.addEventListener('click',function(){ track.scrollBy({left:-step(),behavior:'smooth'}); });
+  next.addEventListener('click',function(){ track.scrollBy({left:step(),behavior:'smooth'}); });
+  track.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
 })();
 
 /* 아낀 돈 카운터 */
