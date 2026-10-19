@@ -2911,11 +2911,15 @@ a{color:inherit;text-decoration:none}
   function jump(dx){ track.style.scrollBehavior='auto'; track.scrollLeft+=dx; track.offsetWidth; track.style.scrollBehavior=''; }
   function norm(){ var w=setW(); if(!w) return; if(track.scrollLeft<w*.5) jump(w); else if(track.scrollLeft>=w*1.5) jump(-w); }
   function step(){ return cards[1].offsetLeft-cards[0].offsetLeft || track.clientWidth; }
-  prev.addEventListener('click',function(){ norm(); track.scrollBy({left:-step(),behavior:'smooth'}); });
-  next.addEventListener('click',function(){ norm(); track.scrollBy({left:step(),behavior:'smooth'}); });
+  /* 누를 때마다 '지금 카드 ±1' 위치로 정확히 이동 (연속 클릭에도 어긋나지 않게) */
+  var tgt=null;
+  function go(d){ if(tgt===null) norm(); var s=step(), base=tgt!==null?tgt:Math.round(track.scrollLeft/s); tgt=base+d; track.scrollTo({left:tgt*s,behavior:'smooth'}); }
+  prev.addEventListener('click',function(){ go(-1); });
+  next.addEventListener('click',function(){ go(1); });
   var t=0;
-  if('onscrollend' in window) track.addEventListener('scrollend',norm);
-  else track.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(norm,150); },{passive:true});
+  function settle(){ tgt=null; norm(); }
+  if('onscrollend' in window) track.addEventListener('scrollend',settle);
+  else track.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(settle,150); },{passive:true});
   function start(){ jump(setW()-track.scrollLeft+0); }
   var lw=0; window.addEventListener('resize',function(){ if(track.clientWidth!==lw){ lw=track.clientWidth; var w=setW(); var i=Math.round(track.scrollLeft/step())%n; jump(w+i*step()-track.scrollLeft); } });
   lw=track.clientWidth; start();
