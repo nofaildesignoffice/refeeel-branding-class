@@ -2872,7 +2872,7 @@ a{color:inherit;text-decoration:none}
   io.observe(g);
 })();
 
-/* 컨설팅 현장 영상: 카드를 누르면 모달 플레이어로 재생 */
+/* 컨설팅 현장 영상: 카드를 누르면 모달 플레이어로 재생, 슬라이더는 무한 루프 */
 (function(){
   var sec=document.querySelector('.cs-sec'); if(!sec) return;
   var track=sec.querySelector('.cs-track'), prev=sec.querySelector('.cs-prev'), next=sec.querySelector('.cs-next');
@@ -2898,14 +2898,27 @@ a{color:inherit;text-decoration:none}
     var p=v.play(); if(p&&p.catch) p.catch(function(){});
     m.querySelector('.cs-x').focus({preventScroll:true});
   }
-  sec.querySelectorAll('.cs-media').forEach(function(b){ b.addEventListener('click',function(){ open(b); }); });
+  /* 원본 세트 앞뒤로 복제 세트 → [복제][원본][복제] */
+  var orig=[].slice.call(track.querySelectorAll('.cs-card')), n=orig.length;
+  function clone(c){ var k=c.cloneNode(true); k.setAttribute('aria-hidden','true'); k.querySelectorAll('button').forEach(function(b){ b.tabIndex=-1; }); k.querySelectorAll('img').forEach(function(i){ i.loading='eager'; }); return k; }
+  orig.forEach(function(c){ track.appendChild(clone(c)); });
+  orig.slice().reverse().forEach(function(c){ track.insertBefore(clone(c), track.firstChild); });
+  track.addEventListener('click',function(e){ var b=e.target.closest('.cs-media'); if(b) open(b); });
   m.addEventListener('click',function(e){ if(e.target===m||e.target.closest('.cs-x')) close(); });
   window.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
-  function step(){ var c=track.querySelector('.cs-card'); return c ? c.getBoundingClientRect().width+(parseFloat(getComputedStyle(track).columnGap)||16) : track.clientWidth; }
-  function upd(){ prev.disabled=track.scrollLeft<=4; next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-4; }
-  prev.addEventListener('click',function(){ track.scrollBy({left:-step(),behavior:'smooth'}); });
-  next.addEventListener('click',function(){ track.scrollBy({left:step(),behavior:'smooth'}); });
-  track.addEventListener('scroll',upd,{passive:true}); window.addEventListener('resize',upd); upd();
+  var cards=track.querySelectorAll('.cs-card');
+  function setW(){ return cards[n].offsetLeft-cards[0].offsetLeft; }
+  function jump(dx){ track.style.scrollBehavior='auto'; track.scrollLeft+=dx; track.offsetWidth; track.style.scrollBehavior=''; }
+  function norm(){ var w=setW(); if(!w) return; if(track.scrollLeft<w*.5) jump(w); else if(track.scrollLeft>=w*1.5) jump(-w); }
+  function step(){ return cards[1].offsetLeft-cards[0].offsetLeft || track.clientWidth; }
+  prev.addEventListener('click',function(){ norm(); track.scrollBy({left:-step(),behavior:'smooth'}); });
+  next.addEventListener('click',function(){ norm(); track.scrollBy({left:step(),behavior:'smooth'}); });
+  var t=0;
+  if('onscrollend' in window) track.addEventListener('scrollend',norm);
+  else track.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(norm,150); },{passive:true});
+  function start(){ jump(setW()-track.scrollLeft+0); }
+  var lw=0; window.addEventListener('resize',function(){ if(track.clientWidth!==lw){ lw=track.clientWidth; var w=setW(); var i=Math.round(track.scrollLeft/step())%n; jump(w+i*step()-track.scrollLeft); } });
+  lw=track.clientWidth; start();
 })();
 
 /* 아낀 돈 카운터 */
